@@ -14,7 +14,12 @@ const config = {
   projectName: 'react-native-screens',
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'throw',
+  onBrokenAnchors: 'throw',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    },
+  },
 
   i18n: {
     defaultLocale: 'en',
@@ -39,13 +44,13 @@ const config = {
   ],
 
   plugins: [
-    [
+    process.env.NODE_ENV === 'production' && [
       '@docusaurus/plugin-google-tag-manager',
       {
         containerId: 'GTM-MRHMWWNL',
       },
     ],
-  ],
+  ].filter(Boolean),
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -85,6 +90,15 @@ const config = {
         links: [],
         copyright:
           'All trademarks and copyrights belong to their respective owners.',
+      },
+      // TODO: replace placeholders with real DocSearch credentials once
+      // Algolia approval lands. Required so preset-classic activates
+      // @docusaurus/theme-search-algolia and `@theme/SearchTranslations`
+      // alias resolves during build.
+      algolia: {
+        appId: 'PLACEHOLDER_APP_ID',
+        apiKey: 'PLACEHOLDER_API_KEY',
+        indexName: 'react-native-screens',
       },
     }),
 };
