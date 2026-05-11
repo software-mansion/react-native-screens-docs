@@ -1,0 +1,24 @@
+name: docs build
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  docs-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build docs
+        run: yarn build
