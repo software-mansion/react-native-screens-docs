@@ -1,7 +1,6 @@
-# Tabs
+# TabsItem
 
 <!-- TODO: write content for this page -->
-<!-- Covers the Tabs family of components: BottomTabsScreen, TabsItem, etc. Team to split into per-component pages if needed. -->
 
 ## Introduction
 
