@@ -1,7 +1,7 @@
 # Screens Documentation
 
 👉 Landing: [https://docs.swmansion.com/react-native-screens/](https://docs.swmansion.com/react-native-screens/)
-👉 Documentation: [https://reactnavigation.org/docs/native-stack-navigator/](https://reactnavigation.org/docs/native-stack-navigator/)
+👉 Documentation: [https://docs.swmansion.com/react-native-screens/docs/](https://docs.swmansion.com/react-native-screens/docs/)
 
 ## How can I help?
 

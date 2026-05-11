@@ -18,8 +18,7 @@ const StartScreen = () => {
         </div>
         <div className={styles.buttonContainer}>
           <HomepageButton
-            target="_blank"
-            href="https://reactnavigation.org/docs/7.x/native-stack-navigator/"
+            href={useBaseUrl('/docs/fundamentals/getting-started')}
             title="Learn more"
           />
         </div>

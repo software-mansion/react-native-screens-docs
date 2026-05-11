@@ -80,7 +80,7 @@ const config = {
         },
         items: [
           {
-            to: 'https://reactnavigation.org/docs/7.x/native-stack-navigator/',
+            to: 'docs/fundamentals/getting-started',
             activeBasePath: 'docs',
             label: 'Docs',
             position: 'right',
