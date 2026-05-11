@@ -114,13 +114,15 @@
   --swm-color-mode-enabled: var(--swm-navy-light-20);
   --swm-color-mode-disabled-color: var(--swm-navy-light-20);
 
-  --swm-color-mode-enabled-landing: var(--swm-navy-light-100);
-  --swm-color-mode-enabled-color-landing: var(--swm-off-white);
-  --swm-color-mode-disabled-color-landing: var(--swm-navy-light-100);
+  --swm-color-mode-enabled-landing: var(--swm-off-white);
+  --swm-color-mode-enabled-color-landing: var(--ifm-font-color-base);
+  --swm-color-mode-disabled-color-landing: var(--swm-off-white);
 
   /* Typography */
   --ifm-heading-color: var(--ifm-color-primary);
   --ifm-font-color-base: var(--swm-navy-light-100);
+  --ifm-link-color: var(--swm-blue-light-100);
+  --ifm-link-hover-color: var(--swm-blue-light-60);
 
   /* Tabs */
   --swm-tab: var(--swm-navy-light-20);
@@ -131,6 +133,11 @@
   --ifm-toc-border-color: transparent;
   --ifm-toc-link-color: var(--swm-navy-light-60);
   --ifm-toc-link-color-active: var(--swm-navy-light-100);
+
+  --swm-hire-us-toc: var(--swm-navy-light-100);
+  --swm-hire-us-toc-color: var(--swm-off-white);
+  --swm-hire-us-toc-color-hover: var(--swm-navy-light-100);
+  --swm-hire-us-toc-border-hover: var(--swm-navy-light-100);
 
   /* Details section */
   --swm-details-foreground: var(--swm-purple-light-20);
@@ -232,7 +239,7 @@
 
   --swm-landing-horse: var(--swm-navy-light-100);
 
-  --swm-landing-button: var(--swm-navy-light-100);
+  --swm-landing-button-purple: var(--swm-purple-light-100);
 
   --swm-landing-feature-item: var(--swm-purple-light-40);
   --swm-landing-feature-item-shadow: var(--swm-purple-light-100);
@@ -241,7 +248,7 @@
 
   /* Hire Us Section */
 
-  --swm-hire-us-section-title: var(--swm-blue-light-80);
+  --swm-hire-us-section-title: var(--swm-purple-light-80);
   --swm-hire-us-section: var(--swm-navy-light-100);
   --swm-hire-us-section-color: var(--swm-off-white);
 
@@ -256,6 +263,9 @@
 
   --swm-sidebar-label-text-experimental: var(--swm-navy-light-100);
   --swm-sidebar-label-background-experimental: var(--swm-yellow-light-40);
+
+  --swm-sidebar-label-text-unreleased: var(--swm-navy-light-100);
+  --swm-sidebar-label-background-unreleased: var(--swm-blue-light-40);
 
   /* Mobile sidebar versions */
   --swm-sidebar-elements-version-text: var(--swm-navy-light-100);
@@ -284,6 +294,11 @@
   --swm-compatibility-not-supported-background: var(--swm-red-light-80);
   --swm-compatibility-text-color: var(--swm-white);
 
+  /* App.js 2025 */
+  --swm-appjs-2025-primary: #484dfc;
+  --swm-appjs-2025-primary-hover: #7189ff;
+  --swm-appjs-2025-background: #f7eded;
+
   /* Special codeblocks colors */
   --codeblock-diff-inserted-color-light: #265f4c;
   --codeblock-diff-inserted-color-dark: var(--swm-green-dark-40);
@@ -301,21 +316,21 @@
   --ifm-color-primary: var(--swm-navy-light-10);
 
   /* Main site settings */
-  --swm-background: var(--swm-navy-dark-140);
+  --swm-background: var(--swm-navy);
   --swm-off-background: var(--swm-off-navy);
 
   --ifm-background-color: var(--swm-background);
   --ifm-navbar-background-color: var(--swm-background);
 
   /* Color Mode */
-  --swm-color-mode-enabled: var(--swm-off-white);
-  --swm-color-mode-enabled-landing: var(--swm-off-white);
-  --swm-color-mode-enabled-color-landing: var(--swm-navy-dark-140);
-  --swm-color-mode-disabled-color: var(--swm-off-white);
-  --swm-color-mode-disabled-color-landing: var(--swm-off-white);
+  --swm-color-mode-enabled: var(--swm-off-navy);
+  --swm-color-mode-enabled-color-landing: var(--swm-purple-dark-120);
+  --swm-color-mode-disabled-color: var(--swm-navy-light-40);
 
   /* Typography */
   --ifm-font-color-base: var(--swm-navy-light-10);
+  --ifm-link-color: var(--swm-blue-dark-80);
+  --ifm-link-hover-color: var(--swm-blue-dark-60);
 
   /* Tabs */
   --swm-tab: var(--swm-navy-light-60);
@@ -326,6 +341,11 @@
   --ifm-toc-border-color: transparent;
   --ifm-toc-link-color: var(--swm-navy-light-40);
   --ifm-toc-link-color-active: var(--swm-off-white);
+
+  --swm-hire-us-toc: var(--swm-blue-light-80);
+  --swm-hire-us-toc-color: var(--swm-off-white);
+  --swm-hire-us-toc-color-hover: var(--swm-navy-light-40);
+  --swm-hire-us-toc-border-hover: var(--swm-navy-light-40);
 
   /* Details section */
   --swm-details-foreground: var(--swm-purple-dark-120);
@@ -418,7 +438,7 @@
 
   --swm-landing-horse: var(--swm-off-white);
 
-  --swm-landing-button: var(--swm-blue-dark-80);
+  --swm-landing-button-purple: var(--swm-purple-dark-100);
 
   --swm-landing-feature-item: var(--swm-purple-dark-100);
   --swm-landing-feature-item-shadow: var(--swm-purple-dark-140);
@@ -427,9 +447,9 @@
 
   /* Hire Us Section */
 
-  --swm-hire-us-section-title: var(--swm-blue-dark-80);
-  --swm-hire-us-section: var(--swm-blue-dark-80);
-  --swm-hire-us-section-color: var(--swm-navy-light-100);
+  --swm-hire-us-section-title: var(--swm-purple-dark-100);
+  --swm-hire-us-section: var(--swm-purple-dark-100);
+  --swm-hire-us-section-color: var(--swm-off-white);
 
   /* Cards */
   --swm-card-background: var(--swm-navy);
@@ -442,6 +462,12 @@
 
   --swm-sidebar-label-text-experimental: var(--swm-off-white);
   --swm-sidebar-label-background-experimental: var(--swm-yellow-dark-120);
+
+  --swm-sidebar-label-text-unreleased: var(--swm-off-white);
+  --swm-sidebar-label-background-unreleased: var(--swm-blue-dark-120);
+
+  --swm-sidebar-label-text-deprecated: var(--swm-sidebar-menu-color);
+  --swm-sidebar-label-background-deprecated: rgba(170, 188, 208, 0.5);
 
   /* Mobile sidebar versions */
   --swm-sidebar-elements-version-text: var(--swm-navy-dark-20);

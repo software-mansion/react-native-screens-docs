@@ -43,6 +43,13 @@ const config = {
           sidebarCollapsible: false,
           editUrl:
             'https://github.com/software-mansion/react-native-screens-docs/edit/main/',
+          lastVersion: 'current',
+          versions: {
+            current: {
+              label: '5.x',
+              banner: 'none',
+            },
+          },
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -84,6 +91,11 @@ const config = {
             activeBasePath: 'docs',
             label: 'Docs',
             position: 'right',
+          },
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
+            dropdownActiveClassDisabled: true,
           },
           {
             href: 'https://github.com/software-mansion/react-native-screens/',

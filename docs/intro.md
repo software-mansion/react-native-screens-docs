@@ -1,5 +1,6 @@
 ---
 slug: /
+sidebar_label: Introduction
 ---
 
 # React Native Screens

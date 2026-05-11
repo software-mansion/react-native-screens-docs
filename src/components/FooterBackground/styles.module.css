@@ -22,38 +22,6 @@
 
 .container {
   position: relative;
-  margin-top: 107px;
-}
-
-footer {
-  margin-top: -107px;
-}
-
-@media (max-width: 996px) {
-  .container {
-    margin-top: 122px;
-  }
-  footer {
-    margin-top: -122px;
-  }
-}
-
-@media (max-width: 700px) {
-  .container {
-    margin-top: 147px;
-  }
-  footer {
-    margin-top: -147px;
-  }
-}
-
-@media (max-width: 375px) {
-  .container {
-    margin-top: 173px;
-  }
-  footer {
-    margin-top: -173px;
-  }
 }
 
 [data-theme='dark'] .footerBackground {
