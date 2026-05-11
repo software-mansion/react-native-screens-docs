@@ -1,6 +1,9 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+const lightCodeTheme = require('./src/theme/CodeBlock/highlighting-light.js');
+const darkCodeTheme = require('./src/theme/CodeBlock/highlighting-dark.js');
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'React Native Screens',
@@ -11,7 +14,7 @@ const config = {
   baseUrl: '/react-native-screens/',
 
   organizationName: 'software-mansion',
-  projectName: 'react-native-screens',
+  projectName: 'react-native-screens-docs',
 
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
@@ -19,7 +22,10 @@ const config = {
     hooks: {
       onBrokenMarkdownLinks: 'throw',
     },
+    mermaid: true,
   },
+
+  themes: ['@docusaurus/theme-mermaid'],
 
   i18n: {
     defaultLocale: 'en',
@@ -35,6 +41,8 @@ const config = {
           breadcrumbs: false,
           sidebarPath: require.resolve('./sidebars.js'),
           sidebarCollapsible: false,
+          editUrl:
+            'https://github.com/software-mansion/react-native-screens-docs/edit/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -90,6 +98,11 @@ const config = {
         links: [],
         copyright:
           'All trademarks and copyrights belong to their respective owners.',
+      },
+      prism: {
+        theme: lightCodeTheme,
+        darkTheme: darkCodeTheme,
+        additionalLanguages: ['bash', 'diff', 'json', 'mermaid'],
       },
       // TODO: replace placeholders with real DocSearch credentials once
       // Algolia approval lands. Required so preset-classic activates
