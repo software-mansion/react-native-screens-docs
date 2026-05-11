@@ -17,3 +17,4 @@ All feedback in all forms ranging from general to tiny fixes is highly appreciat
 
 - [Balbina Fabia](https://dribbble.com/balbina): design
 - [Patrycja Kalińska](https://x.com/patkalinska): site development
+- [Szymon Halski](https://github.com/halskiszymon): site development
