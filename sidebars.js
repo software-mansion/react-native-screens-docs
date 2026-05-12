@@ -3,7 +3,12 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   tutorialSidebar: [
-    'intro',
+    {
+      type: 'doc',
+      id: 'intro',
+      label: 'Introduction',
+      className: 'sidebar-top-link',
+    },
     {
       type: 'category',
       label: 'Fundamentals',
@@ -21,16 +26,10 @@ const sidebars = {
         'components/screen-container',
         'components/screen-stack',
         'components/screen-stack-header-config',
-        {
-          type: 'category',
-          label: 'Tabs',
-          link: { type: 'doc', id: 'components/tabs' },
-          items: [
-            'components/bottom-tabs',
-            'components/bottom-tabs-screen',
-            'components/tabs-item',
-          ],
-        },
+        'components/tabs',
+        'components/bottom-tabs',
+        'components/bottom-tabs-screen',
+        'components/tabs-item',
         'components/split',
         'components/full-window-overlay',
       ],
@@ -68,6 +67,7 @@ const sidebars = {
         'contributing/repository-overview',
         'contributing/setup',
         'contributing/documentation-guidelines',
+        'contributing/mdx-components',
         'contributing/code-style',
       ],
     },

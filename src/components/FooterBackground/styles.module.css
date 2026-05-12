@@ -1,6 +1,11 @@
 .footerBackground {
   position: absolute;
-  bottom: 0;
+  /*
+   * Extend below the landing main container so the gradient continues
+   * behind the (transparent) page footer on landing. Without this, the
+   * copyright row sits on the default white body background.
+   */
+  bottom: -106px;
   left: 0;
 
   background: linear-gradient(

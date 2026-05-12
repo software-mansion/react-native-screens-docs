@@ -234,6 +234,12 @@
 
   --swm-landing-button: var(--swm-navy-light-100);
 
+  /* TOC "Hire us" button — match the landing "Learn more" styling. */
+  --swm-hire-us-toc: var(--swm-landing-button);
+  --swm-hire-us-toc-color: var(--swm-off-white);
+  --swm-hire-us-toc-color-hover: var(--swm-landing-button);
+  --swm-hire-us-toc-border-hover: var(--swm-landing-button);
+
   --swm-landing-feature-item: var(--swm-purple-light-40);
   --swm-landing-feature-item-shadow: var(--swm-purple-light-100);
 

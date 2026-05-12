@@ -105,3 +105,11 @@ table thead tr {
 [class*='DocCategoryGeneratedIndexPage'][class*='title'] {
   font-size: var(--swm-h1-font-size);
 }
+
+/*
+ * Drop the left padding on a top-level sidebar doc entry (e.g. Introduction)
+ * so it aligns with category headings instead of looking indented.
+ */
+.menu__list-item.sidebar-top-link > .menu__link {
+  padding-left: 0;
+}
