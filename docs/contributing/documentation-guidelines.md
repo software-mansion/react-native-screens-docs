@@ -103,4 +103,4 @@ Use ⚠️ when the component works but with caveats — explain those in **Rema
 
 ## When in doubt
 
-Concact the docs developer — [Szymon Halski](https://github.com/halskiszymon).
+Concact the docs site developer — [Szymon Halski](https://github.com/halskiszymon).
