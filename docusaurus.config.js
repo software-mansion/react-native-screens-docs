@@ -11,7 +11,7 @@ const config = {
 
   url: 'https://docs.swmansion.com',
 
-  baseUrl: '/react-native-screens/',
+  baseUrl: '/react-native-screens-docs/',
 
   organizationName: 'software-mansion',
   projectName: 'react-native-screens-docs',
