@@ -26,7 +26,6 @@ const sidebars = {
         'components/screen-container',
         'components/screen-stack',
         'components/screen-stack-header-config',
-        'components/tabs',
         'components/bottom-tabs',
         'components/bottom-tabs-screen',
         'components/tabs-item',
