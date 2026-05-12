@@ -16,6 +16,11 @@ const config = {
   organizationName: 'software-mansion',
   projectName: 'react-native-screens-docs',
 
+  // TODO: remove once the site is ready for public traffic and the
+  // docs.swmansion.com DNS swap lands. Until then, keep the deploy
+  // hidden from search engines.
+  noIndex: true,
+
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
   markdown: {
