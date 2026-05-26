@@ -1,0 +1,70 @@
+---
+title: Split.Inspector
+sidebar_label: Split.Inspector
+sidebar_position: 3
+---
+
+import { Badges } from '@swmansion/t-rex-ui';
+
+# Split.Inspector
+
+Renders content in the inspector column — a trailing-edge panel that provides additional context about the secondary column. Available on iOS 26 and higher.
+
+## Props
+
+### children
+
+```ts
+children?: ReactNode;
+```
+
+---
+
+### onDidAppear
+
+A callback that gets invoked when the current SplitScreen did appear.
+
+This is called as soon as the transition ends.
+
+```ts
+onDidAppear?: (e: NativeSyntheticEvent<Readonly<{ ... }>>) => void;
+```
+
+---
+
+### onDidDisappear
+
+A callback that gets invoked when the current SplitScreen did disappear.
+
+This is called as soon as the transition ends.
+
+```ts
+onDidDisappear?: (e: NativeSyntheticEvent<Readonly<{ ... }>>) => void;
+```
+
+---
+
+### onWillAppear
+
+A callback that gets invoked when the current SplitScreen will appear.
+
+This is called as soon as the transition begins.
+
+```ts
+onWillAppear?: (e: NativeSyntheticEvent<Readonly<{ ... }>>) => void;
+```
+
+---
+
+### onWillDisappear
+
+A callback that gets invoked when the current SplitScreen will disappear.
+
+This is called as soon as the transition begins.
+
+```ts
+onWillDisappear?: (e: NativeSyntheticEvent<Readonly<{ ... }>>) => void;
+```
+
+---
+

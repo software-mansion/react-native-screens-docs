@@ -1,0 +1,70 @@
+---
+title: Split.Column
+sidebar_label: Split.Column
+sidebar_position: 2
+---
+
+import { Badges } from '@swmansion/t-rex-ui';
+
+# Split.Column
+
+Renders content in one of the split-view columns (primary, supplementary, or secondary). Receives lifecycle callbacks when the column appears or disappears.
+
+## Props
+
+### children
+
+```ts
+children?: ReactNode;
+```
+
+---
+
+### onDidAppear
+
+A callback that gets invoked when the current SplitScreen did appear.
+
+This is called as soon as the transition ends.
+
+```ts
+onDidAppear?: (e: NativeSyntheticEvent<Readonly<{ ... }>>) => void;
+```
+
+---
+
+### onDidDisappear
+
+A callback that gets invoked when the current SplitScreen did disappear.
+
+This is called as soon as the transition ends.
+
+```ts
+onDidDisappear?: (e: NativeSyntheticEvent<Readonly<{ ... }>>) => void;
+```
+
+---
+
+### onWillAppear
+
+A callback that gets invoked when the current SplitScreen will appear.
+
+This is called as soon as the transition begins.
+
+```ts
+onWillAppear?: (e: NativeSyntheticEvent<Readonly<{ ... }>>) => void;
+```
+
+---
+
+### onWillDisappear
+
+A callback that gets invoked when the current SplitScreen will disappear.
+
+This is called as soon as the transition begins.
+
+```ts
+onWillDisappear?: (e: NativeSyntheticEvent<Readonly<{ ... }>>) => void;
+```
+
+---
+
