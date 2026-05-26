@@ -1,0 +1,102 @@
+---
+title: Stack.Screen
+sidebar_label: Stack.Screen
+sidebar_position: 2
+---
+
+import { Badges } from '@swmansion/t-rex-ui';
+
+# Stack.Screen
+
+Represents a single screen in the stack. Each screen must have a unique `screenKey`. The `activityMode` controls whether the screen remains attached to the view hierarchy when inactive.
+
+## Props
+
+### activityMode
+
+```ts
+activityMode: StackScreenActivityMode;
+```
+
+---
+
+### children
+
+```ts
+children?: ViewProps['children'];
+```
+
+---
+
+### onDidAppear
+
+```ts
+onDidAppear?: StackScreenEventHandler;
+```
+
+---
+
+### onDidDisappear
+
+```ts
+onDidDisappear?: StackScreenEventHandler;
+```
+
+---
+
+### onDismiss
+
+```ts
+onDismiss?: (screenKey: string) => void;
+```
+
+---
+
+### onNativeDismiss
+
+```ts
+onNativeDismiss?: (screenKey: string) => void;
+```
+
+---
+
+### onNativeDismissPrevented
+
+```ts
+onNativeDismissPrevented?: StackScreenEventHandler;
+```
+
+---
+
+### onWillAppear
+
+```ts
+onWillAppear?: StackScreenEventHandler;
+```
+
+---
+
+### onWillDisappear
+
+```ts
+onWillDisappear?: StackScreenEventHandler;
+```
+
+---
+
+### preventNativeDismiss
+
+```ts
+preventNativeDismiss?: boolean;
+```
+
+---
+
+### screenKey
+
+```ts
+screenKey: string;
+```
+
+---
+

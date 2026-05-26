@@ -1,0 +1,30 @@
+---
+title: Stack.Host
+sidebar_label: Stack.Host
+sidebar_position: 1
+---
+
+import { Badges } from '@swmansion/t-rex-ui';
+
+# Stack.Host
+
+Container component that manages a stack of screens. Renders its children inside a native stack container. Must wrap all `Stack.Screen` components.
+
+## Props
+
+### children
+
+```ts
+children: NonNullable<ViewProps['children']>;
+```
+
+---
+
+### ref
+
+```ts
+ref?: React.RefObject<React.Component<NativeProps> & ReactNativeElement | null>;
+```
+
+---
+

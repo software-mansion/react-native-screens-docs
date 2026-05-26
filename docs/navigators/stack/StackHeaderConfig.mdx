@@ -1,0 +1,97 @@
+---
+title: Stack.HeaderConfig
+sidebar_label: Stack.HeaderConfig
+sidebar_position: 3
+---
+
+import { Badges } from '@swmansion/t-rex-ui';
+
+# Stack.HeaderConfig
+
+Configures the native navigation bar for the enclosing `Stack.Screen`. Platform-specific props are grouped under `android` and `ios` objects.
+
+## Props
+
+### android
+
+```ts
+android?: StackHeaderConfigPropsAndroid;
+```
+
+See [`StackHeaderConfigPropsAndroid`](./TypesReference/StackHeaderConfigPropsAndroid) for full type definition.
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### backButtonHidden
+</Badges>
+
+Specifies if the back button should be hidden.
+
+This prop does not apply to the root screen of the stack for which the back
+button is always hidden.
+
+```ts
+backButtonHidden?: boolean;
+```
+
+**Default:** `false`
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### hidden
+</Badges>
+
+Specifies if the header should be hidden.
+
+```ts
+hidden?: boolean;
+```
+
+**Default:** `false`
+
+---
+
+### ios
+
+```ts
+ios?: StackHeaderConfigPropsIOS;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### title
+</Badges>
+
+Title displayed in the header.
+
+```ts
+title?: string;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### transparent
+</Badges>
+
+Specifies if the content should be rendered behind the header.
+
+When `true`, content is rendered behind the header instead of starting
+below it.
+
+On Android:
+- The header background color is not affected by this prop.
+- Setting this prop to `true` is not supported when header scrolling is
+  enabled.
+
+```ts
+transparent?: boolean;
+```
+
+**Default:** `false`
+
+---
+
