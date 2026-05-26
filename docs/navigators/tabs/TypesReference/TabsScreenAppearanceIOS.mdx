@@ -1,0 +1,134 @@
+---
+title: TabsScreenAppearanceIOS
+sidebar_label: TabsScreenAppearanceIOS
+---
+
+import { Badges } from '@swmansion/t-rex-ui';
+
+# TabsScreenAppearanceIOS
+
+_Used by [`Tabs.Screen`](../TabsScreen)._
+
+## Fields
+
+<Badges platforms={['ios']}>
+### compactInline
+</Badges>
+
+Specifies the appearance of tab bar items when they are in compact inline layout.
+
+Tab bar items in compact inline layout have the icon next to the title.
+Compact inline layout is used in compact-width environments, e.g. in landscape orientation on the iPhone 16 Pro.
+
+Complete list of size classes for iOS and iPadOS devices is available in Apple's Human Interface Guidelines:
+
+```ts
+compactInline?: TabsScreenItemAppearanceIOS;
+```
+
+See: [`Device size classes`](#)
+
+See [`TabsScreenItemAppearanceIOS`](./TabsScreenItemAppearanceIOS) for full type definition.
+
+---
+
+<Badges platforms={['ios']}>
+### inline
+</Badges>
+
+Specifies the appearance of tab bar items when they are in inline layout.
+
+Tab bar items in inline layout have the icon next to the title.
+Inline layout is used in regular-width environments, e.g. in landscape orientation on the iPhone 16 Pro Max.
+
+Complete list of size classes for iOS and iPadOS devices is available in Apple's Human Interface Guidelines:
+
+```ts
+inline?: TabsScreenItemAppearanceIOS;
+```
+
+See: [`Device size classes`](#)
+
+See [`TabsScreenItemAppearanceIOS`](./TabsScreenItemAppearanceIOS) for full type definition.
+
+---
+
+<Badges platforms={['ios']}>
+### stacked
+</Badges>
+
+Specifies the appearance of tab bar items when they are in stacked layout.
+
+Tab bar items in stacked layout have the icon above the title.
+Stacked layout is used e.g. on the iPhone in portrait orientation.
+
+```ts
+stacked?: TabsScreenItemAppearanceIOS;
+```
+
+See [`TabsScreenItemAppearanceIOS`](./TabsScreenItemAppearanceIOS) for full type definition.
+
+---
+
+<Badges platforms={['ios']}>
+### tabBarBackgroundColor
+</Badges>
+
+Specifies the background color for the entire tab bar when tab screen is selected.
+
+This property does not affect the tab bar starting from iOS 26.
+
+```ts
+tabBarBackgroundColor?: ColorValue;
+```
+
+**Supported:** iOS 18 or lower
+
+---
+
+<Badges platforms={['ios']}>
+### tabBarBlurEffect
+</Badges>
+
+Specifies the blur effect applied to the tab bar when tab screen is selected.
+
+Works with backgroundColor's alpha &lt; 1.
+
+This property does not affect the tab bar starting from iOS 26.
+
+The following values are currently supported:
+
+- `none` - disables blur effect
+- `systemDefault` - uses UIKit's default tab bar blur effect
+- one of styles mapped from UIKit's UIBlurEffectStyle, e.g. `systemUltraThinMaterial`
+
+Complete list of possible blur effect styles is available in the official UIKit documentation:
+
+```ts
+tabBarBlurEffect?: TabsScreenBlurEffect;
+```
+
+**Default:** `systemDefault`
+
+**Supported:** iOS 18 or lower
+
+See: [`https://developer.apple.com/documentation/uikit/uiblureffect/style|UIBlurEffect.Style`](#)
+
+---
+
+<Badges platforms={['ios']}>
+### tabBarShadowColor
+</Badges>
+
+Specifies the shadow color for the tab bar when tab screen is selected.
+
+This property does not affect the tab bar starting from iOS 26.
+
+```ts
+tabBarShadowColor?: ColorValue;
+```
+
+**Supported:** iOS 18 or lower
+
+---
+

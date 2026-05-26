@@ -1,0 +1,17 @@
+---
+title: TabSelectionRejectionReason
+sidebar_label: TabSelectionRejectionReason
+---
+
+# TabSelectionRejectionReason
+
+Reason why a tab selection request was rejected by the native side.
+
+```ts
+type TabSelectionRejectionReason = 'stale' | 'repeated';
+```
+
+- `stale` — the update was based on a stale navigation state,
+  meaning a newer state has already been applied. Only reported when
+  [`TabsHostPropsBase#rejectStaleNavStateUpdates`](#) is enabled.
+- `repeated` — the requested tab is already selected.

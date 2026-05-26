@@ -1,0 +1,56 @@
+---
+title: TabsHostNavStateRequest
+sidebar_label: TabsHostNavStateRequest
+---
+
+import { Badges } from '@swmansion/t-rex-ui';
+
+# TabsHostNavStateRequest
+
+_Used by [`Tabs.Host`](../TabsHost)._
+
+## Fields
+
+### baseProvenance
+
+Provenance of the navigation state this request is derived from.
+
+```ts
+baseProvenance: number;
+```
+
+The provenance value establishes a relationship between different navigation state instances
+held by given state holder. The assumption is that when the navigation state is progressed
+(modified), the provenance number is incremented. This creates a relationship where we can say:
+
+1. State with provenance = n + 1 has been derived from state with provenance = n.
+2. For two given navigation states A and B, we can say that A *is stale* iff
+A.provenance &lt;= B.provenance.
+
+This allows us to mitigate and resolve state conflicts that can happen with
+asynchronous navigation.
+
+Currently, the native implementation of TabsHost is the state holder.
+
+Pass here THE PROVENANCE OF THE LAST ACKNOWLEDGED state you received from native side
+via [`TabsHostPropsBase#onTabSelected`](#). In other words this should be the provenance
+number of last confirmed state you base your update request on.
+
+It is named `baseProvenance` (rather than `provenance`) to disambiguate it from the
+`provenance` field on the [`TabSelectedEvent`](#) payload, which carries the provenance
+of the state *resulting* from a transition.
+
+---
+
+### selectedScreenKey
+
+Valid screen key.
+
+```ts
+selectedScreenKey: string;
+```
+
+It must correspond to one of the keys you assign to the `TabsScreens`.
+
+---
+

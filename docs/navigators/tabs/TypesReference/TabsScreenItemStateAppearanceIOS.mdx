@@ -1,0 +1,179 @@
+---
+title: TabsScreenItemStateAppearanceIOS
+sidebar_label: TabsScreenItemStateAppearanceIOS
+---
+
+import { Badges } from '@swmansion/t-rex-ui';
+
+# TabsScreenItemStateAppearanceIOS
+
+_Used by [`Tabs.Screen`](../TabsScreen)._
+
+## Fields
+
+<Badges platforms={['ios']}>
+### tabBarItemBadgeBackgroundColor
+</Badges>
+
+Specifies the background color of badges for each tab bar item
+when tab screen is selected.
+
+```ts
+tabBarItemBadgeBackgroundColor?: ColorValue;
+```
+
+---
+
+<Badges platforms={['ios']}>
+### tabBarItemIconColor
+</Badges>
+
+Specifies the icon color for each tab bar item when tab screen
+is selected.
+
+This also impacts the title text color.
+
+Starting from iOS 26, it only applies to selected tab bar item. Other items
+adopt a dark or light appearance depending on the theme of the tab bar.
+
+Is overridden by `tabBarItemTitleFontColor` (for title text color).
+Overrides `tabBarTintColor`.
+
+```ts
+tabBarItemIconColor?: ColorValue;
+```
+
+---
+
+<Badges platforms={['ios']}>
+### tabBarItemTitleFontColor
+</Badges>
+
+Specifies the font color used for the title of each tab bar item
+when tab screen is selected.
+
+Overrides the color defined in `tabBarTintColor` and `tabBarItemIconColor`.
+
+```ts
+tabBarItemTitleFontColor?: ColorValue;
+```
+
+---
+
+<Badges platforms={['ios']}>
+### tabBarItemTitleFontFamily
+</Badges>
+
+Specifies the font family used for the title of each tab bar item
+when tab screen is selected.
+
+```ts
+tabBarItemTitleFontFamily?: string;
+```
+
+---
+
+<Badges platforms={['ios']}>
+### tabBarItemTitleFontSize
+</Badges>
+
+Specifies the font size used for the title of each tab bar item
+when tab screen is selected.
+
+```ts
+tabBarItemTitleFontSize?: number;
+```
+
+---
+
+<Badges platforms={['ios']}>
+### tabBarItemTitleFontStyle
+</Badges>
+
+Specifies the font style used for the title of each tab bar item
+when tab screen is selected.
+
+```ts
+tabBarItemTitleFontStyle?: 'normal' | 'italic';
+```
+
+---
+
+<Badges platforms={['ios']}>
+### tabBarItemTitleFontWeight
+</Badges>
+
+Specifies the font weight used for the title of each tab bar item
+when tab screen is selected.
+
+```ts
+tabBarItemTitleFontWeight?: 
+  | 'light'
+  | 'regular'
+  | 'medium'
+  | 'bold'
+  | 'normal'
+  | '100'
+  | '200'
+  | '300'
+  | '400'
+  | '500'
+  | '600'
+  | '700'
+  | '800'
+  | '900'
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
+  | 'ultralight'
+  | 'thin'
+  | 'semibold'
+  | 'condensedBold'
+  | 'condensed'
+  | 'heavy'
+  | 'black';
+```
+
+---
+
+<Badges platforms={['ios']}>
+### tabBarItemTitlePositionAdjustment
+</Badges>
+
+Specifies the title offset for each tab bar item when tab screen
+is selected.
+
+Depending on the iOS version and the device's interface orientation,
+this setting may affect the alignment of the text, badge and icon.
+
+```ts
+tabBarItemTitlePositionAdjustment?: {
+  horizontal?: number;
+  vertical?: number;
+};
+```
+
+#### horizontal
+
+```ts
+horizontal?: number;
+```
+
+---
+
+#### vertical
+
+```ts
+vertical?: number;
+```
+
+---
+
+---
+
