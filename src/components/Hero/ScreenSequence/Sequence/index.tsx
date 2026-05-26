@@ -101,12 +101,12 @@ const Sequence = () => {
         (windowWidth < 768
           ? 0.4
           : windowWidth < 996
-          ? 0.45
-          : windowWidth < 1350
-          ? 0.4
-          : windowWidth < 2000
-          ? 0.3
-          : 0.2)
+            ? 0.45
+            : windowWidth < 1350
+              ? 0.4
+              : windowWidth < 2000
+                ? 0.3
+                : 0.2)
       }
       fill="none"
       viewBox="0 0 468 397"
@@ -120,7 +120,7 @@ const Sequence = () => {
             hoveredIndex === index
               ? styles.hovered
               : (hoveredIndex === index - 1 || hoveredIndex === index + 1) &&
-                  styles.neighbourHovered
+                  styles.neighbourHovered,
           )}
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}>

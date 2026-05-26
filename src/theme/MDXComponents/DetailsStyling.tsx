@@ -36,16 +36,16 @@ const DetailsStyling = ({ summary, children, ...props }): JSX.Element => {
       className={clsx(
         styles.details,
         isBrowser && styles.isBrowser,
-        props.className
+        props.className,
       )}
-      onMouseDown={(e) => {
+      onMouseDown={e => {
         const target = e.target as HTMLElement;
         // Prevent a double-click to highlight summary text
         if (isInSummary(target) && e.detail > 1) {
           e.preventDefault();
         }
       }}
-      onClick={(e) => {
+      onClick={e => {
         e.stopPropagation(); // For isolation of multiple nested details/summary
         const target = e.target as HTMLElement;
         const shouldToggle =
@@ -73,7 +73,7 @@ const DetailsStyling = ({ summary, children, ...props }): JSX.Element => {
         lazy={false}
         collapsed={collapsed}
         disableSSRStyle
-        onCollapseTransitionEnd={(newCollapsed) => {
+        onCollapseTransitionEnd={newCollapsed => {
           setCollapsed(newCollapsed);
           setOpen(!newCollapsed);
         }}>

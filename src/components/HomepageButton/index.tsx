@@ -34,7 +34,7 @@ const HomepageButton: React.FC<{
         className={clsx(
           styles.homepageButton,
           backgroundStyling,
-          borderStyling
+          borderStyling,
         )}>
         {title}
 
