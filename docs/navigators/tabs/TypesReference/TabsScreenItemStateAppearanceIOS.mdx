@@ -31,17 +31,17 @@ tabBarItemBadgeBackgroundColor?: ColorValue;
 Specifies the icon color for each tab bar item when tab screen
 is selected.
 
+```ts
+tabBarItemIconColor?: ColorValue;
+```
+
 This also impacts the title text color.
 
 Starting from iOS 26, it only applies to selected tab bar item. Other items
 adopt a dark or light appearance depending on the theme of the tab bar.
 
-Is overridden by `tabBarItemTitleFontColor` (for title text color).
-Overrides `tabBarTintColor`.
-
-```ts
-tabBarItemIconColor?: ColorValue;
-```
+Is overridden by [`tabBarItemTitleFontColor`](#tabbaritemtitlefontcolor) (for title text color).
+Overrides [`tabBarTintColor`](./TabsHostPropsIOS#tabbartintcolor).
 
 ---
 
@@ -52,11 +52,11 @@ tabBarItemIconColor?: ColorValue;
 Specifies the font color used for the title of each tab bar item
 when tab screen is selected.
 
-Overrides the color defined in `tabBarTintColor` and `tabBarItemIconColor`.
-
 ```ts
 tabBarItemTitleFontColor?: ColorValue;
 ```
+
+Overrides the color defined in [`tabBarTintColor`](./TabsHostPropsIOS#tabbartintcolor) and [`tabBarItemIconColor`](#tabbaritemiconcolor).
 
 ---
 
@@ -149,9 +149,6 @@ tabBarItemTitleFontWeight?:
 Specifies the title offset for each tab bar item when tab screen
 is selected.
 
-Depending on the iOS version and the device's interface orientation,
-this setting may affect the alignment of the text, badge and icon.
-
 ```ts
 tabBarItemTitlePositionAdjustment?: {
   horizontal?: number;
@@ -159,20 +156,7 @@ tabBarItemTitlePositionAdjustment?: {
 };
 ```
 
-#### horizontal
-
-```ts
-horizontal?: number;
-```
-
----
-
-#### vertical
-
-```ts
-vertical?: number;
-```
-
----
+Depending on the iOS version and the device's interface orientation,
+this setting may affect the alignment of the text, badge and icon.
 
 ---

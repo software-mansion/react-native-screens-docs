@@ -7,7 +7,7 @@ import { Badges } from '@swmansion/t-rex-ui';
 
 # TabsScreenPropsAndroid
 
-_Used by [`Tabs.Screen`](../TabsScreen)._
+Used by [`Tabs.Screen`](../TabsScreen).
 
 ## Fields
 
@@ -16,6 +16,10 @@ _Used by [`Tabs.Screen`](../TabsScreen)._
 </Badges>
 
 Specifies the icon for the tab bar item.
+
+```ts
+icon?: PlatformIconAndroid;
+```
 
 Supported values:
 - `{ type: 'imageSource', imageSource }`
@@ -29,10 +33,6 @@ Supported values:
 
   Remarks: Requires passing a drawable to resources via Android Studio.
 
-```ts
-icon?: PlatformIconAndroid;
-```
-
 ---
 
 <Badges platforms={['android']}>
@@ -41,13 +41,13 @@ icon?: PlatformIconAndroid;
 
 Specifies the icon for tab bar item when it is selected.
 
-Supports the same values as `icon` property for given platform.
-
-To use `selectedIcon`, `icon` must also be provided.
-
 ```ts
 selectedIcon?: PlatformIconAndroid;
 ```
+
+Supports the same values as [`icon`](#icon) property for given platform.
+
+To use `selectedIcon`, [`icon`](#icon) must also be provided.
 
 ---
 
@@ -57,15 +57,14 @@ selectedIcon?: PlatformIconAndroid;
 
 Specifies the standard tab bar appearance.
 
-Allows to customize the appearance depending on the tab bar item state
-(normal, selected, focused, disabled). Configuration for the Bottom Navigation View
-is determined by the currently active tab screen.
-
 ```ts
 standardAppearance?: TabsScreenAppearanceAndroid;
 ```
 
+Allows to customize the appearance depending on the tab bar item state
+(`normal`, `selected`, `focused`, `disabled`). Configuration for the Bottom Navigation View
+is determined by the currently active `Tab.Screen`.
+
 See [`TabsScreenAppearanceAndroid`](./TabsScreenAppearanceAndroid) for full type definition.
 
 ---
-

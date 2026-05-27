@@ -8,21 +8,13 @@ import { Badges } from '@swmansion/t-rex-ui';
 
 # Tabs.Screen
 
-Represents a single tab in the tab bar. Each screen must have a unique `screenKey`. Configure the tab bar item appearance, icon, badge, and lifecycle events via props.
+Represents a single tab in the tab bar. Each screen must have a unique `screenKey`.  Platform-specific props are grouped under `android` and `ios` objects.
 
 ## Props
 
-### accessibilityLabel
-
-accessibilityLabel for the TabsScreen
-
-```ts
-accessibilityLabel?: string;
-```
-
----
-
+<Badges platforms={['android', 'ios']}>
 ### android
+</Badges>
 
 ```ts
 android?: TabsScreenPropsAndroid;
@@ -33,33 +25,8 @@ See [`TabsScreenPropsAndroid`](./TypesReference/TabsScreenPropsAndroid) for full
 ---
 
 <Badges platforms={['android', 'ios']}>
-### badgeValue
-</Badges>
-
-Specifies content of tab bar item badge.
-
-On iOS, badge is displayed as regular string.
-
-On Android, the value is interpreted in the following order:
-- if the string can be parsed to integer, displays the value as a number;
-- otherwise if the string is empty, displays "small dot" badge;
-- otherwise, displays the value as a text.
-
-```ts
-badgeValue?: string;
-```
-
----
-
-### children
-
-```ts
-children?: ReactNode;
-```
-
----
-
 ### ios
+</Badges>
 
 ```ts
 ios?: TabsScreenPropsIOS;
@@ -70,15 +37,57 @@ See [`TabsScreenPropsIOS`](./TypesReference/TabsScreenPropsIOS) for full type de
 ---
 
 <Badges platforms={['android', 'ios']}>
+### children
+</Badges>
+
+```ts
+children?: ReactNode;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### accessibilityLabel
+</Badges>
+
+accessibilityLabel for the TabsScreen
+
+```ts
+accessibilityLabel?: string;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### badgeValue
+</Badges>
+
+Specifies content of tab bar item badge.
+
+```ts
+badgeValue?: string;
+```
+
+On iOS, badge is displayed as regular string.
+
+On Android, the value is interpreted in the following order:
+- if the string can be parsed to integer, displays the value as a number;
+- otherwise if the string is empty, displays "small dot" badge;
+- otherwise, displays the value as a text.
+
+---
+
+<Badges platforms={['android', 'ios']}>
 ### onDidAppear
 </Badges>
 
 A callback that gets invoked when the tab screen did appear.
-This is called as soon as the transition ends.
 
 ```ts
 onDidAppear?: TabsScreenEventHandler<EmptyObject>;
 ```
+
+This is called as soon as the transition ends.
 
 ---
 
@@ -87,11 +96,12 @@ onDidAppear?: TabsScreenEventHandler<EmptyObject>;
 </Badges>
 
 A callback that gets invoked when the tab screen did disappear.
-This is called as soon as the transition ends.
 
 ```ts
 onDidDisappear?: TabsScreenEventHandler<EmptyObject>;
 ```
+
+This is called as soon as the transition ends.
 
 ---
 
@@ -100,11 +110,12 @@ onDidDisappear?: TabsScreenEventHandler<EmptyObject>;
 </Badges>
 
 A callback that gets invoked when the tab screen will appear.
-This is called as soon as the transition begins.
 
 ```ts
 onWillAppear?: TabsScreenEventHandler<EmptyObject>;
 ```
+
+This is called as soon as the transition begins.
 
 ---
 
@@ -113,11 +124,12 @@ onWillAppear?: TabsScreenEventHandler<EmptyObject>;
 </Badges>
 
 A callback that gets invoked when the tab screen will disappear.
-This is called as soon as the transition begins.
 
 ```ts
 onWillDisappear?: TabsScreenEventHandler<EmptyObject>;
 ```
+
+This is called as soon as the transition begins.
 
 ---
 
@@ -126,6 +138,10 @@ onWillDisappear?: TabsScreenEventHandler<EmptyObject>;
 </Badges>
 
 Specifies supported orientations for the tab screen.
+
+```ts
+orientation?: TabsScreenOrientation;
+```
 
 Procedure for determining supported orientations:
 1. Traversal initiates from the root component and moves to the
@@ -164,15 +180,9 @@ The following values are currently supported:
   orientaion.
 
 The supported values (apart from `inherit`, `portrait`, `portraitUp`,
-`portraitDown`) correspond to the official UIKit documentation:
-
-```ts
-orientation?: TabsScreenOrientation;
-```
+`portraitDown`) correspond to the official UIKit documentation for [`UIInterfaceOrientationMask`](https://developer.apple.com/documentation/uikit/uiinterfaceorientationmask).
 
 **Default:** `inherit`
-
-See: [`https://developer.apple.com/documentation/uikit/uiinterfaceorientationmask|UIInterfaceOrientationMask`](#)
 
 ---
 
@@ -194,7 +204,7 @@ preventNativeSelection?: boolean;
 ### screenKey
 </Badges>
 
-Identifies screen, e.g. when receiving onNativeFocusChange event.
+Identifies screen, e.g. when receiving events.
 
 ```ts
 screenKey: string;
@@ -209,6 +219,15 @@ screenKey: string;
 Specifies which special effects (also known as microinteractions)
 are enabled for the tab screen.
 
+```ts
+specialEffects?: {
+  repeatedTabSelection?: {
+    popToRoot?: boolean;
+    scrollToTop?: boolean;
+  };
+};
+```
+
 For repeated tab selection (selecting already focused tab bar item),
 there are 2 supported special effects:
 - `popToRoot` - when Stack is nested inside tab screen and repeated
@@ -219,16 +238,7 @@ there are 2 supported special effects:
 
 `popToRoot` has priority over `scrollToTop`.
 
-```ts
-specialEffects?: {
-  repeatedTabSelection?: {
-    popToRoot?: boolean;
-    scrollToTop?: boolean;
-  };
-};
-```
-
-**Default:** `All special effects are enabled by default.`
+**Default:** All special effects are enabled by default.
 
 #### repeatedTabSelection
 
@@ -259,11 +269,11 @@ scrollToTop?: boolean;
 
 ---
 
----
-
----
-
+<Badges platforms={['android', 'ios']}>
 ### style
+</Badges>
+
+A style object restricted to only set the background color for `Tabs.Screen`.
 
 ```ts
 style?: StyleProp<Pick<ViewStyle, 'backgroundColor'>>;
@@ -271,9 +281,11 @@ style?: StyleProp<Pick<ViewStyle, 'backgroundColor'>>;
 
 ---
 
+<Badges platforms={['android', 'ios']}>
 ### tabBarItemAccessibilityLabel
+</Badges>
 
-accessibilityLabel for the TabBarItem
+accessibilityLabel for the tab bar item
 
 ```ts
 tabBarItemAccessibilityLabel?: string;
@@ -283,9 +295,11 @@ tabBarItemAccessibilityLabel?: string;
 
 ---
 
+<Badges platforms={['android', 'ios']}>
 ### tabBarItemTestID
+</Badges>
 
-testID for the TabBarItem
+testID for the tab bar item
 
 ```ts
 tabBarItemTestID?: string;
@@ -293,9 +307,11 @@ tabBarItemTestID?: string;
 
 ---
 
+<Badges platforms={['android', 'ios']}>
 ### testID
+</Badges>
 
-testID for the TabsScreen
+testID for the `Tabs.Screen`
 
 ```ts
 testID?: string;
@@ -307,11 +323,10 @@ testID?: string;
 ### title
 </Badges>
 
-Title of the tab screen, displayed in the tab bar item.
+Title of the `Tabs.Screen`, displayed in the tab bar item.
 
 ```ts
 title?: string;
 ```
 
 ---
-
