@@ -42,7 +42,7 @@ children?: ViewProps['children'];
 
 ### onDidAppear
 
-Specifies a callback of type [StackScreenEventHandler](TypesReference/StackScreenEventHandler) that gets called after the screen is displayed.
+Specifies a callback of type [`StackScreenEventHandler`](TypesReference/StackScreenEventHandler) that gets called after the screen is displayed.
 
 ```ts
 onDidAppear?: StackScreenEventHandler;
@@ -52,7 +52,7 @@ onDidAppear?: StackScreenEventHandler;
 
 ### onDidDisappear
 
-Specifies a callback of type [StackScreenEventHandler](TypesReference/StackScreenEventHandler) that gets called when the screen is no longer displayed.
+Specifies a callback of type [`StackScreenEventHandler`](TypesReference/StackScreenEventHandler) that gets called when the screen is no longer displayed.
 
 ```ts
 onDidDisappear?: StackScreenEventHandler;
@@ -84,7 +84,7 @@ onNativeDismiss?: (screenKey: string) => void;
 ### onNativeDismissPrevented
 </Badges>
 
-Specifies a callback of type [StackScreenEventHandler](TypesReference/StackScreenEventHandler) that gets called when user tried to dismiss the screen using either back button or navigation gesture, but it was prevented with [preventNativeDismiss](#preventnativedismiss).
+Specifies a callback of type [`StackScreenEventHandler`](TypesReference/StackScreenEventHandler) that gets called when user tried to dismiss the screen using either back button or navigation gesture, but it was prevented with [`preventNativeDismiss`](#preventnativedismiss).
 
 ```ts
 onNativeDismissPrevented?: StackScreenEventHandler;
@@ -94,7 +94,7 @@ onNativeDismissPrevented?: StackScreenEventHandler;
 
 ### onWillAppear
 
-Specifies a callback of type [StackScreenEventHandler](TypesReference/StackScreenEventHandler) that gets called after the screen is about to be displayed.
+Specifies a callback of type [`StackScreenEventHandler`](TypesReference/StackScreenEventHandler) that gets called after the screen is about to be displayed.
 
 ```ts
 onWillAppear?: StackScreenEventHandler;
@@ -104,7 +104,7 @@ onWillAppear?: StackScreenEventHandler;
 
 ### onWillDisappear
 
-Specifies a callback of type [StackScreenEventHandler](TypesReference/StackScreenEventHandler) that gets called after the screen is about to be removed.
+Specifies a callback of type [`StackScreenEventHandler`](TypesReference/StackScreenEventHandler) that gets called after the screen is about to be removed.
 
 ```ts
 onWillDisappear?: StackScreenEventHandler;
@@ -116,7 +116,7 @@ onWillDisappear?: StackScreenEventHandler;
 ### preventNativeDismiss
 </Badges>
 
-A flag that, when set, prevents the screen from being removed using native back button or gesture. An optional callback can be passed using [onNativeDismissPrevented](#onnativedismissprevented).
+A flag that, when set, prevents the screen from being removed using native back button or gesture. An optional callback can be passed using [`onNativeDismissPrevented`](#onnativedismissprevented).
 
 ```ts
 preventNativeDismiss?: boolean;
