@@ -7,7 +7,7 @@ import { Badges } from '@swmansion/t-rex-ui';
 
 # TabsHostNavStateRequest
 
-_Used by [`Tabs.Host`](../TabsHost)._
+Used by [`Tabs.Host`](../TabsHost).
 
 ## Fields
 
@@ -32,13 +32,15 @@ asynchronous navigation.
 
 Currently, the native implementation of TabsHost is the state holder.
 
-Pass here THE PROVENANCE OF THE LAST ACKNOWLEDGED state you received from native side
-via [`TabsHostPropsBase#onTabSelected`](#). In other words this should be the provenance
+Pass here **the provenance of the last acknowledged** state you received from native side
+via [`onTabSelected`](../TabsHost#ontabselected). In other words this should be the provenance
 number of last confirmed state you base your update request on.
 
-It is named `baseProvenance` (rather than `provenance`) to disambiguate it from the
-`provenance` field on the [`TabSelectedEvent`](#) payload, which carries the provenance
+:::note
+This field is named `baseProvenance` (rather than `provenance`) to disambiguate it from the
+`provenance` field on the [`TabSelectedEvent`](TabSelectedEvent#provenance) payload, which carries the provenance
 of the state *resulting* from a transition.
+:::
 
 ---
 
@@ -50,7 +52,6 @@ Valid screen key.
 selectedScreenKey: string;
 ```
 
-It must correspond to one of the keys you assign to the `TabsScreens`.
+It must correspond to one of the keys you assign to a `Tabs.Screen`.
 
 ---
-

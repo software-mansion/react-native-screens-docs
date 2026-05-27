@@ -3,10 +3,79 @@ title: TabSelectionRejectedEvent
 sidebar_label: TabSelectionRejectedEvent
 ---
 
+import { Badges } from '@swmansion/t-rex-ui';
+
 # TabSelectionRejectedEvent
+
+Used by [`Tabs.Host.onTabSelectionRejected`](../TabsHost#ontabselectionrejected).
 
 Payload of the event emitted when the native side rejects a tab selection request.
 
+Contains the currently active navigation state (`selectedScreenKey`, `provenance`)
+alongside the rejected request details, so that the JS side can reconcile its state.
+
+See [`TabSelectionRejectionReason`](./TabSelectionRejectionReason) for possible rejection reasons.
+
+## Fields
+
+<Badges platforms={['android', 'ios']}>
+### selectedScreenKey
+</Badges>
+
+Screen key of the currently selected (active) tab.
+
 ```ts
-type TabSelectionRejectedEvent = unknown;
+selectedScreenKey: string;
 ```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### provenance
+</Badges>
+
+Provenance of the currently active navigation state.
+
+```ts
+provenance: number;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### rejectedScreenKey
+</Badges>
+
+Screen key of the tab whose selection was rejected.
+
+```ts
+rejectedScreenKey: string;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### rejectedProvenance
+</Badges>
+
+Provenance of the rejected navigation state update.
+
+```ts
+rejectedProvenance: number;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### rejectionReason
+</Badges>
+
+Reason the selection was rejected.
+
+```ts
+rejectionReason: TabSelectionRejectionReason;
+```
+
+See [`TabSelectionRejectionReason`](./TabSelectionRejectionReason) for full type definition.
+
+---

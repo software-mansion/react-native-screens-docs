@@ -7,7 +7,7 @@ import { Badges } from '@swmansion/t-rex-ui';
 
 # TabsHostPropsIOS
 
-_Used by [`Tabs.Host`](../TabsHost)._
+Used by [`Tabs.Host`](../TabsHost).
 
 ## Fields
 
@@ -16,6 +16,10 @@ _Used by [`Tabs.Host`](../TabsHost)._
 </Badges>
 
 Specifies component used as bottom accessory.
+
+```ts
+bottomAccessory?: TabsBottomAccessoryComponentFactory;
+```
 
 This prop is a function that accepts `environment` as a parameter and returns
 the component that will be rendered in the bottom accessory.
@@ -28,21 +32,13 @@ the component that will be rendered in the bottom accessory.
 
 If this prop is `undefined`, the bottom accessory will not be rendered.
 
-On legacy architecture (Paper) and on new architecture (Fabric) with RN &lt; 0.82,
-implementation uses DisplayLink which might result in the size of bottom
-accessory being updated with a delay.
-
-Starting from RN 0.82, this issue is mitigated but in order to allow accessory
-rendering based on environment, component is rendered 2 times for both `regular`
-and `inline` environments at the same time. Environment determines which component
-is visible at given moment. This might require implementing a solution to share
-state between both rendered components (e.g. usage of context).
-
-Available starting from iOS 26.
-
-```ts
-bottomAccessory?: TabsBottomAccessoryComponentFactory;
-```
+:::note
+To allow accessory rendering based on environment, component is rendered 2 times
+for both `regular` and `inline` environments at the same time.
+Environment determines which component is visible at given moment.
+This might require implementing a solution to share state between both rendered
+components (e.g. usage of context).
+:::
 
 **Supported:** iOS 26 or higher
 
@@ -62,7 +58,7 @@ This event fires when the user taps the system-generated "More" tab bar item.
 It does NOT fire when a tab is selected from within the More list — that triggers
 the normal `onTabSelected` event instead.
 
-See: [`MoreTabSelectedEvent`](#)
+See [`MoreTabSelectedEvent`](./MoreTabSelectedEvent).
 
 ---
 
@@ -72,8 +68,9 @@ See: [`MoreTabSelectedEvent`](#)
 
 Specifies the display mode for the tab bar.
 
-Available starting from iOS 18.
-Not supported on tvOS.
+```ts
+tabBarControllerMode?: TabBarControllerMode;
+```
 
 The following values are currently supported:
 
@@ -81,17 +78,11 @@ The following values are currently supported:
 - `tabBar` - the system displays the content only as a tab bar
 - `tabSidebar` - the tab bar is displayed as a sidebar
 
-See the official documentation for more details:
+See the official documentation in Apple docs for [`UITabBarController.Mode`](https://developer.apple.com/documentation/uikit/uitabbarcontroller/mode) for details.
 
-```ts
-tabBarControllerMode?: TabBarControllerMode;
-```
+**Default:** `automatic`.
 
-**Default:** `Defaults to `automatic`.`
-
-**Supported:** iOS 18 or higher
-
-See: [`https://developer.apple.com/documentation/uikit/uitabbarcontroller/mode|UITabBarController.Mode`](#)
+**Supported:** iOS 18 or higher, no support on TVOS
 
 ---
 
@@ -101,7 +92,9 @@ See: [`https://developer.apple.com/documentation/uikit/uitabbarcontroller/mode|U
 
 Specifies the minimize behavior for the tab bar.
 
-Available starting from iOS 26.
+```ts
+tabBarMinimizeBehavior?: TabBarMinimizeBehavior;
+```
 
 The following values are currently supported:
 
@@ -112,17 +105,11 @@ The following values are currently supported:
 - `onScrollUp` - the tab bar minimizes when scrolling up and expands
   when scrolling back down
 
-The supported values correspond to the official UIKit documentation:
+The supported values correspond to the official UIKit documentation for [`UITabBarController.MinimizeBehavior`](https://developer.apple.com/documentation/uikit/uitabbarcontroller/minimizebehavior).
 
-```ts
-tabBarMinimizeBehavior?: TabBarMinimizeBehavior;
-```
-
-**Default:** `Defaults to `automatic`.`
+**Default:** `automatic`.
 
 **Supported:** iOS 26 or higher
-
-See: [`https://developer.apple.com/documentation/uikit/uitabbarcontroller/minimizebehavior|UITabBarController.MinimizeBehavior`](#)
 
 ---
 
@@ -132,15 +119,14 @@ See: [`https://developer.apple.com/documentation/uikit/uitabbarcontroller/minimi
 
 Specifies the color used for selected tab's text and icon color.
 
-Starting from iOS 26, it also impacts glow of Liquid Glass tab
-selection view.
-
-`tabBarItemTitleFontColor` and `tabBarItemIconColor` defined on
-TabsScreen component override this color.
-
 ```ts
 tabBarTintColor?: ColorValue;
 ```
 
----
+Starting from iOS 26, this prop also impacts glow of Liquid Glass tab
+selection view.
 
+[`tabBarItemTitleFontColor`](./TabsScreenItemStateAppearanceIOS#tabbaritemtitlefontcolor) and [`tabBarItemIconColor`](./TabsScreenItemStateAppearanceIOS#tabbaritemiconcolor) defined on
+`Tabs.Screen` component override this color.
+
+---

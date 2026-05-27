@@ -3,10 +3,42 @@ title: MoreTabSelectedEvent
 sidebar_label: MoreTabSelectedEvent
 ---
 
+import { Badges } from '@swmansion/t-rex-ui';
+
 # MoreTabSelectedEvent
+
+Used by [`TabsHostPropsIOS.onMoreTabSelected`](./TabsHostPropsIOS#onmoretabselected).
 
 Payload of the event emitted when the user taps the "More" tab bar item.
 
+This event fires when the user taps the system-generated "More" tab bar item.
+It does NOT fire when a tab is selected from within the More list — that triggers
+the normal `onTabSelected` event instead.
+
+The payload carries the navigation state that was active at the moment the "More" tab was tapped.
+
+## Fields
+
+<Badges platforms={['ios']}>
+### selectedScreenKey
+</Badges>
+
+Screen key of the tab that was active when "More" was tapped.
+
 ```ts
-type MoreTabSelectedEvent = unknown;
+selectedScreenKey: string;
 ```
+
+---
+
+<Badges platforms={['ios']}>
+### provenance
+</Badges>
+
+Provenance of the navigation state when "More" was tapped.
+
+```ts
+provenance: number;
+```
+
+---

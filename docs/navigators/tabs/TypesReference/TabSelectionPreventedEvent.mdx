@@ -1,0 +1,51 @@
+---
+title: TabSelectionPreventedEvent
+sidebar_label: TabSelectionPreventedEvent
+---
+
+import { Badges } from '@swmansion/t-rex-ui';
+
+# TabSelectionPreventedEvent
+
+Used by [`Tabs.Host.onTabSelectionPrevented`](../TabsHost#ontabselectionprevented).
+
+Payload of the event emitted when the native side prevents a tab selection
+because the target screen has `preventNativeSelection` enabled.
+
+## Fields
+
+<Badges platforms={['android', 'ios']}>
+### selectedScreenKey
+</Badges>
+
+Screen key of the currently selected (active) tab.
+
+```ts
+selectedScreenKey: string;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### provenance
+</Badges>
+
+Provenance of the currently active navigation state.
+
+```ts
+provenance: number;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### preventedScreenKey
+</Badges>
+
+Screen key of the tab whose selection was prevented.
+
+```ts
+preventedScreenKey: string;
+```
+
+---

@@ -3,10 +3,78 @@ title: TabSelectedEvent
 sidebar_label: TabSelectedEvent
 ---
 
+import { Badges } from '@swmansion/t-rex-ui';
+
 # TabSelectedEvent
+
+Used by [`Tabs.Host.onTabsSelected`](../TabsHost#ontabsselected).
 
 Payload of the event emitted when a tab selection occurs on the native side.
 
+## Fields
+
+<Badges platforms={['android', 'ios']}>
+### selectedScreenKey
+</Badges>
+
+Screen key of the newly selected tab.
+
 ```ts
-type TabSelectedEvent = unknown;
+selectedScreenKey: string;
 ```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### provenance
+</Badges>
+
+Provenance of the navigation state after the selection.
+
+```ts
+provenance: string;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### isRepeated
+</Badges>
+
+Whether the same tab that was already selected has been selected again.
+
+```ts
+isRepeated: boolean;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### hasTriggeredSpecialEffect
+</Badges>
+
+Whether the selection triggered a special effect (e.g. scroll-to-top on repeated selection).
+
+```ts
+hasTriggeredSpecialEffect: boolean;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### actionOrigin
+</Badges>
+
+Origin (actor) that requested this tab transition.
+
+```ts
+actionOrigin: 'user' | 'programmatic-js' | 'implicit';
+```
+
+- `user` — direct native UI interaction (e.g. tab bar tap, iOS tab drag-and-drop).
+- `programmatic-js` — JS-initiated request delivered via the `navStateRequest` prop.
+- `implicit` — platform side effect not attributable to an explicit actor
+  (e.g. UIKit reshuffling the selection during a horizontal size-class transition on iPad).
+  Currently only emitted on iOS.
+
+---
