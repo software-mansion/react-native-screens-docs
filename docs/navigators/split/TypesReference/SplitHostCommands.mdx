@@ -3,8 +3,28 @@ title: SplitHostCommands
 sidebar_label: SplitHostCommands
 ---
 
+import { Badges } from '@swmansion/t-rex-ui';
+
 # SplitHostCommands
 
+Used by [`Split.Host`](../SplitHost#ref).
+
+## Commands
+
+<Badges platforms={['ios']}>
+### show
+</Badges>
+
+Shows a particular column when the split view is collapsed to a single column.
+
 ```ts
-type SplitHostCommands = unknown;
+show: (column: SplitNavigableColumn) => void;
 ```
+
+The following values are supported for `column`:
+
+- `primary` - the primary sidebar is shown
+- `supplementary` - the supplementary sidebar is shown
+- `secondary` - the secondary (main content) column is shown
+
+---

@@ -8,11 +8,13 @@ import { Badges } from '@swmansion/t-rex-ui';
 
 # Split.Host
 
-Container component that manages a native split-view layout. Renders primary, supplementary, and secondary columns side-by-side on iPad and large-screen devices. Collapses to a single column on compact layouts.
+Container component that manages a native split-view layout. Renders primary, supplementary, and secondary columns side-by-side on large-screen devices (iPad). Collapses to a single column on compact layouts (iPhone). When collapsed, a specific colum can be shown using [`show`](./TypesReference/SplitHostCommands#show) view command, accessible via [`ref`](#ref) prop.
 
 ## Props
 
+<Badges platforms={['ios']}>
 ### children
+</Badges>
 
 ```ts
 children: NonNullable<ReactNode>;
@@ -20,9 +22,15 @@ children: NonNullable<ReactNode>;
 
 ---
 
+<Badges platforms={['ios']}>
 ### columnMetrics
+</Badges>
 
 An object describing bounds for column widths.
+
+```ts
+columnMetrics?: SplitColumnMetrics;
+```
 
 It supports definitions for the following columns:
 
@@ -34,17 +42,19 @@ On iOS 26 or higher, it also supports definitions for:
 - `secondary` - the view with the main content
 - `inspector` - the view which is providing additional data about the secondary column
 
-```ts
-columnMetrics?: SplitColumnMetrics;
-```
-
 See [`SplitColumnMetrics`](./TypesReference/SplitColumnMetrics) for full type definition.
 
 ---
 
+<Badges platforms={['ios']}>
 ### displayModeButtonVisibility
+</Badges>
 
 Determines whether the button for changing the Split display mode is visible on the screen.
+
+```ts
+displayModeButtonVisibility?: SplitDisplayModeButtonVisibility;
+```
 
 The following values are currently supported:
 
@@ -52,19 +62,16 @@ The following values are currently supported:
 - `always` – the display mode button is always visible
 - `never` – the display mode button is always hidden
 
-The supported values corresponds to the official UIKit documentation:
-
-```ts
-displayModeButtonVisibility?: SplitDisplayModeButtonVisibility;
-```
+The supported values corresponds to the official UIKit documentation for 
+[`UISplitViewController.DisplayModeButtonVisibility`](https://developer.apple.com/documentation/uikit/uisplitviewcontroller/displaymodebuttonvisibility-swift.enum)
 
 **Default:** `automatic`
 
-See: [`https://developer.apple.com/documentation/uikit/uisplitviewcontroller/displaymodebuttonvisibility-swift.enum|UISplitViewController.DisplayModeButtonVisibility`](#)
-
 ---
 
+<Badges platforms={['ios']}>
 ### onCollapse
+</Badges>
 
 A callback that gets invoked when the Split was collapsed to a single column.
 
@@ -74,20 +81,26 @@ onCollapse?: (e: NativeSyntheticEvent<Readonly<{ ... }>>) => void;
 
 ---
 
+<Badges platforms={['ios']}>
 ### onDisplayModeWillChange
+</Badges>
 
 A callback that gets invoked when the Split displayMode has changed.
-
-The purpose of this callback is tracking displayMode updates on host from the JS side.
-These updates might be a consequence of some native interactions, like pressing native button or performing swipe gesture.
 
 ```ts
 onDisplayModeWillChange?: (e: NativeSyntheticEvent<DisplayModeWillChangeEvent>) => void;
 ```
 
+The purpose of this callback is tracking displayMode updates on host from the JS side.
+These updates might be a consequence of some native interactions, like pressing native button or performing swipe gesture.
+
+See [`DisplayModeWillChangeEvent`](./TypesReference/DisplayModeWillChangeEvent) for full payload type definition.
+
 ---
 
+<Badges platforms={['ios']}>
 ### onExpand
+</Badges>
 
 A callback that gets invoked when the Split was expanded to multiple columns.
 
@@ -97,15 +110,17 @@ onExpand?: (e: NativeSyntheticEvent<Readonly<{ ... }>>) => void;
 
 ---
 
+<Badges platforms={['ios']}>
 ### onInspectorHide
+</Badges>
 
-A callback that gets invoked when the Split inspector is either programmatically hidden (in column presentation) or dismissed (in modal presentation).
-
-The purpose of this callback depends on whether the Split is collapsed or expanded.
+A callback that gets invoked when the [`Split.Inspector`](./SplitInspector) is either programmatically hidden (in column presentation) or dismissed (in modal presentation).
 
 ```ts
 onInspectorHide?: (e: NativeSyntheticEvent<Readonly<{ ... }>>) => void;
 ```
+
+The purpose of this callback depends on whether the Split is collapsed or expanded.
 
 **Supported:** iOS 26 or higher
 
@@ -116,6 +131,10 @@ onInspectorHide?: (e: NativeSyntheticEvent<Readonly<{ ... }>>) => void;
 </Badges>
 
 Specifies supported orientations for the tab screen.
+
+```ts
+orientation?: SplitHostOrientation;
+```
 
 Procedure for determining supported orientations:
 1. Traversal initiates from the root component and moves to the
@@ -148,21 +167,21 @@ The following values are currently supported:
   orientaion.
 
 The supported values (apart from `inherit`) correspond to the official
-UIKit documentation:
-
-```ts
-orientation?: SplitHostOrientation;
-```
+UIKit documentation for [`UIInterfaceOrientationMask`](https://developer.apple.com/documentation/uikit/uiinterfaceorientationmask).
 
 **Default:** `inherit`
 
-See: [`https://developer.apple.com/documentation/uikit/uiinterfaceorientationmask|UIInterfaceOrientationMask`](#)
-
 ---
 
+<Badges platforms={['ios']}>
 ### preferredDisplayMode
+</Badges>
 
 Specifies the display mode which will be preferred to use, if the layout requirements are met.
+
+```ts
+preferredDisplayMode?: SplitDisplayMode;
+```
 
 Preferred means that we may only suggest the OS which layout we're expecting, but the final decision is dependent on the device's type and size class.
 
@@ -176,21 +195,21 @@ The following values are currently supported:
 - `twoOverSecondary` – two sidebars are displayed over the secondary column
 - `twoDisplaceSecondary` – two sidebars are displacind the secondary column, moving it partially offscreen
 
-The supported values corresponds to the official UIKit documentation:
-
-```ts
-preferredDisplayMode?: SplitDisplayMode;
-```
+The supported values corresponds to the official UIKit documentation for [`UISplitViewController.DisplayMode`](https://developer.apple.com/documentation/uikit/uisplitviewcontroller/displaymode-swift.enum).
 
 **Default:** `automatic`
 
-See: [`https://developer.apple.com/documentation/uikit/uisplitviewcontroller/displaymode-swift.enum|UISplitViewController.DisplayMode`](#)
-
 ---
 
+<Badges platforms={['ios']}>
 ### preferredSplitBehavior
+</Badges>
 
 Specifies the split behavior which will be preferred to use, if the layout requirements are met.
+
+```ts
+preferredSplitBehavior?: SplitBehavior;
+```
 
 Preferred means that we may only suggest the OS which layout we're expecting, but the final decision is dependent on the device's type and size class.
 
@@ -201,19 +220,15 @@ The following values are currently supported:
 - `overlay` – the sidebars are partially covering main column
 - `tile` – the sidebars appears side-by-side with the main column
 
-The supported values corresponds to the official UIKit documentation:
-
-```ts
-preferredSplitBehavior?: SplitBehavior;
-```
+The supported values corresponds to the official UIKit documentation for [`UISplitViewController.SplitBehavior`](https://developer.apple.com/documentation/uikit/uisplitviewcontroller/splitbehavior-swift.enum).
 
 **Default:** `automatic`
 
-See: [`https://developer.apple.com/documentation/uikit/uisplitviewcontroller/splitbehavior-swift.enum|UISplitViewController.SplitBehavior`](#)
-
 ---
 
+<Badges platforms={['ios']}>
 ### presentsWithGesture
+</Badges>
 
 Determines whether gestures are enabled to change the display mode.
 
@@ -223,9 +238,15 @@ presentsWithGesture?: boolean;
 
 ---
 
+<Badges platforms={['ios']}>
 ### primaryBackgroundStyle
+</Badges>
 
 Specifies the background style of the primary view controller.
+
+```ts
+primaryBackgroundStyle?: SplitPrimaryBackgroundStyle;
+```
 
 On iOS 18 or lower, we always fall back to `none` which is a system default value. Since iOS 26 the system default value is `sidebar`.
 
@@ -235,44 +256,44 @@ The following values are currently supported:
 - `none` - a style that has no visual effect on the background appearance of the primary view controller
 - `sidebar` - a style that applies a blurred effect to the background of the primary view controller
 
-The supported values correspond to the official UIKit documentation:
+The supported values correspond to the official UIKit documentation for [`UISplitViewController.BackgroundStyle`](https://developer.apple.com/documentation/uikit/uisplitviewcontroller/backgroundstyle).
 
-```ts
-primaryBackgroundStyle?: SplitPrimaryBackgroundStyle;
-```
+:::note
+According to the documentation, this property shouldn't have any effect on iOS. However, on iOS 26 the support for this prop was added.
+:::
 
 **Default:** `default`
 
 **Supported:** iOS 26 or higher
 
-According to the documentation, this property shouldn't have any effect on iOS. However, on iOS 26 the support for this prop was added.
-
-See: [`https://developer.apple.com/documentation/uikit/uisplitviewcontroller/backgroundstyle|UISplitViewController.BackgroundStyle`](#)
-
 ---
 
+<Badges platforms={['ios']}>
 ### primaryEdge
+</Badges>
 
 Indicates on which side primary sidebar is placed, affecting the split view layout.
+
+```ts
+primaryEdge?: SplitPrimaryEdge;
+```
 
 The following values are currently supported:
 
 - `leading` - primary sidebar is placed on the leading edge of the interface
 - `trailing` - primary sidebar is placed on the trailing edge of the interface
 
-The supported values corresponds to the official UIKit documentation:
-
-```ts
-primaryEdge?: SplitPrimaryEdge;
-```
+The supported values corresponds to the official UIKit documentation for [`UISplitViewController.PrimaryEdge`](https://developer.apple.com/documentation/uikit/uisplitviewcontroller/primaryedge-swift.enum).
 
 **Default:** `leading`
 
-See: [`https://developer.apple.com/documentation/uikit/uisplitviewcontroller/primaryedge-swift.enum|UISplitViewController.PrimaryEdge`](#)
-
 ---
 
+<Badges platforms={['ios']}>
 ### ref
+</Badges>
+
+Reference to the native component. You may use it to call imperative [`SplitHostCommands`](./TypesReference/SplitHostCommands).
 
 ```ts
 ref?: Ref<SplitHostCommands>;
@@ -280,22 +301,26 @@ ref?: Ref<SplitHostCommands>;
 
 ---
 
+<Badges platforms={['ios']}>
 ### showInspector
+</Badges>
 
 Determines whether inspector column should be displayed.
-
-Inspector will be displayed on the trailing edge of the main (secondary) column (for expanded Split) or as a modal (for collapsed Split).
-The result on the interface for this prop depends on whether the Split is collapsed or expanded.
 
 ```ts
 showInspector?: boolean;
 ```
 
+Inspector will be displayed on the trailing edge of the main (secondary) column (for expanded Split) or as a modal (for collapsed Split).
+The result on the interface for this prop depends on whether the Split is collapsed or expanded.
+
 **Supported:** iOS 26 or higher
 
 ---
 
+<Badges platforms={['ios']}>
 ### showSecondaryToggleButton
+</Badges>
 
 Determines whether a button to toggle to and from secondaryOnly display mode is visible.
 
@@ -305,9 +330,15 @@ showSecondaryToggleButton?: boolean;
 
 ---
 
+<Badges platforms={['ios']}>
 ### topColumnForCollapsing
+</Badges>
 
 Specifies which column should be shown when the split view collapses to a single column.
+
+```ts
+topColumnForCollapsing?: SplitNavigableColumn;
+```
 
 When the split view transitions from an expanded to a collapsed layout (e.g. rotating an iPad to portrait),
 this prop determines which column becomes the top (visible) column.
@@ -320,9 +351,4 @@ The following values are currently supported:
 - `supplementary` - the supplementary sidebar is shown
 - `secondary` - the secondary (main content) column is shown
 
-```ts
-topColumnForCollapsing?: SplitNavigableColumn;
-```
-
 ---
-

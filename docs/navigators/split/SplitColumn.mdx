@@ -12,7 +12,9 @@ Renders content in one of the split-view columns (primary, supplementary, or sec
 
 ## Props
 
+<Badges platforms={['ios']}>
 ### children
+</Badges>
 
 ```ts
 children?: ReactNode;
@@ -20,51 +22,59 @@ children?: ReactNode;
 
 ---
 
+<Badges platforms={['ios']}>
 ### onDidAppear
+</Badges>
 
 A callback that gets invoked when the current SplitScreen did appear.
-
-This is called as soon as the transition ends.
 
 ```ts
 onDidAppear?: (e: NativeSyntheticEvent<Readonly<{ ... }>>) => void;
 ```
 
+This is called as soon as the transition ends.
+
 ---
 
+<Badges platforms={['ios']}>
 ### onDidDisappear
+</Badges>
 
 A callback that gets invoked when the current SplitScreen did disappear.
-
-This is called as soon as the transition ends.
 
 ```ts
 onDidDisappear?: (e: NativeSyntheticEvent<Readonly<{ ... }>>) => void;
 ```
 
+This is called as soon as the transition ends.
+
 ---
 
+<Badges platforms={['ios']}>
 ### onWillAppear
+</Badges>
 
 A callback that gets invoked when the current SplitScreen will appear.
-
-This is called as soon as the transition begins.
 
 ```ts
 onWillAppear?: (e: NativeSyntheticEvent<Readonly<{ ... }>>) => void;
 ```
 
+This is called as soon as the transition begins.
+
 ---
 
+<Badges platforms={['ios']}>
 ### onWillDisappear
+</Badges>
 
 A callback that gets invoked when the current SplitScreen will disappear.
-
-This is called as soon as the transition begins.
 
 ```ts
 onWillDisappear?: (e: NativeSyntheticEvent<Readonly<{ ... }>>) => void;
 ```
+
+This is called as soon as the transition begins.
 
 ---
 

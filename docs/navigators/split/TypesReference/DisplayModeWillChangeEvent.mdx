@@ -3,8 +3,30 @@ title: DisplayModeWillChangeEvent
 sidebar_label: DisplayModeWillChangeEvent
 ---
 
+import { Badges } from '@swmansion/t-rex-ui';
+
 # DisplayModeWillChangeEvent
 
+Used by [`Split.Host`](../SplitHost#ondisplaymodewillchange).
+
+## Fields
+
+<Badges platforms={['ios']}>
+### currentDisplayMode
+</Badges>
+
 ```ts
-type DisplayModeWillChangeEvent = unknown;
+currentDisplayMode: string;
 ```
+
+---
+
+<Badges platforms={['ios']}>
+### nextDisplayMode
+</Badges>
+
+```ts
+nextDisplayMode: string;
+```
+
+---
