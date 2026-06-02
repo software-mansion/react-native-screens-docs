@@ -1,0 +1,54 @@
+---
+title: StackHeaderBackgroundSubviewAndroid
+sidebar_label: "StackHeaderBackgroundSubview\u200BAndroid"
+---
+
+import { Badges } from '@swmansion/t-rex-ui';
+
+# StackHeaderBackgroundSubviewAndroid
+
+Used by [`StackHeaderConfigPropsAndroid`](./StackHeaderConfigPropsAndroid).
+
+## Fields
+
+<Badges platforms={['android']}>
+### collapseMode
+</Badges>
+
+Controls how the background subview behaves when the app bar
+collapses.
+
+```ts
+collapseMode?: StackHeaderSubviewCollapseModeAndroid;
+```
+
+The following values are available:
+- `off` - the subview scrolls away with the app bar,
+- `parallax` - the subview scrolls at a slower rate, creating a parallax
+  effect.
+
+`pin` is not currently supported because the background subview is
+stretched to match the entire `AppBarLayout`, which causes pinned content
+to move immediately rather than staying fixed. Support for `pin` collapse
+mode might be added in the future.
+
+**Default:** `off`
+
+---
+
+<Badges platforms={['android']}>
+### Component
+</Badges>
+
+The React component rendered as the header background.
+
+```ts
+Component: NonNullable<ReactNode>;
+```
+
+:::note
+The subview is stretched to match the header (`AppBarLayout`) dimensions,
+so parent-relative sizing (e.g. `flex: 1`) works correctly.
+:::
+
+---

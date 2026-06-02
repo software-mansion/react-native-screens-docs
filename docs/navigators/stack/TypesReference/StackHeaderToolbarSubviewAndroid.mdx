@@ -1,0 +1,36 @@
+---
+title: StackHeaderToolbarSubviewAndroid
+sidebar_label: StackHeaderToolbarSubviewAndroid
+---
+
+import { Badges } from '@swmansion/t-rex-ui';
+
+# StackHeaderToolbarSubviewAndroid
+
+Used by [`StackHeaderConfigPropsAndroid`](./StackHeaderConfigPropsAndroid).
+
+## Fields
+
+<Badges platforms={['android']}>
+### Component
+</Badges>
+
+The React component rendered in this toolbar slot.
+
+```ts
+Component: NonNullable<ReactNode>;
+```
+
+The subview is sized by React Native's layout engine but positioned by the
+platform native layout. Each subview is placed independently — subviews do
+not participate in a shared flex layout and cannot influence each other's
+sizing.
+
+:::note
+Intrinsic sizing and explicit dimensions work as expected. Avoid
+parent-relative sizing (e.g. `flex: 1`) on the root element — it will
+produce incorrect dimensions. Flex layout within a root that has a known
+size works as expected.
+:::
+
+---

@@ -1,0 +1,251 @@
+---
+title: StackHeaderConfigPropsAndroid
+sidebar_label: StackHeaderConfigPropsAndroid
+---
+
+import { Badges } from '@swmansion/t-rex-ui';
+
+# StackHeaderConfigPropsAndroid
+
+Used by [`Stack.HeaderConfig`](../StackHeaderConfig).
+
+## Fields
+
+<Badges platforms={['android']}>
+### backButtonIcon
+</Badges>
+
+Custom icon for the back button.
+
+```ts
+backButtonIcon?: PlatformIconAndroid;
+```
+
+When `undefined`, the native back arrow (`homeAsUpIndicator`) is used.
+
+Supported values:
+- `{ type: 'imageSource', imageSource }`
+  uses an image from the provided resource.
+
+- `{ type: 'drawableResource', name }`
+  uses a drawable resource with the given name.
+
+:::note
+`imageSource` type doesn't support SVGs on Android.
+For loading SVGs use `drawableResource` type.
+:::
+
+:::note
+`drawableResource` requires passing a drawable to resources via Android Studio.
+:::
+
+---
+
+<Badges platforms={['android']}>
+### backButtonTintColor
+</Badges>
+
+Tint color applied to the back button icon.
+
+```ts
+backButtonTintColor?: ColorValue;
+```
+
+When `undefined`, the default tint color is used. This applies to the
+native back arrow and `drawableResource` icons that have an associated
+tint. For `imageSource` icons, no tint is applied by default.
+
+---
+
+<Badges platforms={['android']}>
+### backgroundSubview
+</Badges>
+
+Custom view rendered behind the header content.
+
+```ts
+backgroundSubview?: StackHeaderBackgroundSubviewAndroid;
+```
+
+See [`StackHeaderBackgroundSubviewAndroid`](./StackHeaderBackgroundSubviewAndroid) for full type definition.
+
+---
+
+<Badges platforms={['android']}>
+### centerSubview
+</Badges>
+
+Custom view placed in the center slot of the toolbar.
+
+```ts
+centerSubview?: StackHeaderToolbarSubviewAndroid;
+```
+
+See [`StackHeaderToolbarSubviewAndroid`](./StackHeaderToolbarSubviewAndroid) for full type definition.
+
+---
+
+<Badges platforms={['android']}>
+### leadingSubview
+</Badges>
+
+Custom view placed in the leading (start) slot of the toolbar.
+
+```ts
+leadingSubview?: StackHeaderToolbarSubviewAndroid;
+```
+
+See [`StackHeaderToolbarSubviewAndroid`](./StackHeaderToolbarSubviewAndroid) for full type definition.
+
+---
+
+<Badges platforms={['android']}>
+### trailingSubview
+</Badges>
+
+Custom view placed in the trailing (end) slot of the toolbar.
+
+```ts
+trailingSubview?: StackHeaderToolbarSubviewAndroid;
+```
+
+See [`StackHeaderToolbarSubviewAndroid`](./StackHeaderToolbarSubviewAndroid) for full type definition.
+
+---
+
+<Badges platforms={['android']}>
+### scrollFlagScroll
+</Badges>
+
+Controls whether the header reacts to nested scroll. Required for any
+other `scrollFlag*` prop to take effect.
+
+```ts
+scrollFlagScroll?: boolean;
+```
+
+:::note
+Changing any `scrollFlag*` at runtime forces the header back to
+its fully expanded state, which produces a visible snap. Treat these
+props as a static configuration.
+:::
+
+---
+
+<Badges platforms={['android']}>
+### scrollFlagEnterAlways
+</Badges>
+
+Controls how the header reacts to nested scroll.
+
+```ts
+scrollFlagEnterAlways?: boolean;
+```
+
+When enabled, the header re-expands as soon as the user scrolls
+back toward the top of the content, regardless of the ScrollView's current
+scroll position. Without this flag, the header only begins expanding once
+the list has reached the top of its content. Requires `scrollFlagScroll`.
+
+When `undefined`, falls back to the type-specific default (`false` for
+all types).
+
+---
+
+<Badges platforms={['android']}>
+### scrollFlagEnterAlwaysCollapsed
+</Badges>
+
+Controls how the header reacts to nested scroll.
+
+```ts
+scrollFlagEnterAlwaysCollapsed?: boolean;
+```
+
+Modifies `scrollFlagEnterAlways` so that the initial re-entry
+stops at the header's collapsed height (the toolbar); the remainder
+expands only after the ScrollView reaches the top of its content. Requires
+`scrollFlagEnterAlways`.
+
+When `undefined`, falls back to the type-specific default (`false` for
+all types).
+
+This flag does not have any effect for `small` header.
+
+---
+
+<Badges platforms={['android']}>
+### scrollFlagExitUntilCollapsed
+</Badges>
+
+Controls how the header reacts to nested scroll.
+
+```ts
+scrollFlagExitUntilCollapsed?: boolean;
+```
+
+When enabled, the header collapses only until its minimum height
+(the toolbar) remains pinned at the top. Without this flag, the entire
+header scrolls off the screen. Requires `scrollFlagScroll`.
+
+When `undefined`, falls back to the type-specific default:
+- `small` -&gt; `false`
+- `medium` / `large` -&gt; `true`
+
+Setting this flag for `small` header is equivalent to disabling
+`scrollFlagScroll`.
+
+Even when this flag is disabled, a strip with the height of the system top
+inset (status bar and display cutout) remains visible at the top.
+
+When `undefined`, falls back to the type-specific default:
+- `small` -&gt; `false`
+- `medium` / `large` -&gt; `true`
+
+---
+
+<Badges platforms={['android']}>
+### scrollFlagSnap
+</Badges>
+
+Controls how the header reacts to nested scroll.
+
+```ts
+scrollFlagSnap?: boolean;
+```
+
+When enabled, the header snaps to its nearest edge (fully
+expanded, or fully collapsed as defined by `scrollFlagExitUntilCollapsed`)
+after a scroll gesture ends, instead of resting partway. Requires
+`scrollFlagScroll`.
+
+When `undefined`, falls back to the type-specific default:
+- `small` -&gt; `false`
+- `medium` / `large` -&gt; `true`
+
+---
+
+<Badges platforms={['android']}>
+### type
+</Badges>
+
+Specifies the type of the Material 3 app bar.
+
+```ts
+type?: StackHeaderTypeAndroid;
+```
+
+The following values are available:
+- `small` - small app bar with fixed title,
+- `medium` - medium app bar with collapsing title,
+- `large` - large app bar with collapsing title.
+
+See: [`Material Design 3: App bars`](https://m3.material.io/components/app-bars/overview)
+
+:::note
+M3 Expressive headers aren't currently supported.
+:::
+
+**Default:** `small`
+
+---

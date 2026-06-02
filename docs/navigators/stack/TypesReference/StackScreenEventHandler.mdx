@@ -1,0 +1,12 @@
+---
+title: StackScreenEventHandler
+sidebar_label: StackScreenEventHandler
+---
+
+# StackScreenEventHandler
+
+A callback that gets called for lifecycle events of [`Stack.Screen`](../StackScreen). A type [`EmptyEventPayload`](./EmptyEventPayload) defines no attached value to the event.
+
+```ts
+type StackScreenEventHandler = (event: NativeSyntheticEvent<EmptyEventPayload>) => void;
+```
