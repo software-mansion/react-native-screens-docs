@@ -1,0 +1,70 @@
+---
+title: TabsScreenPropsAndroid
+sidebar_label: TabsScreenPropsAndroid
+---
+
+import { Badges } from '@swmansion/t-rex-ui';
+
+# TabsScreenPropsAndroid
+
+Used by [`Tabs.Screen`](../TabsScreen).
+
+## Fields
+
+<Badges platforms={['android']}>
+### icon
+</Badges>
+
+Specifies the icon for the tab bar item.
+
+```ts
+icon?: PlatformIconAndroid;
+```
+
+Supported values:
+- `{ type: 'imageSource', imageSource }`
+  Uses an image from the provided resource.
+
+  Remarks: `imageSource` type doesn't support SVGs on Android.
+  For loading SVGs use `drawableResource` type.
+
+- `{ type: 'drawableResource', name }`
+  Uses a drawable resource with the given name.
+
+  Remarks: Requires passing a drawable to resources via Android Studio.
+
+---
+
+<Badges platforms={['android']}>
+### selectedIcon
+</Badges>
+
+Specifies the icon for tab bar item when it is selected.
+
+```ts
+selectedIcon?: PlatformIconAndroid;
+```
+
+Supports the same values as [`icon`](#icon) property for given platform.
+
+To use `selectedIcon`, [`icon`](#icon) must also be provided.
+
+---
+
+<Badges platforms={['android']}>
+### standardAppearance
+</Badges>
+
+Specifies the standard tab bar appearance.
+
+```ts
+standardAppearance?: TabsScreenAppearanceAndroid;
+```
+
+Allows to customize the appearance depending on the tab bar item state
+(`normal`, `selected`, `focused`, `disabled`). Configuration for the Bottom Navigation View
+is determined by the currently active `Tab.Screen`.
+
+See [`TabsScreenAppearanceAndroid`](./TabsScreenAppearanceAndroid) for full type definition.
+
+---

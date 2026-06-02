@@ -1,0 +1,220 @@
+---
+title: Tabs.Host
+sidebar_label: Tabs.Host
+sidebar_position: 1
+---
+
+import { Badges } from '@swmansion/t-rex-ui';
+
+# Tabs.Host
+
+Container component that manages a native tab bar. Wrap all `Tabs.Screen` components inside it. Platform-specific props are grouped under `android` and `ios` objects.
+
+## Props
+
+### android
+
+```ts
+android?: TabsHostPropsAndroid;
+```
+
+See [`TabsHostPropsAndroid`](./TypesReference/TabsHostPropsAndroid) for full type definition.
+
+---
+
+### ios
+
+```ts
+ios?: TabsHostPropsIOS;
+```
+
+See [`TabsHostPropsIOS`](./TypesReference/TabsHostPropsIOS) for full type definition.
+
+---
+
+### children
+
+```ts
+children: NonNullable<ReactNode>;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### colorScheme
+</Badges>
+
+Specifies the color scheme used by the container and any child containers.
+
+```ts
+colorScheme?: TabsHostColorScheme;
+```
+
+The following values are currently supported:
+- `inherit` - the interface style from parent
+- `light` - the light interface style
+- `dark` - the dark interface style
+
+**Default:** `inherit`
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### direction
+</Badges>
+
+Specifies the layout direction of the native container, its views and child containers.
+
+```ts
+direction?: TabsHostDirection;
+```
+
+The following values are currently supported:
+
+- `inherit` - uses parent's layout direction,
+- `ltr` - forces left-to-right layout direction,
+- `rtl` - forces right-to-left layout direction.
+
+:::note
+On Android, this property relies on `react-native`'s `style.direction`
+(which sets native Android `layoutDirection` View property). Property is
+propagated via the view hierarchy. The value will fallback to direction
+set on one of the parent views.
+
+On iOS, this property sets `layoutDirection` trait override for the
+native tab bar controller. Property is propagated via the native trait
+system. The value will fallback to direction of the **native** app
+(`userInterfaceLayoutDirection`), potentially ignoring `react-native`'s
+override (e.g. when `forceRTL` is used). To mitigate this, you can pass
+`ltr`/`rtl` to this property depending on the value of `I18nManager.isRTL`.
+:::
+
+**Default:** `inherit`
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### nativeContainerStyle
+</Badges>
+
+Allows for native container view customization.
+
+```ts
+nativeContainerStyle?: TabsHostNativeContainerStyleProps;
+```
+
+On Android, style is applied to `FrameLayout` that wraps currently focused screen
+and `BottomNavigationView`. On iOS, style is applied to `UITabBarController`'s
+view.
+
+See [`TabsHostNativeContainerStyleProps`](./TypesReference/TabsHostNativeContainerStyleProps) for full type definition.
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### navStateRequest
+</Badges>
+
+Allows to pass desired navigation state request to the native side.
+It also determines initial navigation state after first render.
+
+```ts
+navStateRequest: TabsHostNavStateRequest;
+```
+
+This prop can be thought of as a "next navigation state suggestion for the native side".
+Depending on configuration and the provenance of the update
+the update might get accepted or rejected.
+
+See [`rejectStaleNavStateUpdates`](#rejectstalenavstateupdates) for configuration of the rejection behavior.
+
+See [`TabsHostNavStateRequest`](./TypesReference/TabsHostNavStateRequest) for full type definition.
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### onTabSelected
+</Badges>
+
+A callback that gets invoked when the selected tab changes.
+
+```ts
+onTabSelected?: (event: NativeSyntheticEvent<TabSelectedEvent>) => void;
+```
+
+See [`TabSelectedEvent`](./TypesReference/TabSelectedEvent) for full payload type definition.
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### onTabSelectionPrevented
+</Badges>
+
+A callback that gets invoked when the native side prevents a tab selection
+because the target screen has `preventNativeSelection` enabled.
+
+```ts
+onTabSelectionPrevented?: (event: NativeSyntheticEvent<TabSelectionPreventedEvent>) => void;
+```
+
+See [`TabSelectionPreventedEvent`](./TypesReference/TabSelectionPreventedEvent) for full payload type definition.
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### onTabSelectionRejected
+</Badges>
+
+A callback that gets invoked when the native side rejects a tab selection request.
+
+```ts
+onTabSelectionRejected?: (event: NativeSyntheticEvent<TabSelectionRejectedEvent>) => void;
+```
+
+See [`TabSelectionRejectedEvent`](./TypesReference/TabSelectionRejectedEvent) for full payload type definition.
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### rejectStaleNavStateUpdates
+</Badges>
+
+If true, the native side will reject any navigation state updates coming from JS
+if they are stale.
+
+```ts
+rejectStaleNavStateUpdates?: boolean;
+```
+
+A navigation state update is considered stale if it is based of an stale state
+([`TabsHostNavStateRequest.baseProvenance`](./TypesReference/TabsHostNavStateRequest#baseprovenance) indicates the base state).
+A state is stale, when at the time of executing update, there already had been accepted a newer state
+of different origin.
+
+This can happen, when an update from JS is dispatched, but before it reaches the native
+side, another update happens on UI thread, e.g. user selects another tab. For such
+situations, where to-be-applied navigation state update had been dispatched w/o
+full context of actual navigation state you can toggle this prop. Please note,
+that above definition means, that an JS update won't be rejected if you send a series of
+updates with the same provenance, unless some action has been taken by the user "in the meantime".
+
+If an update is rejected due to being stale, the [`onTabSelectionRejected`](#ontabselectionrejected) event will be
+emitted with details of the rejected update and the currently active navigation state.
+
+**Default:** `false`
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### tabBarHidden
+</Badges>
+
+Hides the tab bar.
+
+```ts
+tabBarHidden?: boolean;
+```
+
+**Default:** `false`
+
+---

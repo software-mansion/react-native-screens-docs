@@ -1,0 +1,332 @@
+---
+title: Tabs.Screen
+sidebar_label: Tabs.Screen
+sidebar_position: 2
+---
+
+import { Badges } from '@swmansion/t-rex-ui';
+
+# Tabs.Screen
+
+Represents a single tab in the tab bar. Each screen must have a unique `screenKey`.  Platform-specific props are grouped under `android` and `ios` objects.
+
+## Props
+
+<Badges platforms={['android', 'ios']}>
+### android
+</Badges>
+
+```ts
+android?: TabsScreenPropsAndroid;
+```
+
+See [`TabsScreenPropsAndroid`](./TypesReference/TabsScreenPropsAndroid) for full type definition.
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### ios
+</Badges>
+
+```ts
+ios?: TabsScreenPropsIOS;
+```
+
+See [`TabsScreenPropsIOS`](./TypesReference/TabsScreenPropsIOS) for full type definition.
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### children
+</Badges>
+
+```ts
+children?: ReactNode;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### accessibilityLabel
+</Badges>
+
+accessibilityLabel for the `Tabs.Screen`
+
+```ts
+accessibilityLabel?: string;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### badgeValue
+</Badges>
+
+Specifies content of tab bar item badge.
+
+```ts
+badgeValue?: string;
+```
+
+On iOS, badge is displayed as regular string.
+
+On Android, the value is interpreted in the following order:
+- if the string can be parsed to integer, displays the value as a number;
+- otherwise if the string is empty, displays "small dot" badge;
+- otherwise, displays the value as a text.
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### onDidAppear
+</Badges>
+
+A callback that gets invoked when the tab screen did appear.
+
+```ts
+onDidAppear?: TabsScreenEventHandler<EmptyObject>;
+```
+
+This is called as soon as the transition ends.
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### onDidDisappear
+</Badges>
+
+A callback that gets invoked when the tab screen did disappear.
+
+```ts
+onDidDisappear?: TabsScreenEventHandler<EmptyObject>;
+```
+
+This is called as soon as the transition ends.
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### onWillAppear
+</Badges>
+
+A callback that gets invoked when the tab screen will appear.
+
+```ts
+onWillAppear?: TabsScreenEventHandler<EmptyObject>;
+```
+
+This is called as soon as the transition begins.
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### onWillDisappear
+</Badges>
+
+A callback that gets invoked when the tab screen will disappear.
+
+```ts
+onWillDisappear?: TabsScreenEventHandler<EmptyObject>;
+```
+
+This is called as soon as the transition begins.
+
+---
+
+<Badges platforms={['ios']}>
+### orientation
+</Badges>
+
+Specifies supported orientations for the tab screen.
+
+```ts
+orientation?: TabsScreenOrientation;
+```
+
+Procedure for determining supported orientations:
+1. Traversal initiates from the root component and moves to the
+   deepest child possible.
+2. Components are queried for their supported orientations:
+   - if `orientation` is explicitly set (e.g., `portrait`,
+     `landscape`), it is immediately used,
+   - if `orientation` is set to `inherit`, the parent component
+     is queried.
+
+Note that:
+- some components (like `SplitHost`) may choose not to query
+  its child components,
+- Stack v4 implementation **ALWAYS** returns some supported
+  orientations (`allButUpsideDown` by default), overriding
+  orientation from tab screen.
+
+The following values are currently supported:
+
+- `inherit` - tab screen supports the same orientations as parent
+  component,
+- `all` - tab screen supports all orientations,
+- `allButUpsideDown` - tab screen supports all but the upside-down
+  portrait interface orientation,
+- `portrait` - tab screen supports both portrait-up and portrait-down
+  interface orientations,
+- 'portraitUp' - tab screen supports a portrait-up interface
+  orientation,
+- `portraitDown` - tab screen supports a portrait-down interface
+  orientation,
+- `landscape` - tab screen supports both landscape-left and
+  landscape-right interface orientations,
+- `landscapeLeft` - tab screen supports landscape-left interface
+  orientaion,
+- `landscapeRight` - tab screen supports landscape-right interface
+  orientaion.
+
+The supported values (apart from `inherit`, `portrait`, `portraitUp`,
+`portraitDown`) correspond to the official UIKit documentation for [`UIInterfaceOrientationMask`](https://developer.apple.com/documentation/uikit/uiinterfaceorientationmask).
+
+**Default:** `inherit`
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### preventNativeSelection
+</Badges>
+
+When set to `true`, prevents native tab selection for this screen.
+
+```ts
+preventNativeSelection?: boolean;
+```
+
+**Default:** `false`
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### screenKey
+</Badges>
+
+Identifies screen, e.g. when receiving events.
+
+```ts
+screenKey: string;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### specialEffects
+</Badges>
+
+Specifies which special effects (also known as microinteractions)
+are enabled for the tab screen.
+
+```ts
+specialEffects?: {
+  repeatedTabSelection?: {
+    popToRoot?: boolean;
+    scrollToTop?: boolean;
+  };
+};
+```
+
+For repeated tab selection (selecting already focused tab bar item),
+there are 2 supported special effects:
+- `popToRoot` - when Stack is nested inside tab screen and repeated
+  selection is detected, the Stack will pop to root screen,
+- `scrollToTop` - when there is a ScrollView in first descendant
+  chain from tab screen and repeated selection is detected, ScrollView
+  will be scrolled to top.
+
+`popToRoot` has priority over `scrollToTop`.
+
+**Default:** All special effects are enabled by default.
+
+#### repeatedTabSelection
+
+```ts
+repeatedTabSelection?: {
+  popToRoot?: boolean;
+  scrollToTop?: boolean;
+};
+```
+
+##### popToRoot
+
+```ts
+popToRoot?: boolean;
+```
+
+**Default:** `true`
+
+---
+
+##### scrollToTop
+
+```ts
+scrollToTop?: boolean;
+```
+
+**Default:** `true`
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### style
+</Badges>
+
+A style object restricted to only set the background color for `Tabs.Screen`.
+
+```ts
+style?: StyleProp<Pick<ViewStyle, 'backgroundColor'>>;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### tabBarItemAccessibilityLabel
+</Badges>
+
+accessibilityLabel for the tab bar item
+
+```ts
+tabBarItemAccessibilityLabel?: string;
+```
+
+**Supported:** iOS, Android API level &gt;=26
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### tabBarItemTestID
+</Badges>
+
+testID for the tab bar item
+
+```ts
+tabBarItemTestID?: string;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### testID
+</Badges>
+
+testID for the `Tabs.Screen`
+
+```ts
+testID?: string;
+```
+
+---
+
+<Badges platforms={['android', 'ios']}>
+### title
+</Badges>
+
+Title of the `Tabs.Screen`, displayed in the tab bar item.
+
+```ts
+title?: string;
+```
+
+---
