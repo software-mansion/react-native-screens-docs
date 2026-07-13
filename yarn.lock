@@ -2832,10 +2832,10 @@
     "@svgr/plugin-jsx" "8.1.0"
     "@svgr/plugin-svgo" "8.1.0"
 
-"@swmansion/t-rex-ui@1.3.2":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@swmansion/t-rex-ui/-/t-rex-ui-1.3.2.tgz#9c921ae2eaa926bf0e35db4e17f1165851b102e5"
-  integrity sha512-AGb/df14XoyydUm3nj4BwKOtj+DSa/aDND/LMsdZ3yG+zviIaNIXYG0E7ry3UJXsVNWrKb+AvFwOOgh5qPkoyQ==
+"@swmansion/t-rex-ui@1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@swmansion/t-rex-ui/-/t-rex-ui-1.3.3.tgz#3369a3f45f383d70cd7f3b9bcabaa8bfea379e40"
+  integrity sha512-vk2LGZifWlAw1gij4sxHA4gE31XBLBoKPSk0TMqrEv631YOwAZ8qcwsbjeNlW9Gm/T/7+mq7aT+jcT6/cKWLJw==
   dependencies:
     "@docusaurus/core" "3.9.2"
     "@docusaurus/module-type-aliases" "3.9.2"
