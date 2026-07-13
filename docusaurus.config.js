@@ -4,6 +4,24 @@
 const lightCodeTheme = require('./src/theme/CodeBlock/highlighting-light.js');
 const darkCodeTheme = require('./src/theme/CodeBlock/highlighting-dark.js');
 
+import { topbarBannerReservationScript } from '@swmansion/t-rex-ui/topbar-banner'; // eslint-disable-line import/first
+import { TOP_BAR_BANNER } from './src/components/topbarBanner.config.ts'; // eslint-disable-line import/first
+
+const firstBannerZone = TOP_BAR_BANNER.zones[0];
+const bannerReservationHeadTags = firstBannerZone
+  ? [
+      {
+        tagName: 'script',
+        attributes: { type: 'text/javascript' },
+        innerHTML: topbarBannerReservationScript(
+          firstBannerZone.zoneId,
+          firstBannerZone.contentId,
+          TOP_BAR_BANNER.hiddenPaths,
+        ),
+      },
+    ]
+  : [];
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'React Native Screens',
@@ -62,6 +80,10 @@ const config = {
       }),
     ],
   ],
+
+  headTags: bannerReservationHeadTags,
+
+  clientModules: [require.resolve('./src/clientModules/topbarBannerRefresh.ts')],
 
   plugins: [
     process.env.NODE_ENV === 'production' && [
