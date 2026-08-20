@@ -86,7 +86,6 @@ const config = {
   clientModules: [require.resolve('./src/clientModules/topbarBannerRefresh.ts')],
 
   plugins: [
-
     require('./plugins/swm-geo'),
     process.env.NODE_ENV === 'production' && [
       '@docusaurus/plugin-google-tag-manager',
