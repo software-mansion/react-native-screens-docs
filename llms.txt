@@ -1,0 +1,75 @@
+# React Native Screens
+
+## Documentation
+
+- [Bottom Tabs Navigator](https://docs.swmansion.com/react-native-screens-docs/docs/react-navigation/bottom-tabs): Introduction
+- [BottomTabsScreen](https://docs.swmansion.com/react-native-screens-docs/docs/components/bottom-tabs-screen): Introduction
+- [BottomTabs](https://docs.swmansion.com/react-native-screens-docs/docs/components/bottom-tabs): Introduction
+- [Code Style](https://docs.swmansion.com/react-native-screens-docs/docs/contributing/code-style)
+- [Configuration](https://docs.swmansion.com/react-native-screens-docs/docs/fundamentals/configuration)
+- [DisplayModeWillChangeEvent](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/split/TypesReference/DisplayModeWillChangeEvent): Used by Split.Host.
+- [Documentation Guidelines](https://docs.swmansion.com/react-native-screens-docs/docs/contributing/documentation-guidelines): Conventions for writing pages in this site. They mirror the patterns the reanimated docs use, adapted to the React Native Screens IA. Live examples of every MDX component below live on the MDX components cheatsheet.
+- [Drawer Navigator](https://docs.swmansion.com/react-native-screens-docs/docs/react-navigation/drawer): Introduction
+- [EmptyEventPayload](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/stack/TypesReference/EmptyEventPayload): A type representing an empty payload.
+- [Experimental](https://docs.swmansion.com/react-native-screens-docs/docs/experimental/)
+- [FullWindowOverlay](https://docs.swmansion.com/react-native-screens-docs/docs/components/full-window-overlay): Introduction
+- [Getting Started](https://docs.swmansion.com/react-native-screens-docs/docs/fundamentals/getting-started)
+- [Installation](https://docs.swmansion.com/react-native-screens-docs/docs/fundamentals/installation)
+- [MDX components cheatsheet](https://docs.swmansion.com/react-native-screens-docs/docs/contributing/mdx-components): Live examples of every MDX component swizzled into this site. Use this page as a reference when writing or reviewing docs.
+- [Migration from 4.x to 5.x](https://docs.swmansion.com/react-native-screens-docs/docs/guides/migration-4-to-5)
+- [Migration from JS stack](https://docs.swmansion.com/react-native-screens-docs/docs/react-navigation/migration-from-js-stack)
+- [MoreTabSelectedEvent](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TypesReference/MoreTabSelectedEvent): Used by TabsHostPropsIOS.onMoreTabSelected.
+- [Native Stack Navigator](https://docs.swmansion.com/react-native-screens-docs/docs/react-navigation/native-stack): Introduction
+- [Performance & Memory](https://docs.swmansion.com/react-native-screens-docs/docs/guides/performance)
+- [Platform Quirks](https://docs.swmansion.com/react-native-screens-docs/docs/guides/platform-quirks)
+- [React Native Screens](https://docs.swmansion.com/react-native-screens-docs/docs/)
+- [Repository Overview](https://docs.swmansion.com/react-native-screens-docs/docs/contributing/repository-overview)
+- [ScreenContainer](https://docs.swmansion.com/react-native-screens-docs/docs/components/screen-container): Introduction
+- [ScreenStackHeaderConfig](https://docs.swmansion.com/react-native-screens-docs/docs/components/screen-stack-header-config): Introduction
+- [ScreenStack](https://docs.swmansion.com/react-native-screens-docs/docs/components/screen-stack): Introduction
+- [Screen](https://docs.swmansion.com/react-native-screens-docs/docs/components/screen): Introduction
+- [Setup](https://docs.swmansion.com/react-native-screens-docs/docs/contributing/setup)
+- [Split.Column](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/split/SplitColumn): Renders content in one of the split-view columns (primary, supplementary, or secondary). Receives lifecycle callbacks when the column appears or disappears.
+- [Split.Host](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/split/SplitHost): Container component that manages a native split-view layout. Renders primary, supplementary, and secondary columns side-by-side on large-screen devices (iPad). Collapses to a single column on compact layouts (iPhone). When collapsed, a specific colum can be shown using show view command, accessible via ref prop.
+- [Split.Inspector](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/split/SplitInspector): Renders content in the inspector column — a trailing-edge panel that provides additional context about the secondary column. Available on iOS 26 and higher.
+- [SplitColumnMetrics](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/split/TypesReference/SplitColumnMetrics): Used by Split.Host.
+- [SplitHostCommands](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/split/TypesReference/SplitHostCommands): Used by Split.Host.
+- [Split](https://docs.swmansion.com/react-native-screens-docs/docs/components/split): Introduction
+- [Stack.HeaderConfig](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/stack/StackHeaderConfig): Configures the native navigation bar for the enclosing Stack.Screen. Platform-specific props are grouped under android and ios objects.
+- [Stack.Host](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/stack/StackHost): Container component that manages a stack of screens. Must wrap all Stack.Screen components.
+- [Stack.Screen](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/stack/StackScreen): Represents a single screen in the stack. Each screen must have a unique screenKey. The activityMode controls whether the screen remains attached to the view hierarchy when inactive.
+- [StackHeaderBackgroundSubviewAndroid](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/stack/TypesReference/StackHeaderBackgroundSubviewAndroid): Used by StackHeaderConfigPropsAndroid.
+- [StackHeaderConfigPropsAndroid](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/stack/TypesReference/StackHeaderConfigPropsAndroid): Used by Stack.HeaderConfig.
+- [StackHeaderToolbarSubviewAndroid](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/stack/TypesReference/StackHeaderToolbarSubviewAndroid): Used by StackHeaderConfigPropsAndroid.
+- [StackHeaderToolbarSubviewIOS](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/stack/TypesReference/StackHeaderConfigPropsIOS): Used by Stack.HeaderConfig.
+- [StackScreenEventHandler](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/stack/TypesReference/StackScreenEventHandler): A callback that gets called for lifecycle events of Stack.Screen. A type EmptyEventPayload defines no attached value to the event.
+- [TabSelectedEvent](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TypesReference/TabSelectedEvent): Used by Tabs.Host.
+- [TabSelectionPreventedEvent](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TypesReference/TabSelectionPreventedEvent): Used by Tabs.Host.onTabSelectionPrevented.
+- [TabSelectionRejectedEvent](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TypesReference/TabSelectionRejectedEvent): Used by Tabs.Host.onTabSelectionRejected.
+- [TabSelectionRejectionReason](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TypesReference/TabSelectionRejectionReason): Reason why a tab selection request was rejected by the native side.
+- [Tabs.Host](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TabsHost): Container component that manages a native tab bar. Wrap all Tabs.Screen components inside it. Platform-specific props are grouped under android and ios objects.
+- [Tabs.Screen](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TabsScreen): Represents a single tab in the tab bar. Each screen must have a unique screenKey.  Platform-specific props are grouped under android and ios objects.
+- [TabsHostNativeContainerStyleProps](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TypesReference/TabsHostNativeContainerStyleProps): Used by Tabs.Host.
+- [TabsHostNavStateRequest](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TypesReference/TabsHostNavStateRequest): Used by Tabs.Host.
+- [TabsHostPropsAndroid](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TypesReference/TabsHostPropsAndroid): Used by Tabs.Host.
+- [TabsHostPropsIOS](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TypesReference/TabsHostPropsIOS): Used by Tabs.Host.
+- [TabsItem](https://docs.swmansion.com/react-native-screens-docs/docs/components/tabs-item): Introduction
+- [TabsScreenAppearanceAndroid](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TypesReference/TabsScreenAppearanceAndroid): Used by TabsScreenPropsAndroid.
+- [TabsScreenAppearanceIOS](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TypesReference/TabsScreenAppearanceIOS): Used by TabsScreenPropsIOS.
+- [TabsScreenEventHandler](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TypesReference/TabsScreenEventHandler)
+- [TabsScreenItemAppearanceIOS](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TypesReference/TabsScreenItemAppearanceIOS): Used by TabsScreenAppearanceIOS.
+- [TabsScreenItemStateAppearanceAndroid](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TypesReference/TabsScreenItemStateAppearanceAndroid): Used by TabsScreenItemStateAppearanceAndroid.
+- [TabsScreenItemStateAppearanceIOS](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TypesReference/TabsScreenItemStateAppearanceIOS): Used by TabsScreenItemAppearanceIOS.
+- [TabsScreenPropsAndroid](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TypesReference/TabsScreenPropsAndroid): Used by Tabs.Screen.
+- [TabsScreenPropsIOS](https://docs.swmansion.com/react-native-screens-docs/docs/navigators/tabs/TypesReference/TabsScreenPropsIOS): Used by Tabs.Screen.
+- [Troubleshooting](https://docs.swmansion.com/react-native-screens-docs/docs/guides/troubleshooting)
+- [Web Support](https://docs.swmansion.com/react-native-screens-docs/docs/guides/web-support)
+
+## Pages
+
+- [React Native Screens](https://docs.swmansion.com/react-native-screens-docs/): Native Navigation primitives for your React Native app.
+- [Search the documentation](https://docs.swmansion.com/react-native-screens-docs/search)
+
+## About
+
+- [Software Mansion](https://swmansion.com): maintainer of React Native Screens
