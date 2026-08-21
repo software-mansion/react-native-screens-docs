@@ -130,3 +130,36 @@ Add styling and a horizontal indent line for the `Types reference` items.
   border-radius: 0;
   border-left: 1px solid var(--ifm-color-emphasis-300);
 }
+footer.footer {
+  --ifm-footer-padding-vertical: 40px;
+}
+
+@media (max-width: 996px) {
+  footer.footer {
+    --ifm-footer-padding-vertical: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  footer.footer {
+    --ifm-footer-padding-vertical: 30px;
+  }
+}
+
+footer .footer__bottom [class*='footer__copyright'] {
+  justify-content: center;
+}
+
+footer .footer__bottom [class*='footer__copyright'] p {
+  text-align: center;
+}
+
+footer .footer__bottom [class*='footer__copyright'] p a {
+  text-decoration: none;
+}
+
+@media (max-width: 996px) {
+  footer .footer__bottom [class*='footer__copyright'] {
+    align-items: center;
+  }
+}

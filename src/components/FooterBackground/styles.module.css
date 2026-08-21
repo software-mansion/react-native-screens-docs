@@ -5,7 +5,7 @@
    * behind the (transparent) page footer on landing. Without this, the
    * copyright row sits on the default white body background.
    */
-  bottom: -106px;
+  bottom: -122px;
   left: 0;
 
   background: linear-gradient(
@@ -23,6 +23,30 @@
   overflow: hidden;
 
   z-index: -100;
+}
+
+@media (max-width: 996px) {
+  .footerBackground {
+    bottom: -138px;
+  }
+}
+
+@media (max-width: 916px) {
+  .footerBackground {
+    bottom: -164px;
+  }
+}
+
+@media (max-width: 505px) {
+  .footerBackground {
+    bottom: -189px;
+  }
+}
+
+@media (max-width: 344px) {
+  .footerBackground {
+    bottom: -215px;
+  }
 }
 
 .container {
