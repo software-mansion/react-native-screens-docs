@@ -1,0 +1,81 @@
+## StackHeaderToolbarMenuGroupAndroid {#stackheadertoolbarmenugroupandroid}
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:452](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L452)
+
+Group definition enabling selection behavior for toolbar menu items.
+
+### Platform
+
+android
+
+### Since
+
+5.0
+
+### Properties
+
+#### groupId
+
+> **groupId**: `string`
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:466](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L466)
+
+Unique identifier of the group.
+
+##### Remarks
+
+Groups enable selection behavior (single-selection / radio, or
+multi-toggle). A group is scoped to the menu level it is defined
+in — groups cannot span submenus.
+
+Group identifier must be unique across the entire menu tree.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+#### onSelectionChange?
+
+> `optional` **onSelectionChange?**: [`StackHeaderMenuSelectionHandler`](#stackheadermenuselectionhandler)
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:486](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L486)
+
+Callback invoked when the selection within the group changes.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+#### singleSelection?
+
+> `optional` **singleSelection?**: `boolean`
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:479](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L479)
+
+Determines the type of selection in the group.
+
+##### Remarks
+
+When `true`, only one item in the group can be selected
+at a time (radio behavior). When `false`, items toggle
+independently (checkbox behavior).
+
+##### Default Value
+
+`false`
+
+##### Platform
+
+android
+
+##### Since
+
+5.0

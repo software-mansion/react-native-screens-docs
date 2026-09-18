@@ -1,0 +1,155 @@
+## ScrollViewMarker {#scroll-view-marker}
+
+Defined in: [components/scroll-view-marker/ScrollViewMarker.types.ts:11](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L11)
+
+Marks a scroll view for the native side (e.g. to apply scroll-edge effects or header
+lift-on-scroll behavior).
+
+### Platform
+
+android, ios
+
+### Since
+
+5.0
+
+### Properties
+
+#### children
+
+> **children**: `NonNullable`\<`ReactNode`\>
+
+Defined in: [components/scroll-view-marker/ScrollViewMarker.types.ts:19](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L19)
+
+Content to mark; the scroll view the native side acts on is the one resolved in
+this subtree.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### scrollEdgeEffects?
+
+> `optional` **scrollEdgeEffects?**: `object`
+
+Defined in: [components/scroll-view-marker/ScrollViewMarker.types.ts:45](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L45)
+
+Configures the scroll edge effect for the _content ScrollView_ (the ScrollView resolved in direct subtree of the ScrollViewMarker).
+Depending on values set, it will blur the scrolling content below certain UI elements (header items, search bar)
+for the specified edge of the ScrollView.
+
+##### bottom?
+
+> `optional` **bottom?**: [`ScrollEdgeEffect`](../../../../common-types/index.mdx#scrolledgeeffect)
+
+Scroll edge effect for the bottom edge of the content ScrollView.
+
+###### Default Value
+
+`'automatic'`
+
+###### Platform
+
+ios
+
+###### Since
+
+5.0
+
+##### left?
+
+> `optional` **left?**: [`ScrollEdgeEffect`](../../../../common-types/index.mdx#scrolledgeeffect)
+
+Scroll edge effect for the left edge of the content ScrollView.
+
+###### Default Value
+
+`'automatic'`
+
+###### Platform
+
+ios
+
+###### Since
+
+5.0
+
+##### right?
+
+> `optional` **right?**: [`ScrollEdgeEffect`](../../../../common-types/index.mdx#scrolledgeeffect)
+
+Scroll edge effect for the right edge of the content ScrollView.
+
+###### Default Value
+
+`'automatic'`
+
+###### Platform
+
+ios
+
+###### Since
+
+5.0
+
+##### top?
+
+> `optional` **top?**: [`ScrollEdgeEffect`](../../../../common-types/index.mdx#scrolledgeeffect)
+
+Scroll edge effect for the top edge of the content ScrollView.
+
+###### Default Value
+
+`'automatic'`
+
+###### Platform
+
+ios
+
+###### Since
+
+5.0
+
+##### Remarks
+
+When set in nested containers, i.e. Stack inside Tabs, or the other way around,
+the ScrollView will use only the innermost one's config.
+
+The supported values correspond to the `UIScrollEdgeEffect`'s `style` and `isHidden` props
+in the official UIKit documentation.
+
+##### Platform
+
+ios
+
+##### Supported
+
+iOS \>= 26
+
+##### Since
+
+5.0
+
+##### See
+
+[UIScrollEdgeEffect](https://developer.apple.com/documentation/uikit/uiscrolledgeeffect)
+
+#### style?
+
+> `optional` **style?**: `____ViewStyleProp_Internal`
+
+Defined in: [components/scroll-view-marker/ScrollViewMarker.types.ts:26](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L26)
+
+Style applied to the marker's own view.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0

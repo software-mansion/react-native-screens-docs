@@ -1,0 +1,178 @@
+## StackHeaderInlineItemIOS {#stackheaderinlineitemios}
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:167](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L167)
+
+Native header item with text label.
+
+### Platform
+
+ios
+
+### Since
+
+5.0
+
+### Extends
+
+- `StackHeaderBaseItemIOS`.`SupportsMenuIOS`.`SupportsIdentifierIOS`
+
+### Properties
+
+#### icon?
+
+> `optional` **icon?**: [`PlatformIconIOS`](../../../../../common-types/index.mdx#platformiconios)
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:115](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L115)
+
+Icon displayed for the header item.
+
+##### Remarks
+
+For async image sources, the item renders without an icon first and updates when
+loaded. Ignored when custom view ([render](#stackheaderinlinecustomitemios-render)) is
+set.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+`StackHeaderBaseItemIOS.icon`
+
+#### id
+
+> **id**: `string`
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:96](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L96)
+
+A unique identifier within the screen header.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+`StackHeaderBaseItemIOS.id`
+
+#### identifier?
+
+> `optional` **identifier?**: `string`
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:158](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L158)
+
+Stable identifier used to match the item across different screens for
+more intelligent animation on transition.
+
+##### Remarks
+
+When navigating between screens, iOS tries to match similarly looking
+items (i.e. same sfSymbol) and animate between them. If the heuristic
+fails, a simpler crossfade is applied. In a situation where visually
+different items should be logically considered the same across screens,
+you may use this prop to tell this fact to the system. The identifier
+shouldn't be updated at runtime; doing so will result in item rebuild and
+visual flash.
+
+##### Platform
+
+ios
+
+##### Supported
+
+iOS \>= 26
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+`SupportsIdentifierIOS.identifier`
+
+#### menu?
+
+> `optional` **menu?**: [`StackHeaderMenuIOS`](#stackheadermenuios)
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:131](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L131)
+
+Menu definition for the context menu that appears when item is tapped.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+`SupportsMenuIOS.menu`
+
+#### onPress?
+
+> `optional` **onPress?**: [`StackHeaderPressHandler`](#stackheaderpresshandler)
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:189](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L189)
+
+Callback invoked when the header item is pressed.
+
+##### Remarks
+
+Fires when the user taps the header item. When combined with
+[menu](#stackheaderinlineitemios-menu), tapping fires `onPress` and
+long-pressing shows the menu.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### title?
+
+> `optional` **title?**: `string`
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:103](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L103)
+
+A title for the item that is displayed in the header.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+`StackHeaderBaseItemIOS.title`
+
+#### type
+
+> **type**: `"item"`
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:177](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L177)
+
+Marks this object as a header item definition.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0

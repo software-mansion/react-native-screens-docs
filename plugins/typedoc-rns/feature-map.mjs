@@ -189,7 +189,17 @@ export function outputRoot(feature) {
 
 /** The file that assembles a family's generated parts (relative to docs/, no extension). */
 export function outputFile(feature) {
-  return feature.dir ? `${outputRoot(feature)}/_api-reference` : `${feature.page}/index`;
+  return feature.dir
+    ? `${outputRoot(feature)}/_api-reference`
+    : `${feature.page}/_common-types`;
+}
+
+/** `StackHeaderItemIOS` → `stackheaderitemios`, `android.icon` → `android-icon`. */
+export function anchorSlug(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 /** The doc that links to a family's reflections resolve to (relative to docs/, no extension). */

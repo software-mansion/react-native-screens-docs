@@ -1,0 +1,199 @@
+## TabsScreenItemStateAppearanceIOS {#tabsscreenitemstateappearanceios}
+
+Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:173](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.ios.types.ts#L173)
+
+Appearance of an iOS tab bar item in a single state.
+
+### Platform
+
+ios
+
+### Since
+
+5.0
+
+### Properties
+
+#### tabBarItemBadgeBackgroundColor?
+
+> `optional` **tabBarItemBadgeBackgroundColor?**: `____ColorValue_Internal`
+
+Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:271](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.ios.types.ts#L271)
+
+Specifies the background color of badges for each tab bar item
+when tab screen is selected.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### tabBarItemIconColor?
+
+> `optional` **tabBarItemIconColor?**: `____ColorValue_Internal`
+
+Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:263](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.ios.types.ts#L263)
+
+Specifies the icon color for each tab bar item when tab screen
+is selected.
+
+##### Remarks
+
+This also impacts the title text color.
+
+Starting from iOS 26, it only applies to selected tab bar item. Other items
+adopt a dark or light appearance depending on the theme of the tab bar.
+
+Is overridden by `tabBarItemTitleFontColor` (for title text color).
+Overrides `tabBarTintColor`.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### tabBarItemTitleFontColor?
+
+> `optional` **tabBarItemTitleFontColor?**: `____ColorValue_Internal`
+
+Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:216](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.ios.types.ts#L216)
+
+Specifies the font color used for the title of each tab bar item
+when tab screen is selected.
+
+##### Remarks
+
+Overrides the color defined in `tabBarTintColor` and `tabBarItemIconColor`.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### tabBarItemTitleFontFamily?
+
+> `optional` **tabBarItemTitleFontFamily?**: `string`
+
+Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:181](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.ios.types.ts#L181)
+
+Specifies the font family used for the title of each tab bar item
+when tab screen is selected.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### tabBarItemTitleFontSize?
+
+> `optional` **tabBarItemTitleFontSize?**: `number`
+
+Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:189](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.ios.types.ts#L189)
+
+Specifies the font size used for the title of each tab bar item
+when tab screen is selected.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### tabBarItemTitleFontStyle?
+
+> `optional` **tabBarItemTitleFontStyle?**: `"normal"` \| `"italic"`
+
+Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:205](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.ios.types.ts#L205)
+
+Specifies the font style used for the title of each tab bar item
+when tab screen is selected.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### tabBarItemTitleFontWeight?
+
+> `optional` **tabBarItemTitleFontWeight?**: `____FontWeight_Internal`
+
+Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:197](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.ios.types.ts#L197)
+
+Specifies the font weight used for the title of each tab bar item
+when tab screen is selected.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### tabBarItemTitlePositionAdjustment?
+
+> `optional` **tabBarItemTitlePositionAdjustment?**: `object`
+
+Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:228](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.ios.types.ts#L228)
+
+Specifies the title offset for each tab bar item when tab screen
+is selected.
+
+##### horizontal?
+
+> `optional` **horizontal?**: `number`
+
+Horizontal offset, in points. Positive values move the title towards the
+trailing edge.
+
+###### Platform
+
+ios
+
+###### Since
+
+5.0
+
+##### vertical?
+
+> `optional` **vertical?**: `number`
+
+Vertical offset, in points. Positive values move the title down.
+
+###### Platform
+
+ios
+
+###### Since
+
+5.0
+
+##### Remarks
+
+Depending on the iOS version and the device's interface orientation,
+this setting may affect the alignment of the text, badge and icon.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
