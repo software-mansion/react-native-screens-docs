@@ -107,29 +107,25 @@ table thead tr {
 }
 
 /*
-Align the looks of all items within each navigator.
-The Navigator.* items are links whereas `Types reference` is a category,
-which Docusaurus styles differently. This makes all of them look the same.
+A top-level sidebar page that stands where a section would (React Common Types in
+sidebars.js): it reads as a section label — the title face at 18/600 in the base colour,
+flush left — rather than as an indented page link. Hover and the active page keep
+t-rex-ui's link states (hover colour; underline + active colour), so an open page still
+shows as open.
 */
-.navigator-category .menu__list-item .menu__link {
-  font-size: 1rem;
-  font-weight: 500;
-  margin: 0;
-  color: var(--swm-sidebar-menu-color);
+.sidebar-section-link > .menu__link {
+  /* Measured to leave the same gap to the next section as a section's last item does. */
+  margin: 8px 0 14px;
+  padding-left: 0;
+  font-family: var(--swm-title-font);
+  font-size: 18px;
+  font-weight: 600;
 }
 
-/*
-Add styling and a horizontal indent line for the `Types reference` items.
-*/
-.types-reference .menu__list-item .menu__link {
-  font-size: 0.925rem;
-  font-weight: 400;
-  line-height: 1;
-  padding-left: 0.5rem;
-  margin-left: 0.2rem;
-  border-radius: 0;
-  border-left: 1px solid var(--ifm-color-emphasis-300);
+.sidebar-section-link > .menu__link:not(.menu__link--active, :hover) {
+  color: var(--ifm-font-color-base);
 }
+
 footer.footer {
   --ifm-footer-padding-vertical: 40px;
 }
