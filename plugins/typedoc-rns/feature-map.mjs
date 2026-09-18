@@ -131,6 +131,57 @@ export const FEATURES = {
 
 export const entryPoints = Object.values(FEATURES).map(feature => feature.entryPoint);
 
+/** The component a reflection documents as part of: its props type, or one of its `merged`. */
+export function componentFor(feature, reflection) {
+  return feature.components.find(
+    component =>
+      reflection.name === component.props || component.merged.includes(reflection.name),
+  );
+}
+
+/** The platform tokens the docs understand. Anything else in a `@platform` tag is a typo. */
+const PLATFORMS = ['android', 'ios'];
+
+/**
+ * TypeDoc parks a function-type alias's comment on its signature (`type F = (x) => y`), not
+ * on the alias, so `reflection.comment` alone misses those.
+ */
+export function commentOf(reflection) {
+  return (
+    reflection.comment ??
+    reflection.signatures?.[0]?.comment ??
+    reflection.type?.declaration?.signatures?.[0]?.comment
+  );
+}
+
+/** A block tag's text (`blockTagText(r, '@since')` → `'5.0'`), `undefined` when absent. */
+export function blockTagText(reflection, tagName) {
+  const tag = commentOf(reflection)?.getTag(tagName);
+  return tag
+    ? tag.content
+        .map(part => part.text)
+        .join('')
+        .trim()
+    : undefined;
+}
+
+/** The platforms a symbol is documented for, read from `@platform`; `[]` when untagged. */
+export function platformsOf(reflection) {
+  const text = blockTagText(reflection, '@platform');
+  if (text === undefined) return [];
+  const tokens = text
+    .split(',')
+    .map(token => token.trim().toLowerCase())
+    .filter(token => PLATFORMS.includes(token));
+  return [...new Set(tokens)].sort();
+}
+
+/** `'ios'` / `'android'` for a single-platform symbol, `''` for everything else. */
+export function platformDirOf(reflection) {
+  const platforms = platformsOf(reflection);
+  return platforms.length === 1 ? platforms[0] : '';
+}
+
 /** The generator-owned folder of a family (relative to docs/) — wiped on every run. */
 export function outputRoot(feature) {
   return feature.dir ? `${feature.dir}/api-reference` : feature.page;
