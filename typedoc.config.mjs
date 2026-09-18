@@ -14,7 +14,8 @@ export default {
   // Without this, `ViewProps` alone adds ~100 inherited react-native props to Split/SafeArea.
   excludeExternals: true,
 
-  plugin: ['typedoc-plugin-markdown'],
+  plugin: ['typedoc-plugin-markdown', './plugins/typedoc-rns/index.mjs'],
+  router: 'rns',
   // Scratch output until the router writes into `docs/` (git-ignored, not part of the site).
   out: 'docs/_api_scratch',
   cleanOutputDir: true,
