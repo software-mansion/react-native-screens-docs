@@ -1,0 +1,57 @@
+## MoreTabSelectedEvent {#moretabselectedevent}
+
+> **MoreTabSelectedEvent** = `object`
+
+Defined in: [components/tabs/host/TabsHost.ios.types.ts:19](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.ios.types.ts#L19)
+
+Payload of the event emitted when the user taps the "More" tab bar item.
+
+### Remarks
+
+This event fires when the user taps the system-generated "More" tab bar item.
+It does NOT fire when a tab is selected from within the More list — that triggers
+the normal `onTabSelected` event instead.
+
+The payload carries the navigation state that was active at the moment the "More" tab was tapped.
+
+### Platform
+
+ios
+
+### Since
+
+5.0
+
+### Properties
+
+#### provenance
+
+> **provenance**: `number`
+
+Defined in: [components/tabs/host/TabsHost.ios.types.ts:33](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.ios.types.ts#L33)
+
+Provenance of the navigation state when "More" was tapped.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### selectedScreenKey
+
+> **selectedScreenKey**: `string`
+
+Defined in: [components/tabs/host/TabsHost.ios.types.ts:26](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.ios.types.ts#L26)
+
+Screen key of the tab that was active when "More" was tapped.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0

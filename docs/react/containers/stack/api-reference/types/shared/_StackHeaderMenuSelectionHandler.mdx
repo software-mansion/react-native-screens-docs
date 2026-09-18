@@ -1,0 +1,32 @@
+## StackHeaderMenuSelectionHandler {#stackheadermenuselectionhandler}
+
+> **StackHeaderMenuSelectionHandler** = (`selectedMenuElementIds`) => `void`
+
+Defined in: [components/stack/header/StackHeaderConfig.types.ts:19](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.types.ts#L19)
+
+Handler invoked when the selection within a header menu changes.
+
+The platforms scope it differently — see
+[StackHeaderMenuSelectionHandlerIOS](#stackheadermenuselectionhandlerios) and
+[StackHeaderToolbarMenuSelectionHandlerAndroid](#stackheadertoolbarmenuselectionhandlerandroid); this shared type
+carries the common shape.
+
+### Parameters
+
+#### selectedMenuElementIds
+
+`string`[]
+
+IDs of the currently selected toggle items.
+
+### Returns
+
+`void`
+
+### Platform
+
+android, ios
+
+### Since
+
+5.0

@@ -1,0 +1,80 @@
+## TabsScreenPropsAndroid {#tabsscreenpropsandroid}
+
+Defined in: [components/tabs/screen/TabsScreen.android.types.ts:192](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L192)
+
+Android-only props for [Tabs.Screen](#screen), nested under the `android` key.
+
+### Platform
+
+android
+
+### Since
+
+5.0
+
+### Properties
+
+#### icon?
+
+> `optional` **icon?**: [`PlatformIconAndroid`](../../../../../common-types/index.mdx#platformiconandroid)
+
+Defined in: [components/tabs/screen/TabsScreen.android.types.ts:215](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L215)
+
+Specifies the icon for the tab bar item.
+
+##### Remarks
+
+`imageSource` type doesn't support SVGs on Android. For loading SVGs use `drawableResource`
+type, which requires passing a drawable to resources via Android Studio.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+#### selectedIcon?
+
+> `optional` **selectedIcon?**: [`PlatformIconAndroid`](../../../../../common-types/index.mdx#platformiconandroid)
+
+Defined in: [components/tabs/screen/TabsScreen.android.types.ts:227](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L227)
+
+Specifies the icon for tab bar item when it is selected.
+
+##### Remarks
+
+Supports the same values as `icon` property for given platform.
+
+To use `selectedIcon`, `icon` must also be provided.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+#### standardAppearance?
+
+> `optional` **standardAppearance?**: [`TabsScreenAppearanceAndroid`](#tabsscreenappearanceandroid)
+
+Defined in: [components/tabs/screen/TabsScreen.android.types.ts:204](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L204)
+
+Specifies the standard tab bar appearance.
+
+##### Remarks
+
+Allows to customize the appearance depending on the tab bar item state
+(normal, selected, focused, disabled). Configuration for the Bottom Navigation View
+is determined by the currently active tab screen.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0

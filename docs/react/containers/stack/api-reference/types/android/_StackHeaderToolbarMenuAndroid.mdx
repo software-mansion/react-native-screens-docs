@@ -1,0 +1,456 @@
+## StackHeaderToolbarMenuAndroid {#stackheadertoolbarmenuandroid}
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:523](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L523)
+
+A submenu element of the toolbar menu, opening a nested popup.
+
+### Platform
+
+android
+
+### Since
+
+5.0
+
+### Extends
+
+- [`StackHeaderToolbarMenuItemBaseAndroid`](#stackheadertoolbarmenuitembaseandroid).[`StackHeaderToolbarMenuBaseAndroid`](#stackheadertoolbarmenubaseandroid)
+
+### Properties
+
+#### accessibilityLabel?
+
+> `optional` **accessibilityLabel?**: `string`
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:261](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L261)
+
+Sets the accessibility label (content description) for the menu
+element.
+
+##### Remarks
+
+When `undefined`, Android uses the `title` for the accessibility label when
+the item is placed in the toolbar. There is no default accessibility label
+for items inside overflow menu/submenus.
+
+Due to native platform limitations, it's not possible to provide `testID`
+for menu items inside overflow menu/submenus. If possible, use
+`accessibilityLabel` instead.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderToolbarMenuItemBaseAndroid`](#stackheadertoolbarmenuitembaseandroid).[`accessibilityLabel`](#stackheadertoolbarmenuitembaseandroid-accessibilitylabel)
+
+#### children?
+
+> `optional` **children?**: [`StackHeaderToolbarMenuElementAndroid`](#stackheadertoolbarmenuelementandroid)[]
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:514](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L514)
+
+Menu elements displayed in the toolbar menu.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderToolbarMenuBaseAndroid`](#stackheadertoolbarmenubaseandroid).[`children`](#stackheadertoolbarmenubaseandroid-children)
+
+#### disabled?
+
+> `optional` **disabled?**: `boolean`
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:277](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L277)
+
+Specifies if the menu element should be disabled.
+
+##### Default Value
+
+`false`
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderToolbarMenuItemBaseAndroid`](#stackheadertoolbarmenuitembaseandroid).[`disabled`](#stackheadertoolbarmenuitembaseandroid-disabled)
+
+#### groups?
+
+> `optional` **groups?**: [`StackHeaderToolbarMenuGroupAndroid`](#stackheadertoolbarmenugroupandroid)[]
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:507](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L507)
+
+Group definitions for items in this menu level.
+
+##### Remarks
+
+Groups enable selection behavior (single or multi-toggle) for
+items that share the same `groupId`. A group is scoped to the
+menu level it is defined in — groups cannot span submenus.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderToolbarMenuBaseAndroid`](#stackheadertoolbarmenubaseandroid).[`groups`](#stackheadertoolbarmenubaseandroid-groups)
+
+#### hidden?
+
+> `optional` **hidden?**: `boolean`
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:269](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L269)
+
+Specifies if the menu element should be hidden.
+
+##### Default Value
+
+`false`
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderToolbarMenuItemBaseAndroid`](#stackheadertoolbarmenuitembaseandroid).[`hidden`](#stackheadertoolbarmenuitembaseandroid-hidden)
+
+#### icon?
+
+> `optional` **icon?**: [`PlatformIconAndroid`](../../../../../common-types/index.mdx#platformiconandroid)
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:309](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L309)
+
+Specifies the icon for the menu element.
+
+##### Remarks
+
+Note that `'imageSource'` doesn't support SVGs on Android; use `'drawableResource'`,
+which requires adding a drawable to resources via Android Studio.
+
+The icon will be visible only if the menu element is shown in the
+Toolbar.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderToolbarMenuItemBaseAndroid`](#stackheadertoolbarmenuitembaseandroid).[`icon`](#stackheadertoolbarmenuitembaseandroid-icon)
+
+#### iconTintColorDisabled?
+
+> `optional` **iconTintColorDisabled?**: `____ColorValue_Internal`
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:355](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L355)
+
+Specifies the tint color to apply to the menu element icon when
+it is disabled.
+
+##### Remarks
+
+Due to native platform limitations, if you set this prop, you should also
+provide `iconTintColorNormal`. Otherwise, the icon will become
+transparent when the item is not disabled.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderToolbarMenuItemBaseAndroid`](#stackheadertoolbarmenuitembaseandroid).[`iconTintColorDisabled`](#stackheadertoolbarmenuitembaseandroid-icontintcolordisabled)
+
+#### iconTintColorFocused?
+
+> `optional` **iconTintColorFocused?**: `____ColorValue_Internal`
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:342](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L342)
+
+Specifies the tint color to apply to the menu element icon when
+it is focused (e.g. by keyboard navigation).
+
+##### Remarks
+
+Due to native platform limitations, if you set this prop, you must also
+provide `iconTintColorNormal`. Otherwise, the icon will become
+transparent.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderToolbarMenuItemBaseAndroid`](#stackheadertoolbarmenuitembaseandroid).[`iconTintColorFocused`](#stackheadertoolbarmenuitembaseandroid-icontintcolorfocused)
+
+#### iconTintColorNormal?
+
+> `optional` **iconTintColorNormal?**: `____ColorValue_Internal`
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:316](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L316)
+
+Specifies the tint color to apply to the menu element icon.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderToolbarMenuItemBaseAndroid`](#stackheadertoolbarmenuitembaseandroid).[`iconTintColorNormal`](#stackheadertoolbarmenuitembaseandroid-icontintcolornormal)
+
+#### iconTintColorPressed?
+
+> `optional` **iconTintColorPressed?**: `____ColorValue_Internal`
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:329](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L329)
+
+Specifies the tint color to apply to the menu element icon when
+it is pressed.
+
+##### Remarks
+
+Due to native platform limitations, if you set this prop, you must also
+provide `iconTintColorNormal`. Otherwise, the icon will become
+transparent.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderToolbarMenuItemBaseAndroid`](#stackheadertoolbarmenuitembaseandroid).[`iconTintColorPressed`](#stackheadertoolbarmenuitembaseandroid-icontintcolorpressed)
+
+#### id
+
+> **id**: `string`
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:205](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L205)
+
+Unique identifier of the menu element.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderToolbarMenuItemBaseAndroid`](#stackheadertoolbarmenuitembaseandroid).[`id`](#stackheadertoolbarmenuitembaseandroid-id)
+
+#### menuTitle?
+
+> `optional` **menuTitle?**: `string`
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:552](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L552)
+
+Header title displayed at the top of the submenu popup.
+
+##### Remarks
+
+Maps to Android's `SubMenu.setHeaderTitle()`. This is distinct from
+`title`, which controls the label shown in the parent menu's item row.
+
+If `title` is changed by using the `updateToolbarMenuElements` view
+command, the menu title will also be changed to the new title (unless the
+new title is set to `undefined`). In order to keep the custom menu title,
+you should also include `menuTitle` in the view command.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+#### showAsAction?
+
+> `optional` **showAsAction?**: [`StackHeaderToolbarMenuItemShowAsActionAndroid`](#stackheadertoolbarmenuitemshowasactionandroid)
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:295](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L295)
+
+Specifies whether the element should be displayed as a button in
+the Toolbar.
+
+##### Remarks
+
+This prop only affects top-level menu elements. Items inside
+submenus are always displayed in the popup and ignore this
+setting.
+
+Due to native limitations, the width limit for the `'ifRoom'`
+options is determined during the initial render and will not
+adapt to subsequent layout or orientation changes.
+
+##### Default Value
+
+`'never'`
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderToolbarMenuItemBaseAndroid`](#stackheadertoolbarmenuitembaseandroid).[`showAsAction`](#stackheadertoolbarmenuitembaseandroid-showasaction)
+
+#### title?
+
+> `optional` **title?**: `string`
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:219](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L219)
+
+Title of the menu element.
+
+##### Remarks
+
+If `title` is changed for the element of type `'menu'` by using the
+`updateToolbarMenuElements` view command, the menu title (`menuTitle`)
+will also be changed to the new title (unless the new title is set to
+`undefined`). In order to keep the custom menu title, you should also
+include `menuTitle` in the view command.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderToolbarMenuItemBaseAndroid`](#stackheadertoolbarmenuitembaseandroid).[`title`](#stackheadertoolbarmenuitembaseandroid-title)
+
+#### titleCondensed?
+
+> `optional` **titleCondensed?**: `string`
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:232](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L232)
+
+Shorter title used for the menu element when it is displayed as
+a button in the Toolbar.
+
+##### Remarks
+
+When the element is shown in the Toolbar with a text label, this
+condensed title is used instead of `title`. The full `title` is still
+used everywhere else (the overflow menu and submenus).
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderToolbarMenuItemBaseAndroid`](#stackheadertoolbarmenuitembaseandroid).[`titleCondensed`](#stackheadertoolbarmenuitembaseandroid-titlecondensed)
+
+#### tooltipText?
+
+> `optional` **tooltipText?**: `string`
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:244](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L244)
+
+Tooltip shown on long-press (or pointer hover) of the menu
+element when it is displayed as a button in the Toolbar.
+
+##### Remarks
+
+Applies only to elements shown as a button in the Toolbar; it has no
+effect on elements placed in the overflow menu.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderToolbarMenuItemBaseAndroid`](#stackheadertoolbarmenuitembaseandroid).[`tooltipText`](#stackheadertoolbarmenuitembaseandroid-tooltiptext)
+
+#### type
+
+> **type**: `"menu"`
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:536](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L536)
+
+Marks this object as a submenu.
+
+##### Remarks
+
+Android's `MenuItem` interface claims that nesting submenus isn't supported
+but Material's implementation handles it correctly.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0

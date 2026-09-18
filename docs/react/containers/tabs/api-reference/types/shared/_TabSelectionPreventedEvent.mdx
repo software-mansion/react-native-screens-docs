@@ -1,0 +1,66 @@
+## TabSelectionPreventedEvent {#tabselectionpreventedevent}
+
+> **TabSelectionPreventedEvent** = `object`
+
+Defined in: [components/tabs/host/TabsHost.types.ts:199](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L199)
+
+Payload of the event emitted when the native side prevents a tab selection
+because the target screen has `preventNativeSelection` enabled.
+
+### Platform
+
+android, ios
+
+### Since
+
+5.0
+
+### Properties
+
+#### preventedScreenKey
+
+> **preventedScreenKey**: `string`
+
+Defined in: [components/tabs/host/TabsHost.types.ts:220](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L220)
+
+Screen key of the tab whose selection was prevented.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### provenance
+
+> **provenance**: `number`
+
+Defined in: [components/tabs/host/TabsHost.types.ts:213](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L213)
+
+Provenance of the currently active navigation state.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### selectedScreenKey
+
+> **selectedScreenKey**: `string`
+
+Defined in: [components/tabs/host/TabsHost.types.ts:206](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L206)
+
+Screen key of the currently selected (active) tab.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0

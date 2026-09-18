@@ -1,0 +1,58 @@
+## StackHeaderTitleCustomItemIOS {#stackheadertitlecustomitemios}
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:326](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L326)
+
+Custom-view header item used for the title / subtitle area.
+
+### Platform
+
+ios
+
+### Since
+
+5.0
+
+### Properties
+
+#### id
+
+> **id**: `string`
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:333](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L333)
+
+A unique identifier within the screen header.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### render
+
+> **render**: [`StackHeaderElementFactory`](#stackheaderelementfactory)
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:350](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L350)
+
+A function that renders the custom view.
+
+##### Remarks
+
+The subview is sized by React Native's layout engine but positioned by the
+platform native layout. Each item's size is calculated independently and will
+not respect flex layout. Use static width and height for best results.
+
+Note: Due to layout process limitations, text view will not resize and
+ellipsize to fit available space without manually setting desired view
+width. For text-only elements that should ellipsize it is recommended to
+use regular `title` instead.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
