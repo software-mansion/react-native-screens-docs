@@ -1,0 +1,195 @@
+## StackHeaderMenuItemIOS {#stackheadermenuitemios}
+
+Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:50](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L50)
+
+Represents a single actionable item inside a [StackHeaderMenuIOS](#stackheadermenuios) menu.
+
+### Remarks
+
+A menu item is a leaf element that the user can interact with.
+Depending on its [itemType](#stackheadermenuitemios-itemtype), the item
+behaves as a one-shot action or a stateful toggle.
+
+### Platform
+
+ios
+
+### Since
+
+5.0
+
+### Properties
+
+#### icon?
+
+> `optional` **icon?**: [`PlatformIconIOS`](../../../../../common-types/index.mdx#platformiconios)
+
+Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:107](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L107)
+
+Icon displayed for the menu item.
+
+##### Remarks
+
+For async image sources, the menu item renders without an icon first and updates
+when loaded.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### id
+
+> **id**: `string`
+
+Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:61](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L61)
+
+Unique identifier of the menu item.
+
+##### Remarks
+
+Used to locate the item inside a menu tree and to identify selected items
+in [StackHeaderMenuIOS.onSelectionChange](#stackheadermenuios-onselectionchange) callback.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### initialToggleState?
+
+> `optional` **initialToggleState?**: `boolean`
+
+Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:96](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L96)
+
+Initial on/off state of a toggle item.
+
+##### Remarks
+
+Only meaningful when [itemType](#stackheadermenuitemios-itemtype)
+resolves to `'toggle'`. Inside a `singleSelection` hierarchy, at most one
+item can set this to `true`.
+
+##### Default Value
+
+`false`
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### itemType?
+
+> `optional` **itemType?**: [`StackHeaderMenuItemTypeIOS`](#stackheadermenuitemtypeios)
+
+Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:83](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L83)
+
+Determines the behavior of the menu item.
+
+##### Default Value
+
+`'automatic'`
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### keepsMenuPresented?
+
+> `optional` **keepsMenuPresented?**: `boolean`
+
+Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:135](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L135)
+
+Keeps the menu presented after this item is tapped.
+
+##### Remarks
+
+When enabled, selecting this item will not dismiss the menu,
+allowing the user to continue interacting with other items.
+
+This prop should only be used for items in top-level menus.
+
+##### Default Value
+
+`false`
+
+##### Platform
+
+ios
+
+##### Supported
+
+iOS \>= 16
+
+##### Since
+
+5.0
+
+#### onPress?
+
+> `optional` **onPress?**: [`StackHeaderPressHandler`](#stackheaderpresshandler)
+
+Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:120](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L120)
+
+Callback invoked when the menu item is pressed.
+
+##### Remarks
+
+Fires only for items whose effective type is `'action'`. For toggle items,
+this callback will not fire — use
+[onSelectionChange](#stackheadermenuios-onselectionchange) on the
+parent menu instead.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### title?
+
+> `optional` **title?**: `string`
+
+Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:75](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L75)
+
+Title displayed for the menu item.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### type
+
+> **type**: `"menuItem"`
+
+Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:68](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L68)
+
+Marks this object as a menu item definition.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0

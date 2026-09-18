@@ -1,0 +1,193 @@
+## Screen {#screen}
+
+> **StackScreenProps** = `object`
+
+Defined in: [components/stack/screen/StackScreen.types.ts:68](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/screen/StackScreen.types.ts#L68)
+
+A single screen within a [Stack.Host](#host) navigation stack.
+
+### Platform
+
+android, ios
+
+### Since
+
+5.0
+
+### Properties
+
+#### activityMode
+
+> **activityMode**: [`StackScreenActivityMode`](#stackscreenactivitymode)
+
+Defined in: [components/stack/screen/StackScreen.types.ts:84](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/screen/StackScreen.types.ts#L84)
+
+Specifies whether the screen's content is attached to the native view hierarchy.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### children?
+
+> `optional` **children?**: `ViewProps`\[`"children"`\]
+
+Defined in: [components/stack/screen/StackScreen.types.ts:75](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/screen/StackScreen.types.ts#L75)
+
+Content rendered inside the stack screen.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### onDidAppear?
+
+> `optional` **onDidAppear?**: [`StackScreenEventHandler`](#stackscreeneventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+Defined in: [components/stack/screen/StackScreen.types.ts:107](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/screen/StackScreen.types.ts#L107)
+
+A callback that gets invoked when the screen did appear.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### onDidDisappear?
+
+> `optional` **onDidDisappear?**: [`StackScreenEventHandler`](#stackscreeneventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+Defined in: [components/stack/screen/StackScreen.types.ts:121](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/screen/StackScreen.types.ts#L121)
+
+A callback that gets invoked when the screen did disappear.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### onDismiss?
+
+> `optional` **onDismiss?**: [`StackScreenDismissHandler`](#stackscreendismisshandler)
+
+Defined in: [components/stack/screen/StackScreen.types.ts:129](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/screen/StackScreen.types.ts#L129)
+
+A callback that gets invoked when the screen is dismissed.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### onNativeDismiss?
+
+> `optional` **onNativeDismiss?**: [`StackScreenDismissHandler`](#stackscreendismisshandler)
+
+Defined in: [components/stack/screen/StackScreen.types.ts:136](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/screen/StackScreen.types.ts#L136)
+
+A callback that gets invoked when the screen is dismissed natively.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### onNativeDismissPrevented?
+
+> `optional` **onNativeDismissPrevented?**: [`StackScreenEventHandler`](#stackscreeneventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+Defined in: [components/stack/screen/StackScreen.types.ts:143](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/screen/StackScreen.types.ts#L143)
+
+A callback that gets invoked when a native dismissal is prevented.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### onWillAppear?
+
+> `optional` **onWillAppear?**: [`StackScreenEventHandler`](#stackscreeneventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+Defined in: [components/stack/screen/StackScreen.types.ts:100](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/screen/StackScreen.types.ts#L100)
+
+A callback that gets invoked when the screen will appear.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### onWillDisappear?
+
+> `optional` **onWillDisappear?**: [`StackScreenEventHandler`](#stackscreeneventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+Defined in: [components/stack/screen/StackScreen.types.ts:114](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/screen/StackScreen.types.ts#L114)
+
+A callback that gets invoked when the screen will disappear.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### preventNativeDismiss?
+
+> `optional` **preventNativeDismiss?**: `boolean`
+
+Defined in: [components/stack/screen/StackScreen.types.ts:154](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/screen/StackScreen.types.ts#L154)
+
+When set to `true`, prevents the screen from being dismissed natively.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### screenKey
+
+> **screenKey**: `string`
+
+Defined in: [components/stack/screen/StackScreen.types.ts:91](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/screen/StackScreen.types.ts#L91)
+
+Identifies the screen within the stack.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0

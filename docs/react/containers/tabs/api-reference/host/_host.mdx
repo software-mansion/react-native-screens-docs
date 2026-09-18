@@ -1,0 +1,326 @@
+## Host {#host}
+
+Defined in: [components/tabs/host/TabsHost.types.ts:410](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L410)
+
+Container that manages a native tab bar and switches between its tab screens.
+
+### Remarks
+
+Wrap every [Tabs.Screen](#screen) you want to display inside a single `Tabs.Host`.
+Platform-specific configuration is grouped under the [ios](#host-ios) and
+[android](#host-android) objects.
+
+### Platform
+
+android, ios
+
+### Since
+
+5.0
+
+### Extends
+
+- `TabsHostPropsBase`
+
+### Properties
+
+#### android?
+
+> `optional` **android?**: [`TabsHostPropsAndroid`](#tabshostpropsandroid)
+
+Defined in: [components/tabs/host/TabsHost.types.ts:424](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L424)
+
+Android-only configuration, nested under the `android` key.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+#### children
+
+> **children**: `NonNullable`\<`ReactNode`\>
+
+Defined in: [components/tabs/host/TabsHost.types.ts:317](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L317)
+
+Tab screens to display; wrap each screen in a `TabsScreen`.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsHostPropsBase`](#host).[`children`](#host-children)
+
+#### colorScheme?
+
+> `optional` **colorScheme?**: [`TabsHostColorScheme`](#tabshostcolorscheme)
+
+Defined in: [components/tabs/host/TabsHost.types.ts:366](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L366)
+
+Specifies the color scheme used by the container and any child containers.
+
+##### Default Value
+
+`'inherit'`
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsHostPropsBase`](#host).[`colorScheme`](#host-colorscheme)
+
+#### direction?
+
+> `optional` **direction?**: [`TabsHostDirection`](#tabshostdirection)
+
+Defined in: [components/tabs/host/TabsHost.types.ts:358](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L358)
+
+Specifies the layout direction of the native container, its views and child containers.
+
+##### Remarks
+
+On Android, this property relies on `react-native`'s `style.direction`
+(which sets native Android `layoutDirection` View property). Property is
+propagated via the view hierarchy. The value will fallback to direction
+set on one of the parent views.
+
+On iOS, this property sets `layoutDirection` trait override for the
+native tab bar controller. Property is propagated via the native trait
+system. The value will fallback to direction of the **native** app
+(`userInterfaceLayoutDirection`), potentially ignoring `react-native`'s
+override (e.g. when `forceRTL` is used). To mitigate this, you can pass
+`'ltr'`/`'rtl'` to this property depending on the value of `I18nManager.isRTL`.
+
+##### Default Value
+
+`'inherit'`
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsHostPropsBase`](#host).[`direction`](#host-direction)
+
+#### ios?
+
+> `optional` **ios?**: [`TabsHostPropsIOS`](#tabshostpropsios)
+
+Defined in: [components/tabs/host/TabsHost.types.ts:417](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L417)
+
+iOS-only configuration, nested under the `ios` key.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### nativeContainerStyle?
+
+> `optional` **nativeContainerStyle?**: [`TabsHostNativeContainerStyleProps`](#tabshostnativecontainerstyleprops)
+
+Defined in: [components/tabs/host/TabsHost.types.ts:337](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L337)
+
+Allows for native container view customization.
+
+##### Remarks
+
+On Android, style is applied to `FrameLayout` that wraps currently focused screen
+and `BottomNavigationView`. On iOS, style is applied to `UITabBarController`'s
+view.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsHostPropsBase`](#host).[`nativeContainerStyle`](#host-nativecontainerstyle)
+
+#### navStateRequest
+
+> **navStateRequest**: [`TabsHostNavStateRequest`](#tabshostnavstaterequest)
+
+Defined in: [components/tabs/host/TabsHost.types.ts:282](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L282)
+
+Allows to pass desired navigation state request to the native side.
+It also determines initial navigation state after first render.
+
+##### Remarks
+
+This prop can be thought of as a "next navigation state suggestion for the native side".
+Depending on configuration and the provenance of the update
+the update might get accepted or rejected.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### See
+
+ - [TabsHostPropsBase.rejectStaleNavStateUpdates](#host-rejectstalenavstateupdates)
+ - [TabsHostNavStateRequest](#tabshostnavstaterequest) for description of the type model & accepted values.
+
+##### Inherited from
+
+[`TabsHostPropsBase`](#host).[`navStateRequest`](#host-navstaterequest)
+
+#### onTabSelected?
+
+> `optional` **onTabSelected?**: [`TabsHostEventHandler`](#tabshosteventhandler)\<[`TabSelectedEvent`](#tabselectedevent)\>
+
+Defined in: [components/tabs/host/TabsHost.types.ts:375](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L375)
+
+A callback that gets invoked when the selected tab changes.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsHostPropsBase`](#host).[`onTabSelected`](#host-ontabselected)
+
+#### onTabSelectionPrevented?
+
+> `optional` **onTabSelectionPrevented?**: [`TabsHostEventHandler`](#tabshosteventhandler)\<[`TabSelectionPreventedEvent`](#tabselectionpreventedevent)\>
+
+Defined in: [components/tabs/host/TabsHost.types.ts:394](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L394)
+
+A callback that gets invoked when the native side prevents a tab selection
+because the target screen has `preventNativeSelection` enabled.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsHostPropsBase`](#host).[`onTabSelectionPrevented`](#host-ontabselectionprevented)
+
+#### onTabSelectionRejected?
+
+> `optional` **onTabSelectionRejected?**: [`TabsHostEventHandler`](#tabshosteventhandler)\<[`TabSelectionRejectedEvent`](#tabselectionrejectedevent)\>
+
+Defined in: [components/tabs/host/TabsHost.types.ts:383](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L383)
+
+A callback that gets invoked when the native side rejects a tab selection request.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsHostPropsBase`](#host).[`onTabSelectionRejected`](#host-ontabselectionrejected)
+
+#### rejectStaleNavStateUpdates?
+
+> `optional` **rejectStaleNavStateUpdates?**: `boolean`
+
+Defined in: [components/tabs/host/TabsHost.types.ts:308](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L308)
+
+If true, the native side will reject any navigation state updates coming from JS
+if they are stale.
+
+##### Remarks
+
+A navigation state update is considered stale if it is based of an stale state
+([TabsHostNavStateRequest.baseProvenance](#tabshostnavstaterequest-baseprovenance) indicates the base state).
+A state is stale, when at the time of executing update, there already had been accepted a newer state
+of different origin.
+
+This can happen, when an update from JS is dispatched, but before it reaches the native
+side, another update happens on UI thread, e.g. user selects another tab. For such
+situations, where to-be-applied navigation state update had been dispatched w/o
+full context of actual navigation state you can toggle this prop. Please note,
+that above definition means, that an JS update won't be rejected if you send a series of
+udpates with the same provenance, unless some action has been taken by the user "in the meantime".
+
+##### Danger
+
+If an update is rejected due to being stale, the `onTabSelectionRejected` event will be
+emitted with details of the rejected update and the currently active navigation state.
+
+##### Default Value
+
+`false`
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsHostPropsBase`](#host).[`rejectStaleNavStateUpdates`](#host-rejectstalenavstateupdates)
+
+#### tabBarHidden?
+
+> `optional` **tabBarHidden?**: `boolean`
+
+Defined in: [components/tabs/host/TabsHost.types.ts:325](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L325)
+
+Hides the tab bar.
+
+##### Default Value
+
+`false`
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsHostPropsBase`](#host).[`tabBarHidden`](#host-tabbarhidden)

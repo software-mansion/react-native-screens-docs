@@ -1,0 +1,43 @@
+## StackHeaderToolbarSubviewAndroid {#stackheadertoolbarsubviewandroid}
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:110](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L110)
+
+Custom React subview placed in one of the toolbar's subview slots.
+
+### Platform
+
+android
+
+### Since
+
+5.0
+
+### Properties
+
+#### render
+
+> **render**: [`StackHeaderElementFactory`](#stackheaderelementfactory)
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:128](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L128)
+
+Render callback for the React element placed in this toolbar slot.
+
+##### Remarks
+
+The subview is sized by React Native's layout engine but positioned by the
+platform native layout. Each subview is placed independently — subviews do
+not participate in a shared flex layout and cannot influence each other's
+sizing.
+
+Intrinsic sizing and explicit dimensions work as expected. Avoid
+parent-relative sizing (e.g. `flex: 1`) on the root element — it will
+produce incorrect dimensions. Flex layout within a root that has a known
+size works as expected.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0

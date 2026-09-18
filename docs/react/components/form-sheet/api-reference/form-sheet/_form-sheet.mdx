@@ -1,0 +1,425 @@
+## FormSheet {#form-sheet}
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:53](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L53)
+
+Presents its content in a native form sheet modal.
+
+### Platform
+
+android, ios
+
+### Since
+
+5.0
+
+### Properties
+
+#### children?
+
+> `optional` **children?**: `ReactNode`
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:60](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L60)
+
+Content rendered inside the form sheet.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### detents?
+
+> `optional` **detents?**: `number`[] \| `"fitToContents"`
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:95](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L95)
+
+Defines the resting positions of the sheet.
+
+##### Remarks
+
+This can be either an array of fractional screen heights (ranging from `0.0` to `1.0`)
+or the `'fitToContents'` string literal.
+
+- Fractional heights: The sheet will snap to these specific height proportions.
+- `'fitToContents'`: The sheet automatically calculates its height to wrap its content.
+  It will dynamically animate to adapt to any internal layout changes.
+
+On iOS, these map directly to `UISheetPresentationController` detents.
+If an empty array is provided, it defaults to a single large detent.
+
+`'fitToContents'` is supported on iOS 16+. On iOS 15, it falls back to a
+medium detent.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### initialDetentIndex?
+
+> `optional` **initialDetentIndex?**: `number` \| `"last"`
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:158](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L158)
+
+The index of the detent the sheet should snap to when first opened.
+
+##### Remarks
+
+This prop can be set to a number, indicating the zero-based index of the detent in the
+`detents` array. If set to `'last'`, it will snap to the largest defined detent.
+This prop only applies when the sheet transitions from closed to open.
+
+##### Default Value
+
+`0`
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### isOpen
+
+> **isOpen**: `boolean`
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:73](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L73)
+
+Determines whether the form sheet is currently visible.
+
+##### Remarks
+
+Presentation is driven by state transitions: updating this property
+from `false` to `true` triggers the sheet to present, while changing
+it from `true` to `false` triggers a programmatic dismissal.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### largestUndimmedDetentIndex?
+
+> `optional` **largestUndimmedDetentIndex?**: `number` \| `"none"` \| `"last"`
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:144](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L144)
+
+The largest sheet detent for which a view underneath won't be dimmed.
+
+##### Remarks
+
+This prop can be set to a number, which indicates the index of the detent in the
+`detents` array for which there won't be a dimming view beneath the sheet.
+
+Additionally, there are the following options available:
+- `'none'` - there will be a dimming view for all detent levels.
+- `'last'` - there won't be a dimming view for any detent level.
+
+##### Default Value
+
+`'none'`
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### nativeContainerStyle?
+
+> `optional` **nativeContainerStyle?**: [`FormSheetNativeContainerStyleProps`](#formsheetnativecontainerstyleprops)
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:201](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L201)
+
+Style applied to the native container hosting the sheet content.
+
+##### Remarks
+
+These properties are forwarded directly to the underlying native view.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### onDetentChanged?
+
+> `optional` **onDetentChanged?**: [`FormSheetEventHandler`](#formsheeteventhandler)\<[`FormSheetDetentChangedEvent`](#formsheetdetentchangedevent)\>
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:273](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L273)
+
+Called when the sheet settles at a new detent.
+
+##### Remarks
+
+Provides the `index` of the newly selected detent from the `detents` array.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### onDidAppear?
+
+> `optional` **onDidAppear?**: [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:221](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L221)
+
+A callback that gets invoked when the FormSheet did appear.
+This is called as soon as the transition ends.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### onDidDisappear?
+
+> `optional` **onDidDisappear?**: [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:239](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L239)
+
+A callback that gets invoked when the FormSheet did disappear.
+This is called as soon as the transition ends.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### onDismiss?
+
+> `optional` **onDismiss?**: [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:250](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L250)
+
+Called when the sheet is dismissed programmatically.
+
+##### Remarks
+
+This event is fired when the sheet was dismissed via the `isOpen` prop changing to `false`.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### onNativeDismiss?
+
+> `optional` **onNativeDismiss?**: [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:262](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L262)
+
+Called when the sheet is dismissed natively.
+
+##### Remarks
+
+It is highly recommended to use this callback to synchronize
+your local React state to prevent UI mismatches (e.g., updating `isOpen` back to `false`).
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### onNativeDismissPrevented?
+
+> `optional` **onNativeDismissPrevented?**: [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:288](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L288)
+
+Called when the user attempts to dismiss the sheet by swiping down or tapping the backdrop, but the dismissal is prevented.
+
+##### Remarks
+
+This event is only fired if `preventNativeDismiss` is set to `true`.
+It is useful for triggering custom feedback, such as an alert
+to inform the user why the sheet cannot be closed.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### onWillAppear?
+
+> `optional` **onWillAppear?**: [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:212](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L212)
+
+A callback that gets invoked when the FormSheet will appear.
+This is called as soon as the transition begins.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### onWillDisappear?
+
+> `optional` **onWillDisappear?**: [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:230](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L230)
+
+A callback that gets invoked when the FormSheet will disappear.
+This is called as soon as the transition begins.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### preferredCornerRadius?
+
+> `optional` **preferredCornerRadius?**: `number` \| `"systemDefault"`
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:127](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L127)
+
+The corner radius that the sheet will attempt to present with.
+
+##### Remarks
+
+If set to `'systemDefault'` or a negative number, it defaults to the system's
+automatic dimension (`UISheetPresentationControllerAutomaticDimension`).
+
+On Android, non-uniform rounded-corner clipping is only applied on API level 33+.
+On older versions this prop is ignored, because clipping the sheet content to non-uniform
+rounded corners is not reliable on those versions.
+
+##### Default Value
+
+`'systemDefault'`
+
+##### Platform
+
+android, ios
+
+##### Supported
+
+Android API \>= 33, iOS
+
+##### Since
+
+5.0
+
+#### prefersGrabberVisible?
+
+> `optional` **prefersGrabberVisible?**: `boolean`
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:109](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L109)
+
+Determines whether the sheet requests a grabber at the top.
+
+##### Remarks
+
+When `true`, the sheet requests that a small grabber indicator be shown
+at the top to hint that the sheet can be resized. The system may still
+hide the grabber in some presentation contexts.
+
+##### Default Value
+
+`false`
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### prefersScrollingExpandsWhenScrolledToEdge?
+
+> `optional` **prefersScrollingExpandsWhenScrolledToEdge?**: `boolean`
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:177](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L177)
+
+Determines whether scrolling expands the sheet to a larger detent.
+
+##### Remarks
+
+When set to `true`, scrolling up within a child scroll view (starting from the top edge)
+will first expand the sheet to a larger detent before scrolling the content.
+When set to `false`, scrolling within the child scroll view will scroll the content normally
+without expanding the sheet.
+Note that manual dragging of the sheet's non-scrollable area will still expand the
+sheet regardless of this setting.
+
+On iOS, this maps directly to `UISheetPresentationController.prefersScrollingExpandsWhenScrolledToEdge`.
+
+##### Default Value
+
+`true`
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### preventNativeDismiss?
+
+> `optional` **preventNativeDismiss?**: `boolean`
+
+Defined in: [components/modals/form-sheet/FormSheet.types.ts:190](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L190)
+
+Prevents the user from dismissing the sheet natively by swiping down or tapping the backdrop.
+
+##### Remarks
+
+When set to `true`, the sheet will resist the swipe-down gesture and backdrop tap,
+remaining on the resting detent. Programmatically dismissing the sheet via `isOpen={false}` will still work.
+
+##### Default Value
+
+`false`
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0

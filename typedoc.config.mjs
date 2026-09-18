@@ -16,8 +16,17 @@ export default {
 
   plugin: ['typedoc-plugin-markdown', './plugins/typedoc-rns/index.mjs'],
   router: 'rns',
-  // Scratch output until the router writes into `docs/` (git-ignored, not part of the site).
-  out: 'docs/_api_scratch',
-  cleanOutputDir: true,
+  theme: 'rns',
+  // The assembling file imports its parts, and later PRs put React components on the pages.
+  fileExtension: '.mdx',
+  // MDX reads `<`, `{` and friends as syntax, so comment text has to be escaped.
+  sanitizeComments: true,
+  // TypeDoc's own page chrome links to pages this router does not write (module indexes).
+  hidePageHeader: true,
+  hideBreadcrumbs: true,
+  // The router writes into the docs tree itself; gen-api.mjs owns the targeted wipe, so
+  // TypeDoc must never clean the whole directory.
+  out: 'docs',
+  cleanOutputDir: false,
   readme: 'none',
 };

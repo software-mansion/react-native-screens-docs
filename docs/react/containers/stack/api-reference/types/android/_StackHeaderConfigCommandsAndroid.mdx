@@ -1,0 +1,65 @@
+## StackHeaderConfigCommandsAndroid {#stackheaderconfigcommandsandroid}
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:628](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L628)
+
+Imperative commands for the Android header configuration.
+
+### Platform
+
+android
+
+### Since
+
+5.0
+
+### Properties
+
+#### updateToolbarMenuElements
+
+> **updateToolbarMenuElements**: (`updates`) => `void`
+
+Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:657](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L657)
+
+Applies one or more updates to the toolbar menu in a single batch.
+
+##### Parameters
+
+###### updates
+
+[`StackHeaderToolbarMenuElementUpdateAndroid`](#stackheadertoolbarmenuelementupdateandroid) \| [`StackHeaderToolbarMenuElementUpdateAndroid`](#stackheadertoolbarmenuelementupdateandroid)[]
+
+A single update object or an array of updates.
+
+##### Returns
+
+`void`
+
+##### Remarks
+
+Accepts a single update or an array of them; each targets a menu element
+by `id` and applies its `options`. The call is queued and applied as one
+atomic batch:
+- if any update carries an `icon` that loads asynchronously, the whole
+  batch waits for every icon before applying (updates are never applied
+  partially);
+- updates apply in array order, so an `id` may repeat and later values
+  win field by field;
+- once applied, each affected group emits at most one, coalesced
+  `onToolbarMenuGroupSelectionChange`.
+
+Batches run in call order on a serial FIFO queue, so a later call is never
+overtaken by an earlier one whose icon happened to load late.
+
+Updates are applied to the live toolbar: they take effect only while the
+header is shown, and are discarded whenever the menu is rebuilt from the
+`toolbarMenu` prop — whether by a prop change or a structural change such
+as hiding and re-showing the header. They persist across unrelated
+re-renders. An update whose `id` is not in the current menu is ignored.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0

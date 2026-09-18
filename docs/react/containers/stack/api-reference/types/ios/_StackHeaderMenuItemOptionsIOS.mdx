@@ -1,0 +1,73 @@
+## StackHeaderMenuItemOptionsIOS {#stackheadermenuitemoptionsios}
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:28](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L28)
+
+Options for updating a menu action (leaf item) at runtime.
+
+### Remarks
+
+Omitted keys preserve current values. Explicit `undefined` resets to default.
+
+### Platform
+
+ios
+
+### Since
+
+5.0
+
+### Properties
+
+#### icon?
+
+> `optional` **icon?**: [`PlatformIconIOS`](../../../../../common-types/index.mdx#platformiconios)
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:42](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L42)
+
+New icon for the menu action.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### title?
+
+> `optional` **title?**: `string`
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:35](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L35)
+
+New title for the menu action.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### toggleState?
+
+> `optional` **toggleState?**: `boolean`
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:54](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L54)
+
+Sets the toggle state of the menu item.
+
+##### Remarks
+
+When inside a single selection hierarchy, setting `true` deselects the
+previously selected item and selects this one. Setting `false` is a noop
+in this case - only has effect for regular toggles.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0

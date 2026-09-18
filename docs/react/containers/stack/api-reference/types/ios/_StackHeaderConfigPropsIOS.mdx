@@ -1,0 +1,215 @@
+## StackHeaderConfigPropsIOS {#stackheaderconfigpropsios}
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:376](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L376)
+
+iOS-only props for [Stack.HeaderConfig](#header-config), nested under the `ios` key.
+
+### Platform
+
+ios
+
+### Since
+
+5.0
+
+### Properties
+
+#### largeSubtitle?
+
+> `optional` **largeSubtitle?**: `string`
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:468](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L468)
+
+Large subtitle text, displayed when `largeTitleEnabled = true`.
+
+##### Remarks
+
+When ScrollView is present on the screen, large header is displayed only when
+fully scrolled to top, otherwise it collapses to regular header. If `largeSubititle` is not defined,
+it falls back to regular subtitle.
+
+##### Platform
+
+ios
+
+##### Supported
+
+iOS \>= 26
+
+##### Since
+
+5.0
+
+#### largeSubtitleItem?
+
+> `optional` **largeSubtitleItem?**: [`StackHeaderTitleCustomItemIOS`](#stackheadertitlecustomitemios)
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:476](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L476)
+
+Custom item to display as a subtitle for large header. Takes precedence over largeSubtitle text.
+
+##### Platform
+
+ios
+
+##### Supported
+
+iOS \>= 26
+
+##### Since
+
+5.0
+
+#### largeTitle?
+
+> `optional` **largeTitle?**: `string`
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:448](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L448)
+
+Large title text, displayed when `largeTitleEnabled = true`.
+
+##### Remarks
+
+When ScrollView is present on the screen, large header is displayed only when
+fully scrolled to top, otherwise it collapses to regular header. If `largeTitle` is not defined,
+it falls back to regular title.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### largeTitleEnabled?
+
+> `optional` **largeTitleEnabled?**: `boolean`
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:455](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L455)
+
+Specifies if the header should display the large title. It collapses to a regular header when scrolling.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### leadingItems?
+
+> `optional` **leadingItems?**: [`StackHeaderItemIOS`](#stackheaderitemios)[]
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:401](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L401)
+
+A list of items placed starting from the leading edge.
+
+##### Remarks
+
+Items are placed next to the back button, if present. If there
+is not enough space to fit all leading items at once, they are all moved to
+overflow menu. This differs from trailing items, which are moved one by one.
+
+Note: Custom items are not put into the overflow menu, but are removed entirely.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### subtitleItem?
+
+> `optional` **subtitleItem?**: [`StackHeaderTitleCustomItemIOS`](#stackheadertitlecustomitemios)
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:387](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L387)
+
+Custom item to display as a subtitle.
+
+##### Remarks
+
+Takes precedence over subtitle text.
+
+##### Platform
+
+ios
+
+##### Supported
+
+iOS \>= 26
+
+##### Since
+
+5.0
+
+#### titleItem?
+
+> `optional` **titleItem?**: [`StackHeaderTitleCustomItemIOS`](#stackheadertitlecustomitemios)
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:411](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L411)
+
+Custom item to display as a title.
+
+##### Remarks
+
+Takes precedence over title text.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### titleMenu?
+
+> `optional` **titleMenu?**: [`StackHeaderMenuIOS`](#stackheadermenuios)
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:424](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L424)
+
+Menu definition for the title context menu.
+
+##### Remarks
+
+Configures a dropdown menu attached to the navigation bar title area.
+Works independently of [titleItem](#stackheaderconfigpropsios-titleitem); the menu appears for both
+plain text and custom view title.
+
+##### Platform
+
+ios
+
+##### Supported
+
+iOS \>= 16
+
+##### Since
+
+5.0
+
+#### trailingItems?
+
+> `optional` **trailingItems?**: [`StackHeaderItemIOS`](#stackheaderitemios)[]
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:436](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L436)
+
+A list of items placed starting from the trailing edge.
+
+##### Remarks
+
+If there is not enough space to fit some items, they are moved to the overflow menu, one by one.
+
+Note: Custom items are not put into the overflow menu, but are removed entirely.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
