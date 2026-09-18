@@ -1,9 +1,30 @@
 import { posix } from 'node:path';
+import { ReflectionKind } from 'typedoc';
 import { MarkdownTheme, MarkdownThemeContext } from 'typedoc-plugin-markdown';
 
 import { outputRoot } from './feature-map.mjs';
 
 const SEPARATOR = '\n\n***\n\n';
+
+/**
+ * A member heading carries the anchor the router gave it (`### title {#header-config-title}`).
+ * Docusaurus would otherwise slug the heading text, and `title` of one section would take the
+ * `#title` that the next section's `title` needs too — every cross-link to a member breaks.
+ */
+function renderMemberContainer(ctx, model, options) {
+  const md = [];
+  if (!ctx.router.hasOwnDocument(model) && model.kind !== ReflectionKind.Constructor) {
+    const anchor = ctx.router.hasUrl(model) ? ctx.router.getAnchor(model) : undefined;
+    const title = ctx.partials.memberTitle(model);
+    md.push(
+      `${'#'.repeat(options.headingLevel)} ${anchor ? `${title} {#${anchor}}` : title}`,
+    );
+  }
+  md.push(
+    ctx.partials.member(model, { headingLevel: options.headingLevel, nested: options.nested }),
+  );
+  return md.join('\n\n');
+}
 
 /** A part's path doubles as its MDX component name: `types/ios/_BlurEffect` → `TypeBlurEffect`. */
 function partName(section) {
@@ -57,6 +78,10 @@ class RnsThemeContext extends MarkdownThemeContext {
 
   constructor(theme, page, options) {
     super(theme, page, options);
+    this.partials = {
+      ...this.partials,
+      memberContainer: (model, options) => renderMemberContainer(this, model, options),
+    };
     const baseTemplates = { ...this.templates };
     this.templates = {
       ...baseTemplates,
