@@ -8,7 +8,6 @@
 // Per family:
 //   `dir`        — the docs folder; its API reference is generated into `<dir>/api-reference`
 //                  and imported by the hand-written page at `<dir>/index.mdx`.
-//   `page`       — instead of `dir` for a family that IS a generated page (Common Types).
 //   `components` — the sections of its API reference, in page order. `props` is the
 //                  component's public props type: that type's members are the section.
 //                  `merged` names reflections that document as part of the section rather
@@ -119,12 +118,12 @@ export const FEATURES = {
       },
     ],
   },
-  // The shared vocabulary (ColorScheme, the PlatformIcon* family, …): no components, so the
-  // whole page is generated.
+  // The shared vocabulary (ColorScheme, the PlatformIcon* family, …): no components, so its
+  // page is a list of types.
   types: {
     entryPoint: `${LIB}/types.ts`,
     label: 'Common Types',
-    page: 'react/common-types',
+    dir: 'react/common-types',
     components: [],
   },
 };
@@ -184,14 +183,12 @@ export function platformDirOf(reflection) {
 
 /** The generator-owned folder of a family (relative to docs/) — wiped on every run. */
 export function outputRoot(feature) {
-  return feature.dir ? `${feature.dir}/api-reference` : feature.page;
+  return `${feature.dir}/api-reference`;
 }
 
 /** The file that assembles a family's generated parts (relative to docs/, no extension). */
 export function outputFile(feature) {
-  return feature.dir
-    ? `${outputRoot(feature)}/_api-reference`
-    : `${feature.page}/_common-types`;
+  return `${outputRoot(feature)}/_api-reference`;
 }
 
 /** `StackHeaderItemIOS` → `stackheaderitemios`, `android.icon` → `android-icon`. */
@@ -204,5 +201,5 @@ export function anchorSlug(text) {
 
 /** The doc that links to a family's reflections resolve to (relative to docs/, no extension). */
 export function linkTarget(feature) {
-  return `${feature.dir ?? feature.page}/index`;
+  return `${feature.dir}/index`;
 }
