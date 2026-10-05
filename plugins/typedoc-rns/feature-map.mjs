@@ -200,7 +200,15 @@ export function outputRoot(feature) {
 export function outputFile(feature) {
   return feature.dir
     ? `${outputRoot(feature)}/_api-reference`
-    : `${feature.page}/index`;
+    : `${feature.page}/_common-types`;
+}
+
+/** `StackHeaderItemIOS` → `stackheaderitemios`, `android.icon` → `android-icon`. */
+export function anchorSlug(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 /** The doc that links to a family's reflections resolve to (relative to docs/, no extension). */

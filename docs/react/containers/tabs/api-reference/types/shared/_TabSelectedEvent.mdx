@@ -1,0 +1,113 @@
+## TabSelectedEvent {#tabselectedevent}
+
+> **TabSelectedEvent** = `object`
+
+Defined in: [components/tabs/host/TabsHost.types.ts:80](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L80)
+
+Payload of the event emitted when a tab selection occurs on the native side.
+
+### Remarks
+
+This event is emitted both for user-initiated and programmatic tab changes.
+It carries the resulting navigation state along with metadata about the selection context.
+
+### Platform
+
+android, ios
+
+### Since
+
+5.0
+
+### Properties
+
+#### actionOrigin
+
+> **actionOrigin**: `"user"` \| `"programmatic-js"` \| `"programmatic-native"` \| `"implicit"`
+
+Defined in: [components/tabs/host/TabsHost.types.ts:125](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L125)
+
+Origin (actor) that requested this tab transition.
+
+##### Remarks
+
+The following values are supported:
+- `'user'` — direct native UI interaction (e.g. tab bar tap, iOS tab drag-and-drop).
+- `'programmatic-js'` — JS-initiated request delivered via the `navStateRequest` prop.
+- `'programmatic-native'` — request initiated from the native side by an actor
+  integrating directly against the native container.
+- `'implicit'` — platform side effect not attributable to an explicit actor
+  (e.g. UIKit reshuffling the selection during a horizontal size-class transition on iPad).
+  Currently only emitted on iOS.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### hasTriggeredSpecialEffect
+
+> **hasTriggeredSpecialEffect**: `boolean`
+
+Defined in: [components/tabs/host/TabsHost.types.ts:108](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L108)
+
+Whether the selection triggered a special effect (e.g. scroll-to-top on repeated selection).
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### isRepeated
+
+> **isRepeated**: `boolean`
+
+Defined in: [components/tabs/host/TabsHost.types.ts:101](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L101)
+
+Whether the same tab that was already selected has been selected again.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### provenance
+
+> **provenance**: `number`
+
+Defined in: [components/tabs/host/TabsHost.types.ts:94](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L94)
+
+Provenance of the navigation state after the selection.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+#### selectedScreenKey
+
+> **selectedScreenKey**: `string`
+
+Defined in: [components/tabs/host/TabsHost.types.ts:87](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L87)
+
+Screen key of the newly selected tab.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0

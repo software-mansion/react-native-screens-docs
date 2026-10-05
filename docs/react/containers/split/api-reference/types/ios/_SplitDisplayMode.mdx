@@ -1,0 +1,28 @@
+## SplitDisplayMode {#splitdisplaymode}
+
+> **SplitDisplayMode** = `"automatic"` \| `"secondaryOnly"` \| `"oneBesideSecondary"` \| `"oneOverSecondary"` \| `"twoBesideSecondary"` \| `"twoOverSecondary"` \| `"twoDisplaceSecondary"`
+
+Defined in: [components/split/SplitHost.types.ts:113](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L113)
+
+Arrangement of the columns displayed by a Split.
+
+The following values are supported:
+- `'automatic'` — display mode is chosen by the OS, the appropriate display mode is based on the device and the current app size.
+- `'secondaryOnly'` — only the secondary column is displayed.
+- `'oneBesideSecondary'` — a sidebar is displayed side-by-side with the secondary column.
+- `'oneOverSecondary'` — a one sidebar is displayed over the secondary column.
+- `'twoBesideSecondary'` — two sidebars are displayed side-by-side with the secondary column.
+- `'twoOverSecondary'` — two sidebars are displayed over the secondary column.
+- `'twoDisplaceSecondary'` — two sidebars are displacind the secondary column, moving it partially offscreen.
+
+### See
+
+[UISplitViewController.DisplayMode](https://developer.apple.com/documentation/uikit/uisplitviewcontroller/displaymode-swift.enum)
+
+### Platform
+
+ios
+
+### Since
+
+5.0

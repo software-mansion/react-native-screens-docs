@@ -1,0 +1,495 @@
+## Screen {#screen}
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:274](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L274)
+
+A single tab screen hosted by [Tabs.Host](#host).
+
+### Remarks
+
+Platform-specific configuration is grouped under the [ios](#screen-ios) and
+[android](#screen-android) objects.
+
+### Platform
+
+android, ios
+
+### Since
+
+5.0
+
+### Extends
+
+- [`TabsScreenPropsBase`](#screen)
+
+### Properties
+
+#### accessibilityLabel?
+
+> `optional` **accessibilityLabel?**: `string`
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:212](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L212)
+
+accessibilityLabel for the TabsScreen.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsScreenPropsBase`](#screen).[`accessibilityLabel`](#screen-accessibilitylabel)
+
+#### android?
+
+> `optional` **android?**: [`TabsScreenPropsAndroid`](#tabsscreenpropsandroid)
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:288](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L288)
+
+Android-only configuration, nested under the `android` key.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+#### badgeValue?
+
+> `optional` **badgeValue?**: `string`
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:119](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L119)
+
+Specifies content of tab bar item badge.
+
+##### Remarks
+
+On iOS, badge is displayed as regular string.
+
+On Android, the value is interpreted in the following order:
+- if the string can be parsed to integer, displays the value as a number;
+- otherwise if the string is empty, displays "small dot" badge;
+- otherwise, displays the value as a text.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsScreenPropsBase`](#screen).[`badgeValue`](#screen-badgevalue)
+
+#### children?
+
+> `optional` **children?**: `ReactNode`
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:90](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L90)
+
+Content rendered inside the tab screen.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsScreenPropsBase`](#screen).[`children`](#screen-children)
+
+#### ios?
+
+> `optional` **ios?**: [`TabsScreenPropsIOS`](#tabsscreenpropsios)
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:281](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L281)
+
+iOS-only configuration, nested under the `ios` key.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### onDidAppear?
+
+> `optional` **onDidAppear?**: [`TabsScreenEventHandler`](#tabsscreeneventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:245](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L245)
+
+A callback that gets invoked when the tab screen did appear.
+This is called as soon as the transition ends.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsScreenPropsBase`](#screen).[`onDidAppear`](#screen-ondidappear)
+
+#### onDidDisappear?
+
+> `optional` **onDidDisappear?**: [`TabsScreenEventHandler`](#tabsscreeneventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:261](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L261)
+
+A callback that gets invoked when the tab screen did disappear.
+This is called as soon as the transition ends.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsScreenPropsBase`](#screen).[`onDidDisappear`](#screen-ondiddisappear)
+
+#### onWillAppear?
+
+> `optional` **onWillAppear?**: [`TabsScreenEventHandler`](#tabsscreeneventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:237](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L237)
+
+A callback that gets invoked when the tab screen will appear.
+This is called as soon as the transition begins.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsScreenPropsBase`](#screen).[`onWillAppear`](#screen-onwillappear)
+
+#### onWillDisappear?
+
+> `optional` **onWillDisappear?**: [`TabsScreenEventHandler`](#tabsscreeneventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:253](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L253)
+
+A callback that gets invoked when the tab screen will disappear.
+This is called as soon as the transition begins.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsScreenPropsBase`](#screen).[`onWillDisappear`](#screen-onwilldisappear)
+
+#### orientation?
+
+> `optional` **orientation?**: [`TabsScreenOrientation`](#tabsscreenorientation)
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:196](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L196)
+
+Specifies supported orientations for the tab screen.
+
+##### Remarks
+
+Procedure for determining supported orientations:
+1. Traversal initiates from the root component and moves to the
+   deepest child possible.
+2. Components are queried for their supported orientations:
+   - if `orientation` is explicitly set (e.g., `'portrait'`,
+     `'landscape'`), it is immediately used,
+   - if `orientation` is set to `'inherit'`, the parent component
+     is queried.
+
+##### Note
+
+Exceptions to this procedure:
+- some components (like `SplitHost`) may choose not to query
+  its child components,
+- Stack v4 (legacy) implementation returns some supported orientations,
+  overriding orientation from the tab screen **unless** the Stack v4
+  screen has no explicit `screenOrientation` prop and
+  `featureFlags.experiment.iosOrientationInheritanceFixEnabled` is
+  enabled (the default), in which case it returns `'inherit'` and no
+  longer overrides the parent (see
+  [PR #4408](https://github.com/software-mansion/react-native-screens/pull/4408)).
+
+##### Default Value
+
+`'inherit'`
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+##### See
+
+[UIInterfaceOrientationMask](https://developer.apple.com/documentation/uikit/uiinterfaceorientationmask)
+
+##### Inherited from
+
+[`TabsScreenPropsBase`](#screen).[`orientation`](#screen-orientation)
+
+#### preventNativeSelection?
+
+> `optional` **preventNativeSelection?**: `boolean`
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:81](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L81)
+
+When set to `true`, prevents native tab selection for this screen.
+
+##### Default Value
+
+`false`
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsScreenPropsBase`](#screen).[`preventNativeSelection`](#screen-preventnativeselection)
+
+#### screenKey
+
+> **screenKey**: `string`
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:73](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L73)
+
+Identifies screen, e.g. when receiving onNativeFocusChange event.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsScreenPropsBase`](#screen).[`screenKey`](#screen-screenkey)
+
+#### specialEffects?
+
+> `optional` **specialEffects?**: `object`
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:128](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L128)
+
+Specifies which special effects (also known as microinteractions)
+are enabled for the tab screen.
+
+##### repeatedTabSelection?
+
+> `optional` **repeatedTabSelection?**: `object`
+
+Special effects triggered by repeated tab selection (selecting
+the already focused tab bar item).
+
+###### Remarks
+
+`popToRoot` has priority over `scrollToTop`.
+
+###### Platform
+
+android, ios
+
+###### Since
+
+5.0
+
+###### repeatedTabSelection.popToRoot?
+
+> `optional` **popToRoot?**: `boolean`
+
+When a Stack is nested inside the tab screen and repeated
+selection is detected, the Stack will pop to its root
+screen.
+
+###### Default Value
+
+`true`
+
+###### Platform
+
+android, ios
+
+###### Since
+
+5.0
+
+###### repeatedTabSelection.scrollToTop?
+
+> `optional` **scrollToTop?**: `boolean`
+
+When there is a ScrollView in the first descendant chain
+from the tab screen and repeated selection is detected, the
+ScrollView will be scrolled to top.
+
+###### Default Value
+
+`true`
+
+###### Platform
+
+android, ios
+
+###### Since
+
+5.0
+
+##### Default Value
+
+```ts
+All special effects are enabled by default.
+```
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsScreenPropsBase`](#screen).[`specialEffects`](#screen-specialeffects)
+
+#### style?
+
+> `optional` **style?**: `StyleProp`\<[`TabsScreenStyleProps`](#tabsscreenstyleprops)\>
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:97](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L97)
+
+Style applied to the screen; only `backgroundColor` is used.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsScreenPropsBase`](#screen).[`style`](#screen-style)
+
+#### tabBarItemAccessibilityLabel?
+
+> `optional` **tabBarItemAccessibilityLabel?**: `string`
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:227](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L227)
+
+accessibilityLabel for the TabBarItem.
+
+##### Platform
+
+android, ios
+
+##### Supported
+
+iOS, Android API \>= 26
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsScreenPropsBase`](#screen).[`tabBarItemAccessibilityLabel`](#screen-tabbaritemaccessibilitylabel)
+
+#### tabBarItemTestID?
+
+> `optional` **tabBarItemTestID?**: `string`
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:219](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L219)
+
+testID for the TabBarItem.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsScreenPropsBase`](#screen).[`tabBarItemTestID`](#screen-tabbaritemtestid)
+
+#### testID?
+
+> `optional` **testID?**: `string`
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:205](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L205)
+
+testID for the TabsScreen.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsScreenPropsBase`](#screen).[`testID`](#screen-testid)
+
+#### title?
+
+> `optional` **title?**: `string`
+
+Defined in: [components/tabs/screen/TabsScreen.types.ts:104](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.types.ts#L104)
+
+Title of the tab screen, displayed in the tab bar item.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`TabsScreenPropsBase`](#screen).[`title`](#screen-title)

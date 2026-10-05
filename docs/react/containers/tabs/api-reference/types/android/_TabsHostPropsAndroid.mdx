@@ -1,0 +1,50 @@
+## TabsHostPropsAndroid {#tabshostpropsandroid}
+
+Defined in: [components/tabs/host/TabsHost.android.types.ts:7](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.android.types.ts#L7)
+
+Android-only props for [Tabs.Host](#host), nested under the `android` key.
+
+### Platform
+
+android
+
+### Since
+
+5.0
+
+### Properties
+
+#### tabBarRespectsIMEInsets?
+
+> `optional` **tabBarRespectsIMEInsets?**: `boolean`
+
+Defined in: [components/tabs/host/TabsHost.android.types.ts:25](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.android.types.ts#L25)
+
+Determines whether `BottomNavigationView` applies the inset for IME (i.e. keyboard).
+
+##### Remarks
+
+On API prior to 30, setting this prop to `true` has no effect.
+
+Changing this prop while the keyboard is open will not take effect immediately.
+The new value will be applied the next time the keyboard is opened.
+
+##### Tip
+
+This prop should be used with `android:windowSoftInputMode="adjustResize"`.
+
+##### Default Value
+
+`false`
+
+##### Platform
+
+android
+
+##### Supported
+
+Android API \>= 30
+
+##### Since
+
+5.0

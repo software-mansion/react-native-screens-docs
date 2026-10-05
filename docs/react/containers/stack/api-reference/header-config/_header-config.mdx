@@ -1,0 +1,182 @@
+## HeaderConfig {#header-config}
+
+Defined in: [components/stack/header/StackHeaderConfig.types.ts:110](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.types.ts#L110)
+
+Configures the native header of the enclosing stack screen.
+
+### Remarks
+
+Render it inside a [Stack.Screen](#screen) to configure that screen's header.
+
+### Platform
+
+android, ios
+
+### Since
+
+5.0
+
+### Extends
+
+- [`StackHeaderConfigPropsBase`](#header-config)
+
+### Properties
+
+#### android?
+
+> `optional` **android?**: [`StackHeaderConfigPropsAndroid`](#stackheaderconfigpropsandroid)
+
+Defined in: [components/stack/header/StackHeaderConfig.types.ts:117](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.types.ts#L117)
+
+Android-only configuration, nested under the `android` key.
+
+##### Platform
+
+android
+
+##### Since
+
+5.0
+
+#### backButtonHidden?
+
+> `optional` **backButtonHidden?**: `boolean`
+
+Defined in: [components/stack/header/StackHeaderConfig.types.ts:98](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.types.ts#L98)
+
+Specifies if the back button should be hidden.
+
+##### Remarks
+
+This prop does not apply to the root screen of the stack for which the back
+button is always hidden.
+
+##### Default Value
+
+`false`
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderConfigPropsBase`](#header-config).[`backButtonHidden`](#header-config-backbuttonhidden)
+
+#### hidden?
+
+> `optional` **hidden?**: `boolean`
+
+Defined in: [components/stack/header/StackHeaderConfig.types.ts:69](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.types.ts#L69)
+
+Specifies if the header should be hidden.
+
+##### Default Value
+
+`false`
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderConfigPropsBase`](#header-config).[`hidden`](#header-config-hidden)
+
+#### ios?
+
+> `optional` **ios?**: [`StackHeaderConfigPropsIOS`](#stackheaderconfigpropsios)
+
+Defined in: [components/stack/header/StackHeaderConfig.types.ts:124](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.types.ts#L124)
+
+iOS-only configuration, nested under the `ios` key.
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### subtitle?
+
+> `optional` **subtitle?**: `string`
+
+Defined in: [components/stack/header/StackHeaderConfig.types.ts:61](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.types.ts#L61)
+
+Subtitle displayed in the header.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderConfigPropsBase`](#header-config).[`subtitle`](#header-config-subtitle)
+
+#### title?
+
+> `optional` **title?**: `string`
+
+Defined in: [components/stack/header/StackHeaderConfig.types.ts:54](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.types.ts#L54)
+
+Title displayed in the header.
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderConfigPropsBase`](#header-config).[`title`](#header-config-title)
+
+#### transparent?
+
+> `optional` **transparent?**: `boolean`
+
+Defined in: [components/stack/header/StackHeaderConfig.types.ts:86](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.types.ts#L86)
+
+Specifies if the content should be rendered behind the header.
+
+##### Remarks
+
+When `true`, content is rendered behind the header instead of starting
+below it.
+
+On Android:
+- The header background color is not affected by this prop.
+- Setting this prop to `true` is not supported when header scrolling is
+  enabled.
+
+##### Default Value
+
+`false`
+
+##### Platform
+
+android, ios
+
+##### Since
+
+5.0
+
+##### Inherited from
+
+[`StackHeaderConfigPropsBase`](#header-config).[`transparent`](#header-config-transparent)

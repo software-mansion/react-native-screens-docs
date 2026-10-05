@@ -1,0 +1,85 @@
+## StackHeaderConfigCommandsIOS {#stackheaderconfigcommandsios}
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:485](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L485)
+
+Imperative commands for the iOS header configuration.
+
+### Platform
+
+ios
+
+### Since
+
+5.0
+
+### Properties
+
+#### setMenuItemOptions
+
+> **setMenuItemOptions**: (`menuElementId`, `options`) => `void`
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:496](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L496)
+
+Updates properties of a menu action (leaf item) at runtime.
+
+##### Parameters
+
+###### menuElementId
+
+`string`
+
+The ID of the menu action to update.
+
+###### options
+
+[`StackHeaderMenuItemOptionsIOS`](#stackheadermenuitemoptionsios)
+
+Object with properties to change. Omitted keys preserve current
+       values. Explicit `undefined` resets to default.
+
+##### Returns
+
+`void`
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
+
+#### setMenuOptions
+
+> **setMenuOptions**: (`menuElementId`, `options`) => `void`
+
+Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:510](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L510)
+
+Updates properties of a submenu at runtime.
+
+##### Parameters
+
+###### menuElementId
+
+`string`
+
+The ID of the submenu to update.
+
+###### options
+
+[`StackHeaderMenuOptionsIOS`](#stackheadermenuoptionsios)
+
+Object with properties to change. Omitted keys preserve current
+       values. Explicit `undefined` resets to default.
+
+##### Returns
+
+`void`
+
+##### Platform
+
+ios
+
+##### Since
+
+5.0
