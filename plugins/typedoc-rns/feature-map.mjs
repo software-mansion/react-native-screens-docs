@@ -177,10 +177,11 @@ export function blockTagText(reflection, tagName) {
 export function platformsOf(reflection) {
   const text = blockTagText(reflection, '@platform');
   if (text === undefined) return [];
-  const tokens = text
-    .split(',')
-    .map(token => token.trim().toLowerCase())
-    .filter(token => PLATFORMS.includes(token));
+  const tokens = text.split(',').map(token => token.trim().toLowerCase());
+  const invalid = tokens.filter(token => !PLATFORMS.includes(token));
+  if (invalid.length > 0) {
+    throw new Error(`Unknown @platform value(s): ${invalid.join(', ')}`);
+  }
   return [...new Set(tokens)].sort();
 }
 
