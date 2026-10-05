@@ -15,7 +15,8 @@
 //                  than on their own — the `XPropsBase` interface a props type extends, and
 //                  the namespace member (`Tabs.Host`) users actually write.
 
-const LIB = '../react-native-screens/src';
+export const LIB_REPO = '../react-native-screens';
+const LIB = `${LIB_REPO}/src`;
 
 export const FEATURES = {
   'components/stack': {
@@ -24,7 +25,12 @@ export const FEATURES = {
     dir: 'react/containers/stack',
     components: [
       { id: 'host', label: 'Host', props: 'StackHostProps', merged: ['Host'] },
-      { id: 'screen', label: 'Screen', props: 'StackScreenProps', merged: ['Screen'] },
+      {
+        id: 'screen',
+        label: 'Screen',
+        props: 'StackScreenProps',
+        merged: ['Screen'],
+      },
       {
         id: 'header-config',
         label: 'HeaderConfig',
@@ -129,7 +135,9 @@ export const FEATURES = {
   },
 };
 
-export const entryPoints = Object.values(FEATURES).map(feature => feature.entryPoint);
+export const entryPoints = Object.values(FEATURES).map(
+  feature => feature.entryPoint,
+);
 
 /** The generator-owned folder of a family (relative to docs/) — wiped on every run. */
 export function outputRoot(feature) {
@@ -138,7 +146,9 @@ export function outputRoot(feature) {
 
 /** The file that assembles a family's generated parts (relative to docs/, no extension). */
 export function outputFile(feature) {
-  return feature.dir ? `${outputRoot(feature)}/_api-reference` : `${feature.page}/index`;
+  return feature.dir
+    ? `${outputRoot(feature)}/_api-reference`
+    : `${feature.page}/index`;
 }
 
 /** The doc that links to a family's reflections resolve to (relative to docs/, no extension). */
