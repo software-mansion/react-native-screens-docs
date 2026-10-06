@@ -1,7 +1,12 @@
 // Generates the API reference from the library's TSDoc comments; run by `yarn gen:api`.
 // Reads the sibling checkout (`LIB_REPO`), which must be `yarn install`ed.
+// The generator is loaded from `plugins/typedoc-rns/dist/`, which `yarn gen:api` builds first.
+// This file stays .mjs: TypeDoc does not read a .ts config.
 
-import { entryPoints, LIB_REPO } from './plugins/typedoc-rns/feature-map.mjs';
+import {
+  entryPoints,
+  LIB_REPO,
+} from './plugins/typedoc-rns/dist/feature-map.mjs';
 
 /** @type {Partial<import('typedoc').TypeDocOptions>} */
 export default {
@@ -14,7 +19,7 @@ export default {
   // Without this, `ViewProps` alone adds ~100 inherited react-native props to Split/SafeArea.
   excludeExternals: true,
 
-  plugin: ['typedoc-plugin-markdown', './plugins/typedoc-rns/index.mjs'],
+  plugin: ['typedoc-plugin-markdown', './plugins/typedoc-rns/dist/index.mjs'],
   router: 'rns',
   theme: 'rns',
   // The assembling file imports its parts, and later PRs put React components on the pages.

@@ -6,10 +6,13 @@
  * - Part imports. The page shows its parts as `<Host />`, …; their `import` lines are known
  *   only once every part is rendered (`renderFeaturePage`), so they go on top here.
  *
- * @param {string} contents
- * @param {{ imports?: string[] }} [options] `
+ * @param contents a rendered page or part
+ * @param options.imports `import` lines to put above the page body
  */
-export function transform(contents, options = {}) {
+export function transform(
+  contents: string,
+  options: { imports?: string[] } = {},
+): string {
   const body = contents.replace(/\n{3,}/g, '\n\n').trim();
   const head = options.imports?.length
     ? `${options.imports.join('\n')}\n\n`
