@@ -1,6 +1,6 @@
 // Which library module becomes which docs page, and which of its types are components.
 // The single source of truth for the generator: the TypeDoc config reads the entry points
-// from here, and the router and the theme (later PRs) read everything else.
+// from here, and the router and the theme read everything else.
 //
 // Keyed by TypeDoc module name — the entry point's path relative to the entry points'
 // common base, so `src/components/tabs/index.ts` is the module `components/tabs`.
@@ -167,8 +167,15 @@ export function componentFor(
   );
 }
 
+/**
+ * The platforms, in the order the docs list them: the platform-specific types after the shared
+ * ones, and a component's flattened props after its shared props
+ * (`<Tabs.Host ios={{ bottomAccessory }} />` documents as `ios.bottomAccessory`).
+ */
+export const PLATFORM_KEYS: readonly Platform[] = ['ios', 'android'];
+
 /** The platform tokens the docs understand. Anything else in a `@platform` tag is a typo. */
-const PLATFORMS: readonly string[] = ['android', 'ios'];
+const PLATFORMS: readonly string[] = PLATFORM_KEYS;
 
 /**
  * TypeDoc parks a function-type alias's comment on its signature (`type F = (x) => y`), not
@@ -181,6 +188,12 @@ export function commentOf(reflection: Reflection): Comment | undefined {
     ((reflection as DeclarationReflection).type as ReflectionType | undefined)?.declaration
       ?.signatures?.[0]?.comment
   );
+}
+
+/** A props type's own props — an interface's children, or those of an object type. */
+export function membersOf(model: DeclarationReflection): DeclarationReflection[] {
+  if (model.children?.length) return model.children;
+  return model.type?.type === 'reflection' ? (model.type.declaration.children ?? []) : [];
 }
 
 /** A block tag's text (`blockTagText(r, '@since')` → `'5.0'`), `undefined` when absent. */

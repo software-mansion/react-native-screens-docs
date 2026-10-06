@@ -11,15 +11,32 @@ import {
 
 import {
   FEATURES,
+  PLATFORM_KEYS,
   type Feature,
   type Platform,
   anchorSlug,
   componentFor,
   linkTarget,
+  membersOf,
   outputFile,
   outputRoot,
   platformDirOf,
 } from './feature-map.mjs';
+
+/**
+ * The `ios` / `android` props of a component section: the props type behind that key, whose
+ * own props render after the section's as `ios.x` / `android.x`, in a part of their own.
+ */
+export interface PlatformProps {
+  key: Platform;
+  /**
+   * The props type the key holds (`TabsHostPropsIOS`); not listed among the Types. It and the
+   * key's prop both link to `#<section>-<key>` (`#host-ios`), the start of the part.
+   */
+  model: DeclarationReflection;
+  /** The part's file, relative to the family's `api-reference/` (`host/_ios`). */
+  part: string;
+}
 
 /** One section of a family page: a component's props, or a type. */
 export interface Section {
@@ -29,6 +46,8 @@ export interface Section {
   anchor: string;
   /** The section's file, relative to the family's `api-reference/` (set once routed). */
   part?: string;
+  /** A component's flattened `ios` / `android` props, in `PLATFORM_KEYS` order; `[]` for a type. */
+  platforms: PlatformProps[];
 }
 
 /** A family page: its feature and its sections in page order. */
@@ -68,8 +87,11 @@ function moduleOf(reflection: Reflection | undefined): Reflection | undefined {
   return current;
 }
 
-// Types are listed shared first, then the platform-specific ones.
-const PLATFORM_ORDER: Record<Platform | '', number> = { '': 0, ios: 1, android: 2 };
+// Types are listed shared first, then the platform-specific ones in `PLATFORM_KEYS` order.
+function platformRank(reflection: Reflection): number {
+  const platform = platformDirOf(reflection);
+  return platform ? PLATFORM_KEYS.indexOf(platform) + 1 : 0;
+}
 
 /**
  * Writes the reference into the docs tree the feature map describes, instead of TypeDoc's
@@ -91,6 +113,8 @@ export class RnsRouter extends MemberRouter {
   #layouts = new Map<RouterTarget, Layout>();
   /** the models rendered as a section of a page */
   #sections = new Set<RouterTarget>();
+  /** the `ios` / `android` props whose props are flattened into their section */
+  #flattenedProps = new Set<RouterTarget>();
 
   /** The layout of the page this model renders, or `undefined` for anything else. */
   pageLayout(model: RouterTarget): Layout | undefined {
@@ -103,8 +127,22 @@ export class RnsRouter extends MemberRouter {
     return layout ? `${linkTarget(layout.feature)}${this.extension}` : undefined;
   }
 
+  /**
+   * True for a model rendered as a section of a page: a component's props type, a type, or a
+   * component's flattened `ios` / `android` props type. Not used yet — the member headings will
+   * need it to tell a section's own props (which get platform badges) from nested keys.
+   */
   isSectionModel(model: RouterTarget): boolean {
     return this.#sections.has(model);
+  }
+
+  /**
+   * True for a component's `ios` / `android` prop. It renders no entry: its props follow the
+   * section's as `ios.x`, each with its own `@platform`. The comments of the prop and of its
+   * props type are not rendered.
+   */
+  isFlattenedProp(model: RouterTarget): boolean {
+    return this.#flattenedProps.has(model);
   }
 
   #featureOf(reflection: Reflection): Feature {
@@ -169,6 +207,7 @@ export class RnsRouter extends MemberRouter {
       // The pages MemberRouter builds for a family are all declarations.
       const models = featurePages.map(page => page.model as DeclarationReflection);
       const sections: Section[] = [];
+      const flattened = new Set<DeclarationReflection>();
 
       for (const component of feature.components) {
         const model = models.find(candidate => candidate.name === component.props);
@@ -179,20 +218,60 @@ export class RnsRouter extends MemberRouter {
           );
         }
         anchors.set(model, component.id);
-        sections.push({ kind: 'component', model, title: component.label, anchor: component.id });
+
+        // `ios` / `android` hold a props type of their own; its props join the section as
+        // `ios.x`, anchored `host-ios-x`, and the type leaves the Types list. Links to the type
+        // and to the prop resolve to `host-ios` (the type's anchor below; the prop is `host` +
+        // `ios`), which the theme puts at the start of the part.
+        const platforms: PlatformProps[] = [];
+        for (const key of PLATFORM_KEYS) {
+          const prop = membersOf(model).find(member => member.name === key);
+          if (!prop) continue;
+          const target =
+            prop.type?.type === 'reference'
+              ? (prop.type.reflection as DeclarationReflection | undefined)
+              : undefined;
+          if (!target || !models.includes(target)) {
+            // Left as a plain prop, its type listed among the Types; the warning reports a
+            // library change that stops the flattening.
+            this.application.logger.warn(
+              `[typedoc-rns] ${feature.label}/${component.label}: \`${key}\` is not flattened — ` +
+                'its type must be a plain reference to a type this family exports.',
+            );
+            continue;
+          }
+          flattened.add(target);
+          this.#flattenedProps.add(prop);
+          anchors.set(target, `${component.id}-${key}`);
+          platforms.push({ key, model: target, part: `${component.id}/_${key}` });
+        }
+
+        sections.push({
+          kind: 'component',
+          model,
+          title: component.label,
+          anchor: component.id,
+          platforms,
+        });
       }
 
       const componentModels = new Set(sections.map(section => section.model));
       const types = models
-        .filter(model => !componentModels.has(model))
+        .filter(model => !componentModels.has(model) && !flattened.has(model))
         .sort(
           (a, b) =>
-            PLATFORM_ORDER[platformDirOf(a)] - PLATFORM_ORDER[platformDirOf(b)] ||
+            platformRank(a) - platformRank(b) ||
             a.name.localeCompare(b.name),
         );
       for (const model of types) {
         anchors.set(model, anchorSlug(model.name));
-        sections.push({ kind: 'type', model, title: model.name, anchor: anchorSlug(model.name) });
+        sections.push({
+          kind: 'type',
+          model,
+          title: model.name,
+          anchor: anchorSlug(model.name),
+          platforms: [],
+        });
       }
 
       // A merged reflection resolves onto the section it documents in.
@@ -207,6 +286,7 @@ export class RnsRouter extends MemberRouter {
       for (const section of sections) {
         section.part = this.getIdealBaseName(section.model).slice(root.length + 1);
         this.#sections.add(section.model);
+        for (const platform of section.platforms) this.#sections.add(platform.model);
       }
 
       const pageModel = sections[0]!.model;
