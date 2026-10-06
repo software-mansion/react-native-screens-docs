@@ -14,10 +14,28 @@
 //                  than on their own — the `XPropsBase` interface a props type extends, and
 //                  the namespace member (`Tabs.Host`) users actually write.
 
+import type { Comment, DeclarationReflection, Reflection, ReflectionType } from 'typedoc';
+
+export interface Component {
+  id: string;
+  label: string;
+  props: string;
+  merged: string[];
+}
+
+export interface Feature {
+  entryPoint: string;
+  label: string;
+  dir: string;
+  components: Component[];
+}
+
+export type Platform = 'android' | 'ios';
+
 export const LIB_REPO = '../react-native-screens';
 const LIB = `${LIB_REPO}/src`;
 
-export const FEATURES = {
+export const FEATURES: Record<string, Feature> = {
   'components/stack': {
     entryPoint: `${LIB}/components/stack/index.ts`,
     label: 'Stack',
@@ -139,7 +157,10 @@ export const entryPoints = Object.values(FEATURES).map(
 );
 
 /** The component a reflection documents as part of: its props type, or one of its `merged`. */
-export function componentFor(feature, reflection) {
+export function componentFor(
+  feature: Feature,
+  reflection: Reflection,
+): Component | undefined {
   return feature.components.find(
     component =>
       reflection.name === component.props || component.merged.includes(reflection.name),
@@ -147,22 +168,26 @@ export function componentFor(feature, reflection) {
 }
 
 /** The platform tokens the docs understand. Anything else in a `@platform` tag is a typo. */
-const PLATFORMS = ['android', 'ios'];
+const PLATFORMS: readonly string[] = ['android', 'ios'];
 
 /**
  * TypeDoc parks a function-type alias's comment on its signature (`type F = (x) => y`), not
  * on the alias, so `reflection.comment` alone misses those.
  */
-export function commentOf(reflection) {
+export function commentOf(reflection: Reflection): Comment | undefined {
   return (
     reflection.comment ??
-    reflection.signatures?.[0]?.comment ??
-    reflection.type?.declaration?.signatures?.[0]?.comment
+    (reflection as DeclarationReflection).signatures?.[0]?.comment ??
+    ((reflection as DeclarationReflection).type as ReflectionType | undefined)?.declaration
+      ?.signatures?.[0]?.comment
   );
 }
 
 /** A block tag's text (`blockTagText(r, '@since')` → `'5.0'`), `undefined` when absent. */
-export function blockTagText(reflection, tagName) {
+export function blockTagText(
+  reflection: Reflection,
+  tagName: `@${string}`,
+): string | undefined {
   const tag = commentOf(reflection)?.getTag(tagName);
   return tag
     ? tag.content
@@ -173,7 +198,7 @@ export function blockTagText(reflection, tagName) {
 }
 
 /** The platforms a symbol is documented for, read from `@platform`; `[]` when untagged. */
-export function platformsOf(reflection) {
+export function platformsOf(reflection: Reflection): Platform[] {
   const text = blockTagText(reflection, '@platform');
   if (text === undefined) return [];
   const tokens = text.split(',').map(token => token.trim().toLowerCase());
@@ -181,27 +206,27 @@ export function platformsOf(reflection) {
   if (invalid.length > 0) {
     throw new Error(`Unknown @platform value(s): ${invalid.join(', ')}`);
   }
-  return [...new Set(tokens)].sort();
+  return [...new Set(tokens as Platform[])].sort();
 }
 
 /** `'ios'` / `'android'` for a single-platform symbol, `''` for everything else. */
-export function platformDirOf(reflection) {
+export function platformDirOf(reflection: Reflection): Platform | '' {
   const platforms = platformsOf(reflection);
   return platforms.length === 1 ? platforms[0] : '';
 }
 
 /** The generator-owned folder of a family (relative to docs/) — wiped on every run. */
-export function outputRoot(feature) {
+export function outputRoot(feature: Feature): string {
   return `${feature.dir}/api-reference`;
 }
 
 /** The file that assembles a family's generated parts (relative to docs/, no extension). */
-export function outputFile(feature) {
+export function outputFile(feature: Feature): string {
   return `${outputRoot(feature)}/_api-reference`;
 }
 
 /** `StackHeaderItemIOS` → `stackheaderitemios`, `android.icon` → `android-icon`. */
-export function anchorSlug(text) {
+export function anchorSlug(text: string): string {
   return text
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
@@ -209,6 +234,6 @@ export function anchorSlug(text) {
 }
 
 /** The doc that links to a family's reflections resolve to (relative to docs/, no extension). */
-export function linkTarget(feature) {
+export function linkTarget(feature: Feature): string {
   return `${feature.dir}/index`;
 }

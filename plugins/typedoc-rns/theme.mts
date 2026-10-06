@@ -1,8 +1,28 @@
 import { posix } from 'node:path';
-import { ReflectionKind } from 'typedoc';
-import { MarkdownTheme, MarkdownThemeContext } from 'typedoc-plugin-markdown';
+import {
+  ReflectionKind,
+  type DeclarationReflection,
+  type Options,
+  type Reflection,
+  type RouterTarget,
+} from 'typedoc';
+import { MarkdownTheme, MarkdownThemeContext, type MarkdownPageEvent } from 'typedoc-plugin-markdown';
 
 import { outputRoot } from './feature-map.mjs';
+import type { Layout, RnsRouter, Section } from './router.mjs';
+
+/** The parts of a family page, parked on it by `renderFeaturePage` for index.mts to write. */
+export interface RnsParts {
+  root: string;
+  parts: { path: string; body: string }[];
+  imports: string[];
+}
+
+declare module 'typedoc-plugin-markdown' {
+  interface MarkdownPageEvent<out Model extends RouterTarget = RouterTarget> {
+    rnsParts?: RnsParts;
+  }
+}
 
 const SEPARATOR = '\n\n***\n\n';
 
@@ -11,7 +31,11 @@ const SEPARATOR = '\n\n***\n\n';
  * Docusaurus would otherwise slug the heading text, and `title` of one section would take the
  * `#title` that the next section's `title` needs too — every cross-link to a member breaks.
  */
-function renderMemberContainer(ctx, model, options) {
+function renderMemberContainer(
+  ctx: RnsThemeContext,
+  model: DeclarationReflection,
+  options: { headingLevel: number; nested?: boolean },
+): string {
   const md = [];
   if (!ctx.router.hasOwnDocument(model) && model.kind !== ReflectionKind.Constructor) {
     const anchor = ctx.router.hasUrl(model) ? ctx.router.getAnchor(model) : undefined;
@@ -27,22 +51,24 @@ function renderMemberContainer(ctx, model, options) {
 }
 
 /** A part's path doubles as its MDX component name: `types/ios/_BlurEffect` → `TypeBlurEffect`. */
-function partName(section) {
+function partName(section: Section): string {
   return section.kind === 'component'
-    ? section.title.replace(/[^A-Za-z0-9]+(.)?/g, (_, char) => (char ? char.toUpperCase() : ''))
+    ? section.title.replace(/[^A-Za-z0-9]+(.)?/g, (_, char?: string) =>
+        char ? char.toUpperCase() : '',
+      )
     : `Type${section.model.name}`;
 }
 
 /**
  * Renders a family into one file per section, and returns the file that assembles them: an
  * import per part, then the parts in page order. The parts are parked on the page for
- * index.mjs to write — a template can only return the one file TypeDoc asked for.
+ * index.mts to write — a template can only return the one file TypeDoc asked for.
  */
-function renderFeaturePage(ctx, layout) {
+function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
   const root = outputRoot(layout.feature);
-  const parts = [];
-  const imports = [];
-  const usages = [];
+  const parts: RnsParts['parts'] = [];
+  const imports: string[] = [];
+  const usages: string[] = [];
 
   for (const section of layout.sections) {
     const name = partName(section);
@@ -55,7 +81,7 @@ function renderFeaturePage(ctx, layout) {
     ].join('\n\n');
     ctx.rnsPartFile = undefined;
 
-    parts.push({ path: section.part, body });
+    parts.push({ path: section.part!, body });
     imports.push(`import ${name} from './${section.part}${ctx.router.extension}';`);
     usages.push(`<${name} />`);
   }
@@ -65,8 +91,16 @@ function renderFeaturePage(ctx, layout) {
 }
 
 class RnsThemeContext extends MarkdownThemeContext {
-  urlTo(reflection) {
-    const [targetFile, fragment] = this.router.getFullUrl(reflection).split('#');
+  /** The part file `renderFeaturePage` is rendering now, `undefined` otherwise (see `urlTo`). */
+  declare rnsPartFile: string | undefined;
+  /** The router is always ours here — `typedoc.config.mjs` sets `router: 'rns'`. */
+  declare router: RnsRouter;
+
+  override urlTo(reflection: Reflection): string {
+    const [targetFile, fragment] = this.router.getFullUrl(reflection).split('#') as [
+      string,
+      string | undefined,
+    ];
     const pageFile = this.router.linkFileFor?.(this.page.model) ?? this.page.url;
     if (targetFile === pageFile) {
       return fragment ? `#${fragment}` : '';
@@ -76,7 +110,7 @@ class RnsThemeContext extends MarkdownThemeContext {
     return encodeURI(`${relative}${fragment ? `#${fragment}` : ''}`);
   }
 
-  constructor(theme, page, options) {
+  constructor(theme: MarkdownTheme, page: MarkdownPageEvent<Reflection>, options: Options) {
     super(theme, page, options);
     this.partials = {
       ...this.partials,
@@ -94,7 +128,7 @@ class RnsThemeContext extends MarkdownThemeContext {
 }
 
 export class RnsTheme extends MarkdownTheme {
-  getRenderContext(page) {
+  override getRenderContext(page: MarkdownPageEvent<Reflection>): MarkdownThemeContext {
     return new RnsThemeContext(this, page, this.application.options);
   }
 }

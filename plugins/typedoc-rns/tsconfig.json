@@ -1,0 +1,20 @@
+{
+  // `yarn gen:api` compiles the generator into `dist/`, which typedoc.config.mjs loads.
+  // `yarn typecheck` only checks types.
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "strict": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
+    "types": ["node"],
+    "rootDir": ".",
+    "outDir": "dist",
+    "sourceMap": true,
+    "incremental": true,
+    "tsBuildInfoFile": "dist/.tsbuildinfo",
+    "newLine": "lf"
+  },
+  "include": ["*.mts"]
+}
