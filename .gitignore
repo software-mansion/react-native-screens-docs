@@ -9,6 +9,8 @@
 .cache-loader
 # Built by `yarn gen:api` from plugins/typedoc-rns/*.mts
 /plugins/typedoc-rns/dist
+# `yarn gen:api`'s copy of the previous output, present only while it runs
+/.gen-api-backup*
 
 # Misc
 .DS_Store
