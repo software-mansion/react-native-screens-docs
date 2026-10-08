@@ -107,29 +107,35 @@ table thead tr {
 }
 
 /*
-Align the looks of all items within each navigator.
-The Navigator.* items are links whereas `Types reference` is a category,
-which Docusaurus styles differently. This makes all of them look the same.
+A top-level sidebar page that stands where a section would (React Common Types in
+sidebars.js) reads as a section label: the label's font (typography.css), the base colour,
+flush left. Its spacing is a section's: a label's top margin above it and a section list's
+bottom margin below it, so the gaps to the neighbouring sections match theirs. t-rex-ui sets
+both in px, without variables (`[class*=menu__list-item-collapsible] a` and
+`[class*=menu__list] ul` in its stylesheet), so they are restated here — check them when
+updating @swmansion/t-rex-ui. Hover and the active page keep t-rex-ui's link states.
 */
-.navigator-category .menu__list-item .menu__link {
-  font-size: 1rem;
-  font-weight: 500;
-  margin: 0;
-  color: var(--swm-sidebar-menu-color);
+:root {
+  --rns-sidebar-section-label-margin-top: 8px;
+  --rns-sidebar-section-list-margin-bottom: 16px;
 }
 
-/*
-Add styling and a horizontal indent line for the `Types reference` items.
-*/
-.types-reference .menu__list-item .menu__link {
-  font-size: 0.925rem;
-  font-weight: 400;
-  line-height: 1;
-  padding-left: 0.5rem;
-  margin-left: 0.2rem;
-  border-radius: 0;
-  border-left: 1px solid var(--ifm-color-emphasis-300);
+@media (max-width: 996px) {
+  :root {
+    --rns-sidebar-section-label-margin-top: 4px;
+  }
 }
+
+.sidebar-section-link > .menu__link {
+  margin: var(--rns-sidebar-section-label-margin-top) 0
+    var(--rns-sidebar-section-list-margin-bottom);
+  padding-left: 0;
+}
+
+.sidebar-section-link > .menu__link:not(.menu__link--active, :hover) {
+  color: var(--ifm-font-color-base);
+}
+
 footer.footer {
   --ifm-footer-padding-vertical: 40px;
 }
