@@ -1,3 +1,4 @@
+/* The SWM house faces: Aeonik for titles and body, DM Mono for code. */
 @font-face {
   font-family: 'Aeonik';
   src: url('/static/fonts/Aeonik-Regular.otf') format('opentype');
@@ -22,6 +23,11 @@
   font-weight: 400;
 }
 
+/*
+Typography tokens. The `--swm-*` ones are read by t-rex-ui's components (admonition
+headings, paginator, search page, title fonts) and by this file; `--ifm-*` hand the house
+fonts to Infima.
+*/
 :root {
   --swm-title-landing-font: 'Aeonik';
   --swm-title-font: 'Aeonik';
@@ -29,7 +35,6 @@
   --swm-code-font: 'DM Mono';
 
   --ifm-font-family-base: var(--swm-body-font);
-  --ifm-font-family-bold: var(--swm-body-font);
 
   /* Heading */
   --swm-h1-font-size: 42px;
@@ -62,10 +67,15 @@
 
   /* Search page */
   --swm-search-page-heading-font-weight: 600;
-  --swm-search-page-summary-font-size: 14px;
 }
 
-/* Remove all heading rules, prioritized by Docusaurus */
+/*
+Heading sizes and vertical rhythm. Infima re-declares the heading-size variables on the
+headings themselves (`.markdown h1:first-child { --ifm-h1-font-size: 3rem }`,
+`.markdown > h2`, … and again under 576px), so a value set on `:root` alone never reaches
+a markdown heading. Declaring the house values on the same selectors, in a stylesheet
+loaded after Infima, is what makes them win.
+*/
 :root,
 .markdown h1:first-child,
 .markdown > h1,
@@ -110,6 +120,10 @@
   }
 }
 
+/*
+House element typography, the same as the other SWM docs sites: semibold headings with
+slight tracking, per-level line heights, h6 in the code face.
+*/
 h1,
 h2,
 h3,
@@ -149,10 +163,46 @@ p {
   line-height: 1.6;
 }
 
+/*
+TOC. Identifier names wrap at camelCase word boundaries (zero-width spaces from
+TOCItems). Keep the gap between items, but tighten the wrapped lines of one item.
+The first nested heading uses the same top gap as two siblings, so a child folder
+does not sit tighter to its parent than two folders on one level sit to each other.
+*/
+.table-of-contents li {
+  margin: 0.7em 0 0;
+}
+
+.table-of-contents > li:first-child {
+  margin-top: 0;
+}
+
+.table-of-contents__link {
+  line-height: 1.2;
+}
+
+/*
+Sidebar section labels, in the title face one step above the pages under them — the same
+18/600 against 16/500 that Reanimated and Gesture Handler use — and a page that stands as a
+section (`.sidebar-section-link`, overrides.css). Keyed on the attribute selector rather than
+`.menu__list-item-collapsible`, matching how t-rex-ui writes its own sidebar rules.
+*/
+[class*='menu__list-item-collapsible'] a,
+.sidebar-section-link > .menu__link {
+  font-family: var(--swm-title-font);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Docusaurus <Tabs> labels, in the title face. */
 ul[role='tablist'] {
   font-family: var(--swm-title-font);
 }
 
+/*
+Inline code in the code face. Links are medium weight with a 1px rule under the whole
+link in place of Infima's underline; a code span inside a link is underlined as well.
+*/
 code {
   font-family: var(--swm-code-font);
   font-weight: 400;
@@ -169,12 +219,4 @@ code {
   text-decoration: none;
 
   border-bottom: 1px solid var(--ifm-font-color-base);
-}
-
-/* Sidebar section labels — and a page that stands as a section (`.sidebar-section-link`) */
-[class*='menu__list-item-collapsible'] a,
-.sidebar-section-link > .menu__link {
-  font-family: var(--swm-title-font);
-  font-weight: 600;
-  font-size: 18px;
 }
