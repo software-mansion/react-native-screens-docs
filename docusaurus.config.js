@@ -61,7 +61,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          breadcrumbs: false,
+          breadcrumbs: true,
           sidebarPath: require.resolve('./sidebars.js'),
           sidebarCollapsible: false,
           editUrl:
@@ -115,7 +115,7 @@ const config = {
         },
         items: [
           {
-            to: 'docs/fundamentals/getting-started',
+            to: 'docs/fundamentals/getting-started-empty',
             activeBasePath: 'docs',
             label: 'Docs',
             position: 'right',
