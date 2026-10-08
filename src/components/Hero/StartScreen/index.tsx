@@ -18,7 +18,7 @@ const StartScreen = () => {
         </div>
         <div className={styles.buttonContainer}>
           <HomepageButton
-            href={useBaseUrl('/docs/fundamentals/getting-started')}
+            href={useBaseUrl('/docs/fundamentals/getting-started-empty')}
             title="Learn more"
           />
         </div>

@@ -171,8 +171,9 @@ code {
   border-bottom: 1px solid var(--ifm-font-color-base);
 }
 
-/* Sidebar */
-[class*='menu__list-item-collapsible'] a {
+/* Sidebar section labels — and a page that stands as a section (`.sidebar-section-link`) */
+[class*='menu__list-item-collapsible'] a,
+.sidebar-section-link > .menu__link {
   font-family: var(--swm-title-font);
   font-weight: 600;
   font-size: 18px;
