@@ -6,6 +6,8 @@
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
     "verbatimModuleSyntax": true,
     // Only syntax Node can strip: no enums, no parameter properties.
     "erasableSyntaxOnly": true,

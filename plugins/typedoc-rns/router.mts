@@ -250,7 +250,7 @@ export class RnsRouter extends MemberRouter {
     }
   }
 
-  shouldWritePage(reflection: Reflection): boolean {
+  override shouldWritePage(reflection: Reflection): boolean {
     if (reflection.kindOf(SUPPRESSED_KINDS)) {
       return false;
     }

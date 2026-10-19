@@ -212,7 +212,7 @@ export function platformsOf(reflection: Reflection): Platform[] {
 /** `'ios'` / `'android'` for a single-platform symbol, `''` for everything else. */
 export function platformDirOf(reflection: Reflection): Platform | '' {
   const platforms = platformsOf(reflection);
-  return platforms.length === 1 ? platforms[0] : '';
+  return platforms.length === 1 ? (platforms[0] ?? '') : '';
 }
 
 /** The generator-owned folder of a family (relative to docs/) — wiped on every run. */
