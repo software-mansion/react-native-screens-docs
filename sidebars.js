@@ -6,8 +6,6 @@
 //   React Containers           Stack / Tabs / Split
 //   React Components & Modals  ScrollToTopGuard / SafeAreaView / FullWindowOverlay / FormSheet / PageSheet / ScrollViewMarker
 //   React Common Types
-//   Core Containers
-//   Core Components & Modals
 //   Guides
 //   Meta
 //
@@ -61,16 +59,6 @@ const sidebars = {
       id: 'react/common-types/index',
       label: 'React Common Types',
       className: 'sidebar-section-link',
-    },
-    {
-      type: 'category',
-      label: 'Core Containers',
-      items: ['core/containers/tabs/index'],
-    },
-    {
-      type: 'category',
-      label: 'Core Components & Modals',
-      items: ['core/components/overview-empty'],
     },
     {
       type: 'category',
