@@ -6,7 +6,11 @@ import {
   type Reflection,
   type RouterTarget,
 } from 'typedoc';
-import { MarkdownTheme, MarkdownThemeContext, type MarkdownPageEvent } from 'typedoc-plugin-markdown';
+import {
+  MarkdownTheme,
+  MarkdownThemeContext,
+  type MarkdownPageEvent,
+} from 'typedoc-plugin-markdown';
 
 import { membersOf, outputRoot } from './feature-map.mts';
 import type { Layout, RnsRouter, Section } from './router.mts';
@@ -49,15 +53,23 @@ function renderMemberContainer(
     return '';
   }
   const md = [];
-  if (!ctx.router.hasOwnDocument(model) && model.kind !== ReflectionKind.Constructor) {
-    const anchor = ctx.router.hasUrl(model) ? ctx.router.getAnchor(model) : undefined;
+  if (
+    !ctx.router.hasOwnDocument(model) &&
+    model.kind !== ReflectionKind.Constructor
+  ) {
+    const anchor = ctx.router.hasUrl(model)
+      ? ctx.router.getAnchor(model)
+      : undefined;
     const title = `${options.titlePrefix ?? ''}${ctx.partials.memberTitle(model)}`;
     md.push(
       `${'#'.repeat(options.headingLevel)} ${anchor ? `${title} {#${anchor}}` : title}`,
     );
   }
   md.push(
-    ctx.partials.member(model, { headingLevel: options.headingLevel, nested: options.nested }),
+    ctx.partials.member(model, {
+      headingLevel: options.headingLevel,
+      nested: options.nested,
+    }),
   );
   return md.join('\n\n');
 }
@@ -143,11 +155,11 @@ class RnsThemeContext extends MarkdownThemeContext {
   declare router: RnsRouter;
 
   override urlTo(reflection: Reflection): string {
-    const [targetFile, fragment] = this.router.getFullUrl(reflection).split('#') as [
-      string,
-      string | undefined,
-    ];
-    const pageFile = this.router.linkFileFor?.(this.page.model) ?? this.page.url;
+    const [targetFile, fragment] = this.router
+      .getFullUrl(reflection)
+      .split('#') as [string, string | undefined];
+    const pageFile =
+      this.router.linkFileFor?.(this.page.model) ?? this.page.url;
     if (targetFile === pageFile) {
       return fragment ? `#${fragment}` : '';
     }
@@ -156,25 +168,34 @@ class RnsThemeContext extends MarkdownThemeContext {
     return encodeURI(`${relative}${fragment ? `#${fragment}` : ''}`);
   }
 
-  constructor(theme: MarkdownTheme, page: MarkdownPageEvent<Reflection>, options: Options) {
+  constructor(
+    theme: MarkdownTheme,
+    page: MarkdownPageEvent<Reflection>,
+    options: Options,
+  ) {
     super(theme, page, options);
     this.partials = {
       ...this.partials,
-      memberContainer: (model, options) => renderMemberContainer(this, model, options),
+      memberContainer: (model, options) =>
+        renderMemberContainer(this, model, options),
     };
     const baseTemplates = { ...this.templates };
     this.templates = {
       ...baseTemplates,
       reflection: event => {
         const layout = this.router.pageLayout?.(event.model);
-        return layout ? renderFeaturePage(this, layout) : baseTemplates.reflection(event);
+        return layout
+          ? renderFeaturePage(this, layout)
+          : baseTemplates.reflection(event);
       },
     };
   }
 }
 
 export class RnsTheme extends MarkdownTheme {
-  override getRenderContext(page: MarkdownPageEvent<Reflection>): MarkdownThemeContext {
+  override getRenderContext(
+    page: MarkdownPageEvent<Reflection>,
+  ): MarkdownThemeContext {
     return new RnsThemeContext(this, page, this.application.options);
   }
 }
