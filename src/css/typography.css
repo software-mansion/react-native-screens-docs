@@ -35,6 +35,7 @@ fonts to Infima.
   --swm-code-font: 'DM Mono';
 
   --ifm-font-family-base: var(--swm-body-font);
+  --ifm-font-family-bold: var(--swm-body-font);
 
   /* Heading */
   --swm-h1-font-size: 42px;
@@ -67,6 +68,7 @@ fonts to Infima.
 
   /* Search page */
   --swm-search-page-heading-font-weight: 600;
+  --swm-search-page-summary-font-size: 14px;
 }
 
 /*
