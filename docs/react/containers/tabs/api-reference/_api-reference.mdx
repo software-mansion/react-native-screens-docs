@@ -1,9 +1,9 @@
 import Host from './host/_host.mdx';
-import HostIos from './host/_ios.mdx';
 import HostAndroid from './host/_android.mdx';
+import HostIos from './host/_ios.mdx';
 import Screen from './screen/_screen.mdx';
-import ScreenIos from './screen/_ios.mdx';
 import ScreenAndroid from './screen/_android.mdx';
+import ScreenIos from './screen/_ios.mdx';
 import TypeTabSelectedEvent from './types/shared/_TabSelectedEvent.mdx';
 import TypeTabSelectionPreventedEvent from './types/shared/_TabSelectionPreventedEvent.mdx';
 import TypeTabSelectionRejectedEvent from './types/shared/_TabSelectionRejectedEvent.mdx';
@@ -16,6 +16,9 @@ import TypeTabsHostNavStateRequest from './types/shared/_TabsHostNavStateRequest
 import TypeTabsScreenEventHandler from './types/shared/_TabsScreenEventHandler.mdx';
 import TypeTabsScreenOrientation from './types/shared/_TabsScreenOrientation.mdx';
 import TypeTabsScreenStyleProps from './types/shared/_TabsScreenStyleProps.mdx';
+import TypeTabBarItemLabelVisibilityMode from './types/android/_TabBarItemLabelVisibilityMode.mdx';
+import TypeTabsScreenAppearanceAndroid from './types/android/_TabsScreenAppearanceAndroid.mdx';
+import TypeTabsScreenItemStateAppearanceAndroid from './types/android/_TabsScreenItemStateAppearanceAndroid.mdx';
 import TypeMoreTabSelectedEvent from './types/ios/_MoreTabSelectedEvent.mdx';
 import TypeTabBarControllerMode from './types/ios/_TabBarControllerMode.mdx';
 import TypeTabBarMinimizeBehavior from './types/ios/_TabBarMinimizeBehavior.mdx';
@@ -26,23 +29,20 @@ import TypeTabsScreenBlurEffect from './types/ios/_TabsScreenBlurEffect.mdx';
 import TypeTabsScreenItemAppearanceIOS from './types/ios/_TabsScreenItemAppearanceIOS.mdx';
 import TypeTabsScreenItemStateAppearanceIOS from './types/ios/_TabsScreenItemStateAppearanceIOS.mdx';
 import TypeTabsScreenSystemItem from './types/ios/_TabsScreenSystemItem.mdx';
-import TypeTabBarItemLabelVisibilityMode from './types/android/_TabBarItemLabelVisibilityMode.mdx';
-import TypeTabsScreenAppearanceAndroid from './types/android/_TabsScreenAppearanceAndroid.mdx';
-import TypeTabsScreenItemStateAppearanceAndroid from './types/android/_TabsScreenItemStateAppearanceAndroid.mdx';
 
 <Host />
 
-<HostIos />
-
 <HostAndroid />
+
+<HostIos />
 
 ***
 
 <Screen />
 
-<ScreenIos />
-
 <ScreenAndroid />
+
+<ScreenIos />
 
 ***
 
@@ -94,6 +94,18 @@ import TypeTabsScreenItemStateAppearanceAndroid from './types/android/_TabsScree
 
 ***
 
+<TypeTabBarItemLabelVisibilityMode />
+
+***
+
+<TypeTabsScreenAppearanceAndroid />
+
+***
+
+<TypeTabsScreenItemStateAppearanceAndroid />
+
+***
+
 <TypeMoreTabSelectedEvent />
 
 ***
@@ -131,15 +143,3 @@ import TypeTabsScreenItemStateAppearanceAndroid from './types/android/_TabsScree
 ***
 
 <TypeTabsScreenSystemItem />
-
-***
-
-<TypeTabBarItemLabelVisibilityMode />
-
-***
-
-<TypeTabsScreenAppearanceAndroid />
-
-***
-
-<TypeTabsScreenItemStateAppearanceAndroid />

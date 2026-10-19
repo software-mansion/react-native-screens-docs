@@ -1,32 +1,37 @@
 // Which library module becomes which docs page, and which of its types are components.
 // The single source of truth for the generator: the TypeDoc config reads the entry points
 // from here, and the router and the theme read everything else.
-//
-// Keyed by TypeDoc module name — the entry point's path relative to the entry points'
-// common base, so `src/components/tabs/index.ts` is the module `components/tabs`.
-//
-// Per family:
-//   `dir`        — the docs folder; its API reference is generated into `<dir>/api-reference`
-//                  and imported by the hand-written page at `<dir>/index.mdx`.
-//   `components` — the sections of its API reference, in page order. `props` is the
-//                  component's public props type: that type's members are the section.
-//                  `merged` names reflections that document as part of the section rather
-//                  than on their own — the `XPropsBase` interface a props type extends, and
-//                  the namespace member (`Tabs.Host`) users actually write.
 
 import type { Comment, DeclarationReflection, Reflection, ReflectionType } from 'typedoc';
 
+/** A component of a family: one section of its API reference. */
 export interface Component {
+  /** The section's anchor and the folder of its part: `host` → `#host`, `host/_host.mdx`. */
   id: string;
+  /** The section heading: `Host`, `Column & Inspector`. */
   label: string;
+  /** The component's public props type; its members are the section. */
   props: string;
+  /**
+   * Reflections documented as part of this section rather than on their own: the
+   * `XPropsBase` interface the props type extends, and the namespace member users write
+   * (`Tabs.Host`).
+   */
   merged: string[];
 }
 
+/** A component family: one docs page. */
 export interface Feature {
+  /** The family's barrel in the library, passed to TypeDoc as an entry point. */
   entryPoint: string;
+  /** The family's name, used in error messages. */
   label: string;
+  /**
+   * The docs folder; its API reference is generated into `<dir>/api-reference` and
+   * imported by the hand-written page at `<dir>/index.mdx`.
+   */
   dir: string;
+  /** The sections of its API reference, in page order; empty for Common Types. */
   components: Component[];
 }
 
@@ -35,6 +40,10 @@ export type Platform = 'android' | 'ios';
 export const LIB_REPO = '../react-native-screens';
 const LIB = `${LIB_REPO}/src`;
 
+/**
+ * The families, keyed by TypeDoc module name — the entry point's path relative to the entry
+ * points' common base, so `src/components/tabs/index.ts` is the module `components/tabs`.
+ */
 export const FEATURES: Record<string, Feature> = {
   'components/stack': {
     entryPoint: `${LIB}/components/stack/index.ts`,
@@ -168,11 +177,11 @@ export function componentFor(
 }
 
 /**
- * The platforms, in the order the docs list them: the platform-specific types after the shared
- * ones, and a component's flattened props after its shared props
- * (`<Tabs.Host ios={{ bottomAccessory }} />` documents as `ios.bottomAccessory`).
+ * The platforms, in the order the docs list them — alphabetical, the same everywhere: the
+ * platform-specific types after the shared ones, and a component's flattened props after its
+ * shared props (`<Tabs.Host ios={{ bottomAccessory }} />` documents as `ios.bottomAccessory`).
  */
-export const PLATFORM_KEYS: readonly Platform[] = ['ios', 'android'];
+export const PLATFORM_KEYS: readonly Platform[] = ['android', 'ios'];
 
 /** The platform tokens the docs understand. Anything else in a `@platform` tag is a typo. */
 const PLATFORMS: readonly string[] = PLATFORM_KEYS;
