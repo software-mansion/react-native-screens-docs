@@ -8,8 +8,8 @@ import {
 } from 'typedoc';
 import { MarkdownTheme, MarkdownThemeContext, type MarkdownPageEvent } from 'typedoc-plugin-markdown';
 
-import { outputRoot } from './feature-map.mjs';
-import type { Layout, RnsRouter, Section } from './router.mjs';
+import { outputRoot } from './feature-map.mts';
+import type { Layout, RnsRouter, Section } from './router.mts';
 
 /** The parts of a family page, parked on it by `renderFeaturePage` for index.mts to write. */
 export interface RnsParts {

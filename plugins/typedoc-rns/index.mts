@@ -3,11 +3,11 @@ import { dirname, join } from 'node:path';
 import type { Application } from 'typedoc';
 import { MarkdownPageEvent } from 'typedoc-plugin-markdown';
 
-import type { RnsParts } from './theme.mjs';
+import type { RnsParts } from './theme.mts';
 
-import { RnsRouter } from './router.mjs';
-import { RnsTheme } from './theme.mjs';
-import { transform } from './transform.mjs';
+import { RnsRouter } from './router.mts';
+import { RnsTheme } from './theme.mts';
+import { transform } from './transform.mts';
 
 export function load(app: Application): void {
   app.renderer.defineRouter('rns', RnsRouter);

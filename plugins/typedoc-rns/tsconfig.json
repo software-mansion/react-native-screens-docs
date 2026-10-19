@@ -1,20 +1,19 @@
 {
-  // `yarn gen:api` compiles the generator into `dist/`, which typedoc.config.mjs loads.
-  // `yarn typecheck` only checks types.
+  // Type-checks the generator. Node runs the .mts files as they are, stripping the types, so
+  // nothing is emitted; `yarn gen:api` runs this check first, `yarn typecheck` only the check.
   "compilerOptions": {
     "target": "es2022",
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "strict": true,
     "verbatimModuleSyntax": true,
+    // Only syntax Node can strip: no enums, no parameter properties.
+    "erasableSyntaxOnly": true,
+    // Relative imports name the .mts file Node loads.
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
     "skipLibCheck": true,
-    "types": ["node"],
-    "rootDir": ".",
-    "outDir": "dist",
-    "sourceMap": true,
-    "incremental": true,
-    "tsBuildInfoFile": "dist/.tsbuildinfo",
-    "newLine": "lf"
+    "types": ["node"]
   },
   "include": ["*.mts"]
 }

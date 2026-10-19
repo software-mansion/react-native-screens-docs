@@ -19,7 +19,7 @@ import {
   outputFile,
   outputRoot,
   platformDirOf,
-} from './feature-map.mjs';
+} from './feature-map.mts';
 
 /** One section of a family page: a component's props, or a type. */
 export interface Section {

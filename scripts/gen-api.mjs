@@ -1,5 +1,6 @@
 // `yarn gen:api` — regenerates the API reference from the library's TSDoc comments.
-// `tsc` builds the generator into plugins/typedoc-rns/dist before this runs (see `gen:api`).
+// `gen:api` type-checks the generator before this runs, so a type error stops it before any
+// output is deleted.
 
 import { existsSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
@@ -10,7 +11,7 @@ import {
   entryPoints,
   outputFile,
   outputRoot,
-} from '../plugins/typedoc-rns/dist/feature-map.mjs';
+} from '../plugins/typedoc-rns/feature-map.mts';
 
 const DOCS = 'docs';
 
@@ -27,14 +28,7 @@ for (const feature of Object.values(FEATURES)) {
   rmSync(join(DOCS, outputRoot(feature)), { recursive: true, force: true });
 }
 
-// So stack traces from the generator point at the .mts files, not at dist/.
-const typedoc = spawnSync('node_modules/.bin/typedoc', [], {
-  stdio: 'inherit',
-  env: {
-    ...process.env,
-    NODE_OPTIONS: [process.env.NODE_OPTIONS, '--enable-source-maps'].filter(Boolean).join(' '),
-  },
-});
+const typedoc = spawnSync('node_modules/.bin/typedoc', [], { stdio: 'inherit' });
 
 // Fail loudly: a half-updated reference is worse than none.
 if (typedoc.status !== 0) {
