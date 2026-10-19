@@ -1,4 +1,6 @@
 // `yarn gen:api` — regenerates the API reference from the library's TSDoc comments.
+// `gen:api` type-checks the generator before this runs, so a type error stops it before any
+// output is deleted.
 
 import { existsSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
@@ -9,7 +11,7 @@ import {
   entryPoints,
   outputFile,
   outputRoot,
-} from '../plugins/typedoc-rns/feature-map.mjs';
+} from '../plugins/typedoc-rns/feature-map.mts';
 
 const DOCS = 'docs';
 
