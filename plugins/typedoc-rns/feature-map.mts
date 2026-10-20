@@ -40,6 +40,7 @@ export interface Feature {
   components: Component[];
 }
 
+/** The platforms a family page is split by: flattened `android` / `ios` props and Types groups. */
 export type Platform = 'android' | 'ios';
 
 export const LIB_REPO = '../react-native-screens';
@@ -189,8 +190,71 @@ export function componentFor(
  */
 export const PLATFORM_KEYS: readonly Platform[] = ['android', 'ios'];
 
-/** The platform tokens the docs understand. Anything else in a `@platform` tag is a typo. */
-const PLATFORMS: readonly string[] = PLATFORM_KEYS;
+/** The platforms a `@platform` tag may name. */
+export const PLATFORM_NAMES = [
+  'android',
+  'ios',
+  'tvos',
+  'visionos',
+  'web',
+  'windows',
+] as const;
+
+export type PlatformName = (typeof PLATFORM_NAMES)[number];
+
+/**
+ * One entry of a `@platform` tag:
+ * `ios >= 18` → `{ platform: 'ios', operator: '>=', version: '18' }`.
+ */
+export interface PlatformEntry {
+  platform: PlatformName;
+  operator?: '>=' | '<=';
+  version?: string;
+}
+
+// `ios`, `ios >= 18`, `windows >= 10.0.17763`: lower case, one space around the operator.
+const PLATFORM_ENTRY = /^([a-z]+)(?: (>=|<=) (\d+(?:\.\d+)*))?$/;
+
+/**
+ * Splits a `@platform` tag into entries and lists what is malformed. Checks the shape of each
+ * entry, not whether it has a version or the order of the entries.
+ */
+export function parsePlatformTag(text: string): {
+  entries: PlatformEntry[];
+  errors: string[];
+} {
+  const entries: PlatformEntry[] = [];
+  const errors: string[] = [];
+  if (text.trim() === '') {
+    return { entries, errors: ['no platforms listed'] };
+  }
+  for (const raw of text.split(',')) {
+    const entry = raw.trim();
+    if (entry === '') {
+      errors.push('empty entry (a trailing or doubled comma?)');
+      continue;
+    }
+    const match = PLATFORM_ENTRY.exec(entry);
+    if (!match) {
+      errors.push(
+        `"${entry}" is not \`<platform>\` or \`<platform> >= | <= <version>\``,
+      );
+      continue;
+    }
+    const [, name, operator, version] = match;
+    if (!PLATFORM_NAMES.includes(name as PlatformName)) {
+      errors.push(`"${name}" is not a platform (${PLATFORM_NAMES.join(', ')})`);
+    } else if (entries.some(known => known.platform === name)) {
+      errors.push(`"${name}" is listed twice`);
+    } else {
+      entries.push({
+        platform: name as PlatformName,
+        ...(operator && { operator: operator as '>=' | '<=', version }),
+      });
+    }
+  }
+  return { entries, errors };
+}
 
 /**
  * TypeDoc parks a function-type alias's comment on its signature (`type F = (x) => y`), not
@@ -229,22 +293,36 @@ export function blockTagText(
     : undefined;
 }
 
-/** The platforms a symbol is documented for, read from `@platform`; `[]` when untagged. */
-export function platformsOf(reflection: Reflection): Platform[] {
+/**
+ * A symbol's `@platform` entries in the tag's order; `[]` when untagged. Throws on a malformed
+ * tag.
+ */
+export function platformEntriesOf(reflection: Reflection): PlatformEntry[] {
   const text = blockTagText(reflection, '@platform');
   if (text === undefined) return [];
-  const tokens = text.split(',').map(token => token.trim().toLowerCase());
-  const invalid = tokens.filter(token => !PLATFORMS.includes(token));
-  if (invalid.length > 0) {
-    throw new Error(`Unknown @platform value(s): ${invalid.join(', ')}`);
+  const { entries, errors } = parsePlatformTag(text);
+  if (errors.length > 0) {
+    throw new Error(`Malformed @platform: ${errors.join('; ')}`);
   }
-  return [...new Set(tokens as Platform[])].sort();
+  return entries;
 }
 
-/** `'ios'` / `'android'` for a single-platform symbol, `''` for everything else. */
+/** The Types group of each platform; `web` and `windows` belong to none. */
+const PLATFORM_GROUPS: Partial<Record<PlatformName, Platform>> = {
+  android: 'android',
+  ios: 'ios',
+  tvos: 'ios',
+  visionos: 'ios',
+};
+
+/** The one Types group all of a symbol's platforms fall into, `''` when there is none. */
 export function platformDirOf(reflection: Reflection): Platform | '' {
-  const platforms = platformsOf(reflection);
-  return platforms.length === 1 ? (platforms[0] ?? '') : '';
+  const groups = new Set(
+    platformEntriesOf(reflection).flatMap(
+      entry => PLATFORM_GROUPS[entry.platform] ?? [],
+    ),
+  );
+  return groups.size === 1 ? ([...groups][0] ?? '') : '';
 }
 
 /** The generator-owned folder of a family (relative to docs/) — wiped on every run. */

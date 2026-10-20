@@ -1,15 +1,72 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import type { Application } from 'typedoc';
+import {
+  Converter,
+  type Application,
+  type DeclarationReflection,
+  type ProjectReflection,
+  type SignatureReflection,
+} from 'typedoc';
 import { MarkdownPageEvent } from 'typedoc-plugin-markdown';
 
 import type { RnsParts } from './theme.mts';
 
+import { parsePlatformTag } from './feature-map.mts';
 import { RnsRouter } from './router.mts';
 import { RnsTheme } from './theme.mts';
 import { transform } from './transform.mts';
 
+/**
+ * A `Name (file:line) — problem` line for every malformed `@platform` tag in the project. An
+ * inherited member repeats its base's comment, so each source line is reported once.
+ */
+function malformedPlatformTags(project: ProjectReflection): string[] {
+  const lines = new Map<string, string>();
+  for (const reflection of Object.values(project.reflections)) {
+    const tags = (reflection.comment?.blockTags ?? []).filter(
+      tag => tag.tag === '@platform',
+    );
+    if (tags.length === 0) continue;
+    const errors =
+      tags.length > 1
+        ? ['more than one @platform tag']
+        : parsePlatformTag(
+            tags[0]!.content
+              .map(part => part.text)
+              .join('')
+              .trim(),
+          ).errors;
+    if (errors.length === 0) continue;
+    // Only declarations and signatures have sources.
+    const source = (reflection as DeclarationReflection | SignatureReflection)
+      .sources?.[0];
+    const where = source
+      ? `${source.fileName}:${source.line}`
+      : 'unknown source';
+    const key = source ? where : `reflection ${reflection.id}`;
+    if (!lines.has(key)) {
+      lines.set(
+        key,
+        `  ${reflection.getFullName()} (${where}) — ${errors.join('; ')}`,
+      );
+    }
+  }
+  return [...lines.values()];
+}
+
 export function load(app: Application): void {
+  // An error logged here stops TypeDoc before it writes any output.
+  app.converter.on(Converter.EVENT_RESOLVE_END, context => {
+    const lines = malformedPlatformTags(context.project);
+    if (lines.length > 0) {
+      app.logger.error(
+        `[typedoc-rns] ${lines.length} @platform tag(s) are malformed. Each entry is ` +
+          '`<platform>` or `<platform> >= | <= <version>`, comma-separated:\n' +
+          lines.join('\n'),
+      );
+    }
+  });
+
   app.renderer.defineRouter('rns', RnsRouter);
   app.renderer.defineTheme('rns', RnsTheme);
 
