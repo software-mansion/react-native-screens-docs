@@ -15,6 +15,7 @@ import {
 import { renderComment } from './comment.mts';
 import { membersOf, outputRoot } from './feature-map.mts';
 import type { Layout, RnsRouter, Section } from './router.mts';
+import { signaturePartials } from './signature.mts';
 
 /** The parts of a family page, parked on it by `renderFeaturePage` for index.mts to write. */
 export interface RnsParts {
@@ -175,11 +176,12 @@ class RnsThemeContext extends MarkdownThemeContext {
     options: Options,
   ) {
     super(theme, page, options);
-    const baseComment = this.partials.comment;
+    const basePartials = this.partials;
     this.partials = {
       ...this.partials,
+      ...signaturePartials(this, basePartials),
       comment: (model, options) =>
-        renderComment(this, baseComment, model, options),
+        renderComment(this, basePartials.comment, model, options),
       memberContainer: (model, options) =>
         renderMemberContainer(this, model, options),
     };
