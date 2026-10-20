@@ -10,14 +10,12 @@ Defined in: [components/tabs/host/TabsHost.ios.types.ts:120](https://github.com/
 
 Specifies component used as bottom accessory.
 
-##### Remarks
-
 This prop is a function that accepts `environment` as a parameter and returns
 the component that will be rendered in the bottom accessory — see
 [TabsBottomAccessoryEnvironment](#tabsbottomaccessoryenvironment) for the possible environments. If this prop is
 `undefined`, the bottom accessory will not be rendered.
 
-##### Warning
+:::warning
 
 In order to allow accessory rendering based on environment, the component is
 rendered 2 times for both `'regular'` and `'inline'` environments at the same time.
@@ -25,9 +23,9 @@ Environment determines which component is visible at given moment. This might
 require implementing a solution to share state between both rendered components
 (e.g. usage of context).
 
-##### Platform
+:::
 
-ios \>= 26
+**Platform:** ios \>= 26
 
 #### ios.bottomAccessoryHidden? {#host-ios-bottomaccessoryhidden}
 
@@ -37,13 +35,9 @@ Defined in: [components/tabs/host/TabsHost.ios.types.ts:127](https://github.com/
 
 Hides the bottom accessory with animation.
 
-##### Default Value
+**Default:** `false`
 
-`false`
-
-##### Platform
-
-ios \>= 26
+**Platform:** ios \>= 26
 
 #### ios.onMoreTabSelected? {#host-ios-onmoretabselected}
 
@@ -53,15 +47,11 @@ Defined in: [components/tabs/host/TabsHost.ios.types.ts:145](https://github.com/
 
 A callback that gets invoked when the user taps the "More" tab bar item.
 
-##### Remarks
-
 This event fires when the user taps the system-generated "More" tab bar item.
 It does NOT fire when a tab is selected from within the More list — that triggers
 the normal `onTabSelected` event instead.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### ios.tabBarControllerMode? {#host-ios-tabbarcontrollermode}
 
@@ -71,13 +61,9 @@ Defined in: [components/tabs/host/TabsHost.ios.types.ts:134](https://github.com/
 
 Specifies the display mode for the tab bar.
 
-##### Default Value
+**Default:** `'automatic'`
 
-`'automatic'`
-
-##### Platform
-
-ios \>= 18
+**Platform:** ios \>= 18
 
 #### ios.tabBarMinimizeBehavior? {#host-ios-tabbarminimizebehavior}
 
@@ -87,13 +73,9 @@ Defined in: [components/tabs/host/TabsHost.ios.types.ts:101](https://github.com/
 
 Specifies the minimize behavior for the tab bar.
 
-##### Default Value
+**Default:** `'automatic'`
 
-`'automatic'`
-
-##### Platform
-
-ios \>= 26
+**Platform:** ios \>= 26
 
 #### ios.tabBarTintColor? {#host-ios-tabbartintcolor}
 
@@ -103,14 +85,10 @@ Defined in: [components/tabs/host/TabsHost.ios.types.ts:94](https://github.com/s
 
 Specifies the color used for selected tab's text and icon color.
 
-##### Remarks
-
 Starting from iOS 26, it also impacts glow of Liquid Glass tab
 selection view.
 
 `tabBarItemTitleFontColor` and `tabBarItemIconColor` defined on
 TabsScreen component override this color.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13

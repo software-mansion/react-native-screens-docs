@@ -6,14 +6,10 @@ Defined in: [components/tabs/host/TabsHost.types.ts:75](https://github.com/softw
 
 Payload of the event emitted when a tab selection occurs on the native side.
 
-### Remarks
-
 This event is emitted both for user-initiated and programmatic tab changes.
 It carries the resulting navigation state along with metadata about the selection context.
 
-### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 ### Properties
 
@@ -25,8 +21,6 @@ Defined in: [components/tabs/host/TabsHost.types.ts:115](https://github.com/soft
 
 Origin (actor) that requested this tab transition.
 
-##### Remarks
-
 The following values are supported:
 - `'user'` — direct native UI interaction (e.g. tab bar tap, iOS tab drag-and-drop).
 - `'programmatic-js'` — JS-initiated request delivered via the `navStateRequest` prop.
@@ -36,9 +30,7 @@ The following values are supported:
   (e.g. UIKit reshuffling the selection during a horizontal size-class transition on iPad).
   Currently only emitted on iOS.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### hasTriggeredSpecialEffect {#tabselectedevent-hastriggeredspecialeffect}
 
@@ -48,9 +40,7 @@ Defined in: [components/tabs/host/TabsHost.types.ts:99](https://github.com/softw
 
 Whether the selection triggered a special effect (e.g. scroll-to-top on repeated selection).
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### isRepeated {#tabselectedevent-isrepeated}
 
@@ -60,9 +50,7 @@ Defined in: [components/tabs/host/TabsHost.types.ts:93](https://github.com/softw
 
 Whether the same tab that was already selected has been selected again.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### provenance {#tabselectedevent-provenance}
 
@@ -72,9 +60,7 @@ Defined in: [components/tabs/host/TabsHost.types.ts:87](https://github.com/softw
 
 Provenance of the navigation state after the selection.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### selectedScreenKey {#tabselectedevent-selectedscreenkey}
 
@@ -84,6 +70,4 @@ Defined in: [components/tabs/host/TabsHost.types.ts:81](https://github.com/softw
 
 Screen key of the newly selected tab.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
