@@ -1,0 +1,144 @@
+import { Comment, type CommentDisplayPart, type CommentTag } from 'typedoc';
+import type { MarkdownThemeContext } from 'typedoc-plugin-markdown';
+
+type CommentPartial = MarkdownThemeContext['partials']['comment'];
+type CommentOptions = NonNullable<Parameters<CommentPartial>[1]>;
+
+const CALLOUT_KINDS: Record<string, string> = {
+  '@note': 'note',
+  '@tip': 'tip',
+  '@info': 'info',
+  '@warning': 'warning',
+  '@danger': 'danger',
+};
+
+const LABELS: Record<string, string> = {
+  '@defaultValue': 'Default',
+  '@example': 'Example',
+  '@see': 'See',
+  '@platform': 'Platform',
+  '@deprecated': 'Deprecated',
+};
+
+/**
+ * `**Label:** body` for a single paragraph, joined onto one line; the label on a line of its own
+ * when the body has several paragraphs or opens with a list, quote or code block.
+ */
+function labeled(label: string, body: string): string {
+  const text = body.trim();
+  return text.includes('\n\n') || /^(```|[-*>] |\d+\. )/.test(text)
+    ? `**${label}:**\n\n${text}`
+    : `**${label}:** ${text.replace(/\n/g, ' ')}`;
+}
+
+/** A `:::kind` block, its fence one colon longer than any colon run inside it. */
+function callout(kind: string, body: string): string {
+  const longest = Math.max(
+    0,
+    ...(body.match(/:+/g) ?? []).map(run => run.length),
+  );
+  const fence = ':'.repeat(Math.max(3, longest + 1));
+  return `${fence}${kind}\n\n${body}\n\n${fence}`;
+}
+
+const EXPERIMENTAL_CAUTION = callout(
+  'warning',
+  'This API is experimental. It may change in a breaking way — or be removed entirely — in any release.',
+);
+
+/**
+ * TypeDoc wraps a `@defaultValue` that has no code in a ```` ```ts ```` block; a one-line
+ * default is shown as it was written. A longer block, written by hand, stays a block.
+ */
+function unfenced(content: CommentDisplayPart[]): CommentDisplayPart[] {
+  const [part] = content;
+  if (content.length !== 1 || part?.kind !== 'code') return content;
+  const match = /^```[^\n]*\n([^\n]*)\n```$/.exec(part.text);
+  return match ? [{ kind: 'text', text: match[1] ?? '' }] : content;
+}
+
+/** The title of an `@example`, without a JSDoc `<caption>` around it. */
+function exampleTitle(name: string): string {
+  return /^<caption>(.*)<\/caption>$/.exec(name)?.[1] ?? name;
+}
+
+/** The tags this partial renders itself; any other goes through the stock partial. */
+function isOwnTag(tag: CommentTag): boolean {
+  return (
+    tag.tag === '@remarks' || tag.tag in CALLOUT_KINDS || tag.tag in LABELS
+  );
+}
+
+/**
+ * The `comment` partial with the block tags as lines and callouts instead of headings:
+ * `@remarks` continues the summary, `@defaultValue`, `@example`, `@see`, `@platform` and
+ * `@deprecated` open with a bold label, `@note` … `@danger` become admonitions, and
+ * `@experimental` adds a caution above the summary. Tags keep the order they are written in.
+ * Text goes through the stock partial, so links and escaping are the same as elsewhere.
+ *
+ * The declaration and signature partials ask for the summary and for the tags in two calls, with
+ * the type's members or the parameters in between. These tags render with the summary, so they
+ * stay next to it; the second call renders only the other tags.
+ */
+export function renderComment(
+  ctx: MarkdownThemeContext,
+  base: CommentPartial,
+  model: Comment,
+  options: CommentOptions = {},
+): string {
+  if (options.isTableColumn) return base(model, options);
+  const showSummary = options.showSummary ?? true;
+  const showTags = options.showTags ?? true;
+  // The stock partial opens with the modifier line, empty here.
+  const text = (parts: CommentDisplayPart[]): string =>
+    base(new Comment(parts), { showSummary: true, showTags: false }).trim();
+  const md: string[] = [];
+
+  if (showSummary) {
+    const modifiers = new Set(model.modifierTags);
+    if (modifiers.delete('@experimental')) md.push(EXPERIMENTAL_CAUTION);
+    md.push(
+      base(new Comment(model.summary, [], modifiers), {
+        showSummary: true,
+        showTags: false,
+      }).trim(),
+    );
+  }
+
+  const hidden = new Set<string>(ctx.options.getValue('notRenderedTags'));
+  if (!options.showReturns) hidden.add('@returns');
+  for (const tag of model.blockTags) {
+    if (hidden.has(tag.tag)) continue;
+    if (isOwnTag(tag) ? showSummary : showTags) {
+      md.push(renderTag(tag, text, base, options));
+    }
+  }
+
+  return md.filter(Boolean).join('\n\n');
+}
+
+function renderTag(
+  tag: CommentTag,
+  text: (parts: CommentDisplayPart[]) => string,
+  base: CommentPartial,
+  options: CommentOptions,
+): string {
+  if (tag.tag === '@remarks') return text(tag.content);
+  const kind = CALLOUT_KINDS[tag.tag];
+  if (kind) return callout(kind, text(tag.content));
+  const label = LABELS[tag.tag];
+  if (label) {
+    const body = text(
+      tag.tag === '@defaultValue' ? unfenced(tag.content) : tag.content,
+    );
+    return tag.tag === '@example' && tag.name
+      ? `**${label}:** ${text([{ kind: 'text', text: exampleTitle(tag.name) }])}\n\n${body}`
+      : labeled(label, body);
+  }
+  return base(new Comment([], [tag]), {
+    headingLevel: options.headingLevel,
+    showSummary: false,
+    showTags: true,
+    showReturns: options.showReturns,
+  });
+}

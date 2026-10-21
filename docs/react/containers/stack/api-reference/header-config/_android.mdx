@@ -10,16 +10,12 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:699](htt
 
 Custom icon for the back button.
 
-##### Remarks
-
 When `undefined`, the native back arrow (`homeAsUpIndicator`) is used.
 
 Note that `'imageSource'` doesn't support SVGs on Android; use `'drawableResource'`, which
 requires adding a drawable to resources via Android Studio.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.backButtonTintColorFocused? {#header-config-android-backbuttontintcolorfocused}
 
@@ -30,15 +26,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:687](htt
 Tint color applied to the back button icon when it is focused
 (e.g. by keyboard navigation).
 
-##### Remarks
-
 Due to native platform limitations, if you set this prop, you must also
 provide `backButtonTintColorNormal`. Otherwise, the icon will become
 transparent.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.backButtonTintColorNormal? {#header-config-android-backbuttontintcolornormal}
 
@@ -48,15 +40,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:664](htt
 
 Tint color applied to the back button icon in its normal state.
 
-##### Remarks
-
 When `undefined`, the default tint color is used. This applies to the
 native back arrow and `'drawableResource'` icons that have an associated
 tint. For `'imageSource'` icons, no tint is applied by default.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.backButtonTintColorPressed? {#header-config-android-backbuttontintcolorpressed}
 
@@ -66,15 +54,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:675](htt
 
 Tint color applied to the back button icon when it is pressed.
 
-##### Remarks
-
 Due to native platform limitations, if you set this prop, you must also
 provide `backButtonTintColorNormal`. Otherwise, the icon will become
 transparent.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.backgroundSubview? {#header-config-android-backgroundsubview}
 
@@ -84,9 +68,7 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:635](htt
 
 Custom view rendered behind the header content.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.centerSubview? {#header-config-android-centersubview}
 
@@ -96,9 +78,7 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:647](htt
 
 Custom view placed in the center slot of the toolbar.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.collapsedSubtitleColor? {#header-config-android-collapsedsubtitlecolor}
 
@@ -108,19 +88,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1289](ht
 
 Color of the collapsed subtitle text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.collapsedSubtitleFontFamily? {#header-config-android-collapsedsubtitlefontfamily}
 
@@ -130,19 +102,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1299](ht
 
 Font family of the collapsed subtitle text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.collapsedSubtitleFontSize? {#header-config-android-collapsedsubtitlefontsize}
 
@@ -152,19 +116,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1309](ht
 
 Font size (SP) of the collapsed subtitle text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.collapsedSubtitleFontStyle? {#header-config-android-collapsedsubtitlefontstyle}
 
@@ -174,19 +130,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1329](ht
 
 Font style of the collapsed subtitle text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.collapsedSubtitleFontWeight? {#header-config-android-collapsedsubtitlefontweight}
 
@@ -196,19 +144,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1319](ht
 
 Font weight of the collapsed subtitle text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.collapsedTitleColor? {#header-config-android-collapsedtitlecolor}
 
@@ -218,19 +158,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1189](ht
 
 Color of the collapsed title text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.collapsedTitleFontFamily? {#header-config-android-collapsedtitlefontfamily}
 
@@ -240,19 +172,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1199](ht
 
 Font family of the collapsed title text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.collapsedTitleFontSize? {#header-config-android-collapsedtitlefontsize}
 
@@ -262,19 +186,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1209](ht
 
 Font size (SP) of the collapsed title text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.collapsedTitleFontStyle? {#header-config-android-collapsedtitlefontstyle}
 
@@ -284,19 +200,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1229](ht
 
 Font style of the collapsed title text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.collapsedTitleFontWeight? {#header-config-android-collapsedtitlefontweight}
 
@@ -306,19 +214,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1219](ht
 
 Font weight of the collapsed title text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.collapsedTitleGravityMode? {#header-config-android-collapsedtitlegravitymode}
 
@@ -328,8 +228,6 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:975](htt
 
 Anchor used when resolving the collapsed title's horizontal gravity — see
 [StackHeaderCollapsedTitleGravityModeAndroid](#stackheadercollapsedtitlegravitymodeandroid).
-
-##### Remarks
 
 Applies to `'medium'` / `'large'` headers only and affects only the
 collapsed state; it is only visually meaningful with
@@ -342,13 +240,9 @@ If the header is laid out during a screen transition, due to a native bug,
 the title and the subtitle might be laid out incorrectly when
 `'entireSpace'` gravity mode is used.
 
-##### Default Value
+**Default:** `'availableSpace'`
 
-`'availableSpace'`
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.collapsedTitleHorizontalGravity? {#header-config-android-collapsedtitlehorizontalgravity}
 
@@ -359,19 +253,13 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:940](htt
 Horizontal alignment of the title (and subtitle) in the collapsed state —
 see [StackHeaderTitleHorizontalGravityAndroid](#stackheadertitlehorizontalgravityandroid).
 
-##### Remarks
-
 Applies to `'medium'` / `'large'` headers only; ignored for `'small'`. The
 subtitle always follows the title's alignment. `'center'` is further
 affected by `collapsedTitleGravityMode`.
 
-##### Default Value
+**Default:** `'start'`
 
-`'start'`
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.collapsedTitleVerticalGravity? {#header-config-android-collapsedtitleverticalgravity}
 
@@ -382,17 +270,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:953](htt
 Vertical alignment of the title (and subtitle) in the collapsed state —
 see [StackHeaderTitleVerticalGravityAndroid](#stackheadertitleverticalgravityandroid).
 
-##### Remarks
-
 Applies to `'medium'` / `'large'` headers only; ignored for `'small'`.
 
-##### Default Value
+**Default:** `'center'`
 
-`'center'`
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.contentInsetEnd? {#header-config-android-contentinsetend}
 
@@ -402,21 +284,13 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1029](ht
 
 End inset of the toolbar content area.
 
-##### Remarks
-
 The end-side counterpart of `contentInsetStart`. Applies to all header
 types. Like its start-side counterpart it is a minimum, so it is inert
 while the toolbar menu shows items that already reach further in.
 
-##### Default Value
+**Default:** Material's default inset is used.
 
-```ts
-Material's default inset is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.contentInsetStart? {#header-config-android-contentinsetstart}
 
@@ -425,8 +299,6 @@ android \>= 21
 Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1017](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L1017)
 
 Start inset of the toolbar content area.
-
-##### Remarks
 
 The inset is a minimum: the navigation icon is positioned before it is
 applied and is not bounded by it, so the content area starts at whichever
@@ -441,15 +313,9 @@ By default, the native platform applies a non-zero inset which makes a
 centered collapsed title look off-center when `collapsedTitleGravityMode:
 'availableSpace'` is used.
 
-##### Default Value
+**Default:** Material's default inset is used.
 
-```ts
-Material's default inset is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.expandedSubtitleColor? {#header-config-android-expandedsubtitlecolor}
 
@@ -459,19 +325,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1239](ht
 
 Color of the expanded subtitle text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.expandedSubtitleFontFamily? {#header-config-android-expandedsubtitlefontfamily}
 
@@ -481,19 +339,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1249](ht
 
 Font family of the expanded subtitle text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.expandedSubtitleFontSize? {#header-config-android-expandedsubtitlefontsize}
 
@@ -503,19 +353,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1259](ht
 
 Font size (SP) of the expanded subtitle text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.expandedSubtitleFontStyle? {#header-config-android-expandedsubtitlefontstyle}
 
@@ -525,19 +367,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1279](ht
 
 Font style of the expanded subtitle text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.expandedSubtitleFontWeight? {#header-config-android-expandedsubtitlefontweight}
 
@@ -547,19 +381,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1269](ht
 
 Font weight of the expanded subtitle text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.expandedTitleColor? {#header-config-android-expandedtitlecolor}
 
@@ -569,19 +395,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1139](ht
 
 Color of the expanded title text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.expandedTitleFontFamily? {#header-config-android-expandedtitlefontfamily}
 
@@ -591,19 +409,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1149](ht
 
 Font family of the expanded title text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.expandedTitleFontSize? {#header-config-android-expandedtitlefontsize}
 
@@ -613,19 +423,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1159](ht
 
 Font size (SP) of the expanded title text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.expandedTitleFontStyle? {#header-config-android-expandedtitlefontstyle}
 
@@ -635,19 +437,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1179](ht
 
 Font style of the expanded title text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.expandedTitleFontWeight? {#header-config-android-expandedtitlefontweight}
 
@@ -657,19 +451,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1169](ht
 
 Font weight of the expanded title text.
 
-##### Remarks
-
 Applies to the `'medium'` and `'large'` headers only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.expandedTitleHorizontalGravity? {#header-config-android-expandedtitlehorizontalgravity}
 
@@ -680,19 +466,13 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:912](htt
 Horizontal alignment of the title (and subtitle) in the expanded state —
 see [StackHeaderTitleHorizontalGravityAndroid](#stackheadertitlehorizontalgravityandroid).
 
-##### Remarks
-
 Applies to `'medium'` / `'large'` headers only; ignored for `'small'` (use
 `titleCentered` instead). The subtitle always follows the title's
 alignment.
 
-##### Default Value
+**Default:** `'start'`
 
-`'start'`
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.expandedTitleVerticalGravity? {#header-config-android-expandedtitleverticalgravity}
 
@@ -703,17 +483,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:925](htt
 Vertical alignment of the title (and subtitle) in the expanded state —
 see [StackHeaderTitleVerticalGravityAndroid](#stackheadertitleverticalgravityandroid).
 
-##### Remarks
-
 Applies to `'medium'` / `'large'` headers only; ignored for `'small'`.
 
-##### Default Value
+**Default:** `'bottom'`
 
-`'bottom'`
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.leadingSubview? {#header-config-android-leadingsubview}
 
@@ -723,9 +497,7 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:641](htt
 
 Custom view placed in the leading (start) slot of the toolbar.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.liftOnScroll? {#header-config-android-liftonscroll}
 
@@ -735,8 +507,6 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:849](htt
 
 Whether the app bar lifts (applies a tonal/elevation shift) when
 content is scrolled beneath it.
-
-##### Remarks
 
 For reliable behavior the content scroll view should be designated with a
 `ScrollViewMarker`. Without it, the app bar cannot always locate the scroll
@@ -752,13 +522,9 @@ exposed yet.
 Has no effect while the header is `transparent` (there is no scrolling
 content behavior installed in that mode).
 
-##### Default Value
+**Default:** `true`
 
-`true`
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.maxLines? {#header-config-android-maxlines}
 
@@ -767,8 +533,6 @@ android \>= 21
 Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:996](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L996)
 
 Maximum number of lines for the expanded title and subtitle.
-
-##### Remarks
 
 A single shared value: the same limit applies to both the expanded title
 and the expanded subtitle. Text exceeding the limit is ellipsized.
@@ -781,13 +545,9 @@ A value less than `1` is invalid and falls back to `1`.
 Changing this value at runtime rebuilds the header. This is required due to
 a native platform limitation.
 
-##### Default Value
+**Default:** `1`
 
-`1`
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.overflowIcon? {#header-config-android-overflowicon}
 
@@ -798,8 +558,6 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:714](htt
 Custom icon for the overflow menu button (the three-dots button that
 opens the toolbar menu's overflow popup).
 
-##### Remarks
-
 When `undefined`, the Material 3 Expressive default overflow icon is used.
 
 The following values are supported — see [PlatformIconAndroid](../../../../common-types/index.mdx#platformiconandroid). Note
@@ -807,9 +565,7 @@ that `'imageSource'` doesn't support SVGs on Android; use
 `'drawableResource'`, which requires adding a drawable to resources via
 Android Studio.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.overflowIconTintColorFocused? {#header-config-android-overflowicontintcolorfocused}
 
@@ -820,15 +576,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:749](htt
 Tint color applied to the overflow menu icon when it is focused
 (e.g. by keyboard navigation).
 
-##### Remarks
-
 Due to native platform limitations, if you set this prop, you must also
 provide `overflowIconTintColorNormal`. Otherwise, the icon will become
 transparent.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.overflowIconTintColorNormal? {#header-config-android-overflowicontintcolornormal}
 
@@ -838,16 +590,12 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:726](htt
 
 Tint color applied to the overflow menu icon in its normal state.
 
-##### Remarks
-
 When `undefined`, the default tint (the Material theme's menu icon color)
 is used. This applies to the default overflow icon and `drawableResource`
 icons that have an associated tint. For `imageSource` icons, no tint is
 applied by default.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.overflowIconTintColorPressed? {#header-config-android-overflowicontintcolorpressed}
 
@@ -857,15 +605,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:737](htt
 
 Tint color applied to the overflow menu icon when it is pressed.
 
-##### Remarks
-
 Due to native platform limitations, if you set this prop, you must also
 provide `overflowIconTintColorNormal`. Otherwise, the icon will become
 transparent.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.scrollFlagEnterAlways? {#header-config-android-scrollflagenteralways}
 
@@ -878,14 +622,10 @@ back toward the top of the content, regardless of the ScrollView's current
 scroll position. Without this flag, the header only begins expanding once
 the list has reached the top of its content. Requires `scrollFlagScroll`.
 
-##### Remarks
-
 When `undefined`, falls back to the type-specific default (`false` for
 all types).
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.scrollFlagEnterAlwaysCollapsed? {#header-config-android-scrollflagenteralwayscollapsed}
 
@@ -898,16 +638,12 @@ stops at the header's collapsed height (the toolbar); the remainder
 expands only after the ScrollView reaches the top of its content. Requires
 `scrollFlagEnterAlways`.
 
-##### Remarks
-
 When `undefined`, falls back to the type-specific default (`false` for
 all types).
 
 This flag does not have any effect for `'small'` header.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.scrollFlagExitUntilCollapsed? {#header-config-android-scrollflagexituntilcollapsed}
 
@@ -919,8 +655,6 @@ When enabled, the header collapses only until its minimum height
 (the toolbar) remains pinned at the top. Without this flag, the entire
 header scrolls off the screen. Requires `scrollFlagScroll`.
 
-##### Remarks
-
 When `undefined`, falls back to the type-specific default:
 - `'small'` -\> `false`
 - `'medium'` / `'large'` -\> `true`
@@ -931,9 +665,7 @@ Setting this flag for `'small'` header is equivalent to disabling
 Even when this flag is disabled, a strip with the height of the system top
 inset (status bar and display cutout) remains visible at the top.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.scrollFlagScroll? {#header-config-android-scrollflagscroll}
 
@@ -944,8 +676,6 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:765](htt
 Whether the header reacts to nested scroll. Required for any
 other `scrollFlag*` prop to take effect.
 
-##### Remarks
-
 When `undefined`, falls back to the type-specific default:
 - `'small'` -\> `false`
 - `'medium'` / `'large'` -\> `true`
@@ -954,9 +684,7 @@ Changing any `scrollFlag*` at runtime forces the header back to
 its fully expanded state, which produces a visible snap. Treat these
 props as a static configuration.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.scrollFlagSnap? {#header-config-android-scrollflagsnap}
 
@@ -969,15 +697,11 @@ expanded, or fully collapsed as defined by `scrollFlagExitUntilCollapsed`)
 after a scroll gesture ends, instead of resting partway. Requires
 `scrollFlagScroll`.
 
-##### Remarks
-
 When `undefined`, falls back to the type-specific default:
 - `'small'` -\> `false`
 - `'medium'` / `'large'` -\> `true`
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.subtitleCentered? {#header-config-android-subtitlecentered}
 
@@ -987,18 +711,12 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:899](htt
 
 Horizontally centers the subtitle within the app bar.
 
-##### Remarks
-
 Applies to the `'small'` header only. The subtitle is centered
 independently of the title. See [titleCentered](#header-config-android-titlecentered).
 
-##### Default Value
+**Default:** `false`
 
-`false`
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.subtitleColor? {#header-config-android-subtitlecolor}
 
@@ -1008,19 +726,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1089](ht
 
 Color of the subtitle text.
 
-##### Remarks
-
 Applies to the `'small'` header only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.subtitleFontFamily? {#header-config-android-subtitlefontfamily}
 
@@ -1030,19 +740,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1099](ht
 
 Font family of the subtitle text.
 
-##### Remarks
-
 Applies to the `'small'` header only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.subtitleFontSize? {#header-config-android-subtitlefontsize}
 
@@ -1052,19 +754,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1109](ht
 
 Font size (SP) of the subtitle text.
 
-##### Remarks
-
 Applies to the `'small'` header only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.subtitleFontStyle? {#header-config-android-subtitlefontstyle}
 
@@ -1074,19 +768,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1129](ht
 
 Font style of the subtitle text.
 
-##### Remarks
-
 Applies to the `'small'` header only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.subtitleFontWeight? {#header-config-android-subtitlefontweight}
 
@@ -1096,19 +782,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1119](ht
 
 Font weight of the subtitle text.
 
-##### Remarks
-
 Applies to the `'small'` header only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.titleCentered? {#header-config-android-titlecentered}
 
@@ -1118,21 +796,15 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:888](htt
 
 Horizontally centers the title within the app bar.
 
-##### Remarks
-
 Applies to the `'small'` header only; ignored for `'medium'` / `'large'`
 (use `expandedTitleHorizontalGravity` / `collapsedTitleHorizontalGravity`
 instead). The title is centered independently of the subtitle. Combining
 a centered title with left and/or center subviews is not recommended — they
 may overlap or be laid out incorrectly.
 
-##### Default Value
+**Default:** `false`
 
-`false`
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.titleColor? {#header-config-android-titlecolor}
 
@@ -1142,19 +814,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1039](ht
 
 Color of the title text.
 
-##### Remarks
-
 Applies to the `'small'` header only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.titleFontFamily? {#header-config-android-titlefontfamily}
 
@@ -1164,19 +828,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1049](ht
 
 Font family of the title text.
 
-##### Remarks
-
 Applies to the `'small'` header only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.titleFontSize? {#header-config-android-titlefontsize}
 
@@ -1186,19 +842,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1059](ht
 
 Font size (SP) of the title text.
 
-##### Remarks
-
 Applies to the `'small'` header only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.titleFontStyle? {#header-config-android-titlefontstyle}
 
@@ -1208,19 +856,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1079](ht
 
 Font style of the title text.
 
-##### Remarks
-
 Applies to the `'small'` header only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.titleFontWeight? {#header-config-android-titlefontweight}
 
@@ -1230,19 +870,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:1069](ht
 
 Font weight of the title text.
 
-##### Remarks
-
 Applies to the `'small'` header only.
 
-##### Default Value
+**Default:** Material's default is used.
 
-```ts
-Material's default is used.
-```
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.toolbarMenu? {#header-config-android-toolbarmenu}
 
@@ -1252,8 +884,6 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:863](htt
 
 Toolbar menu configuration.
 
-##### Remarks
-
 This prop serves as initial configuration of the toolbar menu. If you
 want to change some property in runtime, use `updateToolbarMenuElements`
 view command.
@@ -1261,9 +891,7 @@ view command.
 Changing this prop in runtime will result in full toolbar menu rebuild.
 Any prior changes applied via `updateToolbarMenuElements` will be lost.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.toolbarMenuGroupDividerEnabled? {#header-config-android-toolbarmenugroupdividerenabled}
 
@@ -1273,18 +901,12 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:874](htt
 
 Enables visual dividers between menu groups.
 
-##### Remarks
-
 Requires API 28 (Android 9). On earlier versions, the value of this prop is
 ignored.
 
-##### Default Value
+**Default:** `false`
 
-`false`
-
-##### Platform
-
-android \>= 28
+**Platform:** android \>= 28
 
 #### android.trailingSubview? {#header-config-android-trailingsubview}
 
@@ -1294,9 +916,7 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:653](htt
 
 Custom view placed in the trailing (end) slot of the toolbar.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.type? {#header-config-android-type}
 
@@ -1306,19 +926,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:629](htt
 
 Specifies the type of the Material 3 app bar.
 
-##### Remarks
-
 M3 Expressive headers aren't currently supported (there is no stable
 `MDC-Android` version yet).
 
-##### Default Value
+**Default:** `'small'`
 
-`'small'`
+**See:** [Material Design 3: App bars](https://m3.material.io/components/app-bars/overview)
 
-##### See
-
-[Material Design 3: App bars](https://m3.material.io/components/app-bars/overview)
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
