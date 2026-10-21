@@ -1,17 +1,13 @@
 ## ScrollViewMarker {#scroll-view-marker}
 
-Defined in: [components/scroll-view-marker/ScrollViewMarker.types.ts:11](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L11)
+Defined in: [components/scroll-view-marker/ScrollViewMarker.types.ts:10](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L10)
 
 Marks a scroll view for the native side (e.g. to apply scroll-edge effects or header
 lift-on-scroll behavior).
 
 ### Platform
 
-android, ios
-
-### Since
-
-5.0
+android \>= 21, ios \>= 13
 
 ### Properties
 
@@ -19,24 +15,20 @@ android, ios
 
 > **children**: `NonNullable`\<`ReactNode`\>
 
-Defined in: [components/scroll-view-marker/ScrollViewMarker.types.ts:19](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L19)
+Defined in: [components/scroll-view-marker/ScrollViewMarker.types.ts:17](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L17)
 
 Content to mark; the scroll view the native side acts on is the one resolved in
 this subtree.
 
 ##### Platform
 
-android, ios
-
-##### Since
-
-5.0
+android \>= 21, ios \>= 13
 
 #### scrollEdgeEffects? {#scroll-view-marker-scrolledgeeffects}
 
 > `optional` **scrollEdgeEffects?**: `object`
 
-Defined in: [components/scroll-view-marker/ScrollViewMarker.types.ts:45](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L45)
+Defined in: [components/scroll-view-marker/ScrollViewMarker.types.ts:40](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L40)
 
 Configures the scroll edge effect for the _content ScrollView_ (the ScrollView resolved in direct subtree of the ScrollViewMarker).
 Depending on values set, it will blur the scrolling content below certain UI elements (header items, search bar)
@@ -54,11 +46,7 @@ Scroll edge effect for the bottom edge of the content ScrollView.
 
 ###### Platform
 
-ios
-
-###### Since
-
-5.0
+ios \>= 13
 
 ##### left?
 
@@ -72,11 +60,7 @@ Scroll edge effect for the left edge of the content ScrollView.
 
 ###### Platform
 
-ios
-
-###### Since
-
-5.0
+ios \>= 13
 
 ##### right?
 
@@ -90,11 +74,7 @@ Scroll edge effect for the right edge of the content ScrollView.
 
 ###### Platform
 
-ios
-
-###### Since
-
-5.0
+ios \>= 13
 
 ##### top?
 
@@ -108,11 +88,7 @@ Scroll edge effect for the top edge of the content ScrollView.
 
 ###### Platform
 
-ios
-
-###### Since
-
-5.0
+ios \>= 13
 
 ##### Remarks
 
@@ -122,34 +98,22 @@ the ScrollView will use only the innermost one's config.
 The supported values correspond to the `UIScrollEdgeEffect`'s `style` and `isHidden` props
 in the official UIKit documentation.
 
-##### Platform
-
-ios
-
-##### Supported
-
-iOS \>= 26
-
-##### Since
-
-5.0
-
 ##### See
 
 [UIScrollEdgeEffect](https://developer.apple.com/documentation/uikit/uiscrolledgeeffect)
+
+##### Platform
+
+ios \>= 26
 
 #### style? {#scroll-view-marker-style}
 
 > `optional` **style?**: `____ViewStyleProp_Internal`
 
-Defined in: [components/scroll-view-marker/ScrollViewMarker.types.ts:26](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L26)
+Defined in: [components/scroll-view-marker/ScrollViewMarker.types.ts:23](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L23)
 
 Style applied to the marker's own view.
 
 ##### Platform
 
-android, ios
-
-##### Since
-
-5.0
+android \>= 21, ios \>= 13

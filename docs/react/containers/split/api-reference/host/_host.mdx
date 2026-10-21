@@ -1,16 +1,12 @@
 ## Host {#host}
 
-Defined in: [components/split/SplitHost.types.ts:306](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L306)
+Defined in: [components/split/SplitHost.types.ts:274](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L274)
 
 Container that manages a native split view of columns and an optional inspector.
 
 ### Platform
 
-ios
-
-### Since
-
-5.0
+ios \>= 13
 
 ### Extends
 
@@ -22,18 +18,14 @@ ios
 
 > **children**: `NonNullable`\<`ReactNode`\>
 
-Defined in: [components/split/SplitHost.types.ts:314](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L314)
+Defined in: [components/split/SplitHost.types.ts:281](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L281)
 
 Columns to display; wrap each column in a `Split.Column`, and the optional
 inspector in a `Split.Inspector`.
 
 ##### Platform
 
-ios
-
-##### Since
-
-5.0
+ios \>= 13
 
 ##### Overrides
 
@@ -43,7 +35,7 @@ ios
 
 > `optional` **colorScheme?**: [`SplitHostColorScheme`](#splithostcolorscheme)
 
-Defined in: [components/split/SplitHost.types.ts:412](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L412)
+Defined in: [components/split/SplitHost.types.ts:358](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L358)
 
 Specifies the color scheme used by the container and any child containers.
 
@@ -53,45 +45,25 @@ Specifies the color scheme used by the container and any child containers.
 
 ##### Platform
 
-ios
-
-##### Since
-
-5.0
+ios \>= 13
 
 #### columnMetrics? {#host-columnmetrics}
 
 > `optional` **columnMetrics?**: [`SplitColumnMetrics`](#splitcolumnmetrics)
 
-Defined in: [components/split/SplitHost.types.ts:340](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L340)
+Defined in: [components/split/SplitHost.types.ts:294](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L294)
 
 An object describing bounds for column widths.
 
-##### Remarks
-
-It supports definitions for the following columns:
-
-- `primary` - the leftmost sidebar
-- `supplementary` - the intermediate sidebar
-
-On iOS 26 or higher, it also supports definitions for:
-
-- `secondary` - the view with the main content
-- `inspector` - the view which is providing additional data about the secondary column
-
 ##### Platform
 
-ios
-
-##### Since
-
-5.0
+ios \>= 13
 
 #### displayModeButtonVisibility? {#host-displaymodebuttonvisibility}
 
 > `optional` **displayModeButtonVisibility?**: [`SplitDisplayModeButtonVisibility`](#splitdisplaymodebuttonvisibility)
 
-Defined in: [components/split/SplitHost.types.ts:348](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L348)
+Defined in: [components/split/SplitHost.types.ts:301](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L301)
 
 Determines whether the button for changing the Split display mode is visible on the screen.
 
@@ -101,33 +73,25 @@ Determines whether the button for changing the Split display mode is visible on 
 
 ##### Platform
 
-ios
-
-##### Since
-
-5.0
+ios \>= 13
 
 #### onCollapse? {#host-oncollapse}
 
 > `optional` **onCollapse?**: [`SplitHostEventHandler`](#splithosteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-Defined in: [components/split/SplitHost.types.ts:355](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L355)
+Defined in: [components/split/SplitHost.types.ts:307](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L307)
 
 A callback that gets invoked when the Split was collapsed to a single column.
 
 ##### Platform
 
-ios
-
-##### Since
-
-5.0
+ios \>= 13
 
 #### onDisplayModeWillChange? {#host-ondisplaymodewillchange}
 
 > `optional` **onDisplayModeWillChange?**: [`SplitHostEventHandler`](#splithosteventhandler)\<[`DisplayModeWillChangeEvent`](#displaymodewillchangeevent)\>
 
-Defined in: [components/split/SplitHost.types.ts:366](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L366)
+Defined in: [components/split/SplitHost.types.ts:317](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L317)
 
 A callback that gets invoked when the Split displayMode has changed.
 
@@ -138,33 +102,25 @@ These updates might be a consequence of some native interactions, like pressing 
 
 ##### Platform
 
-ios
-
-##### Since
-
-5.0
+ios \>= 13
 
 #### onExpand? {#host-onexpand}
 
 > `optional` **onExpand?**: [`SplitHostEventHandler`](#splithosteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-Defined in: [components/split/SplitHost.types.ts:375](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L375)
+Defined in: [components/split/SplitHost.types.ts:325](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L325)
 
 A callback that gets invoked when the Split was expanded to multiple columns.
 
 ##### Platform
 
-ios
-
-##### Since
-
-5.0
+ios \>= 13
 
 #### onInspectorHide? {#host-oninspectorhide}
 
 > `optional` **onInspectorHide?**: [`SplitHostEventHandler`](#splithosteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-Defined in: [components/split/SplitHost.types.ts:386](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L386)
+Defined in: [components/split/SplitHost.types.ts:334](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L334)
 
 A callback that gets invoked when the Split inspector is either programmatically hidden (in column presentation) or dismissed (in modal presentation).
 
@@ -174,21 +130,13 @@ The purpose of this callback depends on whether the Split is collapsed or expand
 
 ##### Platform
 
-ios
-
-##### Supported
-
-iOS \>= 26
-
-##### Since
-
-5.0
+ios \>= 26
 
 #### orientation? {#host-orientation}
 
 > `optional` **orientation?**: [`SplitHostOrientation`](#splithostorientation)
 
-Defined in: [components/split/SplitHost.types.ts:404](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L404)
+Defined in: [components/split/SplitHost.types.ts:351](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L351)
 
 Specifies supported orientations for the split host.
 
@@ -209,17 +157,13 @@ Procedure for determining supported orientations:
 
 ##### Platform
 
-ios
-
-##### Since
-
-5.0
+ios \>= 13
 
 #### preferredDisplayMode? {#host-preferreddisplaymode}
 
 > `optional` **preferredDisplayMode?**: [`SplitDisplayMode`](#splitdisplaymode)
 
-Defined in: [components/split/SplitHost.types.ts:430](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L430)
+Defined in: [components/split/SplitHost.types.ts:374](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L374)
 
 Specifies the display mode which will be preferred to use, if the layout requirements are met.
 
@@ -233,17 +177,13 @@ Preferred means that we may only suggest the OS which layout we're expecting, bu
 
 ##### Platform
 
-ios
-
-##### Since
-
-5.0
+ios \>= 13
 
 #### preferredSplitBehavior? {#host-preferredsplitbehavior}
 
 > `optional` **preferredSplitBehavior?**: [`SplitBehavior`](#splitbehavior)
 
-Defined in: [components/split/SplitHost.types.ts:441](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L441)
+Defined in: [components/split/SplitHost.types.ts:384](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L384)
 
 Specifies the split behavior which will be preferred to use, if the layout requirements are met.
 
@@ -257,44 +197,31 @@ Preferred means that we may only suggest the OS which layout we're expecting, bu
 
 ##### Platform
 
-ios
-
-##### Since
-
-5.0
+ios \>= 13
 
 #### presentsWithGesture? {#host-presentswithgesture}
 
 > `optional` **presentsWithGesture?**: `boolean`
 
-Defined in: [components/split/SplitHost.types.ts:419](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L419)
+Defined in: [components/split/SplitHost.types.ts:364](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L364)
 
 Determines whether gestures are enabled to change the display mode.
 
 ##### Platform
 
-ios
-
-##### Since
-
-5.0
+ios \>= 13
 
 #### primaryBackgroundStyle? {#host-primarybackgroundstyle}
 
 > `optional` **primaryBackgroundStyle?**: [`SplitPrimaryBackgroundStyle`](#splitprimarybackgroundstyle)
 
-Defined in: [components/split/SplitHost.types.ts:458](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L458)
+Defined in: [components/split/SplitHost.types.ts:394](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L394)
 
 Specifies the background style of the primary view controller.
 
 ##### Remarks
 
-When set to `'default'`, the system default style is used. On iOS 18 or
-lower the system default is always `'none'`; since iOS 26 it is
-`'sidebar'`.
-
-According to the documentation, this property shouldn't have any effect on
-iOS. However, on iOS 26 the support for this prop was added.
+When set to `'default'`, the system default style is used.
 
 ##### Default Value
 
@@ -302,21 +229,13 @@ iOS. However, on iOS 26 the support for this prop was added.
 
 ##### Platform
 
-ios
-
-##### Supported
-
-iOS \>= 26
-
-##### Since
-
-5.0
+ios \>= 26
 
 #### primaryEdge? {#host-primaryedge}
 
 > `optional` **primaryEdge?**: [`SplitPrimaryEdge`](#splitprimaryedge)
 
-Defined in: [components/split/SplitHost.types.ts:466](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L466)
+Defined in: [components/split/SplitHost.types.ts:401](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L401)
 
 Indicates on which side primary sidebar is placed, affecting the split view layout.
 
@@ -326,33 +245,25 @@ Indicates on which side primary sidebar is placed, affecting the split view layo
 
 ##### Platform
 
-ios
-
-##### Since
-
-5.0
+ios \>= 13
 
 #### ref? {#host-ref}
 
 > `optional` **ref?**: `Ref`\<[`SplitHostCommands`](#splithostcommands)\>
 
-Defined in: [components/split/SplitHost.types.ts:321](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L321)
+Defined in: [components/split/SplitHost.types.ts:287](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L287)
 
 Ref exposing the split host's imperative commands.
 
 ##### Platform
 
-ios
-
-##### Since
-
-5.0
+ios \>= 13
 
 #### showInspector? {#host-showinspector}
 
 > `optional` **showInspector?**: `boolean`
 
-Defined in: [components/split/SplitHost.types.ts:478](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L478)
+Defined in: [components/split/SplitHost.types.ts:411](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L411)
 
 Determines whether inspector column should be displayed.
 
@@ -363,37 +274,25 @@ The result on the interface for this prop depends on whether the Split is collap
 
 ##### Platform
 
-ios
-
-##### Supported
-
-iOS \>= 26
-
-##### Since
-
-5.0
+ios \>= 26
 
 #### showSecondaryToggleButton? {#host-showsecondarytogglebutton}
 
 > `optional` **showSecondaryToggleButton?**: `boolean`
 
-Defined in: [components/split/SplitHost.types.ts:485](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L485)
+Defined in: [components/split/SplitHost.types.ts:417](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L417)
 
 Determines whether a button to toggle to and from `'secondaryOnly'` display mode is visible.
 
 ##### Platform
 
-ios
-
-##### Since
-
-5.0
+ios \>= 13
 
 #### topColumnForCollapsing? {#host-topcolumnforcollapsing}
 
 > `optional` **topColumnForCollapsing?**: [`SplitNavigableColumn`](#splitnavigablecolumn)
 
-Defined in: [components/split/SplitHost.types.ts:498](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L498)
+Defined in: [components/split/SplitHost.types.ts:429](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L429)
 
 Specifies which column should be shown when the split view collapses to a single column.
 
@@ -406,8 +305,4 @@ When not set, the system default behavior is used.
 
 ##### Platform
 
-ios
-
-##### Since
-
-5.0
+ios \>= 13
