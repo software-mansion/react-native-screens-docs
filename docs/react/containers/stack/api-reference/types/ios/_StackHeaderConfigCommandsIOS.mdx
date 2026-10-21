@@ -18,24 +18,12 @@ Updates properties of a menu action (leaf item) at runtime.
 
 **Platform:** ios \>= 13
 
-##### Parameters
+**Parameters:**
 
-###### menuElementId
+- `menuElementId`: `string` — The ID of the menu action to update.
+- `options`: [`StackHeaderMenuItemOptionsIOS`](#stackheadermenuitemoptionsios) — Object with properties to change. Omitted keys preserve current values. Explicit `undefined` resets to default.
 
-`string`
-
-The ID of the menu action to update.
-
-###### options
-
-[`StackHeaderMenuItemOptionsIOS`](#stackheadermenuitemoptionsios)
-
-Object with properties to change. Omitted keys preserve current
-  values. Explicit `undefined` resets to default.
-
-##### Returns
-
-`void`
+**Returns:** `void`
 
 #### setMenuOptions {#stackheaderconfigcommandsios-setmenuoptions}
 
@@ -47,21 +35,9 @@ Updates properties of a submenu at runtime.
 
 **Platform:** ios \>= 13
 
-##### Parameters
+**Parameters:**
 
-###### menuElementId
+- `menuElementId`: `string` — The ID of the submenu to update.
+- `options`: [`StackHeaderMenuOptionsIOS`](#stackheadermenuoptionsios) — Object with properties to change. Omitted keys preserve current values. Explicit `undefined` resets to default.
 
-`string`
-
-The ID of the submenu to update.
-
-###### options
-
-[`StackHeaderMenuOptionsIOS`](#stackheadermenuoptionsios)
-
-Object with properties to change. Omitted keys preserve current
-  values. Explicit `undefined` resets to default.
-
-##### Returns
-
-`void`
+**Returns:** `void`
