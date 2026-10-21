@@ -17,10 +17,17 @@ export function load(app: Application): void {
     if (typeof page.contents !== 'string') return;
     // TypeDoc writes the page itself; its parts (theme.mts `renderFeaturePage`) are ours.
     // `page` is the markdown plugin's `MarkdownPageEvent`, but TypeDoc's types don't say so.
-    const { root, parts = [], imports = [] } =
-      (page as MarkdownPageEvent).rnsParts ?? ({} as Partial<RnsParts>);
+    const {
+      root,
+      parts = [],
+      imports = [],
+    } = (page as MarkdownPageEvent).rnsParts ?? ({} as Partial<RnsParts>);
     for (const part of parts) {
-      const file = join(app.options.getValue('out'), root!, `${part.path}${app.options.getValue('fileExtension')}`);
+      const file = join(
+        app.options.getValue('out'),
+        root!,
+        `${part.path}${app.options.getValue('fileExtension')}`,
+      );
       mkdirSync(dirname(file), { recursive: true });
       writeFileSync(file, transform(part.body));
     }

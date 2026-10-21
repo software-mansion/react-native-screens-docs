@@ -2,7 +2,12 @@
 // The single source of truth for the generator: the TypeDoc config reads the entry points
 // from here, and the router and the theme read everything else.
 
-import type { Comment, DeclarationReflection, Reflection, ReflectionType } from 'typedoc';
+import type {
+  Comment,
+  DeclarationReflection,
+  Reflection,
+  ReflectionType,
+} from 'typedoc';
 
 /** A component of a family: one section of its API reference. */
 export interface Component {
@@ -172,7 +177,8 @@ export function componentFor(
 ): Component | undefined {
   return feature.components.find(
     component =>
-      reflection.name === component.props || component.merged.includes(reflection.name),
+      reflection.name === component.props ||
+      component.merged.includes(reflection.name),
   );
 }
 
@@ -194,15 +200,19 @@ export function commentOf(reflection: Reflection): Comment | undefined {
   return (
     reflection.comment ??
     (reflection as DeclarationReflection).signatures?.[0]?.comment ??
-    ((reflection as DeclarationReflection).type as ReflectionType | undefined)?.declaration
-      ?.signatures?.[0]?.comment
+    ((reflection as DeclarationReflection).type as ReflectionType | undefined)
+      ?.declaration?.signatures?.[0]?.comment
   );
 }
 
 /** A props type's own props — an interface's children, or those of an object type. */
-export function membersOf(model: DeclarationReflection): DeclarationReflection[] {
+export function membersOf(
+  model: DeclarationReflection,
+): DeclarationReflection[] {
   if (model.children?.length) return model.children;
-  return model.type?.type === 'reflection' ? (model.type.declaration.children ?? []) : [];
+  return model.type?.type === 'reflection'
+    ? (model.type.declaration.children ?? [])
+    : [];
 }
 
 /** A block tag's text (`blockTagText(r, '@since')` → `'5.0'`), `undefined` when absent. */

@@ -28,7 +28,9 @@ for (const feature of Object.values(FEATURES)) {
   rmSync(join(DOCS, outputRoot(feature)), { recursive: true, force: true });
 }
 
-const typedoc = spawnSync('node_modules/.bin/typedoc', [], { stdio: 'inherit' });
+const typedoc = spawnSync('node_modules/.bin/typedoc', [], {
+  stdio: 'inherit',
+});
 
 // Fail loudly: a half-updated reference is worse than none.
 if (typedoc.status !== 0) {
@@ -42,7 +44,9 @@ const notWritten = Object.values(FEATURES)
   .map(feature => join(DOCS, `${outputFile(feature)}.mdx`))
   .filter(file => !existsSync(file));
 if (notWritten.length > 0) {
-  console.error(`[gen-api] Missing generated files:\n  ${notWritten.join('\n  ')}`);
+  console.error(
+    `[gen-api] Missing generated files:\n  ${notWritten.join('\n  ')}`,
+  );
   process.exit(1);
 }
 

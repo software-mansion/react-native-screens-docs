@@ -14,7 +14,7 @@
     "typecheck": "tsc -p plugins/typedoc-rns",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "format-js": "prettier --write --list-different './**/*.{js,ts,tsx}'"
+    "format-js": "prettier --write --list-different './**/*.{js,mjs,ts,mts,tsx}'"
   },
   "dependencies": {
     "@docusaurus/core": "3.9.2",

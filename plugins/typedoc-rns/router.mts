@@ -124,7 +124,9 @@ export class RnsRouter extends MemberRouter {
   /** The doc that links on this page resolve against — the page, not the part file. */
   linkFileFor(model: RouterTarget): string | undefined {
     const layout = this.pageLayout(model);
-    return layout ? `${linkTarget(layout.feature)}${this.extension}` : undefined;
+    return layout
+      ? `${linkTarget(layout.feature)}${this.extension}`
+      : undefined;
   }
 
   /**
@@ -175,7 +177,10 @@ export class RnsRouter extends MemberRouter {
     return `${root}/types/${platform}/_${this.getReflectionAlias(reflection)}`;
   }
 
-  override buildChildPages(reflection: Reflection, outPages: PageDefinition[]): void {
+  override buildChildPages(
+    reflection: Reflection,
+    outPages: PageDefinition[],
+  ): void {
     // A suppressed reflection gets no slugger of its own, so its members would be slugged on
     // the project-wide one and could drift from the identically named headings of the page
     // they merge into. A fresh slugger reproduces that page's sequence.
@@ -190,11 +195,14 @@ export class RnsRouter extends MemberRouter {
   }
 
   override buildPages(project: ProjectReflection): PageDefinition[] {
-    const pages = super.buildPages(project).filter(page => page.model !== project);
+    const pages = super
+      .buildPages(project)
+      .filter(page => page.model !== project);
     const byFeature = new Map<Feature, PageDefinition[]>();
     for (const page of pages) {
       // No module name finds no feature, same as an unknown name.
-      const feature = FEATURES[moduleOf(page.model as Reflection)?.name as string];
+      const feature =
+        FEATURES[moduleOf(page.model as Reflection)?.name as string];
       if (!feature) continue;
       byFeature.set(feature, [...(byFeature.get(feature) ?? []), page]);
     }
@@ -205,12 +213,16 @@ export class RnsRouter extends MemberRouter {
 
     for (const [feature, featurePages] of byFeature) {
       // The pages MemberRouter builds for a family are all declarations.
-      const models = featurePages.map(page => page.model as DeclarationReflection);
+      const models = featurePages.map(
+        page => page.model as DeclarationReflection,
+      );
       const sections: Section[] = [];
       const flattened = new Set<DeclarationReflection>();
 
       for (const component of feature.components) {
-        const model = models.find(candidate => candidate.name === component.props);
+        const model = models.find(
+          candidate => candidate.name === component.props,
+        );
         if (!model) {
           throw new Error(
             `[typedoc-rns] "${component.props}" (${feature.label}/${component.label}) is not ` +
@@ -243,7 +255,11 @@ export class RnsRouter extends MemberRouter {
           flattened.add(target);
           this.#flattenedProps.add(prop);
           anchors.set(target, `${component.id}-${key}`);
-          platforms.push({ key, model: target, part: `${component.id}/_${key}` });
+          platforms.push({
+            key,
+            model: target,
+            part: `${component.id}/_${key}`,
+          });
         }
 
         sections.push({
@@ -260,8 +276,7 @@ export class RnsRouter extends MemberRouter {
         .filter(model => !componentModels.has(model) && !flattened.has(model))
         .sort(
           (a, b) =>
-            platformRank(a) - platformRank(b) ||
-            a.name.localeCompare(b.name),
+            platformRank(a) - platformRank(b) || a.name.localeCompare(b.name),
         );
       for (const model of types) {
         anchors.set(model, anchorSlug(model.name));
@@ -284,9 +299,12 @@ export class RnsRouter extends MemberRouter {
 
       const root = outputRoot(feature);
       for (const section of sections) {
-        section.part = this.getIdealBaseName(section.model).slice(root.length + 1);
+        section.part = this.getIdealBaseName(section.model).slice(
+          root.length + 1,
+        );
         this.#sections.add(section.model);
-        for (const platform of section.platforms) this.#sections.add(platform.model);
+        for (const platform of section.platforms)
+          this.#sections.add(platform.model);
       }
 
       const pageModel = sections[0]!.model;
@@ -308,7 +326,8 @@ export class RnsRouter extends MemberRouter {
    */
   #rewriteUrls(anchors: Map<RouterTarget, string>): void {
     for (const reflection of [...this.fullUrls.keys()]) {
-      const feature = FEATURES[moduleOf(reflection as Reflection)?.name as string];
+      const feature =
+        FEATURES[moduleOf(reflection as Reflection)?.name as string];
       if (!feature) continue;
       const url = `${linkTarget(feature)}${this.extension}`;
 

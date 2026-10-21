@@ -3,10 +3,7 @@
 // The generator's .mts files are loaded as they are: Node strips their types.
 // This file stays .mjs: TypeDoc does not read a .ts config.
 
-import {
-  entryPoints,
-  LIB_REPO,
-} from './plugins/typedoc-rns/feature-map.mts';
+import { entryPoints, LIB_REPO } from './plugins/typedoc-rns/feature-map.mts';
 
 /** @type {Partial<import('typedoc').TypeDocOptions>} */
 export default {
