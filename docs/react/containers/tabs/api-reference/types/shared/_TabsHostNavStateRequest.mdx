@@ -1,4 +1,6 @@
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 ## TabsHostNavStateRequest {#tabshostnavstaterequest}
+</PlatformHeading>
 
 ```ts
 type TabsHostNavStateRequest = {
@@ -9,11 +11,9 @@ type TabsHostNavStateRequest = {
 
 Navigation-state request passed to the native side to drive tab selection.
 
-**Platform:** android \>= 21, ios \>= 13
-
-### Properties
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### baseProvenance {#tabshostnavstaterequest-baseprovenance}
+</PlatformHeading>
 
 ```ts
 baseProvenance: number;
@@ -42,9 +42,9 @@ It is named `baseProvenance` (rather than `provenance`) to disambiguate it from 
 `provenance` field on the [TabSelectedEvent](#tabselectedevent) payload, which carries the provenance
 of the state *resulting* from a transition.
 
-**Platform:** android \>= 21, ios \>= 13
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### selectedScreenKey {#tabshostnavstaterequest-selectedscreenkey}
+</PlatformHeading>
 
 ```ts
 selectedScreenKey: string;
@@ -53,5 +53,3 @@ selectedScreenKey: string;
 Valid screen key.
 
 It must correspond to one of the keys you assign to the `TabsScreens`.
-
-**Platform:** android \>= 21, ios \>= 13

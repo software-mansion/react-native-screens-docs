@@ -1,4 +1,6 @@
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 ## TabSelectionRejectedEvent {#tabselectionrejectedevent}
+</PlatformHeading>
 
 ```ts
 type TabSelectionRejectedEvent = {
@@ -20,11 +22,9 @@ alongside the rejected request details, so that the JS side can reconcile its st
 - [TabSelectionRejectionReason](#tabselectionrejectionreason) for possible rejection reasons.
  - [TabsHostPropsBase.rejectStaleNavStateUpdates](#host-rejectstalenavstateupdates)
 
-**Platform:** android \>= 21, ios \>= 13
-
-### Properties
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### provenance {#tabselectionrejectedevent-provenance}
+</PlatformHeading>
 
 ```ts
 provenance: number;
@@ -32,9 +32,9 @@ provenance: number;
 
 Provenance of the currently active navigation state.
 
-**Platform:** android \>= 21, ios \>= 13
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### rejectedBaseProvenance {#tabselectionrejectedevent-rejectedbaseprovenance}
+</PlatformHeading>
 
 ```ts
 rejectedBaseProvenance: number;
@@ -42,9 +42,9 @@ rejectedBaseProvenance: number;
 
 Base provenance of the rejected navigation state update.
 
-**Platform:** android \>= 21, ios \>= 13
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### rejectedScreenKey {#tabselectionrejectedevent-rejectedscreenkey}
+</PlatformHeading>
 
 ```ts
 rejectedScreenKey: string;
@@ -52,9 +52,9 @@ rejectedScreenKey: string;
 
 Screen key of the tab whose selection was rejected.
 
-**Platform:** android \>= 21, ios \>= 13
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### rejectionReason {#tabselectionrejectedevent-rejectionreason}
+</PlatformHeading>
 
 ```ts
 rejectionReason: TabSelectionRejectionReason;
@@ -64,14 +64,12 @@ Reason the selection was rejected.
 
 **Type:** [`TabSelectionRejectionReason`](#tabselectionrejectionreason)
 
-**Platform:** android \>= 21, ios \>= 13
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### selectedScreenKey {#tabselectionrejectedevent-selectedscreenkey}
+</PlatformHeading>
 
 ```ts
 selectedScreenKey: string;
 ```
 
 Screen key of the currently selected (active) tab.
-
-**Platform:** android \>= 21, ios \>= 13

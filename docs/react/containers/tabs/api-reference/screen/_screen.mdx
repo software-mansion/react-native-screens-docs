@@ -1,10 +1,10 @@
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 ## Screen {#screen}
+</PlatformHeading>
 
-**Platform:** android \>= 21, ios \>= 13
-
-### Properties
-
-#### accessibilityLabel? {#screen-accessibilitylabel}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### accessibilityLabel {#screen-accessibilitylabel}
+</PlatformHeading>
 
 ```ts
 accessibilityLabel?: string;
@@ -12,9 +12,9 @@ accessibilityLabel?: string;
 
 accessibilityLabel for the tab screen.
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### badgeValue? {#screen-badgevalue}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### badgeValue {#screen-badgevalue}
+</PlatformHeading>
 
 ```ts
 badgeValue?: string;
@@ -29,9 +29,9 @@ On Android, the value is interpreted in the following order:
 - otherwise if the string is empty, displays "small dot" badge;
 - otherwise, displays the value as a text.
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### children? {#screen-children}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### children {#screen-children}
+</PlatformHeading>
 
 ```ts
 children?: ReactNode;
@@ -39,9 +39,9 @@ children?: ReactNode;
 
 Content rendered inside the tab screen.
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### onDidAppear? {#screen-ondidappear}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### onDidAppear {#screen-ondidappear}
+</PlatformHeading>
 
 ```ts
 onDidAppear?: TabsScreenEventHandler<EmptyEventPayload>;
@@ -52,9 +52,9 @@ This is called as soon as the transition ends.
 
 **Type:** [`TabsScreenEventHandler`](#tabsscreeneventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### onDidDisappear? {#screen-ondiddisappear}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### onDidDisappear {#screen-ondiddisappear}
+</PlatformHeading>
 
 ```ts
 onDidDisappear?: TabsScreenEventHandler<EmptyEventPayload>;
@@ -65,9 +65,9 @@ This is called as soon as the transition ends.
 
 **Type:** [`TabsScreenEventHandler`](#tabsscreeneventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### onWillAppear? {#screen-onwillappear}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### onWillAppear {#screen-onwillappear}
+</PlatformHeading>
 
 ```ts
 onWillAppear?: TabsScreenEventHandler<EmptyEventPayload>;
@@ -78,9 +78,9 @@ This is called as soon as the transition begins.
 
 **Type:** [`TabsScreenEventHandler`](#tabsscreeneventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### onWillDisappear? {#screen-onwilldisappear}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### onWillDisappear {#screen-onwilldisappear}
+</PlatformHeading>
 
 ```ts
 onWillDisappear?: TabsScreenEventHandler<EmptyEventPayload>;
@@ -91,9 +91,9 @@ This is called as soon as the transition begins.
 
 **Type:** [`TabsScreenEventHandler`](#tabsscreeneventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### orientation? {#screen-orientation}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### orientation {#screen-orientation}
+</PlatformHeading>
 
 ```ts
 orientation?: TabsScreenOrientation;
@@ -131,9 +131,9 @@ Exceptions to this procedure:
 
 **See:** [UIInterfaceOrientationMask](https://developer.apple.com/documentation/uikit/uiinterfaceorientationmask)
 
-**Platform:** ios \>= 13
-
-#### preventNativeSelection? {#screen-preventnativeselection}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### preventNativeSelection {#screen-preventnativeselection}
+</PlatformHeading>
 
 ```ts
 preventNativeSelection?: boolean;
@@ -143,9 +143,9 @@ When set to `true`, prevents native tab selection for this screen.
 
 **Default:** `false`
 
-**Platform:** android \>= 21, ios \>= 13
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### screenKey {#screen-screenkey}
+</PlatformHeading>
 
 ```ts
 screenKey: string;
@@ -153,9 +153,9 @@ screenKey: string;
 
 Identifies screen, e.g. when receiving onNativeFocusChange event.
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### specialEffects? {#screen-specialeffects}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### specialEffects {#screen-specialeffects}
+</PlatformHeading>
 
 ```ts
 specialEffects?: TabsScreenSpecialEffects;
@@ -168,9 +168,9 @@ are enabled for the tab screen.
 
 **Default:** All special effects are enabled by default.
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### style? {#screen-style}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### style {#screen-style}
+</PlatformHeading>
 
 ```ts
 style?: StyleProp<TabsScreenStyleProps>;
@@ -180,9 +180,9 @@ Style applied to the screen; only `backgroundColor` is used.
 
 **Type:** `StyleProp`\<[`TabsScreenStyleProps`](#tabsscreenstyleprops)\>
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### tabBarItemAccessibilityLabel? {#screen-tabbaritemaccessibilitylabel}
+<PlatformHeading platforms={[{"platform":"android","from":"26"},{"platform":"ios","from":"13"}]}>
+#### tabBarItemAccessibilityLabel {#screen-tabbaritemaccessibilitylabel}
+</PlatformHeading>
 
 ```ts
 tabBarItemAccessibilityLabel?: string;
@@ -190,9 +190,9 @@ tabBarItemAccessibilityLabel?: string;
 
 accessibilityLabel for the TabBarItem.
 
-**Platform:** android \>= 26, ios \>= 13
-
-#### tabBarItemTestID? {#screen-tabbaritemtestid}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### tabBarItemTestID {#screen-tabbaritemtestid}
+</PlatformHeading>
 
 ```ts
 tabBarItemTestID?: string;
@@ -200,9 +200,9 @@ tabBarItemTestID?: string;
 
 testID for the TabBarItem.
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### testID? {#screen-testid}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### testID {#screen-testid}
+</PlatformHeading>
 
 ```ts
 testID?: string;
@@ -210,14 +210,12 @@ testID?: string;
 
 testID for the tab screen.
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### title? {#screen-title}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### title {#screen-title}
+</PlatformHeading>
 
 ```ts
 title?: string;
 ```
 
 Title of the tab screen, displayed in the tab bar item.
-
-**Platform:** android \>= 21, ios \>= 13

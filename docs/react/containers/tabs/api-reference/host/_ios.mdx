@@ -2,7 +2,9 @@ import Anchor from '@theme/MDXComponents/A';
 
 <Anchor id="host-ios" />
 
-#### ios.bottomAccessory? {#host-ios-bottomaccessory}
+<PlatformHeading platforms={[{"platform":"ios","from":"26"}]}>
+#### ios.bottomAccessory {#host-ios-bottomaccessory}
+</PlatformHeading>
 
 ```ts
 bottomAccessory?: TabsBottomAccessoryComponentFactory;
@@ -27,9 +29,9 @@ require implementing a solution to share state between both rendered components
 
 :::
 
-**Platform:** ios \>= 26
-
-#### ios.bottomAccessoryHidden? {#host-ios-bottomaccessoryhidden}
+<PlatformHeading platforms={[{"platform":"ios","from":"26"}]}>
+#### ios.bottomAccessoryHidden {#host-ios-bottomaccessoryhidden}
+</PlatformHeading>
 
 ```ts
 bottomAccessoryHidden?: boolean;
@@ -39,9 +41,9 @@ Hides the bottom accessory with animation.
 
 **Default:** `false`
 
-**Platform:** ios \>= 26
-
-#### ios.onMoreTabSelected? {#host-ios-onmoretabselected}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### ios.onMoreTabSelected {#host-ios-onmoretabselected}
+</PlatformHeading>
 
 ```ts
 onMoreTabSelected?: TabsHostEventHandler<MoreTabSelectedEvent>;
@@ -55,9 +57,9 @@ the normal `onTabSelected` event instead.
 
 **Type:** [`TabsHostEventHandler`](#tabshosteventhandler)\<[`MoreTabSelectedEvent`](#moretabselectedevent)\>
 
-**Platform:** ios \>= 13
-
-#### ios.tabBarControllerMode? {#host-ios-tabbarcontrollermode}
+<PlatformHeading platforms={[{"platform":"ios","from":"18"}]}>
+#### ios.tabBarControllerMode {#host-ios-tabbarcontrollermode}
+</PlatformHeading>
 
 ```ts
 tabBarControllerMode?: TabBarControllerMode;
@@ -69,9 +71,9 @@ Specifies the display mode for the tab bar.
 
 **Default:** `'automatic'`
 
-**Platform:** ios \>= 18
-
-#### ios.tabBarMinimizeBehavior? {#host-ios-tabbarminimizebehavior}
+<PlatformHeading platforms={[{"platform":"ios","from":"26"}]}>
+#### ios.tabBarMinimizeBehavior {#host-ios-tabbarminimizebehavior}
+</PlatformHeading>
 
 ```ts
 tabBarMinimizeBehavior?: TabBarMinimizeBehavior;
@@ -83,9 +85,9 @@ Specifies the minimize behavior for the tab bar.
 
 **Default:** `'automatic'`
 
-**Platform:** ios \>= 26
-
-#### ios.tabBarTintColor? {#host-ios-tabbartintcolor}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### ios.tabBarTintColor {#host-ios-tabbartintcolor}
+</PlatformHeading>
 
 ```ts
 tabBarTintColor?: ____ColorValue_Internal;
@@ -98,5 +100,3 @@ selection view.
 
 `tabBarItemTitleFontColor` and `tabBarItemIconColor` defined on
 `Tabs.Screen` override this color.
-
-**Platform:** ios \>= 13

@@ -1,12 +1,12 @@
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 ## StackHeaderConfigRef {#stackheaderconfigref}
+</PlatformHeading>
 
 Imperative command handle for [Stack.HeaderConfig](#header-config), grouped per platform.
 
-**Platform:** android \>= 21, ios \>= 13
-
-### Properties
-
-#### android? {#stackheaderconfigref-android}
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
+#### android {#stackheaderconfigref-android}
+</PlatformHeading>
 
 ```ts
 android?: StackHeaderConfigCommandsAndroid;
@@ -16,9 +16,9 @@ Android-only imperative commands.
 
 **Type:** [`StackHeaderConfigCommandsAndroid`](#stackheaderconfigcommandsandroid)
 
-**Platform:** android \>= 21
-
-#### ios? {#stackheaderconfigref-ios}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### ios {#stackheaderconfigref-ios}
+</PlatformHeading>
 
 ```ts
 ios?: StackHeaderConfigCommandsIOS;
@@ -27,5 +27,3 @@ ios?: StackHeaderConfigCommandsIOS;
 iOS-only imperative commands.
 
 **Type:** [`StackHeaderConfigCommandsIOS`](#stackheaderconfigcommandsios)
-
-**Platform:** ios \>= 13
