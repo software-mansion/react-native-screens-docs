@@ -2,7 +2,9 @@ import Anchor from '@theme/MDXComponents/A';
 
 <Anchor id="header-config-ios" />
 
-#### ios.largeSubtitle? {#header-config-ios-largesubtitle}
+<PlatformHeading platforms={[{"platform":"ios","from":"26"}]}>
+#### ios.largeSubtitle {#header-config-ios-largesubtitle}
+</PlatformHeading>
 
 ```ts
 largeSubtitle?: string;
@@ -14,9 +16,9 @@ When ScrollView is present on the screen, large header is displayed only when
 fully scrolled to top, otherwise it collapses to regular header. If `largeSubititle` is not defined,
 it falls back to regular subtitle.
 
-**Platform:** ios \>= 26
-
-#### ios.largeSubtitleItem? {#header-config-ios-largesubtitleitem}
+<PlatformHeading platforms={[{"platform":"ios","from":"26"}]}>
+#### ios.largeSubtitleItem {#header-config-ios-largesubtitleitem}
+</PlatformHeading>
 
 ```ts
 largeSubtitleItem?: StackHeaderTitleCustomItemIOS;
@@ -26,9 +28,9 @@ Custom item to display as a subtitle for large header. Takes precedence over lar
 
 **Type:** [`StackHeaderTitleCustomItemIOS`](#stackheadertitlecustomitemios)
 
-**Platform:** ios \>= 26
-
-#### ios.largeTitle? {#header-config-ios-largetitle}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### ios.largeTitle {#header-config-ios-largetitle}
+</PlatformHeading>
 
 ```ts
 largeTitle?: string;
@@ -40,9 +42,9 @@ When ScrollView is present on the screen, large header is displayed only when
 fully scrolled to top, otherwise it collapses to regular header. If `largeTitle` is not defined,
 it falls back to regular title.
 
-**Platform:** ios \>= 13
-
-#### ios.largeTitleEnabled? {#header-config-ios-largetitleenabled}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### ios.largeTitleEnabled {#header-config-ios-largetitleenabled}
+</PlatformHeading>
 
 ```ts
 largeTitleEnabled?: boolean;
@@ -50,9 +52,9 @@ largeTitleEnabled?: boolean;
 
 Specifies if the header should display the large title. It collapses to a regular header when scrolling.
 
-**Platform:** ios \>= 13
-
-#### ios.leadingItems? {#header-config-ios-leadingitems}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### ios.leadingItems {#header-config-ios-leadingitems}
+</PlatformHeading>
 
 ```ts
 leadingItems?: StackHeaderItemIOS[];
@@ -68,9 +70,9 @@ Note: Custom items are not put into the overflow menu, but are removed entirely.
 
 **Type:** [`StackHeaderItemIOS[]`](#stackheaderitemios)
 
-**Platform:** ios \>= 13
-
-#### ios.subtitleItem? {#header-config-ios-subtitleitem}
+<PlatformHeading platforms={[{"platform":"ios","from":"26"}]}>
+#### ios.subtitleItem {#header-config-ios-subtitleitem}
+</PlatformHeading>
 
 ```ts
 subtitleItem?: StackHeaderTitleCustomItemIOS;
@@ -82,9 +84,9 @@ Takes precedence over subtitle text.
 
 **Type:** [`StackHeaderTitleCustomItemIOS`](#stackheadertitlecustomitemios)
 
-**Platform:** ios \>= 26
-
-#### ios.titleItem? {#header-config-ios-titleitem}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### ios.titleItem {#header-config-ios-titleitem}
+</PlatformHeading>
 
 ```ts
 titleItem?: StackHeaderTitleCustomItemIOS;
@@ -96,9 +98,9 @@ Takes precedence over title text.
 
 **Type:** [`StackHeaderTitleCustomItemIOS`](#stackheadertitlecustomitemios)
 
-**Platform:** ios \>= 13
-
-#### ios.titleMenu? {#header-config-ios-titlemenu}
+<PlatformHeading platforms={[{"platform":"ios","from":"16"}]}>
+#### ios.titleMenu {#header-config-ios-titlemenu}
+</PlatformHeading>
 
 ```ts
 titleMenu?: StackHeaderMenuIOS;
@@ -112,9 +114,9 @@ plain text and custom view title.
 
 **Type:** [`StackHeaderMenuIOS`](#stackheadermenuios)
 
-**Platform:** ios \>= 16
-
-#### ios.trailingItems? {#header-config-ios-trailingitems}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### ios.trailingItems {#header-config-ios-trailingitems}
+</PlatformHeading>
 
 ```ts
 trailingItems?: StackHeaderItemIOS[];
@@ -127,5 +129,3 @@ If there is not enough space to fit some items, they are moved to the overflow m
 Note: Custom items are not put into the overflow menu, but are removed entirely.
 
 **Type:** [`StackHeaderItemIOS[]`](#stackheaderitemios)
-
-**Platform:** ios \>= 13

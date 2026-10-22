@@ -1,4 +1,6 @@
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
 ## StackHeaderMenuIOS {#stackheadermenuios}
+</PlatformHeading>
 
 Represents a menu (or submenu) that groups
 [StackHeaderMenuElementIOS](#stackheadermenuelementios) children.
@@ -15,11 +17,9 @@ across the whole hierarchy under Single Selection Root (even when mixing items a
 Previously selected item is deselected automatically.
 Multiple Single Selection Roots may exist only if their hierarchy is completely separate.
 
-**Platform:** ios \>= 13
-
-### Properties
-
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
 #### children {#stackheadermenuios-children}
+</PlatformHeading>
 
 ```ts
 children: StackHeaderMenuElementIOS[];
@@ -32,9 +32,9 @@ Each child is either a [StackHeaderMenuItemIOS](#stackheadermenuitemios) (leaf) 
 
 **Type:** [`StackHeaderMenuElementIOS[]`](#stackheadermenuelementios)
 
-**Platform:** ios \>= 13
-
-#### displayAsPalette? {#stackheadermenuios-displayaspalette}
+<PlatformHeading platforms={[{"platform":"ios","from":"17"}]}>
+#### displayAsPalette {#stackheadermenuios-displayaspalette}
+</PlatformHeading>
 
 ```ts
 displayAsPalette?: boolean;
@@ -49,9 +49,9 @@ On older versions, this option is ignored.
 
 **Default:** `false`
 
-**Platform:** ios \>= 17
-
-#### displayInline? {#stackheadermenuios-displayinline}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### displayInline {#stackheadermenuios-displayinline}
+</PlatformHeading>
 
 ```ts
 displayInline?: boolean;
@@ -64,9 +64,9 @@ with horizontal bars separating it from the surrounding items.
 
 **Default:** `false`
 
-**Platform:** ios \>= 13
-
-#### icon? {#stackheadermenuios-icon}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### icon {#stackheadermenuios-icon}
+</PlatformHeading>
 
 ```ts
 icon?: PlatformIconIOS;
@@ -79,9 +79,9 @@ loaded.
 
 **Type:** [`PlatformIconIOS`](../../../../../common-types/index.mdx#platformiconios)
 
-**Platform:** ios \>= 13
-
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
 #### id {#stackheadermenuios-id}
+</PlatformHeading>
 
 ```ts
 id: string;
@@ -92,9 +92,9 @@ Unique identifier of the menu.
 Used to locate the menu inside a tree and as the reference when querying or
 manipulating menu state.
 
-**Platform:** ios \>= 13
-
-#### onSelectionChange? {#stackheadermenuios-onselectionchange}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### onSelectionChange {#stackheadermenuios-onselectionchange}
+</PlatformHeading>
 
 ```ts
 onSelectionChange?: StackHeaderMenuSelectionHandler;
@@ -109,9 +109,9 @@ In regular non-single-selection case, only changes to direct children are reflec
 
 **Type:** [`StackHeaderMenuSelectionHandler`](#stackheadermenuselectionhandler)
 
-**Platform:** ios \>= 13
-
-#### singleSelection? {#stackheadermenuios-singleselection}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### singleSelection {#stackheadermenuios-singleselection}
+</PlatformHeading>
 
 ```ts
 singleSelection?: boolean;
@@ -128,9 +128,9 @@ Items with `itemType` set to `'automatic'` are resolved to `'toggle'` inside a
 
 **Default:** `false`
 
-**Platform:** ios \>= 13
-
-#### title? {#stackheadermenuios-title}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### title {#stackheadermenuios-title}
+</PlatformHeading>
 
 ```ts
 title?: string;
@@ -138,14 +138,12 @@ title?: string;
 
 Title displayed for the menu.
 
-**Platform:** ios \>= 13
-
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
 #### type {#stackheadermenuios-type}
+</PlatformHeading>
 
 ```ts
 type: "menu";
 ```
 
 Marks this object as a menu definition.
-
-**Platform:** ios \>= 13

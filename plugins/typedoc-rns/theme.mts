@@ -12,9 +12,14 @@ import {
   type MarkdownPageEvent,
 } from 'typedoc-plugin-markdown';
 
-import { renderComment } from './comment.mts';
+import { changeComment, renderComment } from './comment.mts';
 import { declarationPartials, withoutOptionalFlag } from './declaration.mts';
-import { membersOf, outputRoot } from './feature-map.mts';
+import {
+  commentOf,
+  membersOf,
+  outputRoot,
+  platformEntriesOf,
+} from './feature-map.mts';
 import type { Layout, RnsRouter, Section } from './router.mts';
 import { signaturePartials } from './signature.mts';
 import { typePartials } from './types.mts';
@@ -43,6 +48,22 @@ const SECTION_LEVEL = 2;
 const SECTION_PROP_LEVEL = SECTION_LEVEL + 2;
 
 /**
+ * A heading with a chip per platform of the reflection's `@platform` tag, in a
+ * `<PlatformHeading>`; without the tag, the plain heading. It also makes the reflection's
+ * comment leave the tag out, so it runs before the comment renders.
+ */
+function headingWithPlatforms(
+  reflection: DeclarationReflection,
+  heading: string,
+): string {
+  const comment = commentOf(reflection);
+  const platforms = comment ? platformEntriesOf(reflection) : [];
+  if (!comment || platforms.length === 0) return heading;
+  changeComment(comment, { omitPlatform: true });
+  return `<PlatformHeading platforms={${JSON.stringify(platforms)}}>\n${heading}\n</PlatformHeading>`;
+}
+
+/**
  * A member heading carries the anchor the router gave it (`### title {#header-config-title}`).
  * Docusaurus would otherwise slug the heading text, and `title` of one section would take the
  * `#title` that the next section's `title` needs too — every cross-link to a member breaks.
@@ -65,9 +86,9 @@ function renderMemberContainer(
       ? ctx.router.getAnchor(model)
       : undefined;
     const title = `${options.titlePrefix ?? ''}${ctx.partials.memberTitle(model)}`;
-    md.push(
-      `${'#'.repeat(options.headingLevel)} ${anchor ? `${title} {#${anchor}}` : title}`,
-    );
+    // Markdown has no heading below h6; a deeper member stays at h6.
+    const heading = `${'#'.repeat(Math.min(options.headingLevel, 6))} ${anchor ? `${title} {#${anchor}}` : title}`;
+    md.push(headingWithPlatforms(model, heading));
   }
   md.push(
     ctx.partials.member(model, {
@@ -122,7 +143,10 @@ function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
     const usages = [
       part(section.part!, name, () =>
         [
-          `${'#'.repeat(SECTION_LEVEL)} ${section.title} {#${section.anchor}}`,
+          headingWithPlatforms(
+            section.model,
+            `${'#'.repeat(SECTION_LEVEL)} ${section.title} {#${section.anchor}}`,
+          ),
           ctx.partials.member(section.model, { headingLevel: SECTION_LEVEL }),
         ].join('\n\n'),
       ),
@@ -189,6 +213,30 @@ class RnsThemeContext extends MarkdownThemeContext {
         renderComment(this, basePartials.comment, model, options),
       memberContainer: (model, options) =>
         renderMemberContainer(this, model, options),
+      // Optional shows in the declaration below the heading (`colorScheme?: …`).
+      memberTitle: model =>
+        basePartials.memberTitle(model).replace(/\?(~~)?$/, '$1'),
+      // A section lists its members under its own heading, without a `Properties` / `Methods`
+      // heading per group; the members keep the level they had under one. Groups split into
+      // categories are left to the stock partial. A group's `@groupDescription` and the stock
+      // index of members with pages of their own are not rendered; the reference has neither.
+      groups: (model, options) => {
+        const groups = model.groups ?? [];
+        if (groups.some(group => group.categories)) {
+          return basePartials.groups(model, options);
+        }
+        return groups
+          .map(group =>
+            this.partials.members(
+              group.children.filter(child => child.isDeclaration()),
+              {
+                headingLevel: options.headingLevel + 1,
+                groupTitle: group.title,
+              },
+            ),
+          )
+          .join('\n\n');
+      },
     };
     this.helpers = {
       ...this.helpers,

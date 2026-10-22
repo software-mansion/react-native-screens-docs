@@ -1,0 +1,78 @@
+/*
+Infima spaces only the headings that are direct children of `.markdown`; the heading in this
+row is not one, so the row takes the spacing it would have had, with the house rhythm values
+(typography.css declares them on `.platform-heading` too).
+*/
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: calc(var(--ifm-heading-vertical-rhythm-top) * var(--ifm-leading));
+  margin-bottom: calc(
+    var(--ifm-heading-vertical-rhythm-bottom) * var(--ifm-leading)
+  );
+}
+
+.row:has(> h2) {
+  margin-top: calc(var(--ifm-h2-vertical-rhythm-top) * var(--ifm-leading));
+}
+
+.row:has(> h3) {
+  margin-top: calc(var(--ifm-h3-vertical-rhythm-top) * var(--ifm-leading));
+}
+
+.row > :is(h2, h3, h4, h5, h6) {
+  margin: 0;
+}
+
+/* The colours are the platform badge tokens of src/css/colors.css; grey for a platform without them. */
+.chip {
+  display: inline-block;
+  border-radius: 6px;
+  padding: 1px 6px;
+  font-size: 11px;
+  line-height: 1.4;
+  white-space: nowrap;
+  background-color: var(--chip-background, var(--ifm-color-emphasis-600));
+  color: var(--chip-color, var(--swm-off-white));
+}
+
+.chip[data-platform='android'] {
+  --chip-background: var(--swm-platform-badge-android-background);
+  --chip-color: var(--swm-platform-badge-android-color);
+}
+
+.chip[data-platform='ios'] {
+  --chip-background: var(--swm-platform-badge-ios-background);
+  --chip-color: var(--swm-platform-badge-ios-color);
+}
+
+.chip[data-platform='tvos'] {
+  --chip-background: var(--swm-platform-badge-tvos-background);
+  --chip-color: var(--swm-platform-badge-tvos-color);
+}
+
+.chip[data-platform='visionos'] {
+  --chip-background: var(--swm-platform-badge-visionos-background);
+  --chip-color: var(--swm-platform-badge-visionos-color);
+}
+
+.chip[data-platform='web'] {
+  --chip-background: var(--swm-platform-badge-web-background);
+  --chip-color: var(--swm-platform-badge-web-color);
+}
+
+.chip[data-platform='windows'] {
+  --chip-background: var(--swm-platform-badge-windows-background);
+  --chip-color: var(--swm-platform-badge-windows-color);
+}
+
+.platform {
+  font-weight: var(--swm-heading-font-weight);
+}
+
+.version {
+  margin-left: 0.3em;
+  font-weight: 400;
+}

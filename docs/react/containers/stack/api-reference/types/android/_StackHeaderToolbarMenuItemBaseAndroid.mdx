@@ -1,12 +1,12 @@
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
 ## StackHeaderToolbarMenuItemBaseAndroid {#stackheadertoolbarmenuitembaseandroid}
+</PlatformHeading>
 
 Base fields shared by toolbar menu items and submenus.
 
-**Platform:** android \>= 21
-
-### Properties
-
-#### accessibilityLabel? {#stackheadertoolbarmenuitembaseandroid-accessibilitylabel}
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
+#### accessibilityLabel {#stackheadertoolbarmenuitembaseandroid-accessibilitylabel}
+</PlatformHeading>
 
 ```ts
 accessibilityLabel?: string;
@@ -23,9 +23,9 @@ Due to native platform limitations, it's not possible to provide `testID`
 for menu items inside overflow menu/submenus. If possible, use
 `accessibilityLabel` instead.
 
-**Platform:** android \>= 21
-
-#### disabled? {#stackheadertoolbarmenuitembaseandroid-disabled}
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
+#### disabled {#stackheadertoolbarmenuitembaseandroid-disabled}
+</PlatformHeading>
 
 ```ts
 disabled?: boolean;
@@ -35,9 +35,9 @@ Specifies if the menu element should be disabled.
 
 **Default:** `false`
 
-**Platform:** android \>= 21
-
-#### hidden? {#stackheadertoolbarmenuitembaseandroid-hidden}
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
+#### hidden {#stackheadertoolbarmenuitembaseandroid-hidden}
+</PlatformHeading>
 
 ```ts
 hidden?: boolean;
@@ -47,9 +47,9 @@ Specifies if the menu element should be hidden.
 
 **Default:** `false`
 
-**Platform:** android \>= 21
-
-#### icon? {#stackheadertoolbarmenuitembaseandroid-icon}
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
+#### icon {#stackheadertoolbarmenuitembaseandroid-icon}
+</PlatformHeading>
 
 ```ts
 icon?: PlatformIconAndroid;
@@ -65,9 +65,9 @@ Toolbar.
 
 **Type:** [`PlatformIconAndroid`](../../../../../common-types/index.mdx#platformiconandroid)
 
-**Platform:** android \>= 21
-
-#### iconTintColorDisabled? {#stackheadertoolbarmenuitembaseandroid-icontintcolordisabled}
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
+#### iconTintColorDisabled {#stackheadertoolbarmenuitembaseandroid-icontintcolordisabled}
+</PlatformHeading>
 
 ```ts
 iconTintColorDisabled?: ____ColorValue_Internal;
@@ -80,9 +80,9 @@ Due to native platform limitations, if you set this prop, you should also
 provide `iconTintColorNormal`. Otherwise, the icon will become
 transparent when the item is not disabled.
 
-**Platform:** android \>= 21
-
-#### iconTintColorFocused? {#stackheadertoolbarmenuitembaseandroid-icontintcolorfocused}
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
+#### iconTintColorFocused {#stackheadertoolbarmenuitembaseandroid-icontintcolorfocused}
+</PlatformHeading>
 
 ```ts
 iconTintColorFocused?: ____ColorValue_Internal;
@@ -95,9 +95,9 @@ Due to native platform limitations, if you set this prop, you must also
 provide `iconTintColorNormal`. Otherwise, the icon will become
 transparent.
 
-**Platform:** android \>= 21
-
-#### iconTintColorNormal? {#stackheadertoolbarmenuitembaseandroid-icontintcolornormal}
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
+#### iconTintColorNormal {#stackheadertoolbarmenuitembaseandroid-icontintcolornormal}
+</PlatformHeading>
 
 ```ts
 iconTintColorNormal?: ____ColorValue_Internal;
@@ -105,9 +105,9 @@ iconTintColorNormal?: ____ColorValue_Internal;
 
 Specifies the tint color to apply to the menu element icon.
 
-**Platform:** android \>= 21
-
-#### iconTintColorPressed? {#stackheadertoolbarmenuitembaseandroid-icontintcolorpressed}
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
+#### iconTintColorPressed {#stackheadertoolbarmenuitembaseandroid-icontintcolorpressed}
+</PlatformHeading>
 
 ```ts
 iconTintColorPressed?: ____ColorValue_Internal;
@@ -120,9 +120,9 @@ Due to native platform limitations, if you set this prop, you must also
 provide `iconTintColorNormal`. Otherwise, the icon will become
 transparent.
 
-**Platform:** android \>= 21
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
 #### id {#stackheadertoolbarmenuitembaseandroid-id}
+</PlatformHeading>
 
 ```ts
 id: string;
@@ -130,9 +130,9 @@ id: string;
 
 Unique identifier of the menu element.
 
-**Platform:** android \>= 21
-
-#### showAsAction? {#stackheadertoolbarmenuitembaseandroid-showasaction}
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
+#### showAsAction {#stackheadertoolbarmenuitembaseandroid-showasaction}
+</PlatformHeading>
 
 ```ts
 showAsAction?: StackHeaderToolbarMenuItemShowAsActionAndroid;
@@ -153,9 +153,9 @@ adapt to subsequent layout or orientation changes.
 
 **Default:** `'never'`
 
-**Platform:** android \>= 21
-
-#### title? {#stackheadertoolbarmenuitembaseandroid-title}
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
+#### title {#stackheadertoolbarmenuitembaseandroid-title}
+</PlatformHeading>
 
 ```ts
 title?: string;
@@ -169,9 +169,9 @@ will also be changed to the new title (unless the new title is set to
 `undefined`). In order to keep the custom menu title, you should also
 include `menuTitle` in the view command.
 
-**Platform:** android \>= 21
-
-#### titleCondensed? {#stackheadertoolbarmenuitembaseandroid-titlecondensed}
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
+#### titleCondensed {#stackheadertoolbarmenuitembaseandroid-titlecondensed}
+</PlatformHeading>
 
 ```ts
 titleCondensed?: string;
@@ -184,9 +184,9 @@ When the element is shown in the Toolbar with a text label, this
 condensed title is used instead of `title`. The full `title` is still
 used everywhere else (the overflow menu and submenus).
 
-**Platform:** android \>= 21
-
-#### tooltipText? {#stackheadertoolbarmenuitembaseandroid-tooltiptext}
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
+#### tooltipText {#stackheadertoolbarmenuitembaseandroid-tooltiptext}
+</PlatformHeading>
 
 ```ts
 tooltipText?: string;
@@ -197,5 +197,3 @@ element when it is displayed as a button in the Toolbar.
 
 Applies only to elements shown as a button in the Toolbar; it has no
 effect on elements placed in the overflow menu.
-
-**Platform:** android \>= 21

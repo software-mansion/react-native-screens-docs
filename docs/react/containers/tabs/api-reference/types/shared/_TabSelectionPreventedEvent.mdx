@@ -1,4 +1,6 @@
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 ## TabSelectionPreventedEvent {#tabselectionpreventedevent}
+</PlatformHeading>
 
 ```ts
 type TabSelectionPreventedEvent = {
@@ -11,11 +13,9 @@ type TabSelectionPreventedEvent = {
 Payload of the event emitted when the native side prevents a tab selection
 because the target screen has `preventNativeSelection` enabled.
 
-**Platform:** android \>= 21, ios \>= 13
-
-### Properties
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### preventedScreenKey {#tabselectionpreventedevent-preventedscreenkey}
+</PlatformHeading>
 
 ```ts
 preventedScreenKey: string;
@@ -23,9 +23,9 @@ preventedScreenKey: string;
 
 Screen key of the tab whose selection was prevented.
 
-**Platform:** android \>= 21, ios \>= 13
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### provenance {#tabselectionpreventedevent-provenance}
+</PlatformHeading>
 
 ```ts
 provenance: number;
@@ -33,14 +33,12 @@ provenance: number;
 
 Provenance of the currently active navigation state.
 
-**Platform:** android \>= 21, ios \>= 13
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### selectedScreenKey {#tabselectionpreventedevent-selectedscreenkey}
+</PlatformHeading>
 
 ```ts
 selectedScreenKey: string;
 ```
 
 Screen key of the currently selected (active) tab.
-
-**Platform:** android \>= 21, ios \>= 13
