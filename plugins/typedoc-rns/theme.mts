@@ -37,15 +37,18 @@ declare module 'typedoc-plugin-markdown' {
   }
 }
 
+// A rule between a family page's top-level blocks: each component section, and the types.
 const SEPARATOR = '\n\n***\n\n';
 
 /** Docusaurus's MDX `a`, imported where a part needs an anchor without a heading. */
 const ANCHOR_IMPORT = "import Anchor from '@theme/MDXComponents/A';";
 
-// A section's heading level; the stock partial puts its props two below (`### Properties`,
-// `#### prop`), and the flattened `ios.x` / `android.x` props sit at that level too.
-const SECTION_LEVEL = 2;
-const SECTION_PROP_LEVEL = SECTION_LEVEL + 2;
+// The level of a family page's component sections and its `### Types` heading, under the
+// hand-written `## API Reference`; the types sit one below. The Common Types page has no API
+// Reference part, so its types take this level, the lowest the table of contents lists: one
+// higher, their members would be listed too. A member is one level below its entry.
+const TOP_LEVEL = 3;
+const TYPES_HEADING = `${'#'.repeat(TOP_LEVEL)} Types {#types}`;
 
 /**
  * A heading with a chip per platform of the reflection's `@platform` tag, in a
@@ -138,16 +141,23 @@ function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
     return `<${name} />`;
   };
 
-  const blocks = layout.sections.map(section => {
+  const components = layout.sections.filter(
+    section => section.kind === 'component',
+  );
+  const types = layout.sections.filter(section => section.kind === 'type');
+  const typeLevel = components.length > 0 ? TOP_LEVEL + 1 : TOP_LEVEL;
+
+  const render = (section: Section): string => {
     const name = partName(section);
+    const level = section.kind === 'component' ? TOP_LEVEL : typeLevel;
     const usages = [
       part(section.part!, name, () =>
         [
           headingWithPlatforms(
             section.model,
-            `${'#'.repeat(SECTION_LEVEL)} ${section.title} {#${section.anchor}}`,
+            `${'#'.repeat(level)} ${section.title} {#${section.anchor}}`,
           ),
-          ctx.partials.member(section.model, { headingLevel: SECTION_LEVEL }),
+          ctx.partials.member(section.model, { headingLevel: level }),
         ].join('\n\n'),
       ),
     ];
@@ -161,7 +171,7 @@ function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
             `<Anchor id="${ctx.router.getAnchor(platform.model)}" />`,
             ...membersOf(platform.model).map(member =>
               renderMemberContainer(ctx, member, {
-                headingLevel: SECTION_PROP_LEVEL,
+                headingLevel: level + 1,
                 titlePrefix: `${platform.key}.`,
               }),
             ),
@@ -170,7 +180,14 @@ function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
       );
     }
     return usages.join('\n\n');
-  });
+  };
+
+  // A rule after each component section; the types are one block, without rules between them.
+  const blocks = components.map(render);
+  if (types.length > 0) {
+    const heading = components.length > 0 ? [TYPES_HEADING] : [];
+    blocks.push([...heading, ...types.map(render)].join('\n\n'));
+  }
 
   ctx.page.rnsParts = { root, parts, imports };
   return blocks.join(SEPARATOR);
@@ -216,10 +233,10 @@ class RnsThemeContext extends MarkdownThemeContext {
       // Optional shows in the declaration below the heading (`colorScheme?: …`).
       memberTitle: model =>
         basePartials.memberTitle(model).replace(/\?(~~)?$/, '$1'),
-      // A section lists its members under its own heading, without a `Properties` / `Methods`
-      // heading per group; the members keep the level they had under one. Groups split into
-      // categories are left to the stock partial. A group's `@groupDescription` and the stock
-      // index of members with pages of their own are not rendered; the reference has neither.
+      // A section lists its members under its own heading, one level below it, without a
+      // `Properties` / `Methods` heading per group. Groups split into categories are left to the
+      // stock partial. A group's `@groupDescription` and the stock index of members with pages
+      // of their own are not rendered; the reference has neither.
       groups: (model, options) => {
         const groups = model.groups ?? [];
         if (groups.some(group => group.categories)) {
@@ -230,7 +247,7 @@ class RnsThemeContext extends MarkdownThemeContext {
             this.partials.members(
               group.children.filter(child => child.isDeclaration()),
               {
-                headingLevel: options.headingLevel + 1,
+                headingLevel: options.headingLevel,
                 groupTitle: group.title,
               },
             ),
