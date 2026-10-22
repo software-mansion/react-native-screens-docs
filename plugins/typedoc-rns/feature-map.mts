@@ -191,6 +191,9 @@ export function componentFor(
 export const PLATFORM_KEYS: readonly Platform[] = ['android', 'ios'];
 
 /** The platforms a `@platform` tag may name. */
+// A new platform also needs its chip: a label in src/components/PlatformHeading/index.tsx, a
+// `.chip[data-platform=…]` rule in its styles.module.css and the badge tokens in
+// src/css/colors.css, in both themes.
 export const PLATFORM_NAMES = [
   'android',
   'ios',
@@ -203,17 +206,37 @@ export const PLATFORM_NAMES = [
 export type PlatformName = (typeof PLATFORM_NAMES)[number];
 
 /**
- * One entry of a `@platform` tag:
- * `ios >= 18` → `{ platform: 'ios', operator: '>=', version: '18' }`.
+ * One entry of a `@platform` tag: `ios >= 13` → `{ platform: 'ios', from: '13' }`,
+ * `ios 13 - 18` → `{ platform: 'ios', from: '13', to: '18' }`.
  */
-export interface PlatformEntry {
-  platform: PlatformName;
-  operator?: '>=' | '<=';
-  version?: string;
-}
+export type PlatformEntry = { platform: PlatformName } & (
+  | { from?: undefined; to?: undefined }
+  | {
+      /** The first version the symbol works on. */
+      from: string;
+      /** The last version the symbol works on; only with a first one. */
+      to?: string;
+    }
+);
 
-// `ios`, `ios >= 18`, `windows >= 10.0.17763`: lower case, one space around the operator.
-const PLATFORM_ENTRY = /^([a-z]+)(?: (>=|<=) (\d+(?:\.\d+)*))?$/;
+const VERSION = String.raw`\d+(?:\.\d+)*`;
+
+// `web`, `ios >= 18`, `ios 13 - 18`, `windows >= 10.0.17763`: lower case, one space on each
+// side of the operator, `>=` or `-`.
+const PLATFORM_ENTRY = new RegExp(
+  `^([a-z]+)(?: >= (${VERSION})| (${VERSION}) - (${VERSION}))?$`,
+);
+
+/** Compares dotted versions part by part: `15.1` comes after `15`, `10.0.17763` after `10`. */
+function compareVersions(a: string, b: string): number {
+  const left = a.split('.').map(Number);
+  const right = b.split('.').map(Number);
+  for (let i = 0; i < Math.max(left.length, right.length); i++) {
+    const difference = (left[i] ?? 0) - (right[i] ?? 0);
+    if (difference !== 0) return difference;
+  }
+  return 0;
+}
 
 /**
  * Splits a `@platform` tag into entries and lists what is malformed. Checks the shape of each
@@ -237,20 +260,29 @@ export function parsePlatformTag(text: string): {
     const match = PLATFORM_ENTRY.exec(entry);
     if (!match) {
       errors.push(
-        `"${entry}" is not \`<platform>\` or \`<platform> >= | <= <version>\``,
+        `"${entry}" is not \`<platform>\`, \`<platform> >= <version>\` or \`<platform> <version> - <version>\``,
       );
       continue;
     }
-    const [, name, operator, version] = match;
+    const [, name, since, rangeFrom, rangeTo] = match;
+    const from = since ?? rangeFrom;
     if (!PLATFORM_NAMES.includes(name as PlatformName)) {
       errors.push(`"${name}" is not a platform (${PLATFORM_NAMES.join(', ')})`);
     } else if (entries.some(known => known.platform === name)) {
       errors.push(`"${name}" is listed twice`);
+    } else if (
+      rangeFrom &&
+      rangeTo &&
+      compareVersions(rangeFrom, rangeTo) >= 0
+    ) {
+      errors.push(`"${entry}": the first version is not below the last`);
     } else {
-      entries.push({
-        platform: name as PlatformName,
-        ...(operator && { operator: operator as '>=' | '<=', version }),
-      });
+      const platform = name as PlatformName;
+      entries.push(
+        from
+          ? { platform, from, ...(rangeTo && { to: rangeTo }) }
+          : { platform },
+      );
     }
   }
   return { entries, errors };

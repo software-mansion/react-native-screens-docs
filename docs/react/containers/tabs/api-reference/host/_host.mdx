@@ -1,10 +1,20 @@
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 ## Host {#host}
+</PlatformHeading>
 
-**Platform:** android \>= 21, ios \>= 13
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13","to":"18"},{"platform":"tvos","from":"13","to":"18"},{"platform":"visionos","from":"1","to":"2"},{"platform":"web"},{"platform":"windows","from":"10.0.17763","to":"10.0.22621"}]}>
+#### allPlatformsTest {#host-allplatformstest}
+</PlatformHeading>
 
-### Properties
+```ts
+allPlatformsTest?: boolean;
+```
 
+Test prop for the platform chips: it lists every platform a `@platform` tag accepts.
+
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### children {#host-children}
+</PlatformHeading>
 
 ```ts
 children: NonNullable<ReactNode>;
@@ -12,9 +22,9 @@ children: NonNullable<ReactNode>;
 
 Tab screens to display; wrap each screen in a `Tabs.Screen`.
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### colorScheme? {#host-colorscheme}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### colorScheme {#host-colorscheme}
+</PlatformHeading>
 
 ```ts
 colorScheme?: TabsColorScheme;
@@ -26,9 +36,9 @@ Specifies the color scheme used by the container and any child containers.
 
 **Default:** `'inherit'`
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### direction? {#host-direction}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### direction {#host-direction}
+</PlatformHeading>
 
 ```ts
 direction?: TabsDirection;
@@ -52,9 +62,9 @@ override (e.g. when `forceRTL` is used). To mitigate this, you can pass
 
 **Default:** `'inherit'`
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### nativeContainerStyle? {#host-nativecontainerstyle}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### nativeContainerStyle {#host-nativecontainerstyle}
+</PlatformHeading>
 
 ```ts
 nativeContainerStyle?: TabsHostNativeContainerStyleProps;
@@ -68,9 +78,9 @@ view.
 
 **Type:** [`TabsHostNativeContainerStyleProps`](#tabshostnativecontainerstyleprops)
 
-**Platform:** android \>= 21, ios \>= 13
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### navStateRequest {#host-navstaterequest}
+</PlatformHeading>
 
 ```ts
 navStateRequest: TabsHostNavStateRequest;
@@ -87,9 +97,9 @@ the update might get accepted or rejected.
 
 **See:** [TabsHostPropsBase.rejectStaleNavStateUpdates](#host-rejectstalenavstateupdates)
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### onTabSelected? {#host-ontabselected}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### onTabSelected {#host-ontabselected}
+</PlatformHeading>
 
 ```ts
 onTabSelected?: TabsHostEventHandler<TabSelectedEvent>;
@@ -99,9 +109,9 @@ A callback that gets invoked when the selected tab changes.
 
 **Type:** [`TabsHostEventHandler`](#tabshosteventhandler)\<[`TabSelectedEvent`](#tabselectedevent)\>
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### onTabSelectionPrevented? {#host-ontabselectionprevented}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### onTabSelectionPrevented {#host-ontabselectionprevented}
+</PlatformHeading>
 
 ```ts
 onTabSelectionPrevented?: TabsHostEventHandler<TabSelectionPreventedEvent>;
@@ -112,9 +122,9 @@ because the target screen has `preventNativeSelection` enabled.
 
 **Type:** [`TabsHostEventHandler`](#tabshosteventhandler)\<[`TabSelectionPreventedEvent`](#tabselectionpreventedevent)\>
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### onTabSelectionRejected? {#host-ontabselectionrejected}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### onTabSelectionRejected {#host-ontabselectionrejected}
+</PlatformHeading>
 
 ```ts
 onTabSelectionRejected?: TabsHostEventHandler<TabSelectionRejectedEvent>;
@@ -124,9 +134,9 @@ A callback that gets invoked when the native side rejects a tab selection reques
 
 **Type:** [`TabsHostEventHandler`](#tabshosteventhandler)\<[`TabSelectionRejectedEvent`](#tabselectionrejectedevent)\>
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### rejectStaleNavStateUpdates? {#host-rejectstalenavstateupdates}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### rejectStaleNavStateUpdates {#host-rejectstalenavstateupdates}
+</PlatformHeading>
 
 ```ts
 rejectStaleNavStateUpdates?: boolean;
@@ -156,9 +166,9 @@ emitted with details of the rejected update and the currently active navigation 
 
 **Default:** `false`
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### tabBarHidden? {#host-tabbarhidden}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### tabBarHidden {#host-tabbarhidden}
+</PlatformHeading>
 
 ```ts
 tabBarHidden?: boolean;
@@ -167,5 +177,3 @@ tabBarHidden?: boolean;
 Hides the tab bar.
 
 **Default:** `false`
-
-**Platform:** android \>= 21, ios \>= 13

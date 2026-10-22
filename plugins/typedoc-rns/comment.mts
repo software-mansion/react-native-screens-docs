@@ -16,6 +16,7 @@ const LABELS: Record<string, string> = {
   '@defaultValue': 'Default',
   '@example': 'Example',
   '@see': 'See',
+  // A heading with platform chips hides the tag; the line is left where nothing does.
   '@platform': 'Platform',
   '@deprecated': 'Deprecated',
 };
@@ -72,26 +73,21 @@ function exampleTitle(name: string): string {
   return /^<caption>(.*)<\/caption>$/.exec(name)?.[1] ?? name;
 }
 
-// What an entry puts at the top of its comment's More information: `**Type:**`, `**Extends:**`.
-const leads = new WeakMap<Comment, string>();
-
-/**
- * Renders `md` after the comment's summary and `@remarks`, before its other tags. It stays set
- * for the comment: an entry renders its comment once, with the same line each time.
- */
-export function setLead(comment: Comment, md: string): void {
-  leads.set(comment, md);
+/** How an entry renders its comment, when it differs from the default. */
+export interface CommentChanges {
+  /** Opens the comment's More information: after the summary and `@remarks`. */
+  lead?: string;
+  /** Leaves out the summary and `@remarks`. */
+  omitDescription?: boolean;
+  /** Leaves out `@platform`, which the entry's heading shows. */
+  omitPlatform?: boolean;
 }
 
-// Comments rendered without their Description (summary and `@remarks`).
-const withoutDescription = new WeakSet<Comment>();
+const changes = new WeakMap<Comment, CommentChanges>();
 
-/**
- * Renders the comment without its summary and `@remarks`; the other tags stay. It stays set for
- * the comment.
- */
-export function omitDescription(comment: Comment): void {
-  withoutDescription.add(comment);
+/** Changes how the comment renders. They stay set: an entry renders its comment the same way each time. */
+export function changeComment(comment: Comment, change: CommentChanges): void {
+  changes.set(comment, { ...changes.get(comment), ...change });
 }
 
 /** The tags this partial renders itself; any other goes through the stock partial. */
@@ -125,7 +121,8 @@ export function renderComment(
   const text = (parts: CommentDisplayPart[]): string =>
     base(new Comment(parts), { showSummary: true, showTags: false }).trim();
   const md: string[] = [];
-  const description = !withoutDescription.has(model);
+  const change = changes.get(model) ?? {};
+  const description = !change.omitDescription;
 
   if (showSummary) {
     const modifiers = new Set(model.modifierTags);
@@ -138,9 +135,10 @@ export function renderComment(
     );
   }
 
-  let lead = showSummary ? leads.get(model) : undefined;
+  let lead = showSummary ? change.lead : undefined;
   const hidden = new Set<string>(ctx.options.getValue('notRenderedTags'));
   if (!options.showReturns) hidden.add('@returns');
+  if (change.omitPlatform) hidden.add('@platform');
   for (const tag of model.blockTags) {
     if (hidden.has(tag.tag)) continue;
     if (tag.tag === '@remarks' && !description) continue;

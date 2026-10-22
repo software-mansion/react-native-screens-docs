@@ -1,4 +1,6 @@
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
 ## StackHeaderMenuItemIOS {#stackheadermenuitemios}
+</PlatformHeading>
 
 Represents a single actionable item inside a [StackHeaderMenuIOS](#stackheadermenuios) menu.
 
@@ -6,11 +8,9 @@ A menu item is a leaf element that the user can interact with.
 Depending on its [itemType](#stackheadermenuitemios-itemtype), the item
 behaves as a one-shot action or a stateful toggle.
 
-**Platform:** ios \>= 13
-
-### Properties
-
-#### icon? {#stackheadermenuitemios-icon}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### icon {#stackheadermenuitemios-icon}
+</PlatformHeading>
 
 ```ts
 icon?: PlatformIconIOS;
@@ -23,9 +23,9 @@ when loaded.
 
 **Type:** [`PlatformIconIOS`](../../../../../common-types/index.mdx#platformiconios)
 
-**Platform:** ios \>= 13
-
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
 #### id {#stackheadermenuitemios-id}
+</PlatformHeading>
 
 ```ts
 id: string;
@@ -36,9 +36,9 @@ Unique identifier of the menu item.
 Used to locate the item inside a menu tree and to identify selected items
 in [StackHeaderMenuIOS.onSelectionChange](#stackheadermenuios-onselectionchange) callback.
 
-**Platform:** ios \>= 13
-
-#### initialToggleState? {#stackheadermenuitemios-initialtogglestate}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### initialToggleState {#stackheadermenuitemios-initialtogglestate}
+</PlatformHeading>
 
 ```ts
 initialToggleState?: boolean;
@@ -52,9 +52,9 @@ item can set this to `true`.
 
 **Default:** `false`
 
-**Platform:** ios \>= 13
-
-#### itemType? {#stackheadermenuitemios-itemtype}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### itemType {#stackheadermenuitemios-itemtype}
+</PlatformHeading>
 
 ```ts
 itemType?: StackHeaderMenuItemTypeIOS;
@@ -66,9 +66,9 @@ Determines the behavior of the menu item.
 
 **Default:** `'automatic'`
 
-**Platform:** ios \>= 13
-
-#### keepsMenuPresented? {#stackheadermenuitemios-keepsmenupresented}
+<PlatformHeading platforms={[{"platform":"ios","from":"16"}]}>
+#### keepsMenuPresented {#stackheadermenuitemios-keepsmenupresented}
+</PlatformHeading>
 
 ```ts
 keepsMenuPresented?: boolean;
@@ -83,9 +83,9 @@ This prop should only be used for items in top-level menus.
 
 **Default:** `false`
 
-**Platform:** ios \>= 16
-
-#### onPress? {#stackheadermenuitemios-onpress}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### onPress {#stackheadermenuitemios-onpress}
+</PlatformHeading>
 
 ```ts
 onPress?: StackHeaderPressHandler;
@@ -100,9 +100,9 @@ parent menu instead.
 
 **Type:** [`StackHeaderPressHandler`](#stackheaderpresshandler)
 
-**Platform:** ios \>= 13
-
-#### title? {#stackheadermenuitemios-title}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### title {#stackheadermenuitemios-title}
+</PlatformHeading>
 
 ```ts
 title?: string;
@@ -110,14 +110,12 @@ title?: string;
 
 Title displayed for the menu item.
 
-**Platform:** ios \>= 13
-
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
 #### type {#stackheadermenuitemios-type}
+</PlatformHeading>
 
 ```ts
 type: "menuItem";
 ```
 
 Marks this object as a menu item definition.
-
-**Platform:** ios \>= 13

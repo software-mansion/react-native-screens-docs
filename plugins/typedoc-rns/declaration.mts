@@ -7,7 +7,7 @@ import {
 } from 'typedoc';
 import type { MarkdownThemeContext } from 'typedoc-plugin-markdown';
 
-import { omitDescription, setLead } from './comment.mts';
+import { changeComment } from './comment.mts';
 import type { RnsRouter } from './router.mts';
 import { inlineType } from './types.mts';
 
@@ -94,7 +94,7 @@ export function declarationPartials(
       const line = typeLine(ctx, model);
       if (!line) return base.declaration(model, options);
       if (model.comment) {
-        setLead(model.comment, line);
+        changeComment(model.comment, { lead: line });
         return base.declaration(model, options);
       }
       const title = ctx.partials.declarationTitle(model);
@@ -107,10 +107,10 @@ export function declarationPartials(
       // A component is described on the component and on its family's Overview; its props
       // type says only whose props it holds, which the section's heading already does.
       if (ctx.router.isComponentModel(model) && model.comment) {
-        omitDescription(model.comment);
+        changeComment(model.comment, { omitDescription: true });
       }
       const line = extendsLine(ctx, model);
-      if (line && model.comment) setLead(model.comment, line);
+      if (line && model.comment) changeComment(model.comment, { lead: line });
       const md = base.memberWithGroups(model, options);
       return line && !model.comment ? `${line}\n\n${md}` : md;
     },
