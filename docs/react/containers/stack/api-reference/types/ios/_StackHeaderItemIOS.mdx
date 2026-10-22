@@ -1,8 +1,11 @@
 ## StackHeaderItemIOS {#stackheaderitemios}
 
-> **StackHeaderItemIOS** = [`StackHeaderInlineItemIOS`](#stackheaderinlineitemios) \| [`StackHeaderInlineCustomItemIOS`](#stackheaderinlinecustomitemios) \| [`StackHeaderSpacerItemIOS`](#stackheaderspaceritemios)
-
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:327](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L327)
+```ts
+type StackHeaderItemIOS =
+  | StackHeaderInlineItemIOS
+  | StackHeaderInlineCustomItemIOS
+  | StackHeaderSpacerItemIOS;
+```
 
 A header item placed in [leadingItems](#header-config-ios-leadingitems) or
 [trailingItems](#header-config-ios-trailingitems).
@@ -11,5 +14,7 @@ The following variants are supported:
 - [StackHeaderInlineItemIOS](#stackheaderinlineitemios) — a native item with a text label.
 - [StackHeaderInlineCustomItemIOS](#stackheaderinlinecustomitemios) — an item with a custom view.
 - [StackHeaderSpacerItemIOS](#stackheaderspaceritemios) — a spacer used for visual separation.
+
+**Type:** [`StackHeaderInlineItemIOS`](#stackheaderinlineitemios) \| [`StackHeaderInlineCustomItemIOS`](#stackheaderinlinecustomitemios) \| [`StackHeaderSpacerItemIOS`](#stackheaderspaceritemios)
 
 **Platform:** ios \>= 13

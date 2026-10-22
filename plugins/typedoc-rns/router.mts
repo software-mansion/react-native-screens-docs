@@ -1,8 +1,8 @@
 import { MemberRouter } from 'typedoc-plugin-markdown';
 import {
+  DeclarationReflection,
   ReflectionKind,
   Slugger,
-  type DeclarationReflection,
   type PageDefinition,
   type ProjectReflection,
   type Reflection,
@@ -115,6 +115,10 @@ export class RnsRouter extends MemberRouter {
   #sections = new Set<RouterTarget>();
   /** the `ios` / `android` props whose props are flattened into their section */
   #flattenedProps = new Set<RouterTarget>();
+  /** the props types rendered as a component's section */
+  #componentModels = new Set<RouterTarget>();
+  /** members documented on a base's entry, not on their own type's */
+  #inheritedMembers = new Set<RouterTarget>();
 
   /** The layout of the page this model renders, or `undefined` for anything else. */
   pageLayout(model: RouterTarget): Layout | undefined {
@@ -145,6 +149,19 @@ export class RnsRouter extends MemberRouter {
    */
   isFlattenedProp(model: RouterTarget): boolean {
     return this.#flattenedProps.has(model);
+  }
+
+  /** True for a component's props type, which renders as the component's section. */
+  isComponentModel(model: RouterTarget): boolean {
+    return this.#componentModels.has(model);
+  }
+
+  /**
+   * True for a member a type inherits from a base that has an entry of its own. The member is
+   * documented on the base's entry only, and links to it lead there.
+   */
+  isInheritedMember(model: RouterTarget): boolean {
+    return this.#inheritedMembers.has(model);
   }
 
   #featureOf(reflection: Reflection): Feature {
@@ -230,6 +247,7 @@ export class RnsRouter extends MemberRouter {
           );
         }
         anchors.set(model, component.id);
+        this.#componentModels.add(model);
 
         // `ios` / `android` hold a props type of their own; its props join the section as
         // `ios.x`, anchored `host-ios-x`, and the type leaves the Types list. Links to the type
@@ -316,7 +334,41 @@ export class RnsRouter extends MemberRouter {
     }
 
     this.#rewriteUrls(anchors);
+    this.#routeInheritedMembers();
     return result;
+  }
+
+  /** The member that documents this one: itself, or the base member it inherits. */
+  #documentingMember(member: DeclarationReflection): DeclarationReflection {
+    const origin = member.inheritedFrom?.reflection;
+    if (
+      !(origin instanceof DeclarationReflection) ||
+      !origin.parent ||
+      !member.parent ||
+      !this.hasUrl(origin) ||
+      this.getFullUrl(origin.parent) === this.getFullUrl(member.parent)
+    ) {
+      return member;
+    }
+    return this.#documentingMember(origin);
+  }
+
+  /**
+   * A member inherited from a base with an entry of its own takes the base member's URL. A
+   * base merged into the entry, the way a component's `XPropsBase` is into its section, has
+   * the entry's URL, so its members stay.
+   */
+  #routeInheritedMembers(): void {
+    for (const reflection of [...this.fullUrls.keys()]) {
+      if (!(reflection instanceof DeclarationReflection)) continue;
+      const target = this.#documentingMember(reflection);
+      if (target === reflection) continue;
+      this.fullUrls.set(reflection, this.getFullUrl(target));
+      const anchor = this.getAnchor(target);
+      if (anchor) this.anchors.set(reflection, anchor);
+      else this.anchors.delete(reflection);
+      this.#inheritedMembers.add(reflection);
+    }
   }
 
   /**

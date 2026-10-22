@@ -9,6 +9,7 @@ import {
 import type { MarkdownThemeContext } from 'typedoc-plugin-markdown';
 
 import { isInline, labeled, oneLine } from './comment.mts';
+import { inlineType } from './types.mts';
 
 type Partials = MarkdownThemeContext['partials'];
 
@@ -66,7 +67,7 @@ function propertiesList(
   return children
     .map(child =>
       listItem(
-        `\`${child.name}${child.flags.isOptional ? '?' : ''}\`: ${ctx.partials.someType(child.type, { forceCollapse: true })}`,
+        `\`${child.name}${child.flags.isOptional ? '?' : ''}\`: ${inlineType(ctx, child.type)}`,
         child.comment ? ctx.partials.comment(child.comment) : '',
         child.type instanceof ReflectionType && child.type.declaration.children
           ? propertiesList(ctx, child.type.declaration.children)
@@ -85,7 +86,7 @@ function parameterItem(
     ? ` = \`${ctx.helpers.getParameterDefaultValue(parameter)}\``
     : '';
   return listItem(
-    `\`${name}\`: ${ctx.partials.someType(parameter.type, { forceCollapse: true })}${defaultValue}`,
+    `\`${name}\`: ${inlineType(ctx, parameter.type)}${defaultValue}`,
     parameter.comment ? ctx.partials.comment(parameter.comment) : '',
     parameter.type instanceof ReflectionType &&
       parameter.type.declaration.children
@@ -99,10 +100,10 @@ function typeParameterItem(
   typeParameter: TypeParameterReflection,
 ): string {
   const constraint = typeParameter.type
-    ? ` *extends* ${ctx.partials.someType(typeParameter.type)}`
+    ? ` *extends* ${inlineType(ctx, typeParameter.type)}`
     : '';
   const defaultType = typeParameter.default
-    ? ` = ${ctx.partials.someType(typeParameter.default, { forceCollapse: true })}`
+    ? ` = ${inlineType(ctx, typeParameter.default)}`
     : '';
   return listItem(
     `\`${typeParameter.name}\`${constraint}${defaultType}`,

@@ -1,8 +1,11 @@
 ## PlatformIconAndroidDrawableResource {#platformiconandroiddrawableresource}
 
-> **PlatformIconAndroidDrawableResource** = `object`
-
-Defined in: [components/shared/types.ts:142](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/shared/types.ts#L142)
+```ts
+type PlatformIconAndroidDrawableResource = {
+  name: string;
+  type: "drawableResource";
+};
+```
 
 Icon backed by an Android drawable resource, referenced by `name`.
 
@@ -14,9 +17,9 @@ Discriminated by `type: 'drawableResource'`.
 
 #### name {#platformiconandroiddrawableresource-name}
 
-> **name**: `string`
-
-Defined in: [components/shared/types.ts:154](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/shared/types.ts#L154)
+```ts
+name: string;
+```
 
 Name of the drawable resource, without the extension or the `@drawable/` prefix.
 
@@ -24,9 +27,9 @@ Name of the drawable resource, without the extension or the `@drawable/` prefix.
 
 #### type {#platformiconandroiddrawableresource-type}
 
-> **type**: `"drawableResource"`
-
-Defined in: [components/shared/types.ts:148](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/shared/types.ts#L148)
+```ts
+type: "drawableResource";
+```
 
 Discriminant selecting the drawable-resource variant.
 

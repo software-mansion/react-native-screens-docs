@@ -1,0 +1,35 @@
+## TabsScreenRepeatedTabSelectionEffects {#tabsscreenrepeatedtabselectioneffects}
+
+Special effects triggered by selecting the already focused tab bar item.
+
+**Platform:** android \>= 21, ios \>= 13
+
+### Properties
+
+#### popToRoot? {#tabsscreenrepeatedtabselectioneffects-poptoroot}
+
+```ts
+popToRoot?: boolean;
+```
+
+When a Stack is nested inside the tab screen and repeated
+selection is detected, the Stack will pop to its root
+screen.
+
+**Default:** `true`
+
+**Platform:** android \>= 21, ios \>= 13
+
+#### scrollToTop? {#tabsscreenrepeatedtabselectioneffects-scrolltotop}
+
+```ts
+scrollToTop?: boolean;
+```
+
+When there is a ScrollView in the first descendant chain
+from the tab screen and repeated selection is detected, the
+ScrollView will be scrolled to top.
+
+**Default:** `true`
+
+**Platform:** android \>= 21, ios \>= 13

@@ -1,20 +1,14 @@
 ## Host {#host}
 
-> **StackHostProps** = `object`
-
-Defined in: [components/stack/host/StackHost.types.ts:10](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/host/StackHost.types.ts#L10)
-
-Container that hosts a native navigation stack of [Stack.Screen](#screen) screens.
-
 **Platform:** android \>= 21, ios \>= 13
 
 ### Properties
 
 #### children {#host-children}
 
-> **children**: `NonNullable`\<`ViewProps`\[`"children"`\]\>
-
-Defined in: [components/stack/host/StackHost.types.ts:16](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/host/StackHost.types.ts#L16)
+```ts
+children: NonNullable<ViewProps["children"]>;
+```
 
 Stack screens to display; wrap each screen in a `Stack.Screen`.
 
@@ -22,10 +16,12 @@ Stack screens to display; wrap each screen in a `Stack.Screen`.
 
 #### ref? {#host-ref}
 
-> `optional` **ref?**: `React.RefObject`\<`React.Component`\<`NativeProps`\> & `HostInstance` \| `null`\>
-
-Defined in: [components/stack/host/StackHost.types.ts:23](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/host/StackHost.types.ts#L23)
+```ts
+ref?: React.RefObject<StackHostInstance | null>;
+```
 
 Ref to the underlying native stack host component.
+
+**Type:** `React.RefObject`\<[`StackHostInstance`](#stackhostinstance) \| `null`\>
 
 **Platform:** android \>= 21, ios \>= 13
