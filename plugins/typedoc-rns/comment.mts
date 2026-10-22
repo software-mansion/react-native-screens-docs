@@ -72,6 +72,28 @@ function exampleTitle(name: string): string {
   return /^<caption>(.*)<\/caption>$/.exec(name)?.[1] ?? name;
 }
 
+// What an entry puts at the top of its comment's More information: `**Type:**`, `**Extends:**`.
+const leads = new WeakMap<Comment, string>();
+
+/**
+ * Renders `md` after the comment's summary and `@remarks`, before its other tags. It stays set
+ * for the comment: an entry renders its comment once, with the same line each time.
+ */
+export function setLead(comment: Comment, md: string): void {
+  leads.set(comment, md);
+}
+
+// Comments rendered without their Description (summary and `@remarks`).
+const withoutDescription = new WeakSet<Comment>();
+
+/**
+ * Renders the comment without its summary and `@remarks`; the other tags stay. It stays set for
+ * the comment.
+ */
+export function omitDescription(comment: Comment): void {
+  withoutDescription.add(comment);
+}
+
 /** The tags this partial renders itself; any other goes through the stock partial. */
 function isOwnTag(tag: CommentTag): boolean {
   return (
@@ -103,26 +125,34 @@ export function renderComment(
   const text = (parts: CommentDisplayPart[]): string =>
     base(new Comment(parts), { showSummary: true, showTags: false }).trim();
   const md: string[] = [];
+  const description = !withoutDescription.has(model);
 
   if (showSummary) {
     const modifiers = new Set(model.modifierTags);
     if (modifiers.delete('@experimental')) md.push(EXPERIMENTAL_CAUTION);
     md.push(
-      base(new Comment(model.summary, [], modifiers), {
+      base(new Comment(description ? model.summary : [], [], modifiers), {
         showSummary: true,
         showTags: false,
       }).trim(),
     );
   }
 
+  let lead = showSummary ? leads.get(model) : undefined;
   const hidden = new Set<string>(ctx.options.getValue('notRenderedTags'));
   if (!options.showReturns) hidden.add('@returns');
   for (const tag of model.blockTags) {
     if (hidden.has(tag.tag)) continue;
+    if (tag.tag === '@remarks' && !description) continue;
     if (isOwnTag(tag) ? showSummary : showTags) {
+      if (lead && tag.tag !== '@remarks') {
+        md.push(lead);
+        lead = undefined;
+      }
       md.push(renderTag(tag, text, base, options));
     }
   }
+  if (lead) md.push(lead);
 
   return md.filter(Boolean).join('\n\n');
 }

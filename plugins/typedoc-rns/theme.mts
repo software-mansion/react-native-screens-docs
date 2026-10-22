@@ -13,9 +13,11 @@ import {
 } from 'typedoc-plugin-markdown';
 
 import { renderComment } from './comment.mts';
+import { declarationPartials, withoutOptionalFlag } from './declaration.mts';
 import { membersOf, outputRoot } from './feature-map.mts';
 import type { Layout, RnsRouter, Section } from './router.mts';
 import { signaturePartials } from './signature.mts';
+import { typePartials } from './types.mts';
 
 /** The parts of a family page, parked on it by `renderFeaturePage` for index.mts to write. */
 export interface RnsParts {
@@ -177,13 +179,20 @@ class RnsThemeContext extends MarkdownThemeContext {
   ) {
     super(theme, page, options);
     const basePartials = this.partials;
+    const signatures = signaturePartials(this, basePartials);
     this.partials = {
       ...this.partials,
-      ...signaturePartials(this, basePartials),
+      ...signatures,
+      ...typePartials(basePartials),
+      ...declarationPartials(this, { ...basePartials, ...signatures }),
       comment: (model, options) =>
         renderComment(this, basePartials.comment, model, options),
       memberContainer: (model, options) =>
         renderMemberContainer(this, model, options),
+    };
+    this.helpers = {
+      ...this.helpers,
+      getReflectionFlags: withoutOptionalFlag(this.helpers.getReflectionFlags),
     };
     const baseTemplates = { ...this.templates };
     this.templates = {

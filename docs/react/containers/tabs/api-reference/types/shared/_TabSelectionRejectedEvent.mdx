@@ -1,8 +1,14 @@
 ## TabSelectionRejectedEvent {#tabselectionrejectedevent}
 
-> **TabSelectionRejectedEvent** = `object`
-
-Defined in: [components/tabs/host/TabsHost.types.ts:142](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L142)
+```ts
+type TabSelectionRejectedEvent = {
+  provenance: number;
+  rejectedBaseProvenance: number;
+  rejectedScreenKey: string;
+  rejectionReason: TabSelectionRejectionReason;
+  selectedScreenKey: string;
+};
+```
 
 Payload of the event emitted when the native side rejects a tab selection request.
 
@@ -20,9 +26,9 @@ alongside the rejected request details, so that the JS side can reconcile its st
 
 #### provenance {#tabselectionrejectedevent-provenance}
 
-> **provenance**: `number`
-
-Defined in: [components/tabs/host/TabsHost.types.ts:154](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L154)
+```ts
+provenance: number;
+```
 
 Provenance of the currently active navigation state.
 
@@ -30,9 +36,9 @@ Provenance of the currently active navigation state.
 
 #### rejectedBaseProvenance {#tabselectionrejectedevent-rejectedbaseprovenance}
 
-> **rejectedBaseProvenance**: `number`
-
-Defined in: [components/tabs/host/TabsHost.types.ts:166](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L166)
+```ts
+rejectedBaseProvenance: number;
+```
 
 Base provenance of the rejected navigation state update.
 
@@ -40,9 +46,9 @@ Base provenance of the rejected navigation state update.
 
 #### rejectedScreenKey {#tabselectionrejectedevent-rejectedscreenkey}
 
-> **rejectedScreenKey**: `string`
-
-Defined in: [components/tabs/host/TabsHost.types.ts:160](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L160)
+```ts
+rejectedScreenKey: string;
+```
 
 Screen key of the tab whose selection was rejected.
 
@@ -50,19 +56,21 @@ Screen key of the tab whose selection was rejected.
 
 #### rejectionReason {#tabselectionrejectedevent-rejectionreason}
 
-> **rejectionReason**: [`TabSelectionRejectionReason`](#tabselectionrejectionreason)
-
-Defined in: [components/tabs/host/TabsHost.types.ts:172](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L172)
+```ts
+rejectionReason: TabSelectionRejectionReason;
+```
 
 Reason the selection was rejected.
+
+**Type:** [`TabSelectionRejectionReason`](#tabselectionrejectionreason)
 
 **Platform:** android \>= 21, ios \>= 13
 
 #### selectedScreenKey {#tabselectionrejectedevent-selectedscreenkey}
 
-> **selectedScreenKey**: `string`
-
-Defined in: [components/tabs/host/TabsHost.types.ts:148](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L148)
+```ts
+selectedScreenKey: string;
+```
 
 Screen key of the currently selected (active) tab.
 

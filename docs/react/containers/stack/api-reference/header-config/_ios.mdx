@@ -4,9 +4,9 @@ import Anchor from '@theme/MDXComponents/A';
 
 #### ios.largeSubtitle? {#header-config-ios-largesubtitle}
 
-> `optional` **largeSubtitle?**: `string`
-
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:418](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L418)
+```ts
+largeSubtitle?: string;
+```
 
 Large subtitle text, displayed when `largeTitleEnabled = true`.
 
@@ -18,19 +18,21 @@ it falls back to regular subtitle.
 
 #### ios.largeSubtitleItem? {#header-config-ios-largesubtitleitem}
 
-> `optional` **largeSubtitleItem?**: [`StackHeaderTitleCustomItemIOS`](#stackheadertitlecustomitemios)
-
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:424](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L424)
+```ts
+largeSubtitleItem?: StackHeaderTitleCustomItemIOS;
+```
 
 Custom item to display as a subtitle for large header. Takes precedence over largeSubtitle text.
+
+**Type:** [`StackHeaderTitleCustomItemIOS`](#stackheadertitlecustomitemios)
 
 **Platform:** ios \>= 26
 
 #### ios.largeTitle? {#header-config-ios-largetitle}
 
-> `optional` **largeTitle?**: `string`
-
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:401](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L401)
+```ts
+largeTitle?: string;
+```
 
 Large title text, displayed when `largeTitleEnabled = true`.
 
@@ -42,9 +44,9 @@ it falls back to regular title.
 
 #### ios.largeTitleEnabled? {#header-config-ios-largetitleenabled}
 
-> `optional` **largeTitleEnabled?**: `boolean`
-
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:407](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L407)
+```ts
+largeTitleEnabled?: boolean;
+```
 
 Specifies if the header should display the large title. It collapses to a regular header when scrolling.
 
@@ -52,9 +54,9 @@ Specifies if the header should display the large title. It collapses to a regula
 
 #### ios.leadingItems? {#header-config-ios-leadingitems}
 
-> `optional` **leadingItems?**: [`StackHeaderItemIOS`](#stackheaderitemios)[]
-
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:359](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L359)
+```ts
+leadingItems?: StackHeaderItemIOS[];
+```
 
 A list of items placed starting from the leading edge.
 
@@ -64,37 +66,43 @@ overflow menu. This differs from trailing items, which are moved one by one.
 
 Note: Custom items are not put into the overflow menu, but are removed entirely.
 
+**Type:** [`StackHeaderItemIOS[]`](#stackheaderitemios)
+
 **Platform:** ios \>= 13
 
 #### ios.subtitleItem? {#header-config-ios-subtitleitem}
 
-> `optional` **subtitleItem?**: [`StackHeaderTitleCustomItemIOS`](#stackheadertitlecustomitemios)
-
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:346](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L346)
+```ts
+subtitleItem?: StackHeaderTitleCustomItemIOS;
+```
 
 Custom item to display as a subtitle.
 
 Takes precedence over subtitle text.
 
+**Type:** [`StackHeaderTitleCustomItemIOS`](#stackheadertitlecustomitemios)
+
 **Platform:** ios \>= 26
 
 #### ios.titleItem? {#header-config-ios-titleitem}
 
-> `optional` **titleItem?**: [`StackHeaderTitleCustomItemIOS`](#stackheadertitlecustomitemios)
-
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:368](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L368)
+```ts
+titleItem?: StackHeaderTitleCustomItemIOS;
+```
 
 Custom item to display as a title.
 
 Takes precedence over title text.
 
+**Type:** [`StackHeaderTitleCustomItemIOS`](#stackheadertitlecustomitemios)
+
 **Platform:** ios \>= 13
 
 #### ios.titleMenu? {#header-config-ios-titlemenu}
 
-> `optional` **titleMenu?**: [`StackHeaderMenuIOS`](#stackheadermenuios)
-
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:379](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L379)
+```ts
+titleMenu?: StackHeaderMenuIOS;
+```
 
 Menu definition for the title context menu.
 
@@ -102,18 +110,22 @@ Configures a dropdown menu attached to the navigation bar title area.
 Works independently of [titleItem](#header-config-ios-titleitem); the menu appears for both
 plain text and custom view title.
 
+**Type:** [`StackHeaderMenuIOS`](#stackheadermenuios)
+
 **Platform:** ios \>= 16
 
 #### ios.trailingItems? {#header-config-ios-trailingitems}
 
-> `optional` **trailingItems?**: [`StackHeaderItemIOS`](#stackheaderitemios)[]
-
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:390](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L390)
+```ts
+trailingItems?: StackHeaderItemIOS[];
+```
 
 A list of items placed starting from the trailing edge.
 
 If there is not enough space to fit some items, they are moved to the overflow menu, one by one.
 
 Note: Custom items are not put into the overflow menu, but are removed entirely.
+
+**Type:** [`StackHeaderItemIOS[]`](#stackheaderitemios)
 
 **Platform:** ios \>= 13

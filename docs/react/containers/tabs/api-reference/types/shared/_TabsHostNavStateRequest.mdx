@@ -1,8 +1,11 @@
 ## TabsHostNavStateRequest {#tabshostnavstaterequest}
 
-> **TabsHostNavStateRequest** = `object`
-
-Defined in: [components/tabs/host/TabsHost.types.ts:13](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L13)
+```ts
+type TabsHostNavStateRequest = {
+  baseProvenance: number;
+  selectedScreenKey: string;
+};
+```
 
 Navigation-state request passed to the native side to drive tab selection.
 
@@ -12,9 +15,9 @@ Navigation-state request passed to the native side to drive tab selection.
 
 #### baseProvenance {#tabshostnavstaterequest-baseprovenance}
 
-> **baseProvenance**: `number`
-
-Defined in: [components/tabs/host/TabsHost.types.ts:50](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L50)
+```ts
+baseProvenance: number;
+```
 
 Provenance of the navigation state this request is derived from.
 
@@ -29,7 +32,7 @@ A.provenance \<= B.provenance.
 This allows us to mitigate and resolve state conflicts that can happen with
 asynchronous navigation.
 
-Currently, the native implementation of TabsHost is the state holder.
+Currently, the native implementation of `Tabs.Host` is the state holder.
 
 Pass here THE PROVENANCE OF THE LAST ACKNOWLEDGED state you received from native side
 via [TabsHostPropsBase.onTabSelected](#host-ontabselected). In other words this should be the provenance
@@ -43,9 +46,9 @@ of the state *resulting* from a transition.
 
 #### selectedScreenKey {#tabshostnavstaterequest-selectedscreenkey}
 
-> **selectedScreenKey**: `string`
-
-Defined in: [components/tabs/host/TabsHost.types.ts:22](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L22)
+```ts
+selectedScreenKey: string;
+```
 
 Valid screen key.
 

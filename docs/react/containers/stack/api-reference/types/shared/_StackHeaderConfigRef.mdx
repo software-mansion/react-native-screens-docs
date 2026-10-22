@@ -1,7 +1,5 @@
 ## StackHeaderConfigRef {#stackheaderconfigref}
 
-Defined in: [components/stack/header/StackHeaderConfig.types.ts:121](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.types.ts#L121)
-
 Imperative command handle for [Stack.HeaderConfig](#header-config), grouped per platform.
 
 **Platform:** android \>= 21, ios \>= 13
@@ -10,20 +8,24 @@ Imperative command handle for [Stack.HeaderConfig](#header-config), grouped per 
 
 #### android? {#stackheaderconfigref-android}
 
-> `optional` **android?**: [`StackHeaderConfigCommandsAndroid`](#stackheaderconfigcommandsandroid)
-
-Defined in: [components/stack/header/StackHeaderConfig.types.ts:127](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.types.ts#L127)
+```ts
+android?: StackHeaderConfigCommandsAndroid;
+```
 
 Android-only imperative commands.
+
+**Type:** [`StackHeaderConfigCommandsAndroid`](#stackheaderconfigcommandsandroid)
 
 **Platform:** android \>= 21
 
 #### ios? {#stackheaderconfigref-ios}
 
-> `optional` **ios?**: [`StackHeaderConfigCommandsIOS`](#stackheaderconfigcommandsios)
-
-Defined in: [components/stack/header/StackHeaderConfig.types.ts:133](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.types.ts#L133)
+```ts
+ios?: StackHeaderConfigCommandsIOS;
+```
 
 iOS-only imperative commands.
+
+**Type:** [`StackHeaderConfigCommandsIOS`](#stackheaderconfigcommandsios)
 
 **Platform:** ios \>= 13

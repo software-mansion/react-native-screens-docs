@@ -4,9 +4,9 @@ import Anchor from '@theme/MDXComponents/A';
 
 #### ios.experimental\_userInterfaceStyle? {#screen-ios-experimental_userinterfacestyle}
 
-> `optional` **experimental\_userInterfaceStyle?**: [`UserInterfaceStyle`](../../../../common-types/index.mdx#userinterfacestyle)
-
-Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:334](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.ios.types.ts#L334)
+```ts
+experimental_userInterfaceStyle?: UserInterfaceStyle;
+```
 
 :::warning
 
@@ -16,7 +16,9 @@ This API is experimental. It may change in a breaking way — or be removed enti
 
 Allows to override system appearance for the tab bar.
 
-Consider using `colorScheme` on `TabsHost` instead.
+Consider using `colorScheme` on `Tabs.Host` instead.
+
+**Type:** [`UserInterfaceStyle`](../../../../common-types/index.mdx#userinterfacestyle)
 
 :::note
 
@@ -32,22 +34,24 @@ Does not support dynamic changes to the prop value for the currently visible scr
 
 #### ios.icon? {#screen-ios-icon}
 
-> `optional` **icon?**: [`PlatformIconIOS`](../../../../common-types/index.mdx#platformiconios)
-
-Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:277](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.ios.types.ts#L277)
+```ts
+icon?: PlatformIconIOS;
+```
 
 Specifies the icon for the tab bar item.
 
 If no `selectedIcon` is provided, this icon will also
 be used as the selected state icon.
 
+**Type:** [`PlatformIconIOS`](../../../../common-types/index.mdx#platformiconios)
+
 **Platform:** ios \>= 13
 
 #### ios.overrideScrollViewContentInsetAdjustmentBehavior? {#screen-ios-overridescrollviewcontentinsetadjustmentbehavior}
 
-> `optional` **overrideScrollViewContentInsetAdjustmentBehavior?**: `boolean`
-
-Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:319](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.ios.types.ts#L319)
+```ts
+overrideScrollViewContentInsetAdjustmentBehavior?: boolean;
+```
 
 Specifies if `contentInsetAdjustmentBehavior` of first ScrollView
 in first descendant chain from tab screen should be overridden back from `never`
@@ -66,9 +70,9 @@ Supported only on Fabric.
 
 #### ios.scrollEdgeAppearance? {#screen-ios-scrolledgeappearance}
 
-> `optional` **scrollEdgeAppearance?**: [`TabsScreenAppearanceIOS`](#tabsscreenappearanceios)
-
-Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:267](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.ios.types.ts#L267)
+```ts
+scrollEdgeAppearance?: TabsScreenAppearanceIOS;
+```
 
 Specifies the tab bar appearace when edge of scrollable content aligns
 with the edge of the tab bar.
@@ -79,13 +83,15 @@ inline, compact inline) and state (normal, selected, focused, disabled).
 If this property is `undefined`, UIKit uses `standardAppearance`, modified to
 have a transparent background.
 
+**Type:** [`TabsScreenAppearanceIOS`](#tabsscreenappearanceios)
+
 **Platform:** ios \>= 13
 
 #### ios.selectedIcon? {#screen-ios-selectedicon}
 
-> `optional` **selectedIcon?**: [`PlatformIconIOS`](../../../../common-types/index.mdx#platformiconios)
-
-Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:288](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.ios.types.ts#L288)
+```ts
+selectedIcon?: PlatformIconIOS;
+```
 
 Specifies the icon for tab bar item when it is selected.
 
@@ -93,26 +99,30 @@ Supports the same values as `icon` property.
 
 To use `selectedIcon`, `icon` must also be provided.
 
+**Type:** [`PlatformIconIOS`](../../../../common-types/index.mdx#platformiconios)
+
 **Platform:** ios \>= 13
 
 #### ios.standardAppearance? {#screen-ios-standardappearance}
 
-> `optional` **standardAppearance?**: [`TabsScreenAppearanceIOS`](#tabsscreenappearanceios)
-
-Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:253](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.ios.types.ts#L253)
+```ts
+standardAppearance?: TabsScreenAppearanceIOS;
+```
 
 Specifies the standard tab bar appearance.
 
 Allows to customize the appearance depending on the tab bar item layout (stacked,
 inline, compact inline) and state (normal, selected, focused, disabled).
 
+**Type:** [`TabsScreenAppearanceIOS`](#tabsscreenappearanceios)
+
 **Platform:** ios \>= 13
 
 #### ios.systemItem? {#screen-ios-systemitem}
 
-> `optional` **systemItem?**: [`TabsScreenSystemItem`](#tabsscreensystemitem)
-
-Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:302](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.ios.types.ts#L302)
+```ts
+systemItem?: TabsScreenSystemItem;
+```
 
 System-provided tab bar item with predefined icon and title.
 
@@ -122,5 +132,7 @@ properties will override the system icon, and the system-defined title can be
 overridden by providing a custom `title`.
 
 On iOS 26, `systemItem: 'search'` acts as a detached tab bar item, which does not display any title (system or custom).
+
+**Type:** [`TabsScreenSystemItem`](#tabsscreensystemitem)
 
 **Platform:** ios \>= 13

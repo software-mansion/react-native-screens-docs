@@ -1,7 +1,5 @@
 ## TabsScreenAppearanceAndroid {#tabsscreenappearanceandroid}
 
-Defined in: [components/tabs/screen/TabsScreen.android.types.ts:48](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L48)
-
 Android tab bar appearance configuration for a [Tabs.Screen](#screen).
 
 **Platform:** android \>= 21
@@ -10,56 +8,64 @@ Android tab bar appearance configuration for a [Tabs.Screen](#screen).
 
 #### disabled? {#tabsscreenappearanceandroid-disabled}
 
-> `optional` **disabled?**: [`TabsScreenItemStateAppearanceAndroid`](#tabsscreenitemstateappearanceandroid)
-
-Defined in: [components/tabs/screen/TabsScreen.android.types.ts:101](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L101)
+```ts
+disabled?: TabsScreenItemStateAppearanceAndroid;
+```
 
 Defines the colors for tab bar items when they are disabled.
 The color scheme is determined by the configuration of the currently selected tab.
 Maps to Android `state_enabled=false`.
 
+**Type:** [`TabsScreenItemStateAppearanceAndroid`](#tabsscreenitemstateappearanceandroid)
+
 **Platform:** android \>= 21
 
 #### focused? {#tabsscreenappearanceandroid-focused}
 
-> `optional` **focused?**: [`TabsScreenItemStateAppearanceAndroid`](#tabsscreenitemstateappearanceandroid)
-
-Defined in: [components/tabs/screen/TabsScreen.android.types.ts:93](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L93)
+```ts
+focused?: TabsScreenItemStateAppearanceAndroid;
+```
 
 Defines the colors for a tab bar item when it receives focus.
 The color scheme is determined by the configuration of the currently selected tab.
 Maps to Android `state_focused=true` (Used mostly for keyboard navigation).
 
+**Type:** [`TabsScreenItemStateAppearanceAndroid`](#tabsscreenitemstateappearanceandroid)
+
 **Platform:** android \>= 21
 
 #### normal? {#tabsscreenappearanceandroid-normal}
 
-> `optional` **normal?**: [`TabsScreenItemStateAppearanceAndroid`](#tabsscreenitemstateappearanceandroid)
-
-Defined in: [components/tabs/screen/TabsScreen.android.types.ts:77](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L77)
+```ts
+normal?: TabsScreenItemStateAppearanceAndroid;
+```
 
 Defines the colors for all tab bar items which are in their enabled, unselected and unfocused state.
 The color scheme is determined by the configuration of the currently selected tab.
+
+**Type:** [`TabsScreenItemStateAppearanceAndroid`](#tabsscreenitemstateappearanceandroid)
 
 **Platform:** android \>= 21
 
 #### selected? {#tabsscreenappearanceandroid-selected}
 
-> `optional` **selected?**: [`TabsScreenItemStateAppearanceAndroid`](#tabsscreenitemstateappearanceandroid)
-
-Defined in: [components/tabs/screen/TabsScreen.android.types.ts:85](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L85)
+```ts
+selected?: TabsScreenItemStateAppearanceAndroid;
+```
 
 Defines the colors for the tab bar item that is currently active.
 The color scheme is determined by the configuration of the currently selected tab itself.
 Maps to Android `state_selected=true`.
 
+**Type:** [`TabsScreenItemStateAppearanceAndroid`](#tabsscreenitemstateappearanceandroid)
+
 **Platform:** android \>= 21
 
 #### tabBarBackgroundColor? {#tabsscreenappearanceandroid-tabbarbackgroundcolor}
 
-> `optional` **tabBarBackgroundColor?**: `____ColorValue_Internal`
-
-Defined in: [components/tabs/screen/TabsScreen.android.types.ts:54](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L54)
+```ts
+tabBarBackgroundColor?: ____ColorValue_Internal;
+```
 
 Specifies the background color for the entire tab bar.
 
@@ -67,9 +73,9 @@ Specifies the background color for the entire tab bar.
 
 #### tabBarItemActiveIndicatorColor? {#tabsscreenappearanceandroid-tabbaritemactiveindicatorcolor}
 
-> `optional` **tabBarItemActiveIndicatorColor?**: `____ColorValue_Internal`
-
-Defined in: [components/tabs/screen/TabsScreen.android.types.ts:107](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L107)
+```ts
+tabBarItemActiveIndicatorColor?: ____ColorValue_Internal;
+```
 
 Specifies the background color of the active indicator.
 
@@ -77,9 +83,9 @@ Specifies the background color of the active indicator.
 
 #### tabBarItemActiveIndicatorEnabled? {#tabsscreenappearanceandroid-tabbaritemactiveindicatorenabled}
 
-> `optional` **tabBarItemActiveIndicatorEnabled?**: `boolean`
-
-Defined in: [components/tabs/screen/TabsScreen.android.types.ts:114](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L114)
+```ts
+tabBarItemActiveIndicatorEnabled?: boolean;
+```
 
 Specifies if the active indicator should be used.
 
@@ -89,9 +95,9 @@ Specifies if the active indicator should be used.
 
 #### tabBarItemBadgeBackgroundColor? {#tabsscreenappearanceandroid-tabbaritembadgebackgroundcolor}
 
-> `optional` **tabBarItemBadgeBackgroundColor?**: `____ColorValue_Internal`
-
-Defined in: [components/tabs/screen/TabsScreen.android.types.ts:156](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L156)
+```ts
+tabBarItemBadgeBackgroundColor?: ____ColorValue_Internal;
+```
 
 Specifies the background color of the badge.
 
@@ -99,9 +105,9 @@ Specifies the background color of the badge.
 
 #### tabBarItemBadgeTextColor? {#tabsscreenappearanceandroid-tabbaritembadgetextcolor}
 
-> `optional` **tabBarItemBadgeTextColor?**: `____ColorValue_Internal`
-
-Defined in: [components/tabs/screen/TabsScreen.android.types.ts:162](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L162)
+```ts
+tabBarItemBadgeTextColor?: ____ColorValue_Internal;
+```
 
 Specifies the text color of the badge.
 
@@ -109,13 +115,15 @@ Specifies the text color of the badge.
 
 #### tabBarItemLabelVisibilityMode? {#tabsscreenappearanceandroid-tabbaritemlabelvisibilitymode}
 
-> `optional` **tabBarItemLabelVisibilityMode?**: [`TabBarItemLabelVisibilityMode`](#tabbaritemlabelvisibilitymode)
-
-Defined in: [components/tabs/screen/TabsScreen.android.types.ts:70](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L70)
+```ts
+tabBarItemLabelVisibilityMode?: TabBarItemLabelVisibilityMode;
+```
 
 Specifies the label visibility mode.
 
 The label visibility mode defines when the labels of each item bar should be displayed.
+
+**Type:** [`TabBarItemLabelVisibilityMode`](#tabbaritemlabelvisibilitymode)
 
 **Default:** `'auto'`
 
@@ -123,9 +131,9 @@ The label visibility mode defines when the labels of each item bar should be dis
 
 #### tabBarItemRippleColor? {#tabsscreenappearanceandroid-tabbaritemripplecolor}
 
-> `optional` **tabBarItemRippleColor?**: `____ColorValue_Internal`
-
-Defined in: [components/tabs/screen/TabsScreen.android.types.ts:60](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L60)
+```ts
+tabBarItemRippleColor?: ____ColorValue_Internal;
+```
 
 Specifies the color of each tab bar item's ripple effect.
 
@@ -133,9 +141,9 @@ Specifies the color of each tab bar item's ripple effect.
 
 #### tabBarItemTitleFontFamily? {#tabsscreenappearanceandroid-tabbaritemtitlefontfamily}
 
-> `optional` **tabBarItemTitleFontFamily?**: `string`
-
-Defined in: [components/tabs/screen/TabsScreen.android.types.ts:120](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L120)
+```ts
+tabBarItemTitleFontFamily?: string;
+```
 
 Specifies the font family used for the title of each tab bar item.
 
@@ -143,9 +151,9 @@ Specifies the font family used for the title of each tab bar item.
 
 #### tabBarItemTitleFontStyle? {#tabsscreenappearanceandroid-tabbaritemtitlefontstyle}
 
-> `optional` **tabBarItemTitleFontStyle?**: `"normal"` \| `"italic"`
-
-Defined in: [components/tabs/screen/TabsScreen.android.types.ts:150](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L150)
+```ts
+tabBarItemTitleFontStyle?: "normal" | "italic";
+```
 
 Specifies the font style used for the title of each tab bar item.
 
@@ -153,9 +161,9 @@ Specifies the font style used for the title of each tab bar item.
 
 #### tabBarItemTitleFontWeight? {#tabsscreenappearanceandroid-tabbaritemtitlefontweight}
 
-> `optional` **tabBarItemTitleFontWeight?**: `____FontWeight_Internal`
-
-Defined in: [components/tabs/screen/TabsScreen.android.types.ts:144](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L144)
+```ts
+tabBarItemTitleFontWeight?: ____FontWeight_Internal;
+```
 
 Specifies the font weight used for the title of each tab bar item.
 
@@ -163,9 +171,9 @@ Specifies the font weight used for the title of each tab bar item.
 
 #### tabBarItemTitleLargeLabelFontSize? {#tabsscreenappearanceandroid-tabbaritemtitlelargelabelfontsize}
 
-> `optional` **tabBarItemTitleLargeLabelFontSize?**: `number`
-
-Defined in: [components/tabs/screen/TabsScreen.android.types.ts:138](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L138)
+```ts
+tabBarItemTitleLargeLabelFontSize?: number;
+```
 
 Specifies the font size used for the title of selected tab bar item.
 
@@ -175,9 +183,9 @@ The size is represented in scale-independent pixels (sp).
 
 #### tabBarItemTitleSmallLabelFontSize? {#tabsscreenappearanceandroid-tabbaritemtitlesmalllabelfontsize}
 
-> `optional` **tabBarItemTitleSmallLabelFontSize?**: `number`
-
-Defined in: [components/tabs/screen/TabsScreen.android.types.ts:129](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/screen/TabsScreen.android.types.ts#L129)
+```ts
+tabBarItemTitleSmallLabelFontSize?: number;
+```
 
 Specifies the font size used for the title of unselected tab bar items.
 

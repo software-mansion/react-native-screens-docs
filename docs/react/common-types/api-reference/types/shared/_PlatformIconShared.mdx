@@ -1,8 +1,11 @@
 ## PlatformIconShared {#platformiconshared}
 
-> **PlatformIconShared** = `object`
-
-Defined in: [components/shared/types.ts:119](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/shared/types.ts#L119)
+```ts
+type PlatformIconShared = {
+  imageSource: ImageSourcePropType;
+  type: "imageSource";
+};
+```
 
 Icon backed by a React Native image source, shared across platforms.
 
@@ -14,9 +17,9 @@ Discriminated by `type: 'imageSource'`.
 
 #### imageSource {#platformiconshared-imagesource}
 
-> **imageSource**: `ImageSourcePropType`
-
-Defined in: [components/shared/types.ts:131](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/shared/types.ts#L131)
+```ts
+imageSource: ImageSourcePropType;
+```
 
 The image to render, in any form `Image`'s `source` accepts.
 
@@ -24,9 +27,9 @@ The image to render, in any form `Image`'s `source` accepts.
 
 #### type {#platformiconshared-type}
 
-> **type**: `"imageSource"`
-
-Defined in: [components/shared/types.ts:125](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/shared/types.ts#L125)
+```ts
+type: "imageSource";
+```
 
 Discriminant selecting the image-source variant.
 
