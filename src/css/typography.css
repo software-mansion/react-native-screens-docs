@@ -42,6 +42,10 @@ fonts to Infima.
   --swm-h2-font-size: 32px;
   --swm-h3-font-size: 22px;
   --swm-heading-font-size-smaller: 18px;
+  /* h5 and h6 one step apart from h4: on a reference page a type (h4) and its fields (h5)
+     would otherwise be the same size. */
+  --swm-h5-font-size: 16px;
+  --swm-h6-font-size: 15px;
   --ifm-code-font-size: 90%;
 
   --ifm-heading-font-family: var(--swm-title-font);
@@ -92,8 +96,8 @@ reference heading sits in with its platform chips; it spaces itself like the hea
   --ifm-h2-font-size: var(--swm-h2-font-size);
   --ifm-h3-font-size: var(--swm-h3-font-size);
   --ifm-h4-font-size: var(--swm-heading-font-size-smaller);
-  --ifm-h5-font-size: var(--swm-heading-font-size-smaller);
-  --ifm-h6-font-size: var(--swm-heading-font-size-smaller);
+  --ifm-h5-font-size: var(--swm-h5-font-size);
+  --ifm-h6-font-size: var(--swm-h6-font-size);
 
   --ifm-h1-vertical-rhythm-top: 3.75;
   --ifm-h2-vertical-rhythm-top: 2.5;
@@ -114,14 +118,16 @@ reference heading sits in with its platform chips; it spaces itself like the hea
   .markdown > h6,
   .markdown > .reference-heading {
     --swm-heading-font-size-smaller-mobile: 16px;
+    --swm-h5-font-size-mobile: 15px;
+    --swm-h6-font-size-mobile: 14px;
 
     /* Decrease the font size on mobile devices */
     --ifm-h1-font-size: var(--swm-h2-font-size);
     --ifm-h2-font-size: var(--swm-h3-font-size);
     --ifm-h3-font-size: var(--swm-heading-font-size-smaller);
     --ifm-h4-font-size: var(--swm-heading-font-size-smaller-mobile);
-    --ifm-h5-font-size: var(--swm-heading-font-size-smaller-mobile);
-    --ifm-h6-font-size: var(--swm-heading-font-size-smaller-mobile);
+    --ifm-h5-font-size: var(--swm-h5-font-size-mobile);
+    --ifm-h6-font-size: var(--swm-h6-font-size-mobile);
   }
 }
 
@@ -224,4 +230,15 @@ code {
   text-decoration: none;
 
   border-bottom: 1px solid var(--ifm-font-color-base);
+}
+
+/*
+A heading's hash link ("#", shown on hover) is an <a> in the content too, so it gets the
+border above, and a border runs across the box's padding: with Docusaurus's 0.5rem of left
+padding the line reached back towards the heading text. A margin keeps the clearance and
+leaves the line under the glyph alone.
+*/
+.markdown .hash-link {
+  padding-left: 0;
+  margin-left: 0.25rem;
 }

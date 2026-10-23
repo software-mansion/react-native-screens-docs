@@ -3,6 +3,12 @@
   --swm-logo-height: 36px;
 }
 
+/*
+Tables. Infima renders every table as `display: block`, so a wide one scrolls instead of
+overflowing, but on a wide viewport a narrow table then hugs the left edge. Where there is
+room the table is a real full-width table; below 1280px it stays Infima's scrolling block.
+The header row gets a 1px rule instead of Infima's 2px.
+*/
 table {
   display: table;
   width: 100%;
@@ -46,6 +52,10 @@ table thead tr {
   border: transparent 2px solid;
 }
 
+/*
+The navbar's GitHub item (`className: 'header-github'` in docusaurus.config.js). The icon is
+a mask, not an <img>, so it takes the navbar link colour and its hover colour.
+*/
 .header-github {
   margin-left: 1.5em;
 }
@@ -73,6 +83,10 @@ table thead tr {
   background-color: var(--ifm-navbar-link-hover-color);
 }
 
+/*
+Code blocks: square corners, the off-background and a 1px border. Docusaurus's code-block
+classes are CSS-module hashes (`codeBlockContent_xxxx`), hence the substring match.
+*/
 [class*='codeBlockContent'] pre {
   border: 1px solid var(--swm-border);
 }
