@@ -191,7 +191,7 @@ export function componentFor(
 export const PLATFORM_KEYS: readonly Platform[] = ['android', 'ios'];
 
 /** The platforms a `@platform` tag may name. */
-// A new platform also needs its chip: a label in src/components/PlatformHeading/index.tsx, a
+// A new platform also needs its chip: a label in src/components/ReferenceHeading/index.tsx, a
 // `.chip[data-platform=…]` rule in its styles.module.css and the badge tokens in
 // src/css/colors.css, in both themes.
 export const PLATFORM_NAMES = [
