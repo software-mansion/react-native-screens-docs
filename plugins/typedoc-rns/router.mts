@@ -251,9 +251,9 @@ export class RnsRouter extends MemberRouter {
               ? (prop.type.reflection as DeclarationReflection | undefined)
               : undefined;
           if (!target || !models.includes(target)) {
-            // Left as a plain prop, its type listed among the Types; the warning reports a
-            // library change that stops the flattening.
-            this.application.logger.warn(
+            // A library change stops the flattening. The error fails the run, but only after
+            // the pages are written, with this prop left as a plain one.
+            this.application.logger.error(
               `[typedoc-rns] ${feature.label}/${component.label}: \`${key}\` is not flattened — ` +
                 'its type must be a plain reference to a type this family exports.',
             );
