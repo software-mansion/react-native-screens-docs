@@ -1,0 +1,54 @@
+/*
+API reference entries — a component section or a type — from the generator (`entryBody`,
+plugins/typedoc-rns/theme.mts). Nothing separates the props or fields of one entry, so its
+content hangs off a left line under the heading instead. `flow-root` keeps the children's
+margins inside the block; the first and last child lose theirs and the padding below sets
+where the line ends, so it ends the same after a paragraph, a list or a code block.
+*/
+.reference-entry {
+  display: flow-root;
+  margin-left: 0.25rem;
+  padding: 0 0 var(--ifm-leading) 1.25rem;
+  border-left: 2px solid var(--swm-border);
+}
+
+.reference-entry > :first-child {
+  margin-top: 0;
+}
+
+/* Infima gives a list its paragraph gap below only as a direct child of `.markdown`. */
+.reference-entry > :is(ul, ol) {
+  margin-bottom: var(--ifm-leading);
+}
+
+.reference-entry > :last-child {
+  margin-bottom: 0;
+}
+
+/* A member's heading after the first, and the next type's heading (types have no rule
+   between them), get twice the paragraph gap, so where one ends and the next begins reads at
+   a glance. */
+.reference-entry > .reference-heading:not(:first-child),
+.reference-entry + .reference-heading {
+  margin-top: calc(2 * var(--ifm-leading));
+}
+
+/* The next component section, or the Types heading, after an entry: a wider gap than between
+   two types, since nothing else marks where one part of the page ends. */
+.reference-entry + :is(.reference-heading--section, #types) {
+  margin-top: calc(3 * var(--ifm-leading));
+}
+
+/* A section's `ios.*` / `android.*` props carry on its block: the first one is the section's
+   next member, and the gap above it adds to the padding under the block before. */
+.reference-entry--continued > .reference-heading:first-child {
+  margin-top: var(--ifm-leading);
+}
+
+/* On a phone the line and its indent take less of the width the code blocks need. */
+@media (max-width: 576px) {
+  .reference-entry {
+    margin-left: 0;
+    padding-left: 0.75rem;
+  }
+}

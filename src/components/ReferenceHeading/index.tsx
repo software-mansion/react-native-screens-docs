@@ -12,6 +12,8 @@ type ReferenceHeadingProps = {
   platforms?: PlatformEntry[];
   /** The declaration in the library repository, at its line. */
   source?: string;
+  /** A component's section, as opposed to a type or a member: `reference-heading--section`. */
+  section?: boolean;
 };
 
 const PLATFORM_LABELS: Record<PlatformName, string> = {
@@ -78,9 +80,13 @@ export default function ReferenceHeading({
   children,
   platforms = [],
   source,
+  section = false,
 }: ReferenceHeadingProps) {
+  const className = section
+    ? 'reference-heading reference-heading--section'
+    : 'reference-heading';
   return (
-    <div className={`reference-heading ${styles.row}`}>
+    <div className={`${className} ${styles.row}`}>
       {children}
       {platforms.map(entry => (
         <PlatformChip key={entry.platform} {...entry} />
