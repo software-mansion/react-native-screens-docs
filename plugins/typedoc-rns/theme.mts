@@ -37,9 +37,6 @@ declare module 'typedoc-plugin-markdown' {
   }
 }
 
-// A rule between a family page's top-level blocks: each component section, and the types.
-const SEPARATOR = '\n\n***\n\n';
-
 /** Docusaurus's MDX `a`, imported where a part needs an anchor without a heading. */
 const ANCHOR_IMPORT = "import Anchor from '@theme/MDXComponents/A';";
 
@@ -51,13 +48,15 @@ const TOP_LEVEL = 3;
 const TYPES_HEADING = `${'#'.repeat(TOP_LEVEL)} Types {#types}`;
 
 /**
- * A heading in a `<ReferenceHeading>` with a chip per platform of the reflection's `@platform`
- * tag and a link to its declaration; with neither, the plain heading. It also makes the
- * reflection's comment leave the tag out, so it runs before the comment renders.
+ * A heading in a `<ReferenceHeading>`, with a chip per platform of the reflection's `@platform`
+ * tag and a link to its declaration where it has them. Every declaration heading gets the row,
+ * so the page's CSS can rely on it. It also makes the reflection's comment leave the tag out,
+ * so it runs before the comment renders.
  */
 function referenceHeading(
   reflection: DeclarationReflection,
   heading: string,
+  { section = false } = {},
 ): string {
   const comment = commentOf(reflection);
   const platforms = platformEntriesOf(reflection);
@@ -66,12 +65,12 @@ function referenceHeading(
     changeComment(comment, { omitPlatform: true });
   }
   const props = [
+    // A component's section, which the page's CSS sets apart from a type.
+    section && 'section',
     platforms.length > 0 && `platforms={${JSON.stringify(platforms)}}`,
     source && `source={${JSON.stringify(source)}}`,
   ].filter(Boolean);
-  return props.length > 0
-    ? `<ReferenceHeading ${props.join(' ')}>\n${heading}\n</ReferenceHeading>`
-    : heading;
+  return `<ReferenceHeading${props.map(prop => ` ${prop}`).join('')}>\n${heading}\n</ReferenceHeading>`;
 }
 
 /**
@@ -108,6 +107,18 @@ function renderMemberContainer(
     }),
   );
   return md.join('\n\n');
+}
+
+/**
+ * An entry's content under its heading, in a `reference-entry` block: the page's CSS hangs it
+ * off a line, so what belongs to which entry shows without rules between its members. A
+ * section's `ios.*` / `android.*` props are `continued`: their block carries on the section's.
+ */
+function entryBody(md: string, { continued = false } = {}): string {
+  const className = continued
+    ? 'reference-entry reference-entry--continued'
+    : 'reference-entry';
+  return `<div className="${className}">\n\n${md}\n\n</div>`;
 }
 
 /** A section's name, struck through when it is deprecated, as a member's name is. */
@@ -169,8 +180,11 @@ function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
           referenceHeading(
             section.model,
             `${'#'.repeat(level)} ${sectionTitle(section)} {#${section.anchor}}`,
+            { section: section.kind === 'component' },
           ),
-          ctx.partials.member(section.model, { headingLevel: level }),
+          entryBody(
+            ctx.partials.member(section.model, { headingLevel: level }),
+          ),
         ].join('\n\n'),
       ),
     ];
@@ -182,11 +196,16 @@ function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
           [
             ANCHOR_IMPORT,
             `<Anchor id="${ctx.router.getAnchor(platform.model)}" />`,
-            ...membersOf(platform.model).map(member =>
-              renderMemberContainer(ctx, member, {
-                headingLevel: level + 1,
-                titlePrefix: `${platform.key}.`,
-              }),
+            entryBody(
+              membersOf(platform.model)
+                .map(member =>
+                  renderMemberContainer(ctx, member, {
+                    headingLevel: level + 1,
+                    titlePrefix: `${platform.key}.`,
+                  }),
+                )
+                .join('\n\n'),
+              { continued: true },
             ),
           ].join('\n\n'),
         ),
@@ -195,15 +214,16 @@ function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
     return usages.join('\n\n');
   };
 
-  // A rule after each component section; the types are one block, without rules between them.
-  const blocks = components.map(render);
-  if (types.length > 0) {
-    const heading = components.length > 0 ? [TYPES_HEADING] : [];
-    blocks.push([...heading, ...types.map(render)].join('\n\n'));
-  }
+  // No rules between the blocks: where an entry's line ends and the next heading starts shows
+  // where one ends and the next begins.
+  const blocks = [
+    ...components.map(render),
+    ...(components.length > 0 && types.length > 0 ? [TYPES_HEADING] : []),
+    ...types.map(render),
+  ];
 
   ctx.page.rnsParts = { root, parts, imports };
-  return blocks.join(SEPARATOR);
+  return blocks.join('\n\n');
 }
 
 class RnsThemeContext extends MarkdownThemeContext {
