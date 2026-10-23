@@ -1,59 +1,30 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { Converter, type Application, type ProjectReflection } from 'typedoc';
+import { Converter, type Application } from 'typedoc';
 import { MarkdownPageEvent } from 'typedoc-plugin-markdown';
 
 import type { RnsParts } from './theme.mts';
 
-import { parsePlatformTag, sourceLocation } from './feature-map.mts';
+import { commentProblems } from './gates.mts';
 import { resolveCrossFamilyLinks } from './links.mts';
 import { restoreRnInternalNames } from './rn-internal-names.mts';
 import { RnsRouter } from './router.mts';
 import { RnsTheme } from './theme.mts';
 import { transform } from './transform.mts';
 
-/**
- * A `Name (file:line) — problem` line for every malformed `@platform` tag in the project. An
- * inherited member repeats its base's comment, so each source line is reported once.
- */
-function malformedPlatformTags(project: ProjectReflection): string[] {
-  const lines = new Map<string, string>();
-  for (const reflection of Object.values(project.reflections)) {
-    const tags = (reflection.comment?.blockTags ?? []).filter(
-      tag => tag.tag === '@platform',
-    );
-    if (tags.length === 0) continue;
-    const errors =
-      tags.length > 1
-        ? ['more than one @platform tag']
-        : parsePlatformTag(
-            tags[0]!.content
-              .map(part => part.text)
-              .join('')
-              .trim(),
-          ).errors;
-    if (errors.length === 0) continue;
-    const where = sourceLocation(reflection);
-    if (!lines.has(where)) {
-      lines.set(
-        where,
-        `  ${reflection.getFullName()} (${where}) — ${errors.join('; ')}`,
-      );
-    }
-  }
-  return [...lines.values()];
-}
+// The pull requests where the doc comment rules are written.
+const RULES =
+  'RFC-1947 https://github.com/software-mansion/react-native-screens-labs/pull/1947, ' +
+  'RFC-1960 https://github.com/software-mansion/react-native-screens-labs/pull/1960';
 
 export function load(app: Application): void {
   app.converter.on(Converter.EVENT_RESOLVE_END, context => {
     restoreRnInternalNames(context.project);
     // An error logged here stops TypeDoc before it writes any output.
-    const lines = malformedPlatformTags(context.project);
+    const lines = commentProblems(context.project);
     if (lines.length > 0) {
       app.logger.error(
-        `[typedoc-rns] ${lines.length} @platform tag(s) are malformed. Each entry is ` +
-          '`<platform>`, `<platform> >= <version>` or `<platform> <version> - <version>`, ' +
-          'comma-separated:\n' +
+        `[typedoc-rns] ${lines.length} doc comment problem(s). The rules: ${RULES}\n` +
           lines.join('\n'),
       );
     }
