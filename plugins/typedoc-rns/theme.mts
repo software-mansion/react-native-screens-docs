@@ -51,19 +51,27 @@ const TOP_LEVEL = 3;
 const TYPES_HEADING = `${'#'.repeat(TOP_LEVEL)} Types {#types}`;
 
 /**
- * A heading with a chip per platform of the reflection's `@platform` tag, in a
- * `<PlatformHeading>`; without the tag, the plain heading. It also makes the reflection's
- * comment leave the tag out, so it runs before the comment renders.
+ * A heading in a `<ReferenceHeading>` with a chip per platform of the reflection's `@platform`
+ * tag and a link to its declaration; with neither, the plain heading. It also makes the
+ * reflection's comment leave the tag out, so it runs before the comment renders.
  */
-function headingWithPlatforms(
+function referenceHeading(
   reflection: DeclarationReflection,
   heading: string,
 ): string {
   const comment = commentOf(reflection);
-  const platforms = comment ? platformEntriesOf(reflection) : [];
-  if (!comment || platforms.length === 0) return heading;
-  changeComment(comment, { omitPlatform: true });
-  return `<PlatformHeading platforms={${JSON.stringify(platforms)}}>\n${heading}\n</PlatformHeading>`;
+  const platforms = platformEntriesOf(reflection);
+  const source = reflection.sources?.[0]?.url;
+  if (comment && platforms.length > 0) {
+    changeComment(comment, { omitPlatform: true });
+  }
+  const props = [
+    platforms.length > 0 && `platforms={${JSON.stringify(platforms)}}`,
+    source && `source={${JSON.stringify(source)}}`,
+  ].filter(Boolean);
+  return props.length > 0
+    ? `<ReferenceHeading ${props.join(' ')}>\n${heading}\n</ReferenceHeading>`
+    : heading;
 }
 
 /**
@@ -91,7 +99,7 @@ function renderMemberContainer(
     const title = `${options.titlePrefix ?? ''}${ctx.partials.memberTitle(model)}`;
     // Markdown has no heading below h6; a deeper member stays at h6.
     const heading = `${'#'.repeat(Math.min(options.headingLevel, 6))} ${anchor ? `${title} {#${anchor}}` : title}`;
-    md.push(headingWithPlatforms(model, heading));
+    md.push(referenceHeading(model, heading));
   }
   md.push(
     ctx.partials.member(model, {
@@ -100,6 +108,11 @@ function renderMemberContainer(
     }),
   );
   return md.join('\n\n');
+}
+
+/** A section's name, struck through when it is deprecated, as a member's name is. */
+function sectionTitle(section: Section): string {
+  return section.model.isDeprecated() ? `~~${section.title}~~` : section.title;
 }
 
 /** A part's path doubles as its MDX component name: `types/ios/_BlurEffect` → `TypeBlurEffect`. */
@@ -153,9 +166,9 @@ function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
     const usages = [
       part(section.part!, name, () =>
         [
-          headingWithPlatforms(
+          referenceHeading(
             section.model,
-            `${'#'.repeat(level)} ${section.title} {#${section.anchor}}`,
+            `${'#'.repeat(level)} ${sectionTitle(section)} {#${section.anchor}}`,
           ),
           ctx.partials.member(section.model, { headingLevel: level }),
         ].join('\n\n'),
