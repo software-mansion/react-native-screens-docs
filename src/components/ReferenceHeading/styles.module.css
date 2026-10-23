@@ -1,7 +1,7 @@
 /*
 Infima spaces only the headings that are direct children of `.markdown`; the heading in this
 row is not one, so the row takes the spacing it would have had, with the house rhythm values
-(typography.css declares them on `.platform-heading` too).
+(typography.css declares them on `.reference-heading` too).
 */
 .row {
   display: flex;
@@ -75,4 +75,15 @@ row is not one, so the row takes the spacing it would have had, with the house r
 .version {
   margin-left: 0.3em;
   font-weight: 400;
+}
+
+/* Minimal styling; a later PR styles it. */
+.source {
+  display: inline-flex;
+  color: var(--ifm-color-emphasis-600);
+  text-decoration: none;
+}
+
+.source:hover {
+  color: var(--ifm-link-color);
 }
