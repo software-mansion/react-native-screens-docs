@@ -7,9 +7,11 @@ import type {
   TagPlatform,
 } from '../../../plugins/typedoc-rns/feature-map.mts';
 
-type PlatformHeadingProps = {
+type ReferenceHeadingProps = {
   children: React.ReactNode;
-  platforms: PlatformEntry[];
+  platforms?: PlatformEntry[];
+  /** The declaration in the library repository, at its line. */
+  source?: string;
 };
 
 const PLATFORM_LABELS: Record<TagPlatform, string> = {
@@ -37,23 +39,53 @@ function PlatformChip(entry: PlatformEntry) {
   );
 }
 
+/** `</>`: a link to the declaration, opened in a new tab. */
+function SourceLink({ href }: { href: string }) {
+  return (
+    <a
+      className={styles.source}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      title="View source on GitHub"
+      aria-label="View source on GitHub">
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true">
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
+      </svg>
+    </a>
+  );
+}
+
 /**
  * A heading in a generated API reference — a component section, a type, or a prop, field or
  * method — followed by a chip for each platform of its `@platform` tag
- * (`android >= 21` → **Android** ≥ 21, `ios 13 - 18` → **iOS** 13–18), in the tag's order.
- * The heading stays a Markdown heading, so its anchor and the table of contents keep working.
- * Registered as an MDX component (src/theme/MDXComponents.js).
+ * (`android >= 21` → **Android** ≥ 21, `ios 13 - 18` → **iOS** 13–18), in the tag's order, and
+ * a link to its declaration in the library repository. The heading stays a Markdown heading,
+ * so its anchor and the table of contents keep working. Registered as an MDX component
+ * (src/theme/MDXComponents.js).
  */
-export default function PlatformHeading({
+export default function ReferenceHeading({
   children,
-  platforms,
-}: PlatformHeadingProps) {
+  platforms = [],
+  source,
+}: ReferenceHeadingProps) {
   return (
-    <div className={`platform-heading ${styles.row}`}>
+    <div className={`reference-heading ${styles.row}`}>
       {children}
       {platforms.map(entry => (
         <PlatformChip key={entry.platform} {...entry} />
       ))}
+      {source && <SourceLink href={source} />}
     </div>
   );
 }

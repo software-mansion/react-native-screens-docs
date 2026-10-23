@@ -76,7 +76,7 @@ Heading sizes and vertical rhythm. Infima re-declares the heading-size variables
 headings themselves (`.markdown h1:first-child { --ifm-h1-font-size: 3rem }`,
 `.markdown > h2`, … and again under 576px), so a value set on `:root` alone never reaches
 a markdown heading. Declaring the house values on the same selectors, in a stylesheet
-loaded after Infima, is what makes them win. `.platform-heading` is the row a generated API
+loaded after Infima, is what makes them win. `.reference-heading` is the row a generated API
 reference heading sits in with its platform chips; it spaces itself like the heading.
 */
 :root,
@@ -87,7 +87,7 @@ reference heading sits in with its platform chips; it spaces itself like the hea
 .markdown > h4,
 .markdown > h5,
 .markdown > h6,
-.markdown > .platform-heading {
+.markdown > .reference-heading {
   --ifm-h1-font-size: var(--swm-h1-font-size);
   --ifm-h2-font-size: var(--swm-h2-font-size);
   --ifm-h3-font-size: var(--swm-h3-font-size);
@@ -112,7 +112,7 @@ reference heading sits in with its platform chips; it spaces itself like the hea
   .markdown > h4,
   .markdown > h5,
   .markdown > h6,
-  .markdown > .platform-heading {
+  .markdown > .reference-heading {
     --swm-heading-font-size-smaller-mobile: 16px;
 
     /* Decrease the font size on mobile devices */
