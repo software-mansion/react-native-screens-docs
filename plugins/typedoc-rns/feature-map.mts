@@ -7,6 +7,7 @@ import type {
   DeclarationReflection,
   Reflection,
   ReflectionType,
+  SignatureReflection,
 } from 'typedoc';
 
 /** A component of a family: one section of its API reference. */
@@ -299,6 +300,24 @@ export function commentOf(reflection: Reflection): Comment | undefined {
     ((reflection as DeclarationReflection).type as ReflectionType | undefined)
       ?.declaration?.signatures?.[0]?.comment
   );
+}
+
+/**
+ * `file:line` of a reflection's declaration, for error reports. Only declarations and
+ * signatures carry sources, so a parameter or type parameter reports its owner's; a
+ * reflection with no source anywhere above it is named by its id.
+ */
+export function sourceLocation(reflection: Reflection): string {
+  for (
+    let current: Reflection | undefined = reflection;
+    current;
+    current = current.parent
+  ) {
+    const source = (current as DeclarationReflection | SignatureReflection)
+      .sources?.[0];
+    if (source) return `${source.fileName}:${source.line}`;
+  }
+  return `reflection ${reflection.id}, no source`;
 }
 
 /** A props type's own props — an interface's children, or those of an object type. */
