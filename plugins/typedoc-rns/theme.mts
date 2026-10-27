@@ -12,6 +12,7 @@ import {
   type MarkdownPageEvent,
 } from 'typedoc-plugin-markdown';
 
+import { renderComment } from './comment.mts';
 import { membersOf, outputRoot } from './feature-map.mts';
 import type { Layout, RnsRouter, Section } from './router.mts';
 
@@ -174,8 +175,11 @@ class RnsThemeContext extends MarkdownThemeContext {
     options: Options,
   ) {
     super(theme, page, options);
+    const baseComment = this.partials.comment;
     this.partials = {
       ...this.partials,
+      comment: (model, options) =>
+        renderComment(this, baseComment, model, options),
       memberContainer: (model, options) =>
         renderMemberContainer(this, model, options),
     };

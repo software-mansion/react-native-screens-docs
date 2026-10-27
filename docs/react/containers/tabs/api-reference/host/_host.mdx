@@ -4,15 +4,11 @@ Defined in: [components/tabs/host/TabsHost.types.ts:373](https://github.com/soft
 
 Container that manages a native tab bar and switches between its tab screens.
 
-### Remarks
-
 Wrap every [Tabs.Screen](#screen) you want to display inside a single `Tabs.Host`.
 Platform-specific configuration is grouped under the [ios](#host-ios) and
 [android](#host-android) objects.
 
-### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 ### Extends
 
@@ -28,9 +24,7 @@ Defined in: [components/tabs/host/TabsHost.types.ts:288](https://github.com/soft
 
 Tab screens to display; wrap each screen in a `TabsScreen`.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 ##### Inherited from
 
@@ -44,13 +38,9 @@ Defined in: [components/tabs/host/TabsHost.types.ts:333](https://github.com/soft
 
 Specifies the color scheme used by the container and any child containers.
 
-##### Default Value
+**Default:** `'inherit'`
 
-`'inherit'`
-
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 ##### Inherited from
 
@@ -64,8 +54,6 @@ Defined in: [components/tabs/host/TabsHost.types.ts:326](https://github.com/soft
 
 Specifies the layout direction of the native container, its views and child containers.
 
-##### Remarks
-
 On Android, this property relies on `react-native`'s `style.direction`
 (which sets native Android `layoutDirection` View property). Property is
 propagated via the view hierarchy. The value will fallback to direction
@@ -78,13 +66,9 @@ system. The value will fallback to direction of the **native** app
 override (e.g. when `forceRTL` is used). To mitigate this, you can pass
 `'ltr'`/`'rtl'` to this property depending on the value of `I18nManager.isRTL`.
 
-##### Default Value
+**Default:** `'inherit'`
 
-`'inherit'`
-
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 ##### Inherited from
 
@@ -98,15 +82,11 @@ Defined in: [components/tabs/host/TabsHost.types.ts:306](https://github.com/soft
 
 Allows for native container view customization.
 
-##### Remarks
-
 On Android, style is applied to `FrameLayout` that wraps currently focused screen
 and `BottomNavigationView`. On iOS, style is applied to `UITabBarController`'s
 view.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 ##### Inherited from
 
@@ -121,19 +101,13 @@ Defined in: [components/tabs/host/TabsHost.types.ts:255](https://github.com/soft
 Allows to pass desired navigation state request to the native side.
 It also determines initial navigation state after first render.
 
-##### Remarks
-
 This prop can be thought of as a "next navigation state suggestion for the native side".
 Depending on configuration and the provenance of the update
 the update might get accepted or rejected.
 
-##### See
+**See:** [TabsHostPropsBase.rejectStaleNavStateUpdates](#host-rejectstalenavstateupdates)
 
-[TabsHostPropsBase.rejectStaleNavStateUpdates](#host-rejectstalenavstateupdates)
-
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 ##### Inherited from
 
@@ -147,9 +121,7 @@ Defined in: [components/tabs/host/TabsHost.types.ts:341](https://github.com/soft
 
 A callback that gets invoked when the selected tab changes.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 ##### Inherited from
 
@@ -164,9 +136,7 @@ Defined in: [components/tabs/host/TabsHost.types.ts:358](https://github.com/soft
 A callback that gets invoked when the native side prevents a tab selection
 because the target screen has `preventNativeSelection` enabled.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 ##### Inherited from
 
@@ -180,9 +150,7 @@ Defined in: [components/tabs/host/TabsHost.types.ts:348](https://github.com/soft
 
 A callback that gets invoked when the native side rejects a tab selection request.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 ##### Inherited from
 
@@ -197,8 +165,6 @@ Defined in: [components/tabs/host/TabsHost.types.ts:280](https://github.com/soft
 If true, the native side will reject any navigation state updates coming from JS
 if they are stale.
 
-##### Remarks
-
 A navigation state update is considered stale if it is based of an stale state
 ([TabsHostNavStateRequest.baseProvenance](#tabshostnavstaterequest-baseprovenance) indicates the base state).
 A state is stale, when at the time of executing update, there already had been accepted a newer state
@@ -211,18 +177,16 @@ full context of actual navigation state you can toggle this prop. Please note,
 that above definition means, that an JS update won't be rejected if you send a series of
 udpates with the same provenance, unless some action has been taken by the user "in the meantime".
 
-##### Danger
+:::danger
 
 If an update is rejected due to being stale, the `onTabSelectionRejected` event will be
 emitted with details of the rejected update and the currently active navigation state.
 
-##### Default Value
+:::
 
-`false`
+**Default:** `false`
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 ##### Inherited from
 
@@ -236,13 +200,9 @@ Defined in: [components/tabs/host/TabsHost.types.ts:295](https://github.com/soft
 
 Hides the tab bar.
 
-##### Default Value
+**Default:** `false`
 
-`false`
-
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 ##### Inherited from
 

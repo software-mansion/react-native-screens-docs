@@ -15,6 +15,8 @@ export default {
   exclude: ['**/fabric/**'],
   // Without this, `ViewProps` alone adds ~100 inherited react-native props to Split/SafeArea.
   excludeExternals: true,
+  // `@experimental` shows on the symbols that carry it, not on every member of a tagged type.
+  cascadedModifierTags: [],
 
   plugin: ['typedoc-plugin-markdown', './plugins/typedoc-rns/index.mts'],
   router: 'rns',

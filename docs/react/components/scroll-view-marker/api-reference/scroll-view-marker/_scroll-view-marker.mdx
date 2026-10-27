@@ -5,9 +5,7 @@ Defined in: [components/scroll-view-marker/ScrollViewMarker.types.ts:10](https:/
 Marks a scroll view for the native side (e.g. to apply scroll-edge effects or header
 lift-on-scroll behavior).
 
-### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 ### Properties
 
@@ -20,9 +18,7 @@ Defined in: [components/scroll-view-marker/ScrollViewMarker.types.ts:17](https:/
 Content to mark; the scroll view the native side acts on is the one resolved in
 this subtree.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### scrollEdgeEffects? {#scroll-view-marker-scrolledgeeffects}
 
@@ -34,19 +30,25 @@ Configures the scroll edge effect for the _content ScrollView_ (the ScrollView r
 Depending on values set, it will blur the scrolling content below certain UI elements (header items, search bar)
 for the specified edge of the ScrollView.
 
+When set in nested containers, i.e. Stack inside Tabs, or the other way around,
+the ScrollView will use only the innermost one's config.
+
+The supported values correspond to the `UIScrollEdgeEffect`'s `style` and `isHidden` props
+in the official UIKit documentation.
+
+**See:** [UIScrollEdgeEffect](https://developer.apple.com/documentation/uikit/uiscrolledgeeffect)
+
+**Platform:** ios \>= 26
+
 ##### bottom?
 
 > `optional` **bottom?**: [`ScrollEdgeEffect`](../../../../common-types/index.mdx#scrolledgeeffect)
 
 Scroll edge effect for the bottom edge of the content ScrollView.
 
-###### Default Value
+**Default:** `'automatic'`
 
-`'automatic'`
-
-###### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 ##### left?
 
@@ -54,13 +56,9 @@ ios \>= 13
 
 Scroll edge effect for the left edge of the content ScrollView.
 
-###### Default Value
+**Default:** `'automatic'`
 
-`'automatic'`
-
-###### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 ##### right?
 
@@ -68,13 +66,9 @@ ios \>= 13
 
 Scroll edge effect for the right edge of the content ScrollView.
 
-###### Default Value
+**Default:** `'automatic'`
 
-`'automatic'`
-
-###### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 ##### top?
 
@@ -82,29 +76,9 @@ ios \>= 13
 
 Scroll edge effect for the top edge of the content ScrollView.
 
-###### Default Value
+**Default:** `'automatic'`
 
-`'automatic'`
-
-###### Platform
-
-ios \>= 13
-
-##### Remarks
-
-When set in nested containers, i.e. Stack inside Tabs, or the other way around,
-the ScrollView will use only the innermost one's config.
-
-The supported values correspond to the `UIScrollEdgeEffect`'s `style` and `isHidden` props
-in the official UIKit documentation.
-
-##### See
-
-[UIScrollEdgeEffect](https://developer.apple.com/documentation/uikit/uiscrolledgeeffect)
-
-##### Platform
-
-ios \>= 26
+**Platform:** ios \>= 13
 
 #### style? {#scroll-view-marker-style}
 
@@ -114,6 +88,4 @@ Defined in: [components/scroll-view-marker/ScrollViewMarker.types.ts:23](https:/
 
 Style applied to the marker's own view.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13

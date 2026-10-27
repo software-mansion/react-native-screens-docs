@@ -4,9 +4,7 @@ Defined in: [components/modals/form-sheet/FormSheet.types.ts:47](https://github.
 
 Presents its content in a native form sheet modal.
 
-### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 ### Properties
 
@@ -18,9 +16,7 @@ Defined in: [components/modals/form-sheet/FormSheet.types.ts:53](https://github.
 
 Content rendered inside the form sheet.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### detents? {#form-sheet-detents}
 
@@ -29,8 +25,6 @@ android \>= 21, ios \>= 13
 Defined in: [components/modals/form-sheet/FormSheet.types.ts:86](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L86)
 
 Defines the resting positions of the sheet.
-
-##### Remarks
 
 This can be either an array of fractional screen heights (ranging from `0.0` to `1.0`)
 or the `'fitToContents'` string literal.
@@ -45,9 +39,7 @@ If an empty array is provided, it defaults to a single large detent.
 `'fitToContents'` is supported on iOS 16+. On iOS 15, it falls back to a
 medium detent.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### initialDetentIndex? {#form-sheet-initialdetentindex}
 
@@ -57,19 +49,13 @@ Defined in: [components/modals/form-sheet/FormSheet.types.ts:140](https://github
 
 The index of the detent the sheet should snap to when first opened.
 
-##### Remarks
-
 This prop can be set to a number, indicating the zero-based index of the detent in the
 `detents` array. If set to `'last'`, it will snap to the largest defined detent.
 This prop only applies when the sheet transitions from closed to open.
 
-##### Default Value
+**Default:** `0`
 
-`0`
-
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### isOpen {#form-sheet-isopen}
 
@@ -79,15 +65,11 @@ Defined in: [components/modals/form-sheet/FormSheet.types.ts:65](https://github.
 
 Determines whether the form sheet is currently visible.
 
-##### Remarks
-
 Presentation is driven by state transitions: updating this property
 from `false` to `true` triggers the sheet to present, while changing
 it from `true` to `false` triggers a programmatic dismissal.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### largestUndimmedDetentIndex? {#form-sheet-largestundimmeddetentindex}
 
@@ -97,8 +79,6 @@ Defined in: [components/modals/form-sheet/FormSheet.types.ts:127](https://github
 
 The largest sheet detent for which a view underneath won't be dimmed.
 
-##### Remarks
-
 This prop can be set to a number, which indicates the index of the detent in the
 `detents` array for which there won't be a dimming view beneath the sheet.
 
@@ -106,13 +86,9 @@ Additionally, there are the following options available:
 - `'none'` - there will be a dimming view for all detent levels.
 - `'last'` - there won't be a dimming view for any detent level.
 
-##### Default Value
+**Default:** `'none'`
 
-`'none'`
-
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### nativeContainerStyle? {#form-sheet-nativecontainerstyle}
 
@@ -122,13 +98,9 @@ Defined in: [components/modals/form-sheet/FormSheet.types.ts:180](https://github
 
 Style applied to the native container hosting the sheet content.
 
-##### Remarks
-
 These properties are forwarded directly to the underlying native view.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### onDetentChanged? {#form-sheet-ondetentchanged}
 
@@ -138,13 +110,9 @@ Defined in: [components/modals/form-sheet/FormSheet.types.ts:245](https://github
 
 Called when the sheet settles at a new detent.
 
-##### Remarks
-
 Provides the `index` of the newly selected detent from the `detents` array.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### onDidAppear? {#form-sheet-ondidappear}
 
@@ -155,9 +123,7 @@ Defined in: [components/modals/form-sheet/FormSheet.types.ts:198](https://github
 A callback that gets invoked when the FormSheet did appear.
 This is called as soon as the transition ends.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### onDidDisappear? {#form-sheet-ondiddisappear}
 
@@ -168,9 +134,7 @@ Defined in: [components/modals/form-sheet/FormSheet.types.ts:214](https://github
 A callback that gets invoked when the FormSheet did disappear.
 This is called as soon as the transition ends.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### onDismiss? {#form-sheet-ondismiss}
 
@@ -180,13 +144,9 @@ Defined in: [components/modals/form-sheet/FormSheet.types.ts:224](https://github
 
 Called when the sheet is dismissed programmatically.
 
-##### Remarks
-
 This event is fired when the sheet was dismissed via the `isOpen` prop changing to `false`.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### onNativeDismiss? {#form-sheet-onnativedismiss}
 
@@ -196,14 +156,10 @@ Defined in: [components/modals/form-sheet/FormSheet.types.ts:235](https://github
 
 Called when the sheet is dismissed natively.
 
-##### Remarks
-
 It is highly recommended to use this callback to synchronize
 your local React state to prevent UI mismatches (e.g., updating `isOpen` back to `false`).
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### onNativeDismissPrevented? {#form-sheet-onnativedismissprevented}
 
@@ -213,15 +169,11 @@ Defined in: [components/modals/form-sheet/FormSheet.types.ts:259](https://github
 
 Called when the user attempts to dismiss the sheet by swiping down or tapping the backdrop, but the dismissal is prevented.
 
-##### Remarks
-
 This event is only fired if `preventNativeDismiss` is set to `true`.
 It is useful for triggering custom feedback, such as an alert
 to inform the user why the sheet cannot be closed.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### onWillAppear? {#form-sheet-onwillappear}
 
@@ -232,9 +184,7 @@ Defined in: [components/modals/form-sheet/FormSheet.types.ts:190](https://github
 A callback that gets invoked when the FormSheet will appear.
 This is called as soon as the transition begins.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### onWillDisappear? {#form-sheet-onwilldisappear}
 
@@ -245,9 +195,7 @@ Defined in: [components/modals/form-sheet/FormSheet.types.ts:206](https://github
 A callback that gets invoked when the FormSheet will disappear.
 This is called as soon as the transition begins.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### preferredCornerRadius? {#form-sheet-preferredcornerradius}
 
@@ -257,18 +205,12 @@ Defined in: [components/modals/form-sheet/FormSheet.types.ts:111](https://github
 
 The corner radius that the sheet will attempt to present with.
 
-##### Remarks
-
 If set to `'systemDefault'` or a negative number, it defaults to the system's
 automatic dimension (`UISheetPresentationControllerAutomaticDimension`).
 
-##### Default Value
+**Default:** `'systemDefault'`
 
-`'systemDefault'`
-
-##### Platform
-
-android \>= 33, ios \>= 13
+**Platform:** android \>= 33, ios \>= 13
 
 #### prefersGrabberVisible? {#form-sheet-prefersgrabbervisible}
 
@@ -278,19 +220,13 @@ Defined in: [components/modals/form-sheet/FormSheet.types.ts:99](https://github.
 
 Determines whether the sheet requests a grabber at the top.
 
-##### Remarks
-
 When `true`, the sheet requests that a small grabber indicator be shown
 at the top to hint that the sheet can be resized. The system may still
 hide the grabber in some presentation contexts.
 
-##### Default Value
+**Default:** `false`
 
-`false`
-
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### prefersScrollingExpandsWhenScrolledToEdge? {#form-sheet-prefersscrollingexpandswhenscrolledtoedge}
 
@@ -299,8 +235,6 @@ android \>= 21, ios \>= 13
 Defined in: [components/modals/form-sheet/FormSheet.types.ts:158](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L158)
 
 Determines whether scrolling expands the sheet to a larger detent.
-
-##### Remarks
 
 When set to `true`, scrolling up within a child scroll view (starting from the top edge)
 will first expand the sheet to a larger detent before scrolling the content.
@@ -311,13 +245,9 @@ sheet regardless of this setting.
 
 On iOS, this maps directly to `UISheetPresentationController.prefersScrollingExpandsWhenScrolledToEdge`.
 
-##### Default Value
+**Default:** `true`
 
-`true`
-
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### preventNativeDismiss? {#form-sheet-preventnativedismiss}
 
@@ -327,15 +257,9 @@ Defined in: [components/modals/form-sheet/FormSheet.types.ts:170](https://github
 
 Prevents the user from dismissing the sheet natively by swiping down or tapping the backdrop.
 
-##### Remarks
-
 When set to `true`, the sheet will resist the swipe-down gesture and backdrop tap,
 remaining on the resting detent. Programmatically dismissing the sheet via `isOpen={false}` will still work.
 
-##### Default Value
+**Default:** `false`
 
-`false`
-
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
