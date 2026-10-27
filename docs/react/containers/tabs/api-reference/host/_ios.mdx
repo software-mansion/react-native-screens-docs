@@ -4,9 +4,9 @@ import Anchor from '@theme/MDXComponents/A';
 
 #### ios.bottomAccessory? {#host-ios-bottomaccessory}
 
-> `optional` **bottomAccessory?**: [`TabsBottomAccessoryComponentFactory`](#tabsbottomaccessorycomponentfactory)
-
-Defined in: [components/tabs/host/TabsHost.ios.types.ts:120](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.ios.types.ts#L120)
+```ts
+bottomAccessory?: TabsBottomAccessoryComponentFactory;
+```
 
 Specifies component used as bottom accessory.
 
@@ -14,6 +14,8 @@ This prop is a function that accepts `environment` as a parameter and returns
 the component that will be rendered in the bottom accessory — see
 [TabsBottomAccessoryEnvironment](#tabsbottomaccessoryenvironment) for the possible environments. If this prop is
 `undefined`, the bottom accessory will not be rendered.
+
+**Type:** [`TabsBottomAccessoryComponentFactory`](#tabsbottomaccessorycomponentfactory)
 
 :::warning
 
@@ -29,9 +31,9 @@ require implementing a solution to share state between both rendered components
 
 #### ios.bottomAccessoryHidden? {#host-ios-bottomaccessoryhidden}
 
-> `optional` **bottomAccessoryHidden?**: `boolean`
-
-Defined in: [components/tabs/host/TabsHost.ios.types.ts:127](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.ios.types.ts#L127)
+```ts
+bottomAccessoryHidden?: boolean;
+```
 
 Hides the bottom accessory with animation.
 
@@ -41,9 +43,9 @@ Hides the bottom accessory with animation.
 
 #### ios.onMoreTabSelected? {#host-ios-onmoretabselected}
 
-> `optional` **onMoreTabSelected?**: [`TabsHostEventHandler`](#tabshosteventhandler)\<[`MoreTabSelectedEvent`](#moretabselectedevent)\>
-
-Defined in: [components/tabs/host/TabsHost.ios.types.ts:145](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.ios.types.ts#L145)
+```ts
+onMoreTabSelected?: TabsHostEventHandler<MoreTabSelectedEvent>;
+```
 
 A callback that gets invoked when the user taps the "More" tab bar item.
 
@@ -51,15 +53,19 @@ This event fires when the user taps the system-generated "More" tab bar item.
 It does NOT fire when a tab is selected from within the More list — that triggers
 the normal `onTabSelected` event instead.
 
+**Type:** [`TabsHostEventHandler`](#tabshosteventhandler)\<[`MoreTabSelectedEvent`](#moretabselectedevent)\>
+
 **Platform:** ios \>= 13
 
 #### ios.tabBarControllerMode? {#host-ios-tabbarcontrollermode}
 
-> `optional` **tabBarControllerMode?**: [`TabBarControllerMode`](#tabbarcontrollermode)
-
-Defined in: [components/tabs/host/TabsHost.ios.types.ts:134](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.ios.types.ts#L134)
+```ts
+tabBarControllerMode?: TabBarControllerMode;
+```
 
 Specifies the display mode for the tab bar.
+
+**Type:** [`TabBarControllerMode`](#tabbarcontrollermode)
 
 **Default:** `'automatic'`
 
@@ -67,11 +73,13 @@ Specifies the display mode for the tab bar.
 
 #### ios.tabBarMinimizeBehavior? {#host-ios-tabbarminimizebehavior}
 
-> `optional` **tabBarMinimizeBehavior?**: [`TabBarMinimizeBehavior`](#tabbarminimizebehavior)
-
-Defined in: [components/tabs/host/TabsHost.ios.types.ts:101](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.ios.types.ts#L101)
+```ts
+tabBarMinimizeBehavior?: TabBarMinimizeBehavior;
+```
 
 Specifies the minimize behavior for the tab bar.
+
+**Type:** [`TabBarMinimizeBehavior`](#tabbarminimizebehavior)
 
 **Default:** `'automatic'`
 
@@ -79,9 +87,9 @@ Specifies the minimize behavior for the tab bar.
 
 #### ios.tabBarTintColor? {#host-ios-tabbartintcolor}
 
-> `optional` **tabBarTintColor?**: `____ColorValue_Internal`
-
-Defined in: [components/tabs/host/TabsHost.ios.types.ts:94](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.ios.types.ts#L94)
+```ts
+tabBarTintColor?: ____ColorValue_Internal;
+```
 
 Specifies the color used for selected tab's text and icon color.
 
@@ -89,6 +97,6 @@ Starting from iOS 26, it also impacts glow of Liquid Glass tab
 selection view.
 
 `tabBarItemTitleFontColor` and `tabBarItemIconColor` defined on
-TabsScreen component override this color.
+`Tabs.Screen` override this color.
 
 **Platform:** ios \>= 13

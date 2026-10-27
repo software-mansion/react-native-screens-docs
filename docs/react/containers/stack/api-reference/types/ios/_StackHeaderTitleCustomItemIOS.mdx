@@ -1,7 +1,5 @@
 ## StackHeaderTitleCustomItemIOS {#stackheadertitlecustomitemios}
 
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:291](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L291)
-
 Custom-view header item used for the title / subtitle area.
 
 **Platform:** ios \>= 13
@@ -10,9 +8,9 @@ Custom-view header item used for the title / subtitle area.
 
 #### id {#stackheadertitlecustomitemios-id}
 
-> **id**: `string`
-
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:297](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L297)
+```ts
+id: string;
+```
 
 A unique identifier within the screen header.
 
@@ -20,9 +18,9 @@ A unique identifier within the screen header.
 
 #### render {#stackheadertitlecustomitemios-render}
 
-> **render**: [`StackHeaderElementFactory`](#stackheaderelementfactory)
-
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:313](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L313)
+```ts
+render: StackHeaderElementFactory;
+```
 
 A function that renders the custom view.
 
@@ -34,5 +32,7 @@ Note: Due to layout process limitations, text view will not resize and
 ellipsize to fit available space without manually setting desired view
 width. For text-only elements that should ellipsize it is recommended to
 use regular `title` instead.
+
+**Type:** [`StackHeaderElementFactory`](#stackheaderelementfactory)
 
 **Platform:** ios \>= 13

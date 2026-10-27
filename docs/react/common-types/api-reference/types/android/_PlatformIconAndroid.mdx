@@ -1,13 +1,15 @@
 ## PlatformIconAndroid {#platformiconandroid}
 
-> **PlatformIconAndroid** = [`PlatformIconAndroidDrawableResource`](#platformiconandroiddrawableresource) \| [`PlatformIconShared`](#platformiconshared)
-
-Defined in: [components/shared/types.ts:253](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/shared/types.ts#L253)
+```ts
+type PlatformIconAndroid = PlatformIconAndroidDrawableResource | PlatformIconShared;
+```
 
 Icon descriptor for an Android component.
 
 The following variants are supported:
 - [PlatformIconAndroidDrawableResource](#platformiconandroiddrawableresource) — a drawable resource by name.
 - [PlatformIconShared](#platformiconshared) — a React Native image source.
+
+**Type:** [`PlatformIconAndroidDrawableResource`](#platformiconandroiddrawableresource) \| [`PlatformIconShared`](#platformiconshared)
 
 **Platform:** android \>= 21

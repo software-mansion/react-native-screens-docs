@@ -1,8 +1,10 @@
 ## OnDismissEventPayload {#ondismisseventpayload}
 
-> **OnDismissEventPayload** = `object`
-
-Defined in: [components/stack/screen/StackScreen.types.ts:10](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/screen/StackScreen.types.ts#L10)
+```ts
+type OnDismissEventPayload = {
+  isNativeDismiss: boolean;
+};
+```
 
 Payload of the event emitted when a stack screen is dismissed.
 
@@ -12,9 +14,9 @@ Payload of the event emitted when a stack screen is dismissed.
 
 #### isNativeDismiss {#ondismisseventpayload-isnativedismiss}
 
-> **isNativeDismiss**: `boolean`
-
-Defined in: [components/stack/screen/StackScreen.types.ts:16](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/screen/StackScreen.types.ts#L16)
+```ts
+isNativeDismiss: boolean;
+```
 
 Whether the dismissal was initiated natively (e.g. a swipe-back gesture).
 

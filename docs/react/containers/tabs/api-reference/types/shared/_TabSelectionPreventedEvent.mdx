@@ -1,8 +1,12 @@
 ## TabSelectionPreventedEvent {#tabselectionpreventedevent}
 
-> **TabSelectionPreventedEvent** = `object`
-
-Defined in: [components/tabs/host/TabsHost.types.ts:181](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L181)
+```ts
+type TabSelectionPreventedEvent = {
+  preventedScreenKey: string;
+  provenance: number;
+  selectedScreenKey: string;
+};
+```
 
 Payload of the event emitted when the native side prevents a tab selection
 because the target screen has `preventNativeSelection` enabled.
@@ -13,9 +17,9 @@ because the target screen has `preventNativeSelection` enabled.
 
 #### preventedScreenKey {#tabselectionpreventedevent-preventedscreenkey}
 
-> **preventedScreenKey**: `string`
-
-Defined in: [components/tabs/host/TabsHost.types.ts:199](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L199)
+```ts
+preventedScreenKey: string;
+```
 
 Screen key of the tab whose selection was prevented.
 
@@ -23,9 +27,9 @@ Screen key of the tab whose selection was prevented.
 
 #### provenance {#tabselectionpreventedevent-provenance}
 
-> **provenance**: `number`
-
-Defined in: [components/tabs/host/TabsHost.types.ts:193](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L193)
+```ts
+provenance: number;
+```
 
 Provenance of the currently active navigation state.
 
@@ -33,9 +37,9 @@ Provenance of the currently active navigation state.
 
 #### selectedScreenKey {#tabselectionpreventedevent-selectedscreenkey}
 
-> **selectedScreenKey**: `string`
-
-Defined in: [components/tabs/host/TabsHost.types.ts:187](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L187)
+```ts
+selectedScreenKey: string;
+```
 
 Screen key of the currently selected (active) tab.
 

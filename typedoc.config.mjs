@@ -25,6 +25,10 @@ export default {
   fileExtension: '.mdx',
   // MDX reads `<`, `{` and friends as syntax, so comment text has to be escaped.
   sanitizeComments: true,
+  // Declarations as ```ts blocks, with object literals and parameters written out.
+  useCodeBlocks: true,
+  expandObjects: true,
+  expandParameters: true,
   // TypeDoc's own page chrome links to pages this router does not write (module indexes).
   hidePageHeader: true,
   hideBreadcrumbs: true,
