@@ -3,8 +3,11 @@ import type { MarkdownThemeContext } from 'typedoc-plugin-markdown';
 
 type Partials = MarkdownThemeContext['partials'];
 
-// Set while a type renders into a line of text rather than a ```ts block.
-let inlineDepth = 0;
+/** A theme context that tells a type rendered into a line of text from one in a ```ts block. */
+export type InlineContext = MarkdownThemeContext & {
+  /** Above 0 while `inlineType` renders. */
+  rnsInlineDepth: number;
+};
 
 // The stock `unionType` puts each member on its own line past this many characters. Only the
 // union counts, not the name declared before it, so a ```ts line can run longer.
@@ -16,14 +19,14 @@ const UNION_LINE_LENGTH = 70;
  * a dangling pipe.
  */
 export function inlineType(
-  ctx: MarkdownThemeContext,
+  ctx: InlineContext,
   type: SomeType | undefined,
 ): string {
-  inlineDepth++;
+  ctx.rnsInlineDepth++;
   try {
     return ctx.partials.someType(type, { forceCollapse: true });
   } finally {
-    inlineDepth--;
+    ctx.rnsInlineDepth--;
   }
 }
 
@@ -33,6 +36,7 @@ function visibleLength(md: string): number {
 }
 
 export function typePartials(
+  ctx: InlineContext,
   base: Partials,
 ): Pick<Partials, 'unionType' | 'arrayType'> {
   return {
@@ -44,7 +48,7 @@ export function typePartials(
       const line = md
         .replace(/^\n\s*\\\| /, '')
         .replace(/\n\s*\\\| /g, ' \\| ');
-      return inlineDepth || visibleLength(line) <= UNION_LINE_LENGTH
+      return ctx.rnsInlineDepth || visibleLength(line) <= UNION_LINE_LENGTH
         ? line
         : md;
     },
@@ -52,7 +56,7 @@ export function typePartials(
     // Only in text: a ```ts block drops the links, which it cannot do with `[]` inside them.
     arrayType: model => {
       const md = base.arrayType(model);
-      return inlineDepth
+      return ctx.rnsInlineDepth
         ? md.replace(/^(\[?`[^`]+)`(\]\([^)]*\))?\[\]$/, '$1[]`$2')
         : md;
     },

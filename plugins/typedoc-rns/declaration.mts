@@ -13,10 +13,10 @@ import {
   withCommentChanges,
 } from './comment.mts';
 import type { RnsRouter } from './router.mts';
-import { inlineType } from './types.mts';
+import { type InlineContext, inlineType } from './types.mts';
 
 type Partials = MarkdownThemeContext['partials'];
-type Context = CommentContext & { router: RnsRouter };
+type Context = CommentContext & InlineContext & { router: RnsRouter };
 
 function urlOf(ctx: MarkdownThemeContext, reflection: Reflection | undefined) {
   return reflection && ctx.router.hasUrl(reflection)
@@ -30,7 +30,7 @@ function urlOf(ctx: MarkdownThemeContext, reflection: Reflection | undefined) {
  * function literals, whose keys or parameters follow.
  */
 function typeLine(
-  ctx: MarkdownThemeContext,
+  ctx: InlineContext,
   model: DeclarationReflection,
 ): string | undefined {
   if (
@@ -52,7 +52,7 @@ function typeLine(
  * listed here.
  */
 function extendsLine(
-  ctx: MarkdownThemeContext,
+  ctx: InlineContext,
   model: DeclarationReflection,
 ): string | undefined {
   const own = urlOf(ctx, model);

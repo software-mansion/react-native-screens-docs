@@ -158,6 +158,8 @@ class RnsThemeContext extends MarkdownThemeContext {
   declare rnsPartFile: string | undefined;
   /** The comment changes of the render calls in progress (`withCommentChanges`). */
   readonly rnsCommentChanges = new Map<Comment, CommentChanges>();
+  /** Above 0 while a type renders into a line of text (`inlineType`). */
+  rnsInlineDepth = 0;
   /** The router is always ours here — `typedoc.config.mjs` sets `router: 'rns'`. */
   declare router: RnsRouter;
 
@@ -186,7 +188,7 @@ class RnsThemeContext extends MarkdownThemeContext {
     this.partials = {
       ...this.partials,
       ...signatures,
-      ...typePartials(basePartials),
+      ...typePartials(this, basePartials),
       ...declarationPartials(this, { ...basePartials, ...signatures }),
       comment: (model, options) =>
         renderComment(this, basePartials.comment, model, options),

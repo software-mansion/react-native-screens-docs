@@ -9,7 +9,7 @@ import {
 import type { MarkdownThemeContext } from 'typedoc-plugin-markdown';
 
 import { isInline, labeled, oneLine } from './comment.mts';
-import { inlineType } from './types.mts';
+import { type InlineContext, inlineType } from './types.mts';
 
 type Partials = MarkdownThemeContext['partials'];
 
@@ -61,7 +61,7 @@ function listItem(head: string, description = '', nested = ''): string {
 
 /** The properties of an object-literal type, each with its own properties nested below it. */
 function propertiesList(
-  ctx: MarkdownThemeContext,
+  ctx: InlineContext,
   children: DeclarationReflection[],
 ): string {
   return children
@@ -78,7 +78,7 @@ function propertiesList(
 }
 
 function parameterItem(
-  ctx: MarkdownThemeContext,
+  ctx: InlineContext,
   parameter: ParameterReflection,
 ): string {
   const name = `${parameter.flags.isRest ? '...' : ''}${parameter.name}${parameter.flags.isOptional || parameter.defaultValue ? '?' : ''}`;
@@ -96,7 +96,7 @@ function parameterItem(
 }
 
 function typeParameterItem(
-  ctx: MarkdownThemeContext,
+  ctx: InlineContext,
   typeParameter: TypeParameterReflection,
 ): string {
   const constraint = typeParameter.type
@@ -116,7 +116,7 @@ function typeParameterItem(
  * type parameters as lists. Only the member above them has an anchor.
  */
 export function signaturePartials(
-  ctx: MarkdownThemeContext,
+  ctx: InlineContext,
   base: Partials,
 ): Pick<
   Partials,
