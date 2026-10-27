@@ -40,8 +40,11 @@ export interface Feature {
   components: Component[];
 }
 
-/** The platforms a family page is split by: flattened `android` / `ios` props and Types groups. */
-export type Platform = 'android' | 'ios';
+/**
+ * The groups a family page is split into: a component's flattened `android` / `ios` props and
+ * the platform folders of its Types. Not the platforms a `@platform` tag names (`TagPlatform`).
+ */
+export type PageGroup = 'android' | 'ios';
 
 export const LIB_REPO = '../react-native-screens';
 const LIB = `${LIB_REPO}/src`;
@@ -184,14 +187,14 @@ export function componentFor(
 }
 
 /**
- * The platforms, in the order the docs list them — alphabetical, the same everywhere: the
+ * The page groups, in the order the docs list them — alphabetical, the same everywhere: the
  * platform-specific types after the shared ones, and a component's flattened props after its
  * shared props (`<Tabs.Host ios={{ bottomAccessory }} />` documents as `ios.bottomAccessory`).
  */
-export const PLATFORM_KEYS: readonly Platform[] = ['android', 'ios'];
+export const PAGE_GROUPS: readonly PageGroup[] = ['android', 'ios'];
 
 /** The platforms a `@platform` tag may name. */
-export const PLATFORM_NAMES = [
+export const TAG_PLATFORMS = [
   'android',
   'ios',
   'tvos',
@@ -200,14 +203,14 @@ export const PLATFORM_NAMES = [
   'windows',
 ] as const;
 
-export type PlatformName = (typeof PLATFORM_NAMES)[number];
+export type TagPlatform = (typeof TAG_PLATFORMS)[number];
 
 /**
  * One entry of a `@platform` tag:
  * `ios >= 18` → `{ platform: 'ios', operator: '>=', version: '18' }`.
  */
 export interface PlatformEntry {
-  platform: PlatformName;
+  platform: TagPlatform;
   operator?: '>=' | '<=';
   version?: string;
 }
@@ -242,13 +245,13 @@ export function parsePlatformTag(text: string): {
       continue;
     }
     const [, name, operator, version] = match;
-    if (!PLATFORM_NAMES.includes(name as PlatformName)) {
-      errors.push(`"${name}" is not a platform (${PLATFORM_NAMES.join(', ')})`);
+    if (!TAG_PLATFORMS.includes(name as TagPlatform)) {
+      errors.push(`"${name}" is not a platform (${TAG_PLATFORMS.join(', ')})`);
     } else if (entries.some(known => known.platform === name)) {
       errors.push(`"${name}" is listed twice`);
     } else {
       entries.push({
-        platform: name as PlatformName,
+        platform: name as TagPlatform,
         ...(operator && { operator: operator as '>=' | '<=', version }),
       });
     }
@@ -307,19 +310,22 @@ export function platformEntriesOf(reflection: Reflection): PlatformEntry[] {
   return entries;
 }
 
-/** The Types group of each platform; `web` and `windows` belong to none. */
-const PLATFORM_GROUPS: Partial<Record<PlatformName, Platform>> = {
+/** The page group of each tag platform; `web` and `windows` belong to none. */
+const PAGE_GROUP_OF: Partial<Record<TagPlatform, PageGroup>> = {
   android: 'android',
   ios: 'ios',
   tvos: 'ios',
   visionos: 'ios',
 };
 
-/** The one Types group all of a symbol's platforms fall into, `''` when there is none. */
-export function platformDirOf(reflection: Reflection): Platform | '' {
+/**
+ * The one page group all of a type's platforms fall into, its Types folder; `''` when there is
+ * none, and the type is shared.
+ */
+export function pageGroupOf(reflection: Reflection): PageGroup | '' {
   const groups = new Set(
     platformEntriesOf(reflection).flatMap(
-      entry => PLATFORM_GROUPS[entry.platform] ?? [],
+      entry => PAGE_GROUP_OF[entry.platform] ?? [],
     ),
   );
   return groups.size === 1 ? ([...groups][0] ?? '') : '';
