@@ -7,12 +7,16 @@ import {
 } from 'typedoc';
 import type { MarkdownThemeContext } from 'typedoc-plugin-markdown';
 
-import { omitDescription, setLead } from './comment.mts';
+import {
+  type CommentChanges,
+  type CommentContext,
+  withCommentChanges,
+} from './comment.mts';
 import type { RnsRouter } from './router.mts';
 import { inlineType } from './types.mts';
 
 type Partials = MarkdownThemeContext['partials'];
-type Context = MarkdownThemeContext & { router: RnsRouter };
+type Context = CommentContext & { router: RnsRouter };
 
 function urlOf(ctx: MarkdownThemeContext, reflection: Reflection | undefined) {
   return reflection && ctx.router.hasUrl(reflection)
@@ -94,8 +98,9 @@ export function declarationPartials(
       const line = typeLine(ctx, model);
       if (!line) return base.declaration(model, options);
       if (model.comment) {
-        setLead(model.comment, line);
-        return base.declaration(model, options);
+        return withCommentChanges(ctx, model.comment, { lead: line }, () =>
+          base.declaration(model, options),
+        );
       }
       const title = ctx.partials.declarationTitle(model);
       const md = base.declaration(model, options);
@@ -104,14 +109,15 @@ export function declarationPartials(
         : md;
     },
     memberWithGroups: (model, options) => {
+      const line = extendsLine(ctx, model);
+      const change: CommentChanges = {};
       // A component is described on the component and on its family's Overview; its props
       // type says only whose props it holds, which the section's heading already does.
-      if (ctx.router.isComponentModel(model) && model.comment) {
-        omitDescription(model.comment);
-      }
-      const line = extendsLine(ctx, model);
-      if (line && model.comment) setLead(model.comment, line);
-      const md = base.memberWithGroups(model, options);
+      if (ctx.router.isComponentModel(model)) change.omitDescription = true;
+      if (line) change.lead = line;
+      const md = withCommentChanges(ctx, model.comment, change, () =>
+        base.memberWithGroups(model, options),
+      );
       return line && !model.comment ? `${line}\n\n${md}` : md;
     },
     members: (model, options) =>

@@ -1,6 +1,7 @@
 import { posix } from 'node:path';
 import {
   ReflectionKind,
+  type Comment,
   type DeclarationReflection,
   type Options,
   type Reflection,
@@ -12,7 +13,7 @@ import {
   type MarkdownPageEvent,
 } from 'typedoc-plugin-markdown';
 
-import { renderComment } from './comment.mts';
+import { type CommentChanges, renderComment } from './comment.mts';
 import { declarationPartials, withoutOptionalFlag } from './declaration.mts';
 import { membersOf, outputRoot } from './feature-map.mts';
 import type { Layout, RnsRouter, Section } from './router.mts';
@@ -155,6 +156,8 @@ function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
 class RnsThemeContext extends MarkdownThemeContext {
   /** The part file `renderFeaturePage` is rendering now, `undefined` otherwise (see `urlTo`). */
   declare rnsPartFile: string | undefined;
+  /** The comment changes of the render calls in progress (`withCommentChanges`). */
+  readonly rnsCommentChanges = new Map<Comment, CommentChanges>();
   /** The router is always ours here — `typedoc.config.mjs` sets `router: 'rns'`. */
   declare router: RnsRouter;
 
