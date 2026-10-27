@@ -4,9 +4,7 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:576](htt
 
 Imperative commands for the Android header configuration.
 
-### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 ### Properties
 
@@ -17,20 +15,6 @@ android \>= 21
 Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:604](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.android.types.ts#L604)
 
 Applies one or more updates to the toolbar menu in a single batch.
-
-##### Parameters
-
-###### updates
-
-[`StackHeaderToolbarMenuElementUpdateAndroid`](#stackheadertoolbarmenuelementupdateandroid) \| [`StackHeaderToolbarMenuElementUpdateAndroid`](#stackheadertoolbarmenuelementupdateandroid)[]
-
-A single update object or an array of updates.
-
-##### Returns
-
-`void`
-
-##### Remarks
 
 Accepts a single update or an array of them; each targets a menu element
 by `id` and applies its `options`. The call is queued and applied as one
@@ -52,6 +36,16 @@ header is shown, and are discarded whenever the menu is rebuilt from the
 as hiding and re-showing the header. They persist across unrelated
 re-renders. An update whose `id` is not in the current menu is ignored.
 
-##### Platform
+**Platform:** android \>= 21
 
-android \>= 21
+##### Parameters
+
+###### updates
+
+[`StackHeaderToolbarMenuElementUpdateAndroid`](#stackheadertoolbarmenuelementupdateandroid) \| [`StackHeaderToolbarMenuElementUpdateAndroid`](#stackheadertoolbarmenuelementupdateandroid)[]
+
+A single update object or an array of updates.
+
+##### Returns
+
+`void`

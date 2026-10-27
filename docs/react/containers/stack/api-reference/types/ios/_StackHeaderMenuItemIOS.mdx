@@ -4,15 +4,11 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:47](https:
 
 Represents a single actionable item inside a [StackHeaderMenuIOS](#stackheadermenuios) menu.
 
-### Remarks
-
 A menu item is a leaf element that the user can interact with.
 Depending on its [itemType](#stackheadermenuitemios-itemtype), the item
 behaves as a one-shot action or a stateful toggle.
 
-### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 ### Properties
 
@@ -24,14 +20,10 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:98](https:
 
 Icon displayed for the menu item.
 
-##### Remarks
-
 For async image sources, the menu item renders without an icon first and updates
 when loaded.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### id {#stackheadermenuitemios-id}
 
@@ -41,14 +33,10 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:57](https:
 
 Unique identifier of the menu item.
 
-##### Remarks
-
 Used to locate the item inside a menu tree and to identify selected items
 in [StackHeaderMenuIOS.onSelectionChange](#stackheadermenuios-onselectionchange) callback.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### initialToggleState? {#stackheadermenuitemios-initialtogglestate}
 
@@ -58,19 +46,13 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:88](https:
 
 Initial on/off state of a toggle item.
 
-##### Remarks
-
 Only meaningful when [itemType](#stackheadermenuitemios-itemtype)
 resolves to `'toggle'`. Inside a `singleSelection` hierarchy, at most one
 item can set this to `true`.
 
-##### Default Value
+**Default:** `false`
 
-`false`
-
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### itemType? {#stackheadermenuitemios-itemtype}
 
@@ -80,13 +62,9 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:76](https:
 
 Determines the behavior of the menu item.
 
-##### Default Value
+**Default:** `'automatic'`
 
-`'automatic'`
-
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### keepsMenuPresented? {#stackheadermenuitemios-keepsmenupresented}
 
@@ -96,20 +74,14 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:123](https
 
 Keeps the menu presented after this item is tapped.
 
-##### Remarks
-
 When enabled, selecting this item will not dismiss the menu,
 allowing the user to continue interacting with other items.
 
 This prop should only be used for items in top-level menus.
 
-##### Default Value
+**Default:** `false`
 
-`false`
-
-##### Platform
-
-ios \>= 16
+**Platform:** ios \>= 16
 
 #### onPress? {#stackheadermenuitemios-onpress}
 
@@ -119,16 +91,12 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:110](https
 
 Callback invoked when the menu item is pressed.
 
-##### Remarks
-
 Fires only for items whose effective type is `'action'`. For toggle items,
 this callback will not fire — use
 [onSelectionChange](#stackheadermenuios-onselectionchange) on the
 parent menu instead.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### title? {#stackheadermenuitemios-title}
 
@@ -138,9 +106,7 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:69](https:
 
 Title displayed for the menu item.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### type {#stackheadermenuitemios-type}
 
@@ -150,6 +116,4 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:63](https:
 
 Marks this object as a menu item definition.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13

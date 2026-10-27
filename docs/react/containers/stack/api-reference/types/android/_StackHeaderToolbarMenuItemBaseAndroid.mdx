@@ -4,9 +4,7 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:184](htt
 
 Base fields shared by toolbar menu items and submenus.
 
-### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 ### Extended by
 
@@ -24,8 +22,6 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:242](htt
 Sets the accessibility label (content description) for the menu
 element.
 
-##### Remarks
-
 When `undefined`, Android uses the `title` for the accessibility label when
 the item is placed in the toolbar. There is no default accessibility label
 for items inside overflow menu/submenus.
@@ -34,9 +30,7 @@ Due to native platform limitations, it's not possible to provide `testID`
 for menu items inside overflow menu/submenus. If possible, use
 `accessibilityLabel` instead.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### disabled? {#stackheadertoolbarmenuitembaseandroid-disabled}
 
@@ -46,13 +40,9 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:256](htt
 
 Specifies if the menu element should be disabled.
 
-##### Default Value
+**Default:** `false`
 
-`false`
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### hidden? {#stackheadertoolbarmenuitembaseandroid-hidden}
 
@@ -62,13 +52,9 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:249](htt
 
 Specifies if the menu element should be hidden.
 
-##### Default Value
+**Default:** `false`
 
-`false`
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### icon? {#stackheadertoolbarmenuitembaseandroid-icon}
 
@@ -78,17 +64,13 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:286](htt
 
 Specifies the icon for the menu element.
 
-##### Remarks
-
 Note that `'imageSource'` doesn't support SVGs on Android; use `'drawableResource'`,
 which requires adding a drawable to resources via Android Studio.
 
 The icon will be visible only if the menu element is shown in the
 Toolbar.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### iconTintColorDisabled? {#stackheadertoolbarmenuitembaseandroid-icontintcolordisabled}
 
@@ -99,15 +81,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:328](htt
 Specifies the tint color to apply to the menu element icon when
 it is disabled.
 
-##### Remarks
-
 Due to native platform limitations, if you set this prop, you should also
 provide `iconTintColorNormal`. Otherwise, the icon will become
 transparent when the item is not disabled.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### iconTintColorFocused? {#stackheadertoolbarmenuitembaseandroid-icontintcolorfocused}
 
@@ -118,15 +96,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:316](htt
 Specifies the tint color to apply to the menu element icon when
 it is focused (e.g. by keyboard navigation).
 
-##### Remarks
-
 Due to native platform limitations, if you set this prop, you must also
 provide `iconTintColorNormal`. Otherwise, the icon will become
 transparent.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### iconTintColorNormal? {#stackheadertoolbarmenuitembaseandroid-icontintcolornormal}
 
@@ -136,9 +110,7 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:292](htt
 
 Specifies the tint color to apply to the menu element icon.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### iconTintColorPressed? {#stackheadertoolbarmenuitembaseandroid-icontintcolorpressed}
 
@@ -149,15 +121,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:304](htt
 Specifies the tint color to apply to the menu element icon when
 it is pressed.
 
-##### Remarks
-
 Due to native platform limitations, if you set this prop, you must also
 provide `iconTintColorNormal`. Otherwise, the icon will become
 transparent.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### id {#stackheadertoolbarmenuitembaseandroid-id}
 
@@ -167,9 +135,7 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:190](htt
 
 Unique identifier of the menu element.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### showAsAction? {#stackheadertoolbarmenuitembaseandroid-showasaction}
 
@@ -180,8 +146,6 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:273](htt
 Specifies whether the element should be displayed as a button in
 the Toolbar.
 
-##### Remarks
-
 This prop only affects top-level menu elements. Items inside
 submenus are always displayed in the popup and ignore this
 setting.
@@ -190,13 +154,9 @@ Due to native limitations, the width limit for the `'ifRoom'`
 options is determined during the initial render and will not
 adapt to subsequent layout or orientation changes.
 
-##### Default Value
+**Default:** `'never'`
 
-`'never'`
-
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### title? {#stackheadertoolbarmenuitembaseandroid-title}
 
@@ -206,17 +166,13 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:203](htt
 
 Title of the menu element.
 
-##### Remarks
-
 If `title` is changed for the element of type `'menu'` by using the
 `updateToolbarMenuElements` view command, the menu title (`menuTitle`)
 will also be changed to the new title (unless the new title is set to
 `undefined`). In order to keep the custom menu title, you should also
 include `menuTitle` in the view command.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### titleCondensed? {#stackheadertoolbarmenuitembaseandroid-titlecondensed}
 
@@ -227,15 +183,11 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:215](htt
 Shorter title used for the menu element when it is displayed as
 a button in the Toolbar.
 
-##### Remarks
-
 When the element is shown in the Toolbar with a text label, this
 condensed title is used instead of `title`. The full `title` is still
 used everywhere else (the overflow menu and submenus).
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### tooltipText? {#stackheadertoolbarmenuitembaseandroid-tooltiptext}
 
@@ -246,11 +198,7 @@ Defined in: [components/stack/header/StackHeaderConfig.android.types.ts:226](htt
 Tooltip shown on long-press (or pointer hover) of the menu
 element when it is displayed as a button in the Toolbar.
 
-##### Remarks
-
 Applies only to elements shown as a button in the Toolbar; it has no
 effect on elements placed in the overflow menu.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
