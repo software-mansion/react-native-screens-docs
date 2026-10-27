@@ -20,15 +20,25 @@ const LABELS: Record<string, string> = {
   '@deprecated': 'Deprecated',
 };
 
+/** One paragraph that does not open with a list, quote, code block or admonition. */
+export function isInline(text: string): boolean {
+  return !text.includes('\n\n') && !/^(```|:::|[-*>] |\d+\. )/.test(text);
+}
+
+/** A paragraph joined onto one line, without the indentation its continuation lines had. */
+export function oneLine(text: string): string {
+  return text.replace(/\s*\n\s*/g, ' ');
+}
+
 /**
  * `**Label:** body` for a single paragraph, joined onto one line; the label on a line of its own
  * when the body has several paragraphs or opens with a list, quote or code block.
  */
-function labeled(label: string, body: string): string {
+export function labeled(label: string, body: string): string {
   const text = body.trim();
-  return text.includes('\n\n') || /^(```|[-*>] |\d+\. )/.test(text)
-    ? `**${label}:**\n\n${text}`
-    : `**${label}:** ${text.replace(/\n/g, ' ')}`;
+  return isInline(text)
+    ? `**${label}:** ${oneLine(text)}`
+    : `**${label}:**\n\n${text}`;
 }
 
 /** A `:::kind` block, its fence one colon longer than any colon run inside it. */
