@@ -6,19 +6,15 @@ Defined in: [components/tabs/host/TabsHost.types.ts:142](https://github.com/soft
 
 Payload of the event emitted when the native side rejects a tab selection request.
 
-### Remarks
-
 Contains the currently active navigation state (`selectedScreenKey`, `provenance`)
 alongside the rejected request details, so that the JS side can reconcile its state.
 
-### See
+**See:**
 
- - [TabSelectionRejectionReason](#tabselectionrejectionreason) for possible rejection reasons.
+- [TabSelectionRejectionReason](#tabselectionrejectionreason) for possible rejection reasons.
  - [TabsHostPropsBase.rejectStaleNavStateUpdates](#host-rejectstalenavstateupdates)
 
-### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 ### Properties
 
@@ -30,9 +26,7 @@ Defined in: [components/tabs/host/TabsHost.types.ts:154](https://github.com/soft
 
 Provenance of the currently active navigation state.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### rejectedBaseProvenance {#tabselectionrejectedevent-rejectedbaseprovenance}
 
@@ -42,9 +36,7 @@ Defined in: [components/tabs/host/TabsHost.types.ts:166](https://github.com/soft
 
 Base provenance of the rejected navigation state update.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### rejectedScreenKey {#tabselectionrejectedevent-rejectedscreenkey}
 
@@ -54,9 +46,7 @@ Defined in: [components/tabs/host/TabsHost.types.ts:160](https://github.com/soft
 
 Screen key of the tab whose selection was rejected.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### rejectionReason {#tabselectionrejectedevent-rejectionreason}
 
@@ -66,9 +56,7 @@ Defined in: [components/tabs/host/TabsHost.types.ts:172](https://github.com/soft
 
 Reason the selection was rejected.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### selectedScreenKey {#tabselectionrejectedevent-selectedscreenkey}
 
@@ -78,6 +66,4 @@ Defined in: [components/tabs/host/TabsHost.types.ts:148](https://github.com/soft
 
 Screen key of the currently selected (active) tab.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
