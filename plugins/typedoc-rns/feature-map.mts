@@ -310,7 +310,10 @@ export function platformEntriesOf(reflection: Reflection): PlatformEntry[] {
   return entries;
 }
 
-/** The page group of each tag platform; `web` and `windows` belong to none. */
+/**
+ * The page group of each tag platform. `web` and `windows` have none, so a type that names
+ * either is shared.
+ */
 const PAGE_GROUP_OF: Partial<Record<TagPlatform, PageGroup>> = {
   android: 'android',
   ios: 'ios',
@@ -319,16 +322,16 @@ const PAGE_GROUP_OF: Partial<Record<TagPlatform, PageGroup>> = {
 };
 
 /**
- * The one page group all of a type's platforms fall into, its Types folder; `''` when there is
- * none, and the type is shared.
+ * The Types folder a type goes to. If all its platforms belong to one page group, it goes to
+ * that group (`ios, tvos` → `ios`). Otherwise it is shared (`''`): it runs on both groups
+ * (`android, ios`), on a platform outside them (`web`, `ios, web`), or has no `@platform` tag.
  */
 export function pageGroupOf(reflection: Reflection): PageGroup | '' {
-  const groups = new Set(
-    platformEntriesOf(reflection).flatMap(
-      entry => PAGE_GROUP_OF[entry.platform] ?? [],
-    ),
+  const groups = platformEntriesOf(reflection).map(
+    entry => PAGE_GROUP_OF[entry.platform],
   );
-  return groups.size === 1 ? ([...groups][0] ?? '') : '';
+  const [first] = groups;
+  return first && groups.every(group => group === first) ? first : '';
 }
 
 /** The generator-owned folder of a family (relative to docs/) — wiped on every run. */
