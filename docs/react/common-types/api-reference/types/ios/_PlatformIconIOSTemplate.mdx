@@ -1,8 +1,11 @@
 ## PlatformIconIOSTemplate {#platformiconiostemplate}
 
-> **PlatformIconIOSTemplate** = `object`
-
-Defined in: [components/shared/types.ts:165](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/shared/types.ts#L165)
+```ts
+type PlatformIconIOSTemplate = {
+  templateSource: ImageSourcePropType;
+  type: "templateSource";
+};
+```
 
 Icon backed by a template image source, rendered with the component's tint.
 
@@ -14,9 +17,9 @@ Discriminated by `type: 'templateSource'`.
 
 #### templateSource {#platformiconiostemplate-templatesource}
 
-> **templateSource**: `ImageSourcePropType`
-
-Defined in: [components/shared/types.ts:178](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/shared/types.ts#L178)
+```ts
+templateSource: ImageSourcePropType;
+```
 
 The image to render as a template, in any form `Image`'s `source` accepts. Its
 shape is used as a mask; the color comes from the component's tint.
@@ -25,9 +28,9 @@ shape is used as a mask; the color comes from the component's tint.
 
 #### type {#platformiconiostemplate-type}
 
-> **type**: `"templateSource"`
-
-Defined in: [components/shared/types.ts:171](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/shared/types.ts#L171)
+```ts
+type: "templateSource";
+```
 
 Discriminant selecting the template-image variant.
 
