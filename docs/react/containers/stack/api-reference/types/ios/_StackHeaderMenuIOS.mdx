@@ -1,7 +1,5 @@
 ## StackHeaderMenuIOS {#stackheadermenuios}
 
-Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:145](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L145)
-
 Represents a menu (or submenu) that groups
 [StackHeaderMenuElementIOS](#stackheadermenuelementios) children.
 
@@ -23,22 +21,24 @@ Multiple Single Selection Roots may exist only if their hierarchy is completely 
 
 #### children {#stackheadermenuios-children}
 
-> **children**: [`StackHeaderMenuElementIOS`](#stackheadermenuelementios)[]
-
-Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:226](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L226)
+```ts
+children: StackHeaderMenuElementIOS[];
+```
 
 Child elements of this menu.
 
 Each child is either a [StackHeaderMenuItemIOS](#stackheadermenuitemios) (leaf) or another
 [StackHeaderMenuIOS](#stackheadermenuios), allowing arbitrarily nested menu trees.
 
+**Type:** [`StackHeaderMenuElementIOS[]`](#stackheadermenuelementios)
+
 **Platform:** ios \>= 13
 
 #### displayAsPalette? {#stackheadermenuios-displayaspalette}
 
-> `optional` **displayAsPalette?**: `boolean`
-
-Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:216](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L216)
+```ts
+displayAsPalette?: boolean;
+```
 
 Displays the menu as a row of compact items (palette).
 
@@ -53,9 +53,9 @@ On older versions, this option is ignored.
 
 #### displayInline? {#stackheadermenuios-displayinline}
 
-> `optional` **displayInline?**: `boolean`
-
-Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:203](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L203)
+```ts
+displayInline?: boolean;
+```
 
 Displays the menu inline with parent menu instead of as a submenu.
 
@@ -68,22 +68,24 @@ with horizontal bars separating it from the surrounding items.
 
 #### icon? {#stackheadermenuios-icon}
 
-> `optional` **icon?**: [`PlatformIconIOS`](../../../../../common-types/index.mdx#platformiconios)
-
-Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:192](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L192)
+```ts
+icon?: PlatformIconIOS;
+```
 
 Icon displayed for the submenu.
 
 For async image sources, the menu renders without an icon first and updates when
 loaded.
 
+**Type:** [`PlatformIconIOS`](../../../../../common-types/index.mdx#platformiconios)
+
 **Platform:** ios \>= 13
 
 #### id {#stackheadermenuios-id}
 
-> **id**: `string`
-
-Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:155](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L155)
+```ts
+id: string;
+```
 
 Unique identifier of the menu.
 
@@ -94,9 +96,9 @@ manipulating menu state.
 
 #### onSelectionChange? {#stackheadermenuios-onselectionchange}
 
-> `optional` **onSelectionChange?**: [`StackHeaderMenuSelectionHandler`](#stackheadermenuselectionhandler)
-
-Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:238](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L238)
+```ts
+onSelectionChange?: StackHeaderMenuSelectionHandler;
+```
 
 Callback invoked when the set of selected toggle items changes.
 
@@ -105,13 +107,15 @@ menu's hierarchy. For Single Selection Root, always returns one item.
 When defined below Single Selection Root, the callback doesn't fire.
 In regular non-single-selection case, only changes to direct children are reflected.
 
+**Type:** [`StackHeaderMenuSelectionHandler`](#stackheadermenuselectionhandler)
+
 **Platform:** ios \>= 13
 
 #### singleSelection? {#stackheadermenuios-singleselection}
 
-> `optional` **singleSelection?**: `boolean`
-
-Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:182](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L182)
+```ts
+singleSelection?: boolean;
+```
 
 Enables single selection mode for this menu and its descendants.
 
@@ -128,9 +132,9 @@ Items with `itemType` set to `'automatic'` are resolved to `'toggle'` inside a
 
 #### title? {#stackheadermenuios-title}
 
-> `optional` **title?**: `string`
-
-Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:167](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L167)
+```ts
+title?: string;
+```
 
 Title displayed for the menu.
 
@@ -138,9 +142,9 @@ Title displayed for the menu.
 
 #### type {#stackheadermenuios-type}
 
-> **type**: `"menu"`
-
-Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:161](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L161)
+```ts
+type: "menu";
+```
 
 Marks this object as a menu definition.
 

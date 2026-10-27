@@ -72,6 +72,46 @@ function exampleTitle(name: string): string {
   return /^<caption>(.*)<\/caption>$/.exec(name)?.[1] ?? name;
 }
 
+/** How an entry renders its comment, when it differs from the default. */
+export interface CommentChanges {
+  /**
+   * A line that opens the comment's More information (`**Type:**`, `**Extends:**`): after the
+   * summary and `@remarks`, before the other tags.
+   */
+  lead?: string;
+  /** Leaves out the summary and `@remarks`; the other tags stay. */
+  omitDescription?: boolean;
+}
+
+/** A theme context with the comment changes of the render calls in progress. */
+export type CommentContext = MarkdownThemeContext & {
+  rnsCommentChanges: Map<Comment, CommentChanges>;
+};
+
+/**
+ * Calls `render` with `change` applied to this exact comment, and to nothing else: the comment
+ * gets its previous changes back once `render` returns. A lead holds links relative to the part
+ * being rendered, so it must not outlive the call. The changes of nested calls for the same
+ * comment add up.
+ */
+export function withCommentChanges<T>(
+  ctx: CommentContext,
+  comment: Comment | undefined,
+  change: CommentChanges,
+  render: () => T,
+): T {
+  if (!comment) return render();
+  const changes = ctx.rnsCommentChanges;
+  const previous = changes.get(comment);
+  changes.set(comment, { ...previous, ...change });
+  try {
+    return render();
+  } finally {
+    if (previous) changes.set(comment, previous);
+    else changes.delete(comment);
+  }
+}
+
 /** The tags this partial renders itself; any other goes through the stock partial. */
 function isOwnTag(tag: CommentTag): boolean {
   return (
@@ -91,7 +131,7 @@ function isOwnTag(tag: CommentTag): boolean {
  * stay next to it; the second call renders only the other tags.
  */
 export function renderComment(
-  ctx: MarkdownThemeContext,
+  ctx: CommentContext,
   base: CommentPartial,
   model: Comment,
   options: CommentOptions = {},
@@ -103,26 +143,35 @@ export function renderComment(
   const text = (parts: CommentDisplayPart[]): string =>
     base(new Comment(parts), { showSummary: true, showTags: false }).trim();
   const md: string[] = [];
+  const change = ctx.rnsCommentChanges.get(model) ?? {};
+  const description = !change.omitDescription;
 
   if (showSummary) {
     const modifiers = new Set(model.modifierTags);
     if (modifiers.delete('@experimental')) md.push(EXPERIMENTAL_CAUTION);
     md.push(
-      base(new Comment(model.summary, [], modifiers), {
+      base(new Comment(description ? model.summary : [], [], modifiers), {
         showSummary: true,
         showTags: false,
       }).trim(),
     );
   }
 
+  let lead = showSummary ? change.lead : undefined;
   const hidden = new Set<string>(ctx.options.getValue('notRenderedTags'));
   if (!options.showReturns) hidden.add('@returns');
   for (const tag of model.blockTags) {
     if (hidden.has(tag.tag)) continue;
+    if (tag.tag === '@remarks' && !description) continue;
     if (isOwnTag(tag) ? showSummary : showTags) {
+      if (lead && tag.tag !== '@remarks') {
+        md.push(lead);
+        lead = undefined;
+      }
       md.push(renderTag(tag, text, base, options));
     }
   }
+  if (lead) md.push(lead);
 
   return md.filter(Boolean).join('\n\n');
 }

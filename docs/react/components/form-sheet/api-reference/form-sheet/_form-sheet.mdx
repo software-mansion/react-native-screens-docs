@@ -1,18 +1,14 @@
 ## FormSheet {#form-sheet}
 
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:47](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L47)
-
-Presents its content in a native form sheet modal.
-
 **Platform:** android \>= 21, ios \>= 13
 
 ### Properties
 
 #### children? {#form-sheet-children}
 
-> `optional` **children?**: `ReactNode`
-
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:53](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L53)
+```ts
+children?: ReactNode;
+```
 
 Content rendered inside the form sheet.
 
@@ -20,9 +16,9 @@ Content rendered inside the form sheet.
 
 #### detents? {#form-sheet-detents}
 
-> `optional` **detents?**: `number`[] \| `"fitToContents"`
-
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:86](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L86)
+```ts
+detents?: number[] | "fitToContents";
+```
 
 Defines the resting positions of the sheet.
 
@@ -43,9 +39,9 @@ medium detent.
 
 #### initialDetentIndex? {#form-sheet-initialdetentindex}
 
-> `optional` **initialDetentIndex?**: `number` \| `"last"`
-
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:140](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L140)
+```ts
+initialDetentIndex?: number | "last";
+```
 
 The index of the detent the sheet should snap to when first opened.
 
@@ -59,9 +55,9 @@ This prop only applies when the sheet transitions from closed to open.
 
 #### isOpen {#form-sheet-isopen}
 
-> **isOpen**: `boolean`
-
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:65](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L65)
+```ts
+isOpen: boolean;
+```
 
 Determines whether the form sheet is currently visible.
 
@@ -73,9 +69,9 @@ it from `true` to `false` triggers a programmatic dismissal.
 
 #### largestUndimmedDetentIndex? {#form-sheet-largestundimmeddetentindex}
 
-> `optional` **largestUndimmedDetentIndex?**: `number` \| `"none"` \| `"last"`
-
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:127](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L127)
+```ts
+largestUndimmedDetentIndex?: number | "none" | "last";
+```
 
 The largest sheet detent for which a view underneath won't be dimmed.
 
@@ -92,80 +88,92 @@ Additionally, there are the following options available:
 
 #### nativeContainerStyle? {#form-sheet-nativecontainerstyle}
 
-> `optional` **nativeContainerStyle?**: [`FormSheetNativeContainerStyleProps`](#formsheetnativecontainerstyleprops)
-
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:180](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L180)
+```ts
+nativeContainerStyle?: FormSheetNativeContainerStyleProps;
+```
 
 Style applied to the native container hosting the sheet content.
 
 These properties are forwarded directly to the underlying native view.
 
+**Type:** [`FormSheetNativeContainerStyleProps`](#formsheetnativecontainerstyleprops)
+
 **Platform:** android \>= 21, ios \>= 13
 
 #### onDetentChanged? {#form-sheet-ondetentchanged}
 
-> `optional` **onDetentChanged?**: [`FormSheetEventHandler`](#formsheeteventhandler)\<[`FormSheetDetentChangedEvent`](#formsheetdetentchangedevent)\>
-
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:245](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L245)
+```ts
+onDetentChanged?: FormSheetEventHandler<FormSheetDetentChangedEvent>;
+```
 
 Called when the sheet settles at a new detent.
 
 Provides the `index` of the newly selected detent from the `detents` array.
 
+**Type:** [`FormSheetEventHandler`](#formsheeteventhandler)\<[`FormSheetDetentChangedEvent`](#formsheetdetentchangedevent)\>
+
 **Platform:** android \>= 21, ios \>= 13
 
 #### onDidAppear? {#form-sheet-ondidappear}
 
-> `optional` **onDidAppear?**: [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
-
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:198](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L198)
+```ts
+onDidAppear?: FormSheetEventHandler<EmptyEventPayload>;
+```
 
 A callback that gets invoked when the FormSheet did appear.
 This is called as soon as the transition ends.
+
+**Type:** [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
 **Platform:** android \>= 21, ios \>= 13
 
 #### onDidDisappear? {#form-sheet-ondiddisappear}
 
-> `optional` **onDidDisappear?**: [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
-
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:214](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L214)
+```ts
+onDidDisappear?: FormSheetEventHandler<EmptyEventPayload>;
+```
 
 A callback that gets invoked when the FormSheet did disappear.
 This is called as soon as the transition ends.
+
+**Type:** [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
 **Platform:** android \>= 21, ios \>= 13
 
 #### onDismiss? {#form-sheet-ondismiss}
 
-> `optional` **onDismiss?**: [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
-
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:224](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L224)
+```ts
+onDismiss?: FormSheetEventHandler<EmptyEventPayload>;
+```
 
 Called when the sheet is dismissed programmatically.
 
 This event is fired when the sheet was dismissed via the `isOpen` prop changing to `false`.
 
+**Type:** [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
 **Platform:** android \>= 21, ios \>= 13
 
 #### onNativeDismiss? {#form-sheet-onnativedismiss}
 
-> `optional` **onNativeDismiss?**: [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
-
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:235](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L235)
+```ts
+onNativeDismiss?: FormSheetEventHandler<EmptyEventPayload>;
+```
 
 Called when the sheet is dismissed natively.
 
 It is highly recommended to use this callback to synchronize
 your local React state to prevent UI mismatches (e.g., updating `isOpen` back to `false`).
 
+**Type:** [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
 **Platform:** android \>= 21, ios \>= 13
 
 #### onNativeDismissPrevented? {#form-sheet-onnativedismissprevented}
 
-> `optional` **onNativeDismissPrevented?**: [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
-
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:259](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L259)
+```ts
+onNativeDismissPrevented?: FormSheetEventHandler<EmptyEventPayload>;
+```
 
 Called when the user attempts to dismiss the sheet by swiping down or tapping the backdrop, but the dismissal is prevented.
 
@@ -173,35 +181,41 @@ This event is only fired if `preventNativeDismiss` is set to `true`.
 It is useful for triggering custom feedback, such as an alert
 to inform the user why the sheet cannot be closed.
 
+**Type:** [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
 **Platform:** android \>= 21, ios \>= 13
 
 #### onWillAppear? {#form-sheet-onwillappear}
 
-> `optional` **onWillAppear?**: [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
-
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:190](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L190)
+```ts
+onWillAppear?: FormSheetEventHandler<EmptyEventPayload>;
+```
 
 A callback that gets invoked when the FormSheet will appear.
 This is called as soon as the transition begins.
+
+**Type:** [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
 **Platform:** android \>= 21, ios \>= 13
 
 #### onWillDisappear? {#form-sheet-onwilldisappear}
 
-> `optional` **onWillDisappear?**: [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
-
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:206](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L206)
+```ts
+onWillDisappear?: FormSheetEventHandler<EmptyEventPayload>;
+```
 
 A callback that gets invoked when the FormSheet will disappear.
 This is called as soon as the transition begins.
+
+**Type:** [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
 **Platform:** android \>= 21, ios \>= 13
 
 #### preferredCornerRadius? {#form-sheet-preferredcornerradius}
 
-> `optional` **preferredCornerRadius?**: `number` \| `"systemDefault"`
-
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:111](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L111)
+```ts
+preferredCornerRadius?: number | "systemDefault";
+```
 
 The corner radius that the sheet will attempt to present with.
 
@@ -214,9 +228,9 @@ automatic dimension (`UISheetPresentationControllerAutomaticDimension`).
 
 #### prefersGrabberVisible? {#form-sheet-prefersgrabbervisible}
 
-> `optional` **prefersGrabberVisible?**: `boolean`
-
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:99](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L99)
+```ts
+prefersGrabberVisible?: boolean;
+```
 
 Determines whether the sheet requests a grabber at the top.
 
@@ -230,9 +244,9 @@ hide the grabber in some presentation contexts.
 
 #### prefersScrollingExpandsWhenScrolledToEdge? {#form-sheet-prefersscrollingexpandswhenscrolledtoedge}
 
-> `optional` **prefersScrollingExpandsWhenScrolledToEdge?**: `boolean`
-
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:158](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L158)
+```ts
+prefersScrollingExpandsWhenScrolledToEdge?: boolean;
+```
 
 Determines whether scrolling expands the sheet to a larger detent.
 
@@ -251,9 +265,9 @@ On iOS, this maps directly to `UISheetPresentationController.prefersScrollingExp
 
 #### preventNativeDismiss? {#form-sheet-preventnativedismiss}
 
-> `optional` **preventNativeDismiss?**: `boolean`
-
-Defined in: [components/modals/form-sheet/FormSheet.types.ts:170](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/modals/form-sheet/FormSheet.types.ts#L170)
+```ts
+preventNativeDismiss?: boolean;
+```
 
 Prevents the user from dismissing the sheet natively by swiping down or tapping the backdrop.
 
