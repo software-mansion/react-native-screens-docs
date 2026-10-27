@@ -40,7 +40,11 @@ export interface Feature {
   components: Component[];
 }
 
-export type Platform = 'android' | 'ios';
+/**
+ * The groups a family page is split into: a component's flattened `android` / `ios` props and
+ * the platform folders of its Types. Not the platforms a `@platform` tag names (`TagPlatform`).
+ */
+export type PageGroup = 'android' | 'ios';
 
 export const LIB_REPO = '../react-native-screens';
 const LIB = `${LIB_REPO}/src`;
@@ -183,14 +187,77 @@ export function componentFor(
 }
 
 /**
- * The platforms, in the order the docs list them — alphabetical, the same everywhere: the
+ * The page groups, in the order the docs list them — alphabetical, the same everywhere: the
  * platform-specific types after the shared ones, and a component's flattened props after its
  * shared props (`<Tabs.Host ios={{ bottomAccessory }} />` documents as `ios.bottomAccessory`).
  */
-export const PLATFORM_KEYS: readonly Platform[] = ['android', 'ios'];
+export const PAGE_GROUPS: readonly PageGroup[] = ['android', 'ios'];
 
-/** The platform tokens the docs understand. Anything else in a `@platform` tag is a typo. */
-const PLATFORMS: readonly string[] = PLATFORM_KEYS;
+/** The platforms a `@platform` tag may name. */
+export const TAG_PLATFORMS = [
+  'android',
+  'ios',
+  'tvos',
+  'visionos',
+  'web',
+  'windows',
+] as const;
+
+export type TagPlatform = (typeof TAG_PLATFORMS)[number];
+
+/**
+ * One entry of a `@platform` tag:
+ * `ios >= 18` → `{ platform: 'ios', operator: '>=', version: '18' }`.
+ */
+export interface PlatformEntry {
+  platform: TagPlatform;
+  operator?: '>=' | '<=';
+  version?: string;
+}
+
+// `ios`, `ios >= 18`, `windows >= 10.0.17763`: lower case, one space around the operator.
+const PLATFORM_ENTRY = /^([a-z]+)(?: (>=|<=) (\d+(?:\.\d+)*))?$/;
+
+/**
+ * Splits a `@platform` tag into entries and lists what is malformed. Checks the shape of each
+ * entry, not whether it has a version or the order of the entries.
+ */
+export function parsePlatformTag(text: string): {
+  entries: PlatformEntry[];
+  errors: string[];
+} {
+  const entries: PlatformEntry[] = [];
+  const errors: string[] = [];
+  if (text.trim() === '') {
+    return { entries, errors: ['no platforms listed'] };
+  }
+  for (const raw of text.split(',')) {
+    const entry = raw.trim();
+    if (entry === '') {
+      errors.push('empty entry (a trailing or doubled comma?)');
+      continue;
+    }
+    const match = PLATFORM_ENTRY.exec(entry);
+    if (!match) {
+      errors.push(
+        `"${entry}" is not \`<platform>\` or \`<platform> >= | <= <version>\``,
+      );
+      continue;
+    }
+    const [, name, operator, version] = match;
+    if (!TAG_PLATFORMS.includes(name as TagPlatform)) {
+      errors.push(`"${name}" is not a platform (${TAG_PLATFORMS.join(', ')})`);
+    } else if (entries.some(known => known.platform === name)) {
+      errors.push(`"${name}" is listed twice`);
+    } else {
+      entries.push({
+        platform: name as TagPlatform,
+        ...(operator && { operator: operator as '>=' | '<=', version }),
+      });
+    }
+  }
+  return { entries, errors };
+}
 
 /**
  * TypeDoc parks a function-type alias's comment on its signature (`type F = (x) => y`), not
@@ -229,22 +296,42 @@ export function blockTagText(
     : undefined;
 }
 
-/** The platforms a symbol is documented for, read from `@platform`; `[]` when untagged. */
-export function platformsOf(reflection: Reflection): Platform[] {
+/**
+ * A symbol's `@platform` entries in the tag's order; `[]` when untagged. Throws on a malformed
+ * tag.
+ */
+export function platformEntriesOf(reflection: Reflection): PlatformEntry[] {
   const text = blockTagText(reflection, '@platform');
   if (text === undefined) return [];
-  const tokens = text.split(',').map(token => token.trim().toLowerCase());
-  const invalid = tokens.filter(token => !PLATFORMS.includes(token));
-  if (invalid.length > 0) {
-    throw new Error(`Unknown @platform value(s): ${invalid.join(', ')}`);
+  const { entries, errors } = parsePlatformTag(text);
+  if (errors.length > 0) {
+    throw new Error(`Malformed @platform: ${errors.join('; ')}`);
   }
-  return [...new Set(tokens as Platform[])].sort();
+  return entries;
 }
 
-/** `'ios'` / `'android'` for a single-platform symbol, `''` for everything else. */
-export function platformDirOf(reflection: Reflection): Platform | '' {
-  const platforms = platformsOf(reflection);
-  return platforms.length === 1 ? (platforms[0] ?? '') : '';
+/**
+ * The page group of each tag platform. `web` and `windows` have none, so a type that names
+ * either is shared.
+ */
+const PAGE_GROUP_OF: Partial<Record<TagPlatform, PageGroup>> = {
+  android: 'android',
+  ios: 'ios',
+  tvos: 'ios',
+  visionos: 'ios',
+};
+
+/**
+ * The Types folder a type goes to. If all its platforms belong to one page group, it goes to
+ * that group (`ios, tvos` → `ios`). Otherwise it is shared (`''`): it runs on both groups
+ * (`android, ios`), on a platform outside them (`web`, `ios, web`), or has no `@platform` tag.
+ */
+export function pageGroupOf(reflection: Reflection): PageGroup | '' {
+  const groups = platformEntriesOf(reflection).map(
+    entry => PAGE_GROUP_OF[entry.platform],
+  );
+  const [first] = groups;
+  return first && groups.every(group => group === first) ? first : '';
 }
 
 /** The generator-owned folder of a family (relative to docs/) — wiped on every run. */

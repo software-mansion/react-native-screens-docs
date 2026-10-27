@@ -11,16 +11,16 @@ import {
 
 import {
   FEATURES,
-  PLATFORM_KEYS,
+  PAGE_GROUPS,
   type Feature,
-  type Platform,
+  type PageGroup,
   anchorSlug,
   componentFor,
   linkTarget,
   membersOf,
   outputFile,
   outputRoot,
-  platformDirOf,
+  pageGroupOf,
 } from './feature-map.mts';
 
 /**
@@ -28,7 +28,7 @@ import {
  * own props render after the section's as `ios.x` / `android.x`, in a part of their own.
  */
 export interface PlatformProps {
-  key: Platform;
+  key: PageGroup;
   /**
    * The props type the key holds (`TabsHostPropsIOS`); not listed among the Types. It and the
    * key's prop both link to `#<section>-<key>` (`#host-ios`), the start of the part.
@@ -46,7 +46,7 @@ export interface Section {
   anchor: string;
   /** The section's file, relative to the family's `api-reference/` (set once routed). */
   part?: string;
-  /** A component's flattened `ios` / `android` props, in `PLATFORM_KEYS` order; `[]` for a type. */
+  /** A component's flattened `ios` / `android` props, in `PAGE_GROUPS` order; `[]` for a type. */
   platforms: PlatformProps[];
 }
 
@@ -87,10 +87,10 @@ function moduleOf(reflection: Reflection | undefined): Reflection | undefined {
   return current;
 }
 
-// Types are listed shared first, then the platform-specific ones in `PLATFORM_KEYS` order.
+// Types are listed shared first, then the platform-specific ones in `PAGE_GROUPS` order.
 function platformRank(reflection: Reflection): number {
-  const platform = platformDirOf(reflection);
-  return platform ? PLATFORM_KEYS.indexOf(platform) + 1 : 0;
+  const platform = pageGroupOf(reflection);
+  return platform ? PAGE_GROUPS.indexOf(platform) + 1 : 0;
 }
 
 /**
@@ -173,7 +173,7 @@ export class RnsRouter extends MemberRouter {
     // is shared. The grouping reads `@platform` only — nothing is inferred from file names
     // or from an `*IOS` / `*Android` suffix, which `BlurEffect` and `PlatformIconIOSSfSymbol`
     // would get wrong in both directions.
-    const platform = platformDirOf(reflection) || 'shared';
+    const platform = pageGroupOf(reflection) || 'shared';
     return `${root}/types/${platform}/_${this.getReflectionAlias(reflection)}`;
   }
 
@@ -236,7 +236,7 @@ export class RnsRouter extends MemberRouter {
         // and to the prop resolve to `host-ios` (the type's anchor below; the prop is `host` +
         // `ios`), which the theme puts at the start of the part.
         const platforms: PlatformProps[] = [];
-        for (const key of PLATFORM_KEYS) {
+        for (const key of PAGE_GROUPS) {
           const prop = membersOf(model).find(member => member.name === key);
           if (!prop) continue;
           const target =
