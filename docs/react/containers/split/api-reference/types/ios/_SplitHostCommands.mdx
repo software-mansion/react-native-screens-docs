@@ -1,8 +1,10 @@
 ## SplitHostCommands {#splithostcommands}
 
-> **SplitHostCommands** = `object`
-
-Defined in: [components/split/SplitHost.types.ts:259](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L259)
+```ts
+type SplitHostCommands = {
+  show: (column: SplitNavigableColumn) => void;
+};
+```
 
 Imperative commands exposed by a Split host through its ref.
 
@@ -12,9 +14,9 @@ Imperative commands exposed by a Split host through its ref.
 
 #### show {#splithostcommands-show}
 
-> **show**: (`column`) => `void`
-
-Defined in: [components/split/SplitHost.types.ts:266](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L266)
+```ts
+show: (column: SplitNavigableColumn) => void;
+```
 
 Shows the given column, adjusting the display mode if needed.
 

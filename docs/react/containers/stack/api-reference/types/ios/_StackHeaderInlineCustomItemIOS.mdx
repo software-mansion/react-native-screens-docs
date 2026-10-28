@@ -1,22 +1,16 @@
 ## StackHeaderInlineCustomItemIOS {#stackheaderinlinecustomitemios}
 
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:177](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L177)
-
 Header item with custom view.
 
 **Platform:** ios \>= 13
-
-### Extends
-
-- `SupportsMenuIOS`.`SupportsIdentifierIOS`
 
 ### Properties
 
 #### id {#stackheaderinlinecustomitemios-id}
 
-> **id**: `string`
-
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:185](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L185)
+```ts
+id: string;
+```
 
 A unique identifier within the screen header.
 
@@ -24,9 +18,9 @@ A unique identifier within the screen header.
 
 #### identifier? {#stackheaderinlinecustomitemios-identifier}
 
-> `optional` **identifier?**: `string`
-
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:141](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L141)
+```ts
+identifier?: string;
+```
 
 Stable identifier used to match the item across different screens for
 more intelligent animation on transition.
@@ -41,29 +35,23 @@ visual flash.
 
 **Platform:** ios \>= 26
 
-##### Inherited from
-
-`SupportsIdentifierIOS.identifier`
-
 #### menu? {#stackheaderinlinecustomitemios-menu}
 
-> `optional` **menu?**: [`StackHeaderMenuIOS`](#stackheadermenuios)
-
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:117](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L117)
+```ts
+menu?: StackHeaderMenuIOS;
+```
 
 Menu definition for the context menu that appears when item is tapped.
 
+**Type:** [`StackHeaderMenuIOS`](#stackheadermenuios)
+
 **Platform:** ios \>= 13
-
-##### Inherited from
-
-`SupportsMenuIOS.menu`
 
 #### render {#stackheaderinlinecustomitemios-render}
 
-> **render**: [`StackHeaderElementFactory`](#stackheaderelementfactory)
-
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:202](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L202)
+```ts
+render: StackHeaderElementFactory;
+```
 
 A function that renders the custom view.
 
@@ -71,13 +59,15 @@ The subview is sized by React Native's layout engine but positioned by the
 platform native layout. Each item's size is calculated independently and will
 not respect flex layout. Use static width and height for best results.
 
+**Type:** [`StackHeaderElementFactory`](#stackheaderelementfactory)
+
 **Platform:** ios \>= 13
 
 #### type {#stackheaderinlinecustomitemios-type}
 
-> **type**: `"item"`
-
-Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:191](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/stack/header/StackHeaderConfig.ios.types.ts#L191)
+```ts
+type: "item";
+```
 
 Marks this object as a header item definition.
 

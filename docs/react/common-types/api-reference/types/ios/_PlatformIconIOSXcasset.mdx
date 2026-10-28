@@ -1,8 +1,11 @@
 ## PlatformIconIOSXcasset {#platformiconiosxcasset}
 
-> **PlatformIconIOSXcasset** = `object`
-
-Defined in: [components/shared/types.ts:212](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/shared/types.ts#L212)
+```ts
+type PlatformIconIOSXcasset = {
+  name: string;
+  type: "xcasset";
+};
+```
 
 Icon backed by an image in an asset catalog (xcasset), referenced by `name`.
 
@@ -14,9 +17,9 @@ Discriminated by `type: 'xcasset'`.
 
 #### name {#platformiconiosxcasset-name}
 
-> **name**: `string`
-
-Defined in: [components/shared/types.ts:224](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/shared/types.ts#L224)
+```ts
+name: string;
+```
 
 Name of the image set in the app's asset catalog.
 
@@ -24,9 +27,9 @@ Name of the image set in the app's asset catalog.
 
 #### type {#platformiconiosxcasset-type}
 
-> **type**: `"xcasset"`
-
-Defined in: [components/shared/types.ts:218](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/shared/types.ts#L218)
+```ts
+type: "xcasset";
+```
 
 Discriminant selecting the asset-catalog variant.
 

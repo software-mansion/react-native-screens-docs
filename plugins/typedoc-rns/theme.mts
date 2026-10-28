@@ -1,6 +1,7 @@
 import { posix } from 'node:path';
 import {
   ReflectionKind,
+  type Comment,
   type DeclarationReflection,
   type Options,
   type Reflection,
@@ -12,10 +13,12 @@ import {
   type MarkdownPageEvent,
 } from 'typedoc-plugin-markdown';
 
-import { renderComment } from './comment.mts';
+import { type CommentChanges, renderComment } from './comment.mts';
+import { declarationPartials, withoutOptionalFlag } from './declaration.mts';
 import { membersOf, outputRoot } from './feature-map.mts';
 import type { Layout, RnsRouter, Section } from './router.mts';
 import { signaturePartials } from './signature.mts';
+import { typePartials } from './types.mts';
 
 /** The parts of a family page, parked on it by `renderFeaturePage` for index.mts to write. */
 export interface RnsParts {
@@ -153,6 +156,10 @@ function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
 class RnsThemeContext extends MarkdownThemeContext {
   /** The part file `renderFeaturePage` is rendering now, `undefined` otherwise (see `urlTo`). */
   declare rnsPartFile: string | undefined;
+  /** The comment changes of the render calls in progress (`withCommentChanges`). */
+  readonly rnsCommentChanges = new Map<Comment, CommentChanges>();
+  /** Above 0 while a type renders into a line of text (`inlineType`). */
+  rnsInlineDepth = 0;
   /** The router is always ours here — `typedoc.config.mjs` sets `router: 'rns'`. */
   declare router: RnsRouter;
 
@@ -177,13 +184,20 @@ class RnsThemeContext extends MarkdownThemeContext {
   ) {
     super(theme, page, options);
     const basePartials = this.partials;
+    const signatures = signaturePartials(this, basePartials);
     this.partials = {
       ...this.partials,
-      ...signaturePartials(this, basePartials),
+      ...signatures,
+      ...typePartials(this, basePartials),
+      ...declarationPartials(this, { ...basePartials, ...signatures }),
       comment: (model, options) =>
         renderComment(this, basePartials.comment, model, options),
       memberContainer: (model, options) =>
         renderMemberContainer(this, model, options),
+    };
+    this.helpers = {
+      ...this.helpers,
+      getReflectionFlags: withoutOptionalFlag(this.helpers.getReflectionFlags),
     };
     const baseTemplates = { ...this.templates };
     this.templates = {

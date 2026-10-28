@@ -1,8 +1,11 @@
 ## DisplayModeWillChangeEvent {#displaymodewillchangeevent}
 
-> **DisplayModeWillChangeEvent** = `object`
-
-Defined in: [components/split/SplitHost.types.ts:22](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L22)
+```ts
+type DisplayModeWillChangeEvent = {
+  currentDisplayMode: string;
+  nextDisplayMode: string;
+};
+```
 
 Payload of the event emitted when the Split display mode is about to change.
 
@@ -12,9 +15,9 @@ Payload of the event emitted when the Split display mode is about to change.
 
 #### currentDisplayMode {#displaymodewillchangeevent-currentdisplaymode}
 
-> **currentDisplayMode**: `string`
-
-Defined in: [components/split/SplitHost.types.ts:28](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L28)
+```ts
+currentDisplayMode: string;
+```
 
 The display mode in effect when the change was requested.
 
@@ -22,9 +25,9 @@ The display mode in effect when the change was requested.
 
 #### nextDisplayMode {#displaymodewillchangeevent-nextdisplaymode}
 
-> **nextDisplayMode**: `string`
-
-Defined in: [components/split/SplitHost.types.ts:34](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L34)
+```ts
+nextDisplayMode: string;
+```
 
 The display mode the split view is about to adopt.
 
