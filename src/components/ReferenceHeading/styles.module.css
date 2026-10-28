@@ -77,13 +77,18 @@ row is not one, so the row takes the spacing it would have had, with the house r
   font-weight: 400;
 }
 
-/* Minimal styling; a later PR styles it. */
-.source {
+/*
+The `</>` link: muted until hovered, so a page of entries does not read as a page of links,
+and without the 1px bottom border `.markdown a` (typography.css) gives every content link —
+it is an icon, not text. `.row >` lifts the specificity above that rule's (0,1,1).
+*/
+.row > .source {
   display: inline-flex;
   color: var(--ifm-color-emphasis-600);
   text-decoration: none;
+  border-bottom: none;
 }
 
-.source:hover {
-  color: var(--ifm-link-color);
+.row > .source:hover {
+  color: var(--ifm-link-hover-color);
 }
