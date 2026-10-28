@@ -1,17 +1,12 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import {
-  Converter,
-  type Application,
-  type DeclarationReflection,
-  type ProjectReflection,
-  type SignatureReflection,
-} from 'typedoc';
+import { Converter, type Application, type ProjectReflection } from 'typedoc';
 import { MarkdownPageEvent } from 'typedoc-plugin-markdown';
 
 import type { RnsParts } from './theme.mts';
 
-import { parsePlatformTag } from './feature-map.mts';
+import { parsePlatformTag, sourceLocation } from './feature-map.mts';
+import { resolveCrossFamilyLinks } from './links.mts';
 import { restoreRnInternalNames } from './rn-internal-names.mts';
 import { RnsRouter } from './router.mts';
 import { RnsTheme } from './theme.mts';
@@ -38,16 +33,10 @@ function malformedPlatformTags(project: ProjectReflection): string[] {
               .trim(),
           ).errors;
     if (errors.length === 0) continue;
-    // Only declarations and signatures have sources.
-    const source = (reflection as DeclarationReflection | SignatureReflection)
-      .sources?.[0];
-    const where = source
-      ? `${source.fileName}:${source.line}`
-      : 'unknown source';
-    const key = source ? where : `reflection ${reflection.id}`;
-    if (!lines.has(key)) {
+    const where = sourceLocation(reflection);
+    if (!lines.has(where)) {
       lines.set(
-        key,
+        where,
         `  ${reflection.getFullName()} (${where}) — ${errors.join('; ')}`,
       );
     }
@@ -69,6 +58,23 @@ export function load(app: Application): void {
       );
     }
   });
+
+  // TypeDoc resolves `{@link}` targets in its own listener on this event, at priority -300;
+  // this one runs after it, so it sees what TypeDoc left unresolved.
+  app.converter.on(
+    Converter.EVENT_RESOLVE_END,
+    context => {
+      const lines = resolveCrossFamilyLinks(context.project);
+      if (lines.length > 0) {
+        app.logger.error(
+          `[typedoc-rns] ${lines.length} {@link} target(s) do not resolve. Write a type ` +
+            'exported by one family, or one of its members as `Type.member`:\n' +
+            lines.join('\n'),
+        );
+      }
+    },
+    -400,
+  );
 
   app.renderer.defineRouter('rns', RnsRouter);
   app.renderer.defineTheme('rns', RnsTheme);
