@@ -37,6 +37,10 @@ export default {
   out: 'docs',
   cleanOutputDir: false,
   readme: 'none',
+  // A clean run has no warnings, so any is a mistake in the library's comments or exports: a
+  // second `@remarks` or `@returns`, a tag the library's tsdoc.json does not declare, a public
+  // type that uses one nobody exports.
+  treatWarningsAsErrors: true,
   // Source links point at the library's `main`, so they do not change with every new commit
   // of the library; the line numbers come from the checkout the reference is generated from.
   gitRevision: 'main',
