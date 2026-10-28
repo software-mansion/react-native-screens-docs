@@ -2,7 +2,9 @@ import Anchor from '@theme/MDXComponents/A';
 
 <Anchor id="screen-android" />
 
-#### android.icon? {#screen-android-icon}
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
+#### android.icon {#screen-android-icon}
+</PlatformHeading>
 
 ```ts
 icon?: PlatformIconAndroid;
@@ -15,9 +17,9 @@ type, which requires passing a drawable to resources via Android Studio.
 
 **Type:** [`PlatformIconAndroid`](../../../../common-types/index.mdx#platformiconandroid)
 
-**Platform:** android \>= 21
-
-#### android.selectedIcon? {#screen-android-selectedicon}
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
+#### android.selectedIcon {#screen-android-selectedicon}
+</PlatformHeading>
 
 ```ts
 selectedIcon?: PlatformIconAndroid;
@@ -31,9 +33,9 @@ To use `selectedIcon`, `icon` must also be provided.
 
 **Type:** [`PlatformIconAndroid`](../../../../common-types/index.mdx#platformiconandroid)
 
-**Platform:** android \>= 21
-
-#### android.standardAppearance? {#screen-android-standardappearance}
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
+#### android.standardAppearance {#screen-android-standardappearance}
+</PlatformHeading>
 
 ```ts
 standardAppearance?: TabsScreenAppearanceAndroid;
@@ -46,5 +48,3 @@ Allows to customize the appearance depending on the tab bar item state
 is determined by the currently active tab screen.
 
 **Type:** [`TabsScreenAppearanceAndroid`](#tabsscreenappearanceandroid)
-
-**Platform:** android \>= 21

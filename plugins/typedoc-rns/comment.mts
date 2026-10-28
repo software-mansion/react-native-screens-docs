@@ -16,6 +16,7 @@ const LABELS: Record<string, string> = {
   '@defaultValue': 'Default',
   '@example': 'Example',
   '@see': 'See',
+  // A heading with platform chips hides the tag; the line is left where nothing does.
   '@platform': 'Platform',
   '@deprecated': 'Deprecated',
 };
@@ -81,6 +82,8 @@ export interface CommentChanges {
   lead?: string;
   /** Leaves out the summary and `@remarks`; the other tags stay. */
   omitDescription?: boolean;
+  /** Leaves out `@platform`, which the entry's heading shows. */
+  omitPlatform?: boolean;
 }
 
 /** A theme context with the comment changes of the render calls in progress. */
@@ -160,6 +163,7 @@ export function renderComment(
   let lead = showSummary ? change.lead : undefined;
   const hidden = new Set<string>(ctx.options.getValue('notRenderedTags'));
   if (!options.showReturns) hidden.add('@returns');
+  if (change.omitPlatform) hidden.add('@platform');
   for (const tag of model.blockTags) {
     if (hidden.has(tag.tag)) continue;
     if (tag.tag === '@remarks' && !description) continue;

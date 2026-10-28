@@ -1,4 +1,6 @@
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 ## SafeAreaView {#safe-area-view}
+</PlatformHeading>
 
 :::warning
 
@@ -8,11 +10,9 @@ This API is experimental. It may change in a breaking way — or be removed enti
 
 **Extends:** `ViewProps`
 
-**Platform:** android \>= 21, ios \>= 13
-
-### Properties
-
-#### edges? {#safe-area-view-edges}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### edges {#safe-area-view-edges}
+</PlatformHeading>
 
 ```ts
 edges?: Readonly<Partial<Record<Edge, boolean>>>;
@@ -22,9 +22,9 @@ Specifies the edges to which safe-area insets are applied.
 
 **Type:** `Readonly`\<`Partial`\<`Record`\<[`Edge`](#edge), `boolean`\>\>\>
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### insetType? {#safe-area-view-insettype}
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
+#### insetType {#safe-area-view-insettype}
+</PlatformHeading>
 
 ```ts
 insetType?: InsetType;
@@ -33,5 +33,3 @@ insetType?: InsetType;
 Specifies which set of insets is used to compute the safe area.
 
 **Type:** [`InsetType`](#insettype)
-
-**Platform:** android \>= 21
