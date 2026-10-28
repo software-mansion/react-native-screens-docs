@@ -4,9 +4,7 @@ Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:149](https:/
 
 Native header item with text label.
 
-### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 ### Extends
 
@@ -22,15 +20,11 @@ Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:103](https:/
 
 Icon displayed for the header item.
 
-##### Remarks
-
 For async image sources, the item renders without an icon first and updates when
 loaded. Ignored when custom view ([render](#stackheaderinlinecustomitemios-render)) is
 set.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 ##### Inherited from
 
@@ -44,9 +38,7 @@ Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:86](https://
 
 A unique identifier within the screen header.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 ##### Inherited from
 
@@ -61,8 +53,6 @@ Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:141](https:/
 Stable identifier used to match the item across different screens for
 more intelligent animation on transition.
 
-##### Remarks
-
 When navigating between screens, iOS tries to match similarly looking
 items (i.e. same sfSymbol) and animate between them. If the heuristic
 fails, a simpler crossfade is applied. In a situation where visually
@@ -71,9 +61,7 @@ you may use this prop to tell this fact to the system. The identifier
 shouldn't be updated at runtime; doing so will result in item rebuild and
 visual flash.
 
-##### Platform
-
-ios \>= 26
+**Platform:** ios \>= 26
 
 ##### Inherited from
 
@@ -87,9 +75,7 @@ Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:117](https:/
 
 Menu definition for the context menu that appears when item is tapped.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 ##### Inherited from
 
@@ -103,15 +89,11 @@ Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:169](https:/
 
 Callback invoked when the header item is pressed.
 
-##### Remarks
-
 Fires when the user taps the header item. When combined with
 [menu](#stackheaderinlineitemios-menu), tapping fires `onPress` and
 long-pressing shows the menu.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### title? {#stackheaderinlineitemios-title}
 
@@ -121,9 +103,7 @@ Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:92](https://
 
 A title for the item that is displayed in the header.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 ##### Inherited from
 
@@ -137,6 +117,4 @@ Defined in: [components/stack/header/StackHeaderConfig.ios.types.ts:158](https:/
 
 Marks this object as a header item definition.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13

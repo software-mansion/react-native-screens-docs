@@ -4,9 +4,7 @@ Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:147](https://github.
 
 Appearance of an iOS tab bar item in a single state.
 
-### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 ### Properties
 
@@ -19,9 +17,7 @@ Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:235](https://github.
 Specifies the background color of badges for each tab bar item
 when tab screen is selected.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### tabBarItemIconColor? {#tabsscreenitemstateappearanceios-tabbaritemiconcolor}
 
@@ -32,8 +28,6 @@ Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:228](https://github.
 Specifies the icon color for each tab bar item when tab screen
 is selected.
 
-##### Remarks
-
 This also impacts the title text color.
 
 Starting from iOS 26, it only applies to selected tab bar item. Other items
@@ -42,9 +36,7 @@ adopt a dark or light appearance depending on the theme of the tab bar.
 Is overridden by `tabBarItemTitleFontColor` (for title text color).
 Overrides `tabBarTintColor`.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### tabBarItemTitleFontColor? {#tabsscreenitemstateappearanceios-tabbaritemtitlefontcolor}
 
@@ -55,13 +47,9 @@ Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:185](https://github.
 Specifies the font color used for the title of each tab bar item
 when tab screen is selected.
 
-##### Remarks
-
 Overrides the color defined in `tabBarTintColor` and `tabBarItemIconColor`.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### tabBarItemTitleFontFamily? {#tabsscreenitemstateappearanceios-tabbaritemtitlefontfamily}
 
@@ -72,9 +60,7 @@ Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:154](https://github.
 Specifies the font family used for the title of each tab bar item
 when tab screen is selected.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### tabBarItemTitleFontSize? {#tabsscreenitemstateappearanceios-tabbaritemtitlefontsize}
 
@@ -85,9 +71,7 @@ Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:161](https://github.
 Specifies the font size used for the title of each tab bar item
 when tab screen is selected.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### tabBarItemTitleFontStyle? {#tabsscreenitemstateappearanceios-tabbaritemtitlefontstyle}
 
@@ -98,9 +82,7 @@ Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:175](https://github.
 Specifies the font style used for the title of each tab bar item
 when tab screen is selected.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### tabBarItemTitleFontWeight? {#tabsscreenitemstateappearanceios-tabbaritemtitlefontweight}
 
@@ -111,9 +93,7 @@ Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:168](https://github.
 Specifies the font weight used for the title of each tab bar item
 when tab screen is selected.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### tabBarItemTitlePositionAdjustment? {#tabsscreenitemstateappearanceios-tabbaritemtitlepositionadjustment}
 
@@ -124,6 +104,11 @@ Defined in: [components/tabs/screen/TabsScreen.ios.types.ts:196](https://github.
 Specifies the title offset for each tab bar item when tab screen
 is selected.
 
+Depending on the iOS version and the device's interface orientation,
+this setting may affect the alignment of the text, badge and icon.
+
+**Platform:** ios \>= 13
+
 ##### horizontal?
 
 > `optional` **horizontal?**: `number`
@@ -131,9 +116,7 @@ is selected.
 Horizontal offset, in points. Positive values move the title towards the
 trailing edge.
 
-###### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 ##### vertical?
 
@@ -141,15 +124,4 @@ ios \>= 13
 
 Vertical offset, in points. Positive values move the title down.
 
-###### Platform
-
-ios \>= 13
-
-##### Remarks
-
-Depending on the iOS version and the device's interface orientation,
-this setting may affect the alignment of the text, badge and icon.
-
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13

@@ -10,14 +10,10 @@ Defined in: [components/tabs/screen/TabsScreen.android.types.ts:191](https://git
 
 Specifies the icon for the tab bar item.
 
-##### Remarks
-
 `imageSource` type doesn't support SVGs on Android. For loading SVGs use `drawableResource`
 type, which requires passing a drawable to resources via Android Studio.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.selectedIcon? {#screen-android-selectedicon}
 
@@ -27,15 +23,11 @@ Defined in: [components/tabs/screen/TabsScreen.android.types.ts:202](https://git
 
 Specifies the icon for tab bar item when it is selected.
 
-##### Remarks
-
 Supports the same values as `icon` property for given platform.
 
 To use `selectedIcon`, `icon` must also be provided.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21
 
 #### android.standardAppearance? {#screen-android-standardappearance}
 
@@ -45,12 +37,8 @@ Defined in: [components/tabs/screen/TabsScreen.android.types.ts:181](https://git
 
 Specifies the standard tab bar appearance.
 
-##### Remarks
-
 Allows to customize the appearance depending on the tab bar item state
 (normal, selected, focused, disabled). Configuration for the Bottom Navigation View
 is determined by the currently active tab screen.
 
-##### Platform
-
-android \>= 21
+**Platform:** android \>= 21

@@ -5,8 +5,6 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:145](https
 Represents a menu (or submenu) that groups
 [StackHeaderMenuElementIOS](#stackheadermenuelementios) children.
 
-### Remarks
-
 A menu is a container that can hold both leaf items
 ([StackHeaderMenuItemIOS](#stackheadermenuitemios)) and nested menus. Set
 [singleSelection](#stackheadermenuios-singleselection) to `true` to
@@ -19,9 +17,7 @@ across the whole hierarchy under Single Selection Root (even when mixing items a
 Previously selected item is deselected automatically.
 Multiple Single Selection Roots may exist only if their hierarchy is completely separate.
 
-### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 ### Properties
 
@@ -33,14 +29,10 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:226](https
 
 Child elements of this menu.
 
-##### Remarks
-
 Each child is either a [StackHeaderMenuItemIOS](#stackheadermenuitemios) (leaf) or another
 [StackHeaderMenuIOS](#stackheadermenuios), allowing arbitrarily nested menu trees.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### displayAsPalette? {#stackheadermenuios-displayaspalette}
 
@@ -50,20 +42,14 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:216](https
 
 Displays the menu as a row of compact items (palette).
 
-##### Remarks
-
 When enabled, the menu children are rendered as a horizontal palette
 row instead of a vertical list. Best suited for menus with icon-only items.
 
 On older versions, this option is ignored.
 
-##### Default Value
+**Default:** `false`
 
-`false`
-
-##### Platform
-
-ios \>= 17
+**Platform:** ios \>= 17
 
 #### displayInline? {#stackheadermenuios-displayinline}
 
@@ -73,18 +59,12 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:203](https
 
 Displays the menu inline with parent menu instead of as a submenu.
 
-##### Remarks
-
 A menu displayed inline is rendered directly inside its parent menu,
 with horizontal bars separating it from the surrounding items.
 
-##### Default Value
+**Default:** `false`
 
-`false`
-
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### icon? {#stackheadermenuios-icon}
 
@@ -94,14 +74,10 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:192](https
 
 Icon displayed for the submenu.
 
-##### Remarks
-
 For async image sources, the menu renders without an icon first and updates when
 loaded.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### id {#stackheadermenuios-id}
 
@@ -111,14 +87,10 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:155](https
 
 Unique identifier of the menu.
 
-##### Remarks
-
 Used to locate the menu inside a tree and as the reference when querying or
 manipulating menu state.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### onSelectionChange? {#stackheadermenuios-onselectionchange}
 
@@ -128,16 +100,12 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:238](https
 
 Callback invoked when the set of selected toggle items changes.
 
-##### Remarks
-
 Receives an array of IDs of all currently selected toggle items in this
 menu's hierarchy. For Single Selection Root, always returns one item.
 When defined below Single Selection Root, the callback doesn't fire.
 In regular non-single-selection case, only changes to direct children are reflected.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### singleSelection? {#stackheadermenuios-singleselection}
 
@@ -147,8 +115,6 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:182](https
 
 Enables single selection mode for this menu and its descendants.
 
-##### Remarks
-
 The topmost menu with `singleSelection` enabled becomes Single Selection Root.
 At most one toggle item in the entire hierarchy rooted at this
 menu can be selected at a time.
@@ -156,13 +122,9 @@ menu can be selected at a time.
 Items with `itemType` set to `'automatic'` are resolved to `'toggle'` inside a
 `singleSelection` hierarchy. `'action'` items are disallowed.
 
-##### Default Value
+**Default:** `false`
 
-`false`
-
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### title? {#stackheadermenuios-title}
 
@@ -172,9 +134,7 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:167](https
 
 Title displayed for the menu.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### type {#stackheadermenuios-type}
 
@@ -184,6 +144,4 @@ Defined in: [components/stack/header/ios/StackHeaderMenu.ios.types.ts:161](https
 
 Marks this object as a menu definition.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13

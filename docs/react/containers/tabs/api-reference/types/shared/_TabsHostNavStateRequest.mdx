@@ -6,9 +6,7 @@ Defined in: [components/tabs/host/TabsHost.types.ts:13](https://github.com/softw
 
 Navigation-state request passed to the native side to drive tab selection.
 
-### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 ### Properties
 
@@ -19,8 +17,6 @@ android \>= 21, ios \>= 13
 Defined in: [components/tabs/host/TabsHost.types.ts:50](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/tabs/host/TabsHost.types.ts#L50)
 
 Provenance of the navigation state this request is derived from.
-
-##### Remarks
 
 The provenance value establishes a relationship between different navigation state instances
 held by given state holder. The assumption is that when the navigation state is progressed
@@ -43,9 +39,7 @@ It is named `baseProvenance` (rather than `provenance`) to disambiguate it from 
 `provenance` field on the [TabSelectedEvent](#tabselectedevent) payload, which carries the provenance
 of the state *resulting* from a transition.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13
 
 #### selectedScreenKey {#tabshostnavstaterequest-selectedscreenkey}
 
@@ -55,10 +49,6 @@ Defined in: [components/tabs/host/TabsHost.types.ts:22](https://github.com/softw
 
 Valid screen key.
 
-##### Remarks
-
 It must correspond to one of the keys you assign to the `TabsScreens`.
 
-##### Platform
-
-android \>= 21, ios \>= 13
+**Platform:** android \>= 21, ios \>= 13

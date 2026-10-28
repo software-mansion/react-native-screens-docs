@@ -4,9 +4,7 @@ Defined in: [components/split/SplitHost.types.ts:274](https://github.com/softwar
 
 Container that manages a native split view of columns and an optional inspector.
 
-### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 ### Extends
 
@@ -23,9 +21,7 @@ Defined in: [components/split/SplitHost.types.ts:281](https://github.com/softwar
 Columns to display; wrap each column in a `Split.Column`, and the optional
 inspector in a `Split.Inspector`.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 ##### Overrides
 
@@ -39,13 +35,9 @@ Defined in: [components/split/SplitHost.types.ts:358](https://github.com/softwar
 
 Specifies the color scheme used by the container and any child containers.
 
-##### Default Value
+**Default:** `'inherit'`
 
-`'inherit'`
-
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### columnMetrics? {#host-columnmetrics}
 
@@ -55,9 +47,7 @@ Defined in: [components/split/SplitHost.types.ts:294](https://github.com/softwar
 
 An object describing bounds for column widths.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### displayModeButtonVisibility? {#host-displaymodebuttonvisibility}
 
@@ -67,13 +57,9 @@ Defined in: [components/split/SplitHost.types.ts:301](https://github.com/softwar
 
 Determines whether the button for changing the Split display mode is visible on the screen.
 
-##### Default Value
+**Default:** `'automatic'`
 
-`'automatic'`
-
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### onCollapse? {#host-oncollapse}
 
@@ -83,9 +69,7 @@ Defined in: [components/split/SplitHost.types.ts:307](https://github.com/softwar
 
 A callback that gets invoked when the Split was collapsed to a single column.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### onDisplayModeWillChange? {#host-ondisplaymodewillchange}
 
@@ -95,14 +79,10 @@ Defined in: [components/split/SplitHost.types.ts:317](https://github.com/softwar
 
 A callback that gets invoked when the Split displayMode has changed.
 
-##### Remarks
-
 The purpose of this callback is tracking displayMode updates on host from the JS side.
 These updates might be a consequence of some native interactions, like pressing native button or performing swipe gesture.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### onExpand? {#host-onexpand}
 
@@ -112,9 +92,7 @@ Defined in: [components/split/SplitHost.types.ts:325](https://github.com/softwar
 
 A callback that gets invoked when the Split was expanded to multiple columns.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### onInspectorHide? {#host-oninspectorhide}
 
@@ -124,13 +102,9 @@ Defined in: [components/split/SplitHost.types.ts:334](https://github.com/softwar
 
 A callback that gets invoked when the Split inspector is either programmatically hidden (in column presentation) or dismissed (in modal presentation).
 
-##### Remarks
-
 The purpose of this callback depends on whether the Split is collapsed or expanded.
 
-##### Platform
-
-ios \>= 26
+**Platform:** ios \>= 26
 
 #### orientation? {#host-orientation}
 
@@ -139,8 +113,6 @@ ios \>= 26
 Defined in: [components/split/SplitHost.types.ts:351](https://github.com/software-mansion/react-native-screens/blob/8de39c66b032cbe0b0997f370555ded4ff950eab/src/components/split/SplitHost.types.ts#L351)
 
 Specifies supported orientations for the split host.
-
-##### Remarks
 
 Procedure for determining supported orientations:
 1. Traversal initiates from the root component and moves to the
@@ -151,13 +123,9 @@ Procedure for determining supported orientations:
    - if `orientation` is set to `'inherit'`, the parent component
      is queried.
 
-##### Default Value
+**Default:** `'inherit'`
 
-`'inherit'`
-
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### preferredDisplayMode? {#host-preferreddisplaymode}
 
@@ -167,17 +135,11 @@ Defined in: [components/split/SplitHost.types.ts:374](https://github.com/softwar
 
 Specifies the display mode which will be preferred to use, if the layout requirements are met.
 
-##### Remarks
-
 Preferred means that we may only suggest the OS which layout we're expecting, but the final decision is dependent on the device's type and size class.
 
-##### Default Value
+**Default:** `'automatic'`
 
-`'automatic'`
-
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### preferredSplitBehavior? {#host-preferredsplitbehavior}
 
@@ -187,17 +149,11 @@ Defined in: [components/split/SplitHost.types.ts:384](https://github.com/softwar
 
 Specifies the split behavior which will be preferred to use, if the layout requirements are met.
 
-##### Remarks
-
 Preferred means that we may only suggest the OS which layout we're expecting, but the final decision is dependent on the device's type and size class.
 
-##### Default Value
+**Default:** `'automatic'`
 
-`'automatic'`
-
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### presentsWithGesture? {#host-presentswithgesture}
 
@@ -207,9 +163,7 @@ Defined in: [components/split/SplitHost.types.ts:364](https://github.com/softwar
 
 Determines whether gestures are enabled to change the display mode.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### primaryBackgroundStyle? {#host-primarybackgroundstyle}
 
@@ -219,17 +173,11 @@ Defined in: [components/split/SplitHost.types.ts:394](https://github.com/softwar
 
 Specifies the background style of the primary view controller.
 
-##### Remarks
-
 When set to `'default'`, the system default style is used.
 
-##### Default Value
+**Default:** `'default'`
 
-`'default'`
-
-##### Platform
-
-ios \>= 26
+**Platform:** ios \>= 26
 
 #### primaryEdge? {#host-primaryedge}
 
@@ -239,13 +187,9 @@ Defined in: [components/split/SplitHost.types.ts:401](https://github.com/softwar
 
 Indicates on which side primary sidebar is placed, affecting the split view layout.
 
-##### Default Value
+**Default:** `'leading'`
 
-`'leading'`
-
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### ref? {#host-ref}
 
@@ -255,9 +199,7 @@ Defined in: [components/split/SplitHost.types.ts:287](https://github.com/softwar
 
 Ref exposing the split host's imperative commands.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### showInspector? {#host-showinspector}
 
@@ -267,14 +209,10 @@ Defined in: [components/split/SplitHost.types.ts:411](https://github.com/softwar
 
 Determines whether inspector column should be displayed.
 
-##### Remarks
-
 Inspector will be displayed on the trailing edge of the main (secondary) column (for expanded Split) or as a modal (for collapsed Split).
 The result on the interface for this prop depends on whether the Split is collapsed or expanded.
 
-##### Platform
-
-ios \>= 26
+**Platform:** ios \>= 26
 
 #### showSecondaryToggleButton? {#host-showsecondarytogglebutton}
 
@@ -284,9 +222,7 @@ Defined in: [components/split/SplitHost.types.ts:417](https://github.com/softwar
 
 Determines whether a button to toggle to and from `'secondaryOnly'` display mode is visible.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
 
 #### topColumnForCollapsing? {#host-topcolumnforcollapsing}
 
@@ -296,13 +232,9 @@ Defined in: [components/split/SplitHost.types.ts:429](https://github.com/softwar
 
 Specifies which column should be shown when the split view collapses to a single column.
 
-##### Remarks
-
 When the split view transitions from an expanded to a collapsed layout (e.g. rotating an iPad to portrait),
 this prop determines which column becomes the top (visible) column.
 
 When not set, the system default behavior is used.
 
-##### Platform
-
-ios \>= 13
+**Platform:** ios \>= 13
