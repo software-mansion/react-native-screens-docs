@@ -6,12 +6,13 @@
 // another family, or of Common Types, stops at its first name: TypeDoc logs a warning and
 // the page shows plain text. This pass runs after TypeDoc's and reads every link still
 // unresolved as `Type.member.…`: the first name is looked up among the exports of every
-// module, the rest as members — an interface's or an object literal's, not those behind an
-// intersection — and the reflection found becomes the link's target, so the router writes
-// the usual link and anchor. A bare member name is not searched project-wide; a name
-// exported by two modules is an error; a URL never gets here, since TypeDoc keeps it as a
-// string target. Whatever is still unresolved stops the run. Only a comment's summary and
-// block tags are read, which is where this theme renders links from.
+// module, the rest as members, one name at a time — an interface's, an object literal's or a
+// property's inline object type's, not those behind an intersection — and the reflection
+// found becomes the link's target, so the router writes the usual link and anchor. A bare
+// member name is not searched project-wide; a name exported by two modules is an error; a URL
+// never gets here, since TypeDoc keeps it as a string target. Whatever is still unresolved
+// stops the run. Only a comment's summary and block tags are read, which is where this theme
+// renders links from.
 
 import {
   type Comment,
@@ -23,7 +24,7 @@ import {
   ReflectionSymbolId,
 } from 'typedoc';
 
-import { sourceLocation } from './feature-map.mts';
+import { membersOf, sourceLocation } from './feature-map.mts';
 
 const LINK_TAGS = new Set(['@link', '@linkcode', '@linkplain']);
 
@@ -79,7 +80,14 @@ function findTarget(containers: Reflection[], path: string[]): Lookup {
   }
   const root = [...roots.keys()][0];
   if (!root) return { missing: true };
-  const target = memberPath.length > 0 ? root.getChildByName(memberPath) : root;
+  // `getChildByName` does not look into a property's inline object type (`A.nested.b`), so
+  // each name is looked up among the members `membersOf` gives.
+  let target: Reflection | undefined = root;
+  for (const name of memberPath) {
+    target = target?.isDeclaration()
+      ? membersOf(target).find(member => member.name === name)
+      : undefined;
+  }
   return target ? { found: target } : { missing: true };
 }
 
