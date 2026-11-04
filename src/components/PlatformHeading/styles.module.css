@@ -49,13 +49,13 @@ row is not one, so the row takes the spacing it would have had, with the house r
 }
 
 .chip[data-platform='tvos'] {
-  --chip-background: var(--swm-platform-badge-tvos-background);
-  --chip-color: var(--swm-platform-badge-tvos-color);
+  --chip-background: var(--rns-platform-badge-tvos-background);
+  --chip-color: var(--rns-platform-badge-tvos-color);
 }
 
 .chip[data-platform='visionos'] {
-  --chip-background: var(--swm-platform-badge-visionos-background);
-  --chip-color: var(--swm-platform-badge-visionos-color);
+  --chip-background: var(--rns-platform-badge-visionos-background);
+  --chip-color: var(--rns-platform-badge-visionos-color);
 }
 
 .chip[data-platform='web'] {
@@ -64,8 +64,8 @@ row is not one, so the row takes the spacing it would have had, with the house r
 }
 
 .chip[data-platform='windows'] {
-  --chip-background: var(--swm-platform-badge-windows-background);
-  --chip-color: var(--swm-platform-badge-windows-color);
+  --chip-background: var(--rns-platform-badge-windows-background);
+  --chip-color: var(--rns-platform-badge-windows-color);
 }
 
 .platform {

@@ -312,12 +312,12 @@
   --swm-platform-badge-ios-color: var(--swm-off-white);
   --swm-platform-badge-web-background: var(--swm-blue-dark-120);
   --swm-platform-badge-web-color: var(--swm-off-white);
-  --swm-platform-badge-tvos-background: var(--swm-red-dark-120);
-  --swm-platform-badge-tvos-color: var(--swm-off-white);
-  --swm-platform-badge-visionos-background: var(--swm-purple-dark-120);
-  --swm-platform-badge-visionos-color: var(--swm-off-white);
-  --swm-platform-badge-windows-background: var(--swm-navy-light-80);
-  --swm-platform-badge-windows-color: var(--swm-off-white);
+  --rns-platform-badge-tvos-background: var(--swm-red-dark-120);
+  --rns-platform-badge-tvos-color: var(--swm-off-white);
+  --rns-platform-badge-visionos-background: var(--swm-purple-dark-120);
+  --rns-platform-badge-visionos-color: var(--swm-off-white);
+  --rns-platform-badge-windows-background: var(--swm-navy-light-80);
+  --rns-platform-badge-windows-color: var(--swm-off-white);
 }
 
 :root[data-theme='dark'] {
@@ -521,12 +521,12 @@
   --swm-platform-badge-ios-color: var(--swm-off-white);
   --swm-platform-badge-web-background: var(--swm-blue-dark-120);
   --swm-platform-badge-web-color: var(--swm-off-white);
-  --swm-platform-badge-tvos-background: var(--swm-red-dark-120);
-  --swm-platform-badge-tvos-color: var(--swm-off-white);
-  --swm-platform-badge-visionos-background: var(--swm-purple-dark-120);
-  --swm-platform-badge-visionos-color: var(--swm-off-white);
-  --swm-platform-badge-windows-background: var(--swm-navy-light-80);
-  --swm-platform-badge-windows-color: var(--swm-off-white);
+  --rns-platform-badge-tvos-background: var(--swm-red-dark-120);
+  --rns-platform-badge-tvos-color: var(--swm-off-white);
+  --rns-platform-badge-visionos-background: var(--swm-purple-dark-120);
+  --rns-platform-badge-visionos-color: var(--swm-off-white);
+  --rns-platform-badge-windows-background: var(--swm-navy-light-80);
+  --rns-platform-badge-windows-color: var(--swm-off-white);
 }
 
 code {
