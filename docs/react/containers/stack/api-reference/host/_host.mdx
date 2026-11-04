@@ -1,10 +1,10 @@
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 ## Host {#host}
+</PlatformHeading>
 
-**Platform:** android \>= 21, ios \>= 13
-
-### Properties
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### children {#host-children}
+</PlatformHeading>
 
 ```ts
 children: NonNullable<ViewProps["children"]>;
@@ -12,9 +12,9 @@ children: NonNullable<ViewProps["children"]>;
 
 Stack screens to display; wrap each screen in a `Stack.Screen`.
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### ref? {#host-ref}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### ref {#host-ref}
+</PlatformHeading>
 
 ```ts
 ref?: React.RefObject<StackHostInstance | null>;
@@ -23,5 +23,3 @@ ref?: React.RefObject<StackHostInstance | null>;
 Ref to the underlying native stack host component.
 
 **Type:** `React.RefObject`\<[`StackHostInstance`](#stackhostinstance) \| `null`\>
-
-**Platform:** android \>= 21, ios \>= 13

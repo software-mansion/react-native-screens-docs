@@ -1,10 +1,10 @@
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 ## FormSheet {#form-sheet}
+</PlatformHeading>
 
-**Platform:** android \>= 21, ios \>= 13
-
-### Properties
-
-#### children? {#form-sheet-children}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### children {#form-sheet-children}
+</PlatformHeading>
 
 ```ts
 children?: ReactNode;
@@ -12,9 +12,9 @@ children?: ReactNode;
 
 Content rendered inside the form sheet.
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### detents? {#form-sheet-detents}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### detents {#form-sheet-detents}
+</PlatformHeading>
 
 ```ts
 detents?: number[] | "fitToContents";
@@ -35,9 +35,9 @@ If an empty array is provided, it defaults to a single large detent.
 `'fitToContents'` is supported on iOS 16+. On iOS 15, it falls back to a
 medium detent.
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### initialDetentIndex? {#form-sheet-initialdetentindex}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### initialDetentIndex {#form-sheet-initialdetentindex}
+</PlatformHeading>
 
 ```ts
 initialDetentIndex?: number | "last";
@@ -51,9 +51,9 @@ This prop only applies when the sheet transitions from closed to open.
 
 **Default:** `0`
 
-**Platform:** ios \>= 13
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### isOpen {#form-sheet-isopen}
+</PlatformHeading>
 
 ```ts
 isOpen: boolean;
@@ -65,9 +65,9 @@ Presentation is driven by state transitions: updating this property
 from `false` to `true` triggers the sheet to present, while changing
 it from `true` to `false` triggers a programmatic dismissal.
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### largestUndimmedDetentIndex? {#form-sheet-largestundimmeddetentindex}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### largestUndimmedDetentIndex {#form-sheet-largestundimmeddetentindex}
+</PlatformHeading>
 
 ```ts
 largestUndimmedDetentIndex?: number | "none" | "last";
@@ -84,9 +84,9 @@ Additionally, there are the following options available:
 
 **Default:** `'none'`
 
-**Platform:** ios \>= 13
-
-#### nativeContainerStyle? {#form-sheet-nativecontainerstyle}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### nativeContainerStyle {#form-sheet-nativecontainerstyle}
+</PlatformHeading>
 
 ```ts
 nativeContainerStyle?: FormSheetNativeContainerStyleProps;
@@ -98,9 +98,9 @@ These properties are forwarded directly to the underlying native view.
 
 **Type:** [`FormSheetNativeContainerStyleProps`](#formsheetnativecontainerstyleprops)
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### onDetentChanged? {#form-sheet-ondetentchanged}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### onDetentChanged {#form-sheet-ondetentchanged}
+</PlatformHeading>
 
 ```ts
 onDetentChanged?: FormSheetEventHandler<FormSheetDetentChangedEvent>;
@@ -112,9 +112,9 @@ Provides the `index` of the newly selected detent from the `detents` array.
 
 **Type:** [`FormSheetEventHandler`](#formsheeteventhandler)\<[`FormSheetDetentChangedEvent`](#formsheetdetentchangedevent)\>
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### onDidAppear? {#form-sheet-ondidappear}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### onDidAppear {#form-sheet-ondidappear}
+</PlatformHeading>
 
 ```ts
 onDidAppear?: FormSheetEventHandler<EmptyEventPayload>;
@@ -125,9 +125,9 @@ This is called as soon as the transition ends.
 
 **Type:** [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### onDidDisappear? {#form-sheet-ondiddisappear}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### onDidDisappear {#form-sheet-ondiddisappear}
+</PlatformHeading>
 
 ```ts
 onDidDisappear?: FormSheetEventHandler<EmptyEventPayload>;
@@ -138,9 +138,9 @@ This is called as soon as the transition ends.
 
 **Type:** [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### onDismiss? {#form-sheet-ondismiss}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### onDismiss {#form-sheet-ondismiss}
+</PlatformHeading>
 
 ```ts
 onDismiss?: FormSheetEventHandler<EmptyEventPayload>;
@@ -152,9 +152,9 @@ This event is fired when the sheet was dismissed via the `isOpen` prop changing 
 
 **Type:** [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### onNativeDismiss? {#form-sheet-onnativedismiss}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### onNativeDismiss {#form-sheet-onnativedismiss}
+</PlatformHeading>
 
 ```ts
 onNativeDismiss?: FormSheetEventHandler<EmptyEventPayload>;
@@ -167,9 +167,9 @@ your local React state to prevent UI mismatches (e.g., updating `isOpen` back to
 
 **Type:** [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### onNativeDismissPrevented? {#form-sheet-onnativedismissprevented}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### onNativeDismissPrevented {#form-sheet-onnativedismissprevented}
+</PlatformHeading>
 
 ```ts
 onNativeDismissPrevented?: FormSheetEventHandler<EmptyEventPayload>;
@@ -183,9 +183,9 @@ to inform the user why the sheet cannot be closed.
 
 **Type:** [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### onWillAppear? {#form-sheet-onwillappear}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### onWillAppear {#form-sheet-onwillappear}
+</PlatformHeading>
 
 ```ts
 onWillAppear?: FormSheetEventHandler<EmptyEventPayload>;
@@ -196,9 +196,9 @@ This is called as soon as the transition begins.
 
 **Type:** [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### onWillDisappear? {#form-sheet-onwilldisappear}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### onWillDisappear {#form-sheet-onwilldisappear}
+</PlatformHeading>
 
 ```ts
 onWillDisappear?: FormSheetEventHandler<EmptyEventPayload>;
@@ -209,9 +209,9 @@ This is called as soon as the transition begins.
 
 **Type:** [`FormSheetEventHandler`](#formsheeteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### preferredCornerRadius? {#form-sheet-preferredcornerradius}
+<PlatformHeading platforms={[{"platform":"android","from":"33"},{"platform":"ios","from":"13"}]}>
+#### preferredCornerRadius {#form-sheet-preferredcornerradius}
+</PlatformHeading>
 
 ```ts
 preferredCornerRadius?: number | "systemDefault";
@@ -224,9 +224,9 @@ automatic dimension (`UISheetPresentationControllerAutomaticDimension`).
 
 **Default:** `'systemDefault'`
 
-**Platform:** android \>= 33, ios \>= 13
-
-#### prefersGrabberVisible? {#form-sheet-prefersgrabbervisible}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### prefersGrabberVisible {#form-sheet-prefersgrabbervisible}
+</PlatformHeading>
 
 ```ts
 prefersGrabberVisible?: boolean;
@@ -240,9 +240,9 @@ hide the grabber in some presentation contexts.
 
 **Default:** `false`
 
-**Platform:** android \>= 21, ios \>= 13
-
-#### prefersScrollingExpandsWhenScrolledToEdge? {#form-sheet-prefersscrollingexpandswhenscrolledtoedge}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### prefersScrollingExpandsWhenScrolledToEdge {#form-sheet-prefersscrollingexpandswhenscrolledtoedge}
+</PlatformHeading>
 
 ```ts
 prefersScrollingExpandsWhenScrolledToEdge?: boolean;
@@ -261,9 +261,9 @@ On iOS, this maps directly to `UISheetPresentationController.prefersScrollingExp
 
 **Default:** `true`
 
-**Platform:** ios \>= 13
-
-#### preventNativeDismiss? {#form-sheet-preventnativedismiss}
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
+#### preventNativeDismiss {#form-sheet-preventnativedismiss}
+</PlatformHeading>
 
 ```ts
 preventNativeDismiss?: boolean;
@@ -275,5 +275,3 @@ When set to `true`, the sheet will resist the swipe-down gesture and backdrop ta
 remaining on the resting detent. Programmatically dismissing the sheet via `isOpen={false}` will still work.
 
 **Default:** `false`
-
-**Platform:** android \>= 21, ios \>= 13

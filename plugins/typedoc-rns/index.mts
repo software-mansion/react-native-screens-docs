@@ -61,7 +61,8 @@ export function load(app: Application): void {
     if (lines.length > 0) {
       app.logger.error(
         `[typedoc-rns] ${lines.length} @platform tag(s) are malformed. Each entry is ` +
-          '`<platform>` or `<platform> >= | <= <version>`, comma-separated:\n' +
+          '`<platform>`, `<platform> >= <version>` or `<platform> <version> - <version>`, ' +
+          'comma-separated:\n' +
           lines.join('\n'),
       );
     }

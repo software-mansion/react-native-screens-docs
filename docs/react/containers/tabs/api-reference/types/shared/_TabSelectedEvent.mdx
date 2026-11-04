@@ -1,4 +1,6 @@
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 ## TabSelectedEvent {#tabselectedevent}
+</PlatformHeading>
 
 ```ts
 type TabSelectedEvent = {
@@ -15,11 +17,9 @@ Payload of the event emitted when a tab selection occurs on the native side.
 This event is emitted both for user-initiated and programmatic tab changes.
 It carries the resulting navigation state along with metadata about the selection context.
 
-**Platform:** android \>= 21, ios \>= 13
-
-### Properties
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### actionOrigin {#tabselectedevent-actionorigin}
+</PlatformHeading>
 
 ```ts
 actionOrigin: TabSelectionActionOrigin;
@@ -29,9 +29,9 @@ Origin (actor) that requested this tab transition.
 
 **Type:** [`TabSelectionActionOrigin`](#tabselectionactionorigin)
 
-**Platform:** android \>= 21, ios \>= 13
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### hasTriggeredSpecialEffect {#tabselectedevent-hastriggeredspecialeffect}
+</PlatformHeading>
 
 ```ts
 hasTriggeredSpecialEffect: boolean;
@@ -39,9 +39,9 @@ hasTriggeredSpecialEffect: boolean;
 
 Whether the selection triggered a special effect (e.g. scroll-to-top on repeated selection).
 
-**Platform:** android \>= 21, ios \>= 13
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### isRepeated {#tabselectedevent-isrepeated}
+</PlatformHeading>
 
 ```ts
 isRepeated: boolean;
@@ -49,9 +49,9 @@ isRepeated: boolean;
 
 Whether the same tab that was already selected has been selected again.
 
-**Platform:** android \>= 21, ios \>= 13
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### provenance {#tabselectedevent-provenance}
+</PlatformHeading>
 
 ```ts
 provenance: number;
@@ -59,14 +59,12 @@ provenance: number;
 
 Provenance of the navigation state after the selection.
 
-**Platform:** android \>= 21, ios \>= 13
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]}>
 #### selectedScreenKey {#tabselectedevent-selectedscreenkey}
+</PlatformHeading>
 
 ```ts
 selectedScreenKey: string;
 ```
 
 Screen key of the newly selected tab.
-
-**Platform:** android \>= 21, ios \>= 13

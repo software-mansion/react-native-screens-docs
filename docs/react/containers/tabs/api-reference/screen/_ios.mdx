@@ -2,7 +2,9 @@ import Anchor from '@theme/MDXComponents/A';
 
 <Anchor id="screen-ios" />
 
-#### ios.experimental\_userInterfaceStyle? {#screen-ios-experimental_userinterfacestyle}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### ios.experimental\_userInterfaceStyle {#screen-ios-experimental_userinterfacestyle}
+</PlatformHeading>
 
 ```ts
 experimental_userInterfaceStyle?: UserInterfaceStyle;
@@ -30,9 +32,9 @@ Does not support dynamic changes to the prop value for the currently visible scr
 
 **See:** [UIUserInterfaceStyle](https://developer.apple.com/documentation/uikit/uiuserinterfacestyle)
 
-**Platform:** ios \>= 13
-
-#### ios.icon? {#screen-ios-icon}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### ios.icon {#screen-ios-icon}
+</PlatformHeading>
 
 ```ts
 icon?: PlatformIconIOS;
@@ -45,9 +47,9 @@ be used as the selected state icon.
 
 **Type:** [`PlatformIconIOS`](../../../../common-types/index.mdx#platformiconios)
 
-**Platform:** ios \>= 13
-
-#### ios.overrideScrollViewContentInsetAdjustmentBehavior? {#screen-ios-overridescrollviewcontentinsetadjustmentbehavior}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### ios.overrideScrollViewContentInsetAdjustmentBehavior {#screen-ios-overridescrollviewcontentinsetadjustmentbehavior}
+</PlatformHeading>
 
 ```ts
 overrideScrollViewContentInsetAdjustmentBehavior?: boolean;
@@ -66,9 +68,9 @@ Supported only on Fabric.
 
 **Default:** `true`
 
-**Platform:** ios \>= 13
-
-#### ios.scrollEdgeAppearance? {#screen-ios-scrolledgeappearance}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### ios.scrollEdgeAppearance {#screen-ios-scrolledgeappearance}
+</PlatformHeading>
 
 ```ts
 scrollEdgeAppearance?: TabsScreenAppearanceIOS;
@@ -85,9 +87,9 @@ have a transparent background.
 
 **Type:** [`TabsScreenAppearanceIOS`](#tabsscreenappearanceios)
 
-**Platform:** ios \>= 13
-
-#### ios.selectedIcon? {#screen-ios-selectedicon}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### ios.selectedIcon {#screen-ios-selectedicon}
+</PlatformHeading>
 
 ```ts
 selectedIcon?: PlatformIconIOS;
@@ -101,9 +103,9 @@ To use `selectedIcon`, `icon` must also be provided.
 
 **Type:** [`PlatformIconIOS`](../../../../common-types/index.mdx#platformiconios)
 
-**Platform:** ios \>= 13
-
-#### ios.standardAppearance? {#screen-ios-standardappearance}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### ios.standardAppearance {#screen-ios-standardappearance}
+</PlatformHeading>
 
 ```ts
 standardAppearance?: TabsScreenAppearanceIOS;
@@ -116,9 +118,9 @@ inline, compact inline) and state (normal, selected, focused, disabled).
 
 **Type:** [`TabsScreenAppearanceIOS`](#tabsscreenappearanceios)
 
-**Platform:** ios \>= 13
-
-#### ios.systemItem? {#screen-ios-systemitem}
+<PlatformHeading platforms={[{"platform":"ios","from":"13"}]}>
+#### ios.systemItem {#screen-ios-systemitem}
+</PlatformHeading>
 
 ```ts
 systemItem?: TabsScreenSystemItem;
@@ -134,5 +136,3 @@ overridden by providing a custom `title`.
 On iOS 26, `systemItem: 'search'` acts as a detached tab bar item, which does not display any title (system or custom).
 
 **Type:** [`TabsScreenSystemItem`](#tabsscreensystemitem)
-
-**Platform:** ios \>= 13

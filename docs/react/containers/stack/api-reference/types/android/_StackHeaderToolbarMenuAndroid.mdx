@@ -1,14 +1,14 @@
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
 ## StackHeaderToolbarMenuAndroid {#stackheadertoolbarmenuandroid}
+</PlatformHeading>
 
 A submenu element of the toolbar menu, opening a nested popup.
 
 **Extends:** [`StackHeaderToolbarMenuItemBaseAndroid`](#stackheadertoolbarmenuitembaseandroid), [`StackHeaderToolbarMenuBaseAndroid`](#stackheadertoolbarmenubaseandroid)
 
-**Platform:** android \>= 21
-
-### Properties
-
-#### menuTitle? {#stackheadertoolbarmenuandroid-menutitle}
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
+#### menuTitle {#stackheadertoolbarmenuandroid-menutitle}
+</PlatformHeading>
 
 ```ts
 menuTitle?: string;
@@ -24,9 +24,9 @@ command, the menu title will also be changed to the new title (unless the
 new title is set to `undefined`). In order to keep the custom menu title,
 you should also include `menuTitle` in the view command.
 
-**Platform:** android \>= 21
-
+<PlatformHeading platforms={[{"platform":"android","from":"21"}]}>
 #### type {#stackheadertoolbarmenuandroid-type}
+</PlatformHeading>
 
 ```ts
 type: "menu";
@@ -36,5 +36,3 @@ Marks this object as a submenu.
 
 Android's `MenuItem` interface claims that nesting submenus isn't supported
 but Material's implementation handles it correctly.
-
-**Platform:** android \>= 21

@@ -111,8 +111,6 @@ function platformRank(reflection: Reflection): number {
 export class RnsRouter extends MemberRouter {
   /** page model → { feature, sections } */
   #layouts = new Map<RouterTarget, Layout>();
-  /** the models rendered as a section of a page */
-  #sections = new Set<RouterTarget>();
   /** the `ios` / `android` props whose props are flattened into their section */
   #flattenedProps = new Set<RouterTarget>();
   /** the props types rendered as a component's section */
@@ -131,15 +129,6 @@ export class RnsRouter extends MemberRouter {
     return layout
       ? `${linkTarget(layout.feature)}${this.extension}`
       : undefined;
-  }
-
-  /**
-   * True for a model rendered as a section of a page: a component's props type, a type, or a
-   * component's flattened `ios` / `android` props type. Not used yet — the member headings will
-   * need it to tell a section's own props (which get platform badges) from nested keys.
-   */
-  isSectionModel(model: RouterTarget): boolean {
-    return this.#sections.has(model);
   }
 
   /**
@@ -320,9 +309,6 @@ export class RnsRouter extends MemberRouter {
         section.part = this.getIdealBaseName(section.model).slice(
           root.length + 1,
         );
-        this.#sections.add(section.model);
-        for (const platform of section.platforms)
-          this.#sections.add(platform.model);
       }
 
       const pageModel = sections[0]!.model;
