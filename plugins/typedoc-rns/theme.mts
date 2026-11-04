@@ -48,11 +48,13 @@ const SEPARATOR = '\n\n***\n\n';
 /** Docusaurus's MDX `a`, imported where a part needs an anchor without a heading. */
 const ANCHOR_IMPORT = "import Anchor from '@theme/MDXComponents/A';";
 
-// The level of a family page's component sections and its `### Types` heading, under the
-// hand-written `## API Reference`; the types sit one below. The Common Types page has no API
-// Reference part, so its types take this level, the lowest the table of contents lists: one
-// higher, their members would be listed too. A member is one level below its entry.
+// The level of a page's component sections and its `### Types` heading, under the hand-written
+// `## API Reference`; the types sit one below. The table of contents lists down to this level, so
+// it shows the sections and Types but not each type. A page without components (Common Types)
+// has no Types heading, as its API Reference holds nothing else, but its types keep the same
+// level. A member is one level below its entry.
 const TOP_LEVEL = 3;
+const TYPE_LEVEL = TOP_LEVEL + 1;
 const TYPES_HEADING = `${'#'.repeat(TOP_LEVEL)} Types {#types}`;
 
 /**
@@ -166,11 +168,10 @@ function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
     section => section.kind === 'component',
   );
   const types = layout.sections.filter(section => section.kind === 'type');
-  const typeLevel = components.length > 0 ? TOP_LEVEL + 1 : TOP_LEVEL;
 
   const render = (section: Section): string => {
     const name = partName(section);
-    const level = section.kind === 'component' ? TOP_LEVEL : typeLevel;
+    const level = section.kind === 'component' ? TOP_LEVEL : TYPE_LEVEL;
     const usages = [
       part(section.part!, name, () =>
         [
