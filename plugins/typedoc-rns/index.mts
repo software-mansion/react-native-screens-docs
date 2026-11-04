@@ -12,6 +12,7 @@ import { MarkdownPageEvent } from 'typedoc-plugin-markdown';
 import type { RnsParts } from './theme.mts';
 
 import { parsePlatformTag } from './feature-map.mts';
+import { restoreRnInternalNames } from './rn-internal-names.mts';
 import { RnsRouter } from './router.mts';
 import { RnsTheme } from './theme.mts';
 import { transform } from './transform.mts';
@@ -55,8 +56,9 @@ function malformedPlatformTags(project: ProjectReflection): string[] {
 }
 
 export function load(app: Application): void {
-  // An error logged here stops TypeDoc before it writes any output.
   app.converter.on(Converter.EVENT_RESOLVE_END, context => {
+    restoreRnInternalNames(context.project);
+    // An error logged here stops TypeDoc before it writes any output.
     const lines = malformedPlatformTags(context.project);
     if (lines.length > 0) {
       app.logger.error(

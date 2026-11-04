@@ -2,7 +2,7 @@
 // `gen:api` type-checks the generator before this runs, so a type error stops it before any
 // output is deleted.
 
-import { existsSync, rmSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
@@ -12,6 +12,7 @@ import {
   outputFile,
   outputRoot,
 } from '../plugins/typedoc-rns/feature-map.mts';
+import { RN_INTERNAL_NAME } from '../plugins/typedoc-rns/rn-internal-names.mts';
 
 const DOCS = 'docs';
 
@@ -46,6 +47,24 @@ const notWritten = Object.values(FEATURES)
 if (notWritten.length > 0) {
   console.error(
     `[gen-api] Missing generated files:\n  ${notWritten.join('\n  ')}`,
+  );
+  process.exit(1);
+}
+
+// The generator restores React Native's `____X_Internal` names to their public spelling on
+// the model (plugins/typedoc-rns/rn-internal-names.mts); one left in the output is a name it
+// does not know or a type it does not reach.
+const leaked = Object.values(FEATURES)
+  .flatMap(feature => {
+    const root = join(DOCS, outputRoot(feature));
+    return readdirSync(root, { recursive: true, encoding: 'utf8' })
+      .filter(file => file.endsWith('.mdx'))
+      .map(file => join(root, file));
+  })
+  .filter(file => RN_INTERNAL_NAME.test(readFileSync(file, 'utf8')));
+if (leaked.length > 0) {
+  console.error(
+    `[gen-api] React Native internal type names in the output:\n  ${leaked.join('\n  ')}`,
   );
   process.exit(1);
 }
