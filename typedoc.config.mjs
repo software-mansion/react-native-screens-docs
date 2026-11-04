@@ -37,4 +37,7 @@ export default {
   out: 'docs',
   cleanOutputDir: false,
   readme: 'none',
+  // Source links point at the library's `main`, so they do not change with every new commit
+  // of the library; the line numbers come from the checkout the reference is generated from.
+  gitRevision: 'main',
 };
