@@ -132,9 +132,6 @@ function signaturesOf(
   );
 }
 
-// Return types that mean the function returns nothing, so need no `@returns`.
-const NO_RETURN_VALUE = new Set(['void', 'undefined', 'never']);
-
 /** `ios >= 13.0`, `ios 13.0 - 18`: RFC-1947 drops a trailing `.0`. */
 function hasTrailingZero(version: string | undefined): boolean {
   return /\.0$/.test(version ?? '');
@@ -181,10 +178,12 @@ function signatureProblems(
       problems.push(`no @param for ${parameter.name}`);
     }
   }
+  // Only `void` needs no `@returns`; any other return type does, `Promise<void>` and
+  // `undefined` included.
   const returns = signature.type?.toString();
   if (
     returns &&
-    !NO_RETURN_VALUE.has(returns) &&
+    returns !== 'void' &&
     !(signature.comment ?? comment)?.getTag('@returns')
   ) {
     problems.push(`returns ${returns} but has no @returns`);
