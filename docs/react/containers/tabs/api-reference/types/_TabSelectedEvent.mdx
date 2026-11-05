@@ -1,0 +1,70 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L85"}>
+#### TabSelectedEvent {#tabselectedevent}
+</ReferenceHeading>
+
+```ts
+type TabSelectedEvent = {
+  actionOrigin: TabSelectionActionOrigin;
+  hasTriggeredSpecialEffect: boolean;
+  isRepeated: boolean;
+  provenance: number;
+  selectedScreenKey: string;
+};
+```
+
+Payload of the event emitted when a tab selection occurs on the native side.
+
+This event is emitted both for user-initiated and programmatic tab changes.
+It carries the resulting navigation state along with metadata about the selection context.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L105"}>
+##### actionOrigin {#tabselectedevent-actionorigin}
+</ReferenceHeading>
+
+```ts
+actionOrigin: TabSelectionActionOrigin;
+```
+
+Origin (actor) that requested this tab transition.
+
+**Type:** [`TabSelectionActionOrigin`](#tabselectionactionorigin)
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L101"}>
+##### hasTriggeredSpecialEffect {#tabselectedevent-hastriggeredspecialeffect}
+</ReferenceHeading>
+
+```ts
+hasTriggeredSpecialEffect: boolean;
+```
+
+Whether the selection triggered a special effect (e.g. scroll-to-top on repeated selection).
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L97"}>
+##### isRepeated {#tabselectedevent-isrepeated}
+</ReferenceHeading>
+
+```ts
+isRepeated: boolean;
+```
+
+Whether the same tab that was already selected has been selected again.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L93"}>
+##### provenance {#tabselectedevent-provenance}
+</ReferenceHeading>
+
+```ts
+provenance: number;
+```
+
+Provenance of the navigation state after the selection.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L89"}>
+##### selectedScreenKey {#tabselectedevent-selectedscreenkey}
+</ReferenceHeading>
+
+```ts
+selectedScreenKey: string;
+```
+
+Screen key of the newly selected tab.

@@ -58,14 +58,16 @@ const TYPE_LEVEL = TOP_LEVEL + 1;
 const TYPES_HEADING = `${'#'.repeat(TOP_LEVEL)} Types {#types}`;
 
 /**
- * A heading in a `<ReferenceHeading>` with a chip per platform of the reflection's `@platform`
- * tag and a link to its declaration; with neither, the plain heading.
+ * A heading in a `<ReferenceHeading>` with a chip per platform of the `@platform` tag of
+ * `platformsFrom` (the reflection itself unless given) and a link to the reflection's
+ * declaration; with neither, the plain heading.
  */
 function referenceHeading(
   reflection: DeclarationReflection,
   heading: string,
+  platformsFrom: DeclarationReflection = reflection,
 ): string {
-  const platforms = platformEntriesOf(reflection);
+  const platforms = platformEntriesOf(platformsFrom);
   const source = reflection.sources?.[0]?.url;
   const props = [
     platforms.length > 0 && `platforms={${JSON.stringify(platforms)}}`,
@@ -136,7 +138,7 @@ function sectionTitle(section: Section): string {
   return section.model.isDeprecated() ? `~~${section.title}~~` : section.title;
 }
 
-/** A part's path doubles as its MDX component name: `types/ios/_BlurEffect` → `TypeBlurEffect`. */
+/** A part's path doubles as its MDX component name: `types/_BlurEffect` → `TypeBlurEffect`. */
 function partName(section: Section): string {
   return section.kind === 'component'
     ? section.title.replace(/[^A-Za-z0-9]+(.)?/g, (_, char?: string) =>
@@ -186,9 +188,11 @@ function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
     const usages = [
       part(section.part!, name, () =>
         [
+          // A component section's chips are its component's: the props type has no `@platform`.
           referenceHeading(
             section.model,
             `${'#'.repeat(level)} ${sectionTitle(section)} {#${section.anchor}}`,
+            section.components[0],
           ),
           withoutPlatformTag(ctx, section.model, () =>
             ctx.partials.member(section.model, { headingLevel: level }),

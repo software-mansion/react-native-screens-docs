@@ -1,0 +1,98 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L113"}>
+#### StackHeaderInlineItemIOS {#stackheaderinlineitemios}
+</ReferenceHeading>
+
+Native header item with text label.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L73"}>
+##### icon {#stackheaderinlineitemios-icon}
+</ReferenceHeading>
+
+```ts
+icon?: PlatformIconIOS;
+```
+
+Icon displayed for the header item.
+
+For async image sources, the item renders without an icon first and updates when
+loaded. Ignored when custom view ([render](#stackheaderinlinecustomitemios-render)) is
+set.
+
+**Type:** [`PlatformIconIOS`](../../../../common-types/index.mdx#platformiconios)
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L60"}>
+##### id {#stackheaderinlineitemios-id}
+</ReferenceHeading>
+
+```ts
+id: string;
+```
+
+A unique identifier within the screen header.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L107"}>
+##### identifier {#stackheaderinlineitemios-identifier}
+</ReferenceHeading>
+
+```ts
+identifier?: string;
+```
+
+Stable identifier used to match the item across different screens for
+more intelligent animation on transition.
+
+When navigating between screens, iOS tries to match similarly looking
+items (i.e. same sfSymbol) and animate between them. If the heuristic
+fails, a simpler crossfade is applied. In a situation where visually
+different items should be logically considered the same across screens,
+you may use this prop to tell this fact to the system. The identifier
+shouldn't be updated at runtime; doing so will result in item rebuild and
+visual flash.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L85"}>
+##### menu {#stackheaderinlineitemios-menu}
+</ReferenceHeading>
+
+```ts
+menu?: StackHeaderMenuIOS;
+```
+
+Menu definition for the context menu that appears when item is tapped.
+
+**Type:** [`StackHeaderMenuIOS`](#stackheadermenuios)
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L129"}>
+##### onPress {#stackheaderinlineitemios-onpress}
+</ReferenceHeading>
+
+```ts
+onPress?: StackHeaderPressHandler;
+```
+
+Callback invoked when the header item is pressed.
+
+Fires when the user taps the header item. When combined with
+[menu](#stackheaderinlineitemios-menu), tapping fires `onPress` and
+long-pressing shows the menu.
+
+**Type:** [`StackHeaderPressHandler`](#stackheaderpresshandler)
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L64"}>
+##### title {#stackheaderinlineitemios-title}
+</ReferenceHeading>
+
+```ts
+title?: string;
+```
+
+A title for the item that is displayed in the header.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L120"}>
+##### type {#stackheaderinlineitemios-type}
+</ReferenceHeading>
+
+```ts
+type: "item";
+```
+
+Marks this object as a header item definition.

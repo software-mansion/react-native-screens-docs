@@ -42,8 +42,8 @@ export interface Feature {
 }
 
 /**
- * The groups a family page is split into: a component's flattened `android` / `ios` props and
- * the platform folders of its Types. Not the platforms a `@platform` tag names (`TagPlatform`).
+ * The keys of a component's flattened props (`ios`, `android`). Not the platforms a
+ * `@platform` tag names (`TagPlatform`).
  */
 export type PageGroup = 'android' | 'ios';
 
@@ -188,9 +188,9 @@ export function componentFor(
 }
 
 /**
- * The page groups, in the order the docs list them — alphabetical, the same everywhere: the
- * platform-specific types after the shared ones, and a component's flattened props after its
- * shared props (`<Tabs.Host ios={{ bottomAccessory }} />` documents as `ios.bottomAccessory`).
+ * The page groups, in the order the docs list them — alphabetical, the same everywhere: a
+ * component's flattened props after its shared props (`<Tabs.Host ios={{ bottomAccessory }} />`
+ * documents as `ios.bottomAccessory`).
  */
 export const PAGE_GROUPS: readonly PageGroup[] = ['android', 'ios'];
 
@@ -359,30 +359,6 @@ export function platformEntriesOf(reflection: Reflection): PlatformEntry[] {
     throw new Error(`Malformed @platform: ${errors.join('; ')}`);
   }
   return entries;
-}
-
-/**
- * The page group of each tag platform. `web` and `windows` have none, so a type that names
- * either is shared.
- */
-const PAGE_GROUP_OF: Partial<Record<TagPlatform, PageGroup>> = {
-  android: 'android',
-  ios: 'ios',
-  tvos: 'ios',
-  visionos: 'ios',
-};
-
-/**
- * The Types folder a type goes to. If all its platforms belong to one page group, it goes to
- * that group (`ios, tvos` → `ios`). Otherwise it is shared (`''`): it runs on both groups
- * (`android, ios`), on a platform outside them (`web`, `ios, web`), or has no `@platform` tag.
- */
-export function pageGroupOf(reflection: Reflection): PageGroup | '' {
-  const groups = platformEntriesOf(reflection).map(
-    entry => PAGE_GROUP_OF[entry.platform],
-  );
-  const [first] = groups;
-  return first && groups.every(group => group === first) ? first : '';
 }
 
 /** The generator-owned folder of a family (relative to docs/) — wiped on every run. */

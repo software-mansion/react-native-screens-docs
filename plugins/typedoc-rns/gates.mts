@@ -11,7 +11,9 @@ import {
 
 import {
   FEATURES,
+  PAGE_GROUPS,
   commentOf,
+  membersOf,
   parsePlatformTag,
   sourceLocation,
 } from './feature-map.mts';
@@ -82,11 +84,32 @@ function isInherited(reflection: Reflection): boolean {
   );
 }
 
-/** True for a key of an object a function parameter takes, which needs no `@platform`. */
-function isUnderParameter(reflection: Reflection): boolean {
-  return ancestors(reflection).some(current =>
-    current.kindOf(ReflectionKind.Parameter),
+/**
+ * The types whose members are props: each component's props type, the `XPropsBase` it
+ * extends, and the props types of its `ios` / `android` props.
+ */
+function propsTypes(project: ProjectReflection): Set<Reflection> {
+  const names = new Set(
+    COMPONENTS.flatMap(component => [component.props, ...component.merged]),
   );
+  const found = new Set<Reflection>();
+  for (const reflection of Object.values(project.reflections)) {
+    if (
+      !(reflection instanceof DeclarationReflection) ||
+      !names.has(reflection.name) ||
+      isComponent(reflection)
+    ) {
+      continue;
+    }
+    found.add(reflection);
+    for (const key of PAGE_GROUPS) {
+      const prop = membersOf(reflection).find(member => member.name === key);
+      if (prop?.type?.type === 'reference' && prop.type.reflection) {
+        found.add(prop.type.reflection);
+      }
+    }
+  }
+  return found;
 }
 
 function text(parts: readonly { text: string }[]): string {
@@ -117,7 +140,10 @@ function hasTrailingZero(version: string | undefined): boolean {
   return /\.0$/.test(version ?? '');
 }
 
-/** What is wrong with a `@platform` tag, or with its absence. */
+/**
+ * What is wrong with a `@platform` tag, or with its absence. A platform without a version is
+ * supported from the library's minimum.
+ */
 function platformProblems(comment: Comment | undefined): string[] {
   const tags = (comment?.blockTags ?? []).filter(
     tag => tag.tag === '@platform',
@@ -132,9 +158,6 @@ function platformProblems(comment: Comment | undefined): string[] {
     problems.push('@platform lists its platforms out of alphabetical order');
   }
   for (const entry of entries) {
-    if (entry.platform !== 'web' && !entry.from) {
-      problems.push(`@platform gives ${entry.platform} no version`);
-    }
     if (hasTrailingZero(entry.from) || hasTrailingZero(entry.to)) {
       problems.push(`@platform ${entry.platform}: drop the trailing \`.0\``);
     }
@@ -192,12 +215,21 @@ function isPropsSummary(
   );
 }
 
-/** What is wrong with one reflection's comment, given what the reference shows of it. */
-function reflectionProblems(reflection: DeclarationReflection): string[] {
+/**
+ * What is wrong with one reflection's comment, given what the reference shows of it. A
+ * component and a prop (a member of `props`) say which platforms they work on; the `@platform`
+ * of a type, a props type or a type's member is not checked.
+ */
+function reflectionProblems(
+  reflection: DeclarationReflection,
+  props: Set<Reflection>,
+): string[] {
   const comment = commentOf(reflection);
   const problems: string[] = [];
   if (!text(comment?.summary ?? [])) problems.push('no summary');
-  if (!isUnderParameter(reflection)) {
+  const isProp =
+    reflection.parent !== undefined && props.has(reflection.parent);
+  if (isComponent(reflection) || isProp) {
     problems.push(...platformProblems(comment));
   }
   // A component's own signature is not documented; its props type is.
@@ -245,10 +277,10 @@ function tagProblems(comment: Comment): string[] {
 
 /**
  * A `Name (file:line) — problem` line for every doc comment that breaks RFC-1947 or RFC-1960:
- * each declaration has a summary and a well-formed `@platform` (a key of a parameter's object
- * needs no `@platform`); a function documents its type parameters, parameters and return
- * value; a component's props type says whose props it holds; a comment uses only RFC-1947's
- * tags. A member a type inherits is checked once, on the type that declares it.
+ * each declaration has a summary; a component and each prop have a well-formed `@platform`;
+ * a function documents its type parameters, parameters and return value; a component's props
+ * type says whose props it holds; a comment uses only RFC-1947's tags. A member a type
+ * inherits is checked once, on the type that declares it.
  */
 export function commentProblems(project: ProjectReflection): string[] {
   const lines = new Map<string, string>();
@@ -262,6 +294,7 @@ export function commentProblems(project: ProjectReflection): string[] {
     }
   };
 
+  const props = propsTypes(project);
   for (const reflection of Object.values(project.reflections)) {
     if (isInherited(reflection)) continue;
     for (const comment of [
@@ -276,7 +309,7 @@ export function commentProblems(project: ProjectReflection): string[] {
       reflection instanceof DeclarationReflection &&
       !reflection.kindOf(NOT_CHECKED)
     ) {
-      report(reflection, reflectionProblems(reflection));
+      report(reflection, reflectionProblems(reflection, props));
     }
   }
   return [...lines.values()];

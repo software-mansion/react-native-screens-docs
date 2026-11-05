@@ -12,15 +12,17 @@ import {
 import {
   FEATURES,
   PAGE_GROUPS,
+  type Component,
   type Feature,
   type PageGroup,
   anchorSlug,
+  blockTagText,
   componentFor,
   linkTarget,
   membersOf,
   outputFile,
   outputRoot,
-  pageGroupOf,
+  parsePlatformTag,
 } from './feature-map.mts';
 
 /**
@@ -48,6 +50,11 @@ export interface Section {
   part?: string;
   /** A component's flattened `ios` / `android` props, in `PAGE_GROUPS` order; `[]` for a type. */
   platforms: PlatformProps[];
+  /**
+   * The components the section documents, as users write them (`Tabs.Host`; `Split.Column` and
+   * `Split.Inspector` share one section); `[]` for a type. Their `@platform` is the section's.
+   */
+  components: DeclarationReflection[];
 }
 
 /** A family page: its feature and its sections in page order. */
@@ -87,12 +94,6 @@ function moduleOf(reflection: Reflection | undefined): Reflection | undefined {
   return current;
 }
 
-// Types are listed shared first, then the platform-specific ones in `PAGE_GROUPS` order.
-function platformRank(reflection: Reflection): number {
-  const platform = pageGroupOf(reflection);
-  return platform ? PAGE_GROUPS.indexOf(platform) + 1 : 0;
-}
-
 /**
  * Writes the reference into the docs tree the feature map describes, instead of TypeDoc's
  * own `<module>/<kind>/<name>` layout, and folds each family into ONE page assembled from
@@ -101,7 +102,7 @@ function platformRank(reflection: Reflection): number {
  *   react/containers/stack/api-reference/
  *     _api-reference.mdx                          imports the parts below, in page order
  *     host/_host.mdx                              the Host section
- *     types/android/_StackHeaderTypeAndroid.mdx   one type per file
+ *     types/_StackHeaderTypeAndroid.mdx           one type per file
  *
  * `MemberRouter` is the plugin's public base class; `getIdealBaseName`, `shouldWritePage`
  * and `buildPages` are its documented extension points. Its types still mark
@@ -175,12 +176,7 @@ export class RnsRouter extends MemberRouter {
     if (component) {
       return `${root}/${component.id}/_${component.id}`;
     }
-    // Types split by the platform they are documented for; one that is not platform-specific
-    // is shared. The grouping reads `@platform` only — nothing is inferred from file names
-    // or from an `*IOS` / `*Android` suffix, which `BlurEffect` and `PlatformIconIOSSfSymbol`
-    // would get wrong in both directions.
-    const platform = pageGroupOf(reflection) || 'shared';
-    return `${root}/types/${platform}/_${this.getReflectionAlias(reflection)}`;
+    return `${root}/types/_${this.getReflectionAlias(reflection)}`;
   }
 
   override buildChildPages(
@@ -223,6 +219,7 @@ export class RnsRouter extends MemberRouter {
         page => page.model as DeclarationReflection,
       );
       const sections: Section[] = [];
+      const sectionOf = new Map<Component, Section>();
       const flattened = new Set<DeclarationReflection>();
 
       for (const component of feature.components) {
@@ -269,22 +266,22 @@ export class RnsRouter extends MemberRouter {
           });
         }
 
-        sections.push({
+        const section: Section = {
           kind: 'component',
           model,
           title: component.label,
           anchor: component.id,
           platforms,
-        });
+          components: [],
+        };
+        sections.push(section);
+        sectionOf.set(component, section);
       }
 
       const componentModels = new Set(sections.map(section => section.model));
       const types = models
         .filter(model => !componentModels.has(model) && !flattened.has(model))
-        .sort(
-          (a, b) =>
-            platformRank(a) - platformRank(b) || a.name.localeCompare(b.name),
-        );
+        .sort((a, b) => a.name.localeCompare(b.name));
       for (const model of types) {
         anchors.set(model, anchorSlug(model.name));
         sections.push({
@@ -293,6 +290,7 @@ export class RnsRouter extends MemberRouter {
           title: model.name,
           anchor: anchorSlug(model.name),
           platforms: [],
+          components: [],
         });
       }
 
@@ -301,8 +299,33 @@ export class RnsRouter extends MemberRouter {
         const component = componentFor(feature, reflection);
         if (component && reflection.name !== component.props) {
           anchors.set(reflection, component.id);
+          if (
+            reflection instanceof DeclarationReflection &&
+            reflection.kindOf(ReflectionKind.Variable | ReflectionKind.Function)
+          ) {
+            sectionOf.get(component)!.components.push(reflection);
+          }
         }
       });
+      // One section shows one set of platform chips. The tags are compared as parsed entries,
+      // so spacing and the order of the platforms do not make two tags differ.
+      for (const [component, section] of sectionOf) {
+        const tags = new Set(
+          section.components.map(reflection =>
+            JSON.stringify(
+              parsePlatformTag(
+                blockTagText(reflection, '@platform') ?? '',
+              ).entries.sort((a, b) => a.platform.localeCompare(b.platform)),
+            ),
+          ),
+        );
+        if (tags.size > 1) {
+          this.application.logger.error(
+            `[typedoc-rns] ${feature.label}/${component.label}: its components give different ` +
+              '@platform tags, but share one section.',
+          );
+        }
+      }
 
       const root = outputRoot(feature);
       for (const section of sections) {
