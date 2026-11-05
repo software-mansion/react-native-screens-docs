@@ -13,9 +13,7 @@ import { RnsTheme } from './theme.mts';
 import { transform } from './transform.mts';
 
 // The pull requests where the doc comment rules are written.
-const RULES =
-  'RFC-1947 https://github.com/software-mansion/react-native-screens-labs/pull/1947, ' +
-  'RFC-1960 https://github.com/software-mansion/react-native-screens-labs/pull/1960';
+const RULES = 'RFC-1947, RFC-1960';
 
 export function load(app: Application): void {
   app.converter.on(Converter.EVENT_RESOLVE_END, context => {
