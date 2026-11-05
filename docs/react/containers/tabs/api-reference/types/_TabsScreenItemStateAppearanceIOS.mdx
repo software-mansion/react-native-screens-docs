@@ -1,0 +1,108 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L136"}>
+#### TabsScreenItemStateAppearanceIOS {#tabsscreenitemstateappearanceios}
+</ReferenceHeading>
+
+Appearance of an iOS tab bar item in a single state.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L194"}>
+##### tabBarItemBadgeBackgroundColor {#tabsscreenitemstateappearanceios-tabbaritembadgebackgroundcolor}
+</ReferenceHeading>
+
+```ts
+tabBarItemBadgeBackgroundColor?: ColorValue;
+```
+
+Specifies the background color of badges for each tab bar item
+when tab screen is selected.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L189"}>
+##### tabBarItemIconColor {#tabsscreenitemstateappearanceios-tabbaritemiconcolor}
+</ReferenceHeading>
+
+```ts
+tabBarItemIconColor?: ColorValue;
+```
+
+Specifies the icon color for each tab bar item when tab screen
+is selected.
+
+This also impacts the title text color.
+
+Starting from iOS 26, it only applies to selected tab bar item. Other items
+adopt a dark or light appearance depending on the theme of the tab bar.
+
+Is overridden by `tabBarItemTitleFontColor` (for title text color).
+Overrides `tabBarTintColor`.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L164"}>
+##### tabBarItemTitleFontColor {#tabsscreenitemstateappearanceios-tabbaritemtitlefontcolor}
+</ReferenceHeading>
+
+```ts
+tabBarItemTitleFontColor?: ColorValue;
+```
+
+Specifies the font color used for the title of each tab bar item
+when tab screen is selected.
+
+Overrides the color defined in `tabBarTintColor` and `tabBarItemIconColor`.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L141"}>
+##### tabBarItemTitleFontFamily {#tabsscreenitemstateappearanceios-tabbaritemtitlefontfamily}
+</ReferenceHeading>
+
+```ts
+tabBarItemTitleFontFamily?: string;
+```
+
+Specifies the font family used for the title of each tab bar item
+when tab screen is selected.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L146"}>
+##### tabBarItemTitleFontSize {#tabsscreenitemstateappearanceios-tabbaritemtitlefontsize}
+</ReferenceHeading>
+
+```ts
+tabBarItemTitleFontSize?: number;
+```
+
+Specifies the font size used for the title of each tab bar item
+when tab screen is selected.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L156"}>
+##### tabBarItemTitleFontStyle {#tabsscreenitemstateappearanceios-tabbaritemtitlefontstyle}
+</ReferenceHeading>
+
+```ts
+tabBarItemTitleFontStyle?: "normal" | "italic";
+```
+
+Specifies the font style used for the title of each tab bar item
+when tab screen is selected.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L151"}>
+##### tabBarItemTitleFontWeight {#tabsscreenitemstateappearanceios-tabbaritemtitlefontweight}
+</ReferenceHeading>
+
+```ts
+tabBarItemTitleFontWeight?: TextStyle['fontWeight'];
+```
+
+Specifies the font weight used for the title of each tab bar item
+when tab screen is selected.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L173"}>
+##### tabBarItemTitlePositionAdjustment {#tabsscreenitemstateappearanceios-tabbaritemtitlepositionadjustment}
+</ReferenceHeading>
+
+```ts
+tabBarItemTitlePositionAdjustment?: TabsScreenItemTitlePositionAdjustmentIOS;
+```
+
+Specifies the title offset for each tab bar item when tab screen
+is selected.
+
+Depending on the iOS version and the device's interface orientation,
+this setting may affect the alignment of the text, badge and icon.
+
+**Type:** [`TabsScreenItemTitlePositionAdjustmentIOS`](#tabsscreenitemtitlepositionadjustmentios)

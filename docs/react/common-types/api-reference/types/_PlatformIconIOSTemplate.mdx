@@ -1,0 +1,35 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L140"}>
+#### PlatformIconIOSTemplate {#platformiconiostemplate}
+</ReferenceHeading>
+
+```ts
+type PlatformIconIOSTemplate = {
+  templateSource: ImageSourcePropType;
+  type: "templateSource";
+};
+```
+
+Icon backed by a template image source, rendered with the component's tint.
+
+Discriminated by `type: 'templateSource'`.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L149"}>
+##### templateSource {#platformiconiostemplate-templatesource}
+</ReferenceHeading>
+
+```ts
+templateSource: ImageSourcePropType;
+```
+
+The image to render as a template, in any form `Image`'s `source` accepts. Its
+shape is used as a mask; the color comes from the component's tint.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L144"}>
+##### type {#platformiconiostemplate-type}
+</ReferenceHeading>
+
+```ts
+type: "templateSource";
+```
+
+Discriminant selecting the template-image variant.

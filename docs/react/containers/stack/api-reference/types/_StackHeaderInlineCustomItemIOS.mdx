@@ -1,0 +1,72 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L135"}>
+#### StackHeaderInlineCustomItemIOS {#stackheaderinlinecustomitemios}
+</ReferenceHeading>
+
+Header item with custom view.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L141"}>
+##### id {#stackheaderinlinecustomitemios-id}
+</ReferenceHeading>
+
+```ts
+id: string;
+```
+
+A unique identifier within the screen header.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L107"}>
+##### identifier {#stackheaderinlinecustomitemios-identifier}
+</ReferenceHeading>
+
+```ts
+identifier?: string;
+```
+
+Stable identifier used to match the item across different screens for
+more intelligent animation on transition.
+
+When navigating between screens, iOS tries to match similarly looking
+items (i.e. same sfSymbol) and animate between them. If the heuristic
+fails, a simpler crossfade is applied. In a situation where visually
+different items should be logically considered the same across screens,
+you may use this prop to tell this fact to the system. The identifier
+shouldn't be updated at runtime; doing so will result in item rebuild and
+visual flash.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L85"}>
+##### menu {#stackheaderinlinecustomitemios-menu}
+</ReferenceHeading>
+
+```ts
+menu?: StackHeaderMenuIOS;
+```
+
+Menu definition for the context menu that appears when item is tapped.
+
+**Type:** [`StackHeaderMenuIOS`](#stackheadermenuios)
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L154"}>
+##### render {#stackheaderinlinecustomitemios-render}
+</ReferenceHeading>
+
+```ts
+render: StackHeaderElementFactory;
+```
+
+A function that renders the custom view.
+
+The subview is sized by React Native's layout engine but positioned by the
+platform native layout. Each item's size is calculated independently and will
+not respect flex layout. Use static width and height for best results.
+
+**Type:** [`StackHeaderElementFactory`](#stackheaderelementfactory)
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L145"}>
+##### type {#stackheaderinlinecustomitemios-type}
+</ReferenceHeading>
+
+```ts
+type: "item";
+```
+
+Marks this object as a header item definition.

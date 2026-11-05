@@ -1,0 +1,43 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L14"}>
+#### StackHeaderMenuItemOptionsIOS {#stackheadermenuitemoptionsios}
+</ReferenceHeading>
+
+Options for updating a menu action (leaf item) at runtime.
+
+Omitted keys preserve current values. Explicit `undefined` resets to default.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L22"}>
+##### icon {#stackheadermenuitemoptionsios-icon}
+</ReferenceHeading>
+
+```ts
+icon?: PlatformIconIOS;
+```
+
+New icon for the menu action.
+
+**Type:** [`PlatformIconIOS`](../../../../common-types/index.mdx#platformiconios)
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L18"}>
+##### title {#stackheadermenuitemoptionsios-title}
+</ReferenceHeading>
+
+```ts
+title?: string;
+```
+
+New title for the menu action.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L31"}>
+##### toggleState {#stackheadermenuitemoptionsios-togglestate}
+</ReferenceHeading>
+
+```ts
+toggleState?: boolean;
+```
+
+Sets the toggle state of the menu item.
+
+When inside a single selection hierarchy, setting `true` deselects the
+previously selected item and selects this one. Setting `false` is a noop
+in this case - only has effect for regular toggles.

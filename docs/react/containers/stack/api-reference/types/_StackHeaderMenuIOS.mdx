@@ -1,0 +1,149 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L124"}>
+#### StackHeaderMenuIOS {#stackheadermenuios}
+</ReferenceHeading>
+
+Represents a menu (or submenu) that groups
+[StackHeaderMenuElementIOS](#stackheadermenuelementios) children.
+
+A menu is a container that can hold both leaf items
+([StackHeaderMenuItemIOS](#stackheadermenuitemios)) and nested menus. Set
+[singleSelection](#stackheadermenuios-singleselection) to `true` to
+make the menu behave like radio group across its entire hierarchy.
+
+Note: The topmost menu that enables this prop becomes Single Selection Root.
+Only the root receives [onSelectionChange](#stackheadermenuios-onselectionchange)
+event, with exactly one item id passed to the callback. Only one item may be selected,
+across the whole hierarchy under Single Selection Root (even when mixing items and nested menus).
+Previously selected item is deselected automatically.
+Multiple Single Selection Roots may exist only if their hierarchy is completely separate.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L192"}>
+##### children {#stackheadermenuios-children}
+</ReferenceHeading>
+
+```ts
+children: StackHeaderMenuElementIOS[];
+```
+
+Child elements of this menu.
+
+Each child is either a [StackHeaderMenuItemIOS](#stackheadermenuitemios) (leaf) or another
+[StackHeaderMenuIOS](#stackheadermenuios), allowing arbitrarily nested menu trees.
+
+**Type:** [`StackHeaderMenuElementIOS[]`](#stackheadermenuelementios)
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L184"}>
+##### displayAsPalette {#stackheadermenuios-displayaspalette}
+</ReferenceHeading>
+
+```ts
+displayAsPalette?: boolean;
+```
+
+Displays the menu as a row of compact items (palette).
+
+When enabled, the menu children are rendered as a horizontal palette
+row instead of a vertical list. Best suited for menus with icon-only items.
+
+On older versions, this option is ignored.
+
+**Default:** `false`
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L172"}>
+##### displayInline {#stackheadermenuios-displayinline}
+</ReferenceHeading>
+
+```ts
+displayInline?: boolean;
+```
+
+Displays the menu inline with parent menu instead of as a submenu.
+
+A menu displayed inline is rendered directly inside its parent menu,
+with horizontal bars separating it from the surrounding items.
+
+**Default:** `false`
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L162"}>
+##### icon {#stackheadermenuios-icon}
+</ReferenceHeading>
+
+```ts
+icon?: PlatformIconIOS;
+```
+
+Icon displayed for the submenu.
+
+For async image sources, the menu renders without an icon first and updates when
+loaded.
+
+**Type:** [`PlatformIconIOS`](../../../../common-types/index.mdx#platformiconios)
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L132"}>
+##### id {#stackheadermenuios-id}
+</ReferenceHeading>
+
+```ts
+id: string;
+```
+
+Unique identifier of the menu.
+
+Used to locate the menu inside a tree and as the reference when querying or
+manipulating menu state.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L202"}>
+##### onSelectionChange {#stackheadermenuios-onselectionchange}
+</ReferenceHeading>
+
+```ts
+onSelectionChange?: StackHeaderMenuSelectionHandler;
+```
+
+Callback invoked when the set of selected toggle items changes.
+
+Receives an array of IDs of all currently selected toggle items in this
+menu's hierarchy. For Single Selection Root, always returns one item.
+When defined below Single Selection Root, the callback doesn't fire.
+In regular non-single-selection case, only changes to direct children are reflected.
+
+**Type:** [`StackHeaderMenuSelectionHandler`](#stackheadermenuselectionhandler)
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L154"}>
+##### singleSelection {#stackheadermenuios-singleselection}
+</ReferenceHeading>
+
+```ts
+singleSelection?: boolean;
+```
+
+Enables single selection mode for this menu and its descendants.
+
+The topmost menu with `singleSelection` enabled becomes Single Selection Root.
+At most one toggle item in the entire hierarchy rooted at this
+menu can be selected at a time.
+
+Items with `itemType` set to `'automatic'` are resolved to `'toggle'` inside a
+`singleSelection` hierarchy. `'action'` items are disallowed.
+
+**Default:** `false`
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L140"}>
+##### title {#stackheadermenuios-title}
+</ReferenceHeading>
+
+```ts
+title?: string;
+```
+
+Title displayed for the menu.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L136"}>
+##### type {#stackheadermenuios-type}
+</ReferenceHeading>
+
+```ts
+type: "menu";
+```
+
+Marks this object as a menu definition.

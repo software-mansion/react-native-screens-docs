@@ -1,0 +1,34 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L433"}>
+#### StackHeaderToolbarMenuElementOptionsAndroid {#stackheadertoolbarmenuelementoptionsandroid}
+</ReferenceHeading>
+
+Options that can be applied to a toolbar menu element via the
+`updateToolbarMenuElements` command.
+
+**Extends:** `Partial`\<`Omit`\<[`StackHeaderToolbarMenuItemBaseAndroid`](#stackheadertoolbarmenuitembaseandroid), `"id"`\>\>
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L442"}>
+##### checked {#stackheadertoolbarmenuelementoptionsandroid-checked}
+</ReferenceHeading>
+
+```ts
+checked?: boolean;
+```
+
+Sets the checked state of the menu item.
+
+In single-selection groups, setting `checked: true`
+automatically unchecks other group members.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L450"}>
+##### menuTitle {#stackheadertoolbarmenuelementoptionsandroid-menutitle}
+</ReferenceHeading>
+
+```ts
+menuTitle?: string;
+```
+
+Sets the header title of a submenu popup.
+
+Only applies to `type: 'menu'` elements. Ignored if the target is a regular
+menu item.

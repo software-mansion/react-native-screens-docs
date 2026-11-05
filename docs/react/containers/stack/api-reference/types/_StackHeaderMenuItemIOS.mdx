@@ -1,0 +1,121 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L41"}>
+#### StackHeaderMenuItemIOS {#stackheadermenuitemios}
+</ReferenceHeading>
+
+Represents a single actionable item inside a [StackHeaderMenuIOS](#stackheadermenuios) menu.
+
+A menu item is a leaf element that the user can interact with.
+Depending on its [itemType](#stackheadermenuitemios-itemtype), the item
+behaves as a one-shot action or a stateful toggle.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L82"}>
+##### icon {#stackheadermenuitemios-icon}
+</ReferenceHeading>
+
+```ts
+icon?: PlatformIconIOS;
+```
+
+Icon displayed for the menu item.
+
+For async image sources, the menu item renders without an icon first and updates
+when loaded.
+
+**Type:** [`PlatformIconIOS`](../../../../common-types/index.mdx#platformiconios)
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L49"}>
+##### id {#stackheadermenuitemios-id}
+</ReferenceHeading>
+
+```ts
+id: string;
+```
+
+Unique identifier of the menu item.
+
+Used to locate the item inside a menu tree and to identify selected items
+in [StackHeaderMenuIOS.onSelectionChange](#stackheadermenuios-onselectionchange) callback.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L74"}>
+##### initialToggleState {#stackheadermenuitemios-initialtogglestate}
+</ReferenceHeading>
+
+```ts
+initialToggleState?: boolean;
+```
+
+Initial on/off state of a toggle item.
+
+Only meaningful when [itemType](#stackheadermenuitemios-itemtype)
+resolves to `'toggle'`. Inside a `singleSelection` hierarchy, at most one
+item can set this to `true`.
+
+**Default:** `false`
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L63"}>
+##### itemType {#stackheadermenuitemios-itemtype}
+</ReferenceHeading>
+
+```ts
+itemType?: StackHeaderMenuItemTypeIOS;
+```
+
+Determines the behavior of the menu item.
+
+**Type:** [`StackHeaderMenuItemTypeIOS`](#stackheadermenuitemtypeios)
+
+**Default:** `'automatic'`
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L104"}>
+##### keepsMenuPresented {#stackheadermenuitemios-keepsmenupresented}
+</ReferenceHeading>
+
+```ts
+keepsMenuPresented?: boolean;
+```
+
+Keeps the menu presented after this item is tapped.
+
+When enabled, selecting this item will not dismiss the menu,
+allowing the user to continue interacting with other items.
+
+This prop should only be used for items in top-level menus.
+
+**Default:** `false`
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L92"}>
+##### onPress {#stackheadermenuitemios-onpress}
+</ReferenceHeading>
+
+```ts
+onPress?: StackHeaderPressHandler;
+```
+
+Callback invoked when the menu item is pressed.
+
+Fires only for items whose effective type is `'action'`. For toggle items,
+this callback will not fire — use
+[onSelectionChange](#stackheadermenuios-onselectionchange) on the
+parent menu instead.
+
+**Type:** [`StackHeaderPressHandler`](#stackheaderpresshandler)
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L57"}>
+##### title {#stackheadermenuitemios-title}
+</ReferenceHeading>
+
+```ts
+title?: string;
+```
+
+Title displayed for the menu item.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L53"}>
+##### type {#stackheadermenuitemios-type}
+</ReferenceHeading>
+
+```ts
+type: "menuItem";
+```
+
+Marks this object as a menu item definition.
