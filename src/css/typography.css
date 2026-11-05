@@ -25,8 +25,8 @@
 
 /*
 Typography tokens. The `--swm-*` ones are read by t-rex-ui's components (admonition
-headings, paginator, search page, title fonts) and by this file; `--ifm-*` hand the house
-fonts to Infima.
+headings, paginator, search page, title fonts) and by this file; `--rns-*` are this site's
+own; `--ifm-*` hand the house fonts to Infima.
 */
 :root {
   --swm-title-landing-font: 'Aeonik';
@@ -44,8 +44,8 @@ fonts to Infima.
   --swm-heading-font-size-smaller: 18px;
   /* h5 and h6 one step apart from h4: on a reference page a type (h4) and its fields (h5)
      would otherwise be the same size. */
-  --swm-h5-font-size: 16px;
-  --swm-h6-font-size: 15px;
+  --rns-h5-font-size: 16px;
+  --rns-h6-font-size: 15px;
   --ifm-code-font-size: 90%;
 
   --ifm-heading-font-family: var(--swm-title-font);
@@ -96,8 +96,8 @@ reference heading sits in with its platform chips; it spaces itself like the hea
   --ifm-h2-font-size: var(--swm-h2-font-size);
   --ifm-h3-font-size: var(--swm-h3-font-size);
   --ifm-h4-font-size: var(--swm-heading-font-size-smaller);
-  --ifm-h5-font-size: var(--swm-h5-font-size);
-  --ifm-h6-font-size: var(--swm-h6-font-size);
+  --ifm-h5-font-size: var(--rns-h5-font-size);
+  --ifm-h6-font-size: var(--rns-h6-font-size);
 
   --ifm-h1-vertical-rhythm-top: 3.75;
   --ifm-h2-vertical-rhythm-top: 2.5;
@@ -118,16 +118,16 @@ reference heading sits in with its platform chips; it spaces itself like the hea
   .markdown > h6,
   .markdown > .reference-heading {
     --swm-heading-font-size-smaller-mobile: 16px;
-    --swm-h5-font-size-mobile: 15px;
-    --swm-h6-font-size-mobile: 14px;
+    --rns-h5-font-size-mobile: 15px;
+    --rns-h6-font-size-mobile: 14px;
 
     /* Decrease the font size on mobile devices */
     --ifm-h1-font-size: var(--swm-h2-font-size);
     --ifm-h2-font-size: var(--swm-h3-font-size);
     --ifm-h3-font-size: var(--swm-heading-font-size-smaller);
     --ifm-h4-font-size: var(--swm-heading-font-size-smaller-mobile);
-    --ifm-h5-font-size: var(--swm-h5-font-size-mobile);
-    --ifm-h6-font-size: var(--swm-h6-font-size-mobile);
+    --ifm-h5-font-size: var(--rns-h5-font-size-mobile);
+    --ifm-h6-font-size: var(--rns-h6-font-size-mobile);
   }
 }
 
