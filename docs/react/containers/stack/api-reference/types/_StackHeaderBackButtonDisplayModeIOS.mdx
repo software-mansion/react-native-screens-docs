@@ -1,0 +1,18 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L367"}>
+#### StackHeaderBackButtonDisplayModeIOS {#stackheaderbackbuttondisplaymodeios}
+</ReferenceHeading>
+
+```ts
+type StackHeaderBackButtonDisplayModeIOS = "default" | "generic" | "minimal";
+```
+
+Controls how the back button title is displayed.
+
+The following values are supported:
+- `'default'` — the system chooses the title depending on available space.
+  On `iOS < 26` options include: custom title (defaults to previous screen
+  title), generic "Back", no title; on `iOS >= 26` it's either custom title
+  (if set) or no title.
+- `'generic'` — on `iOS < 26`, the system uses a generic "Back" title or no
+  title; on `iOS >= 26` it's the same as `'minimal'`.
+- `'minimal'` — no title is displayed next to the back button chevron.

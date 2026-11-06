@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L129"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L136"}>
 #### TabSelectionRejectedEvent {#tabselectionrejectedevent}
 </ReferenceHeading>
 
@@ -12,17 +12,19 @@ type TabSelectionRejectedEvent = {
 };
 ```
 
-Payload of the event emitted when the native side rejects a tab selection request.
+Payload of the event emitted when the native side rejects a tab selection
+request.
 
-Contains the currently active navigation state (`selectedScreenKey`, `provenance`)
-alongside the rejected request details, so that the JS side can reconcile its state.
+Contains the currently active navigation state (`selectedScreenKey`,
+`provenance`) alongside the rejected request details, so that the JS side can
+reconcile its state.
 
 **See:**
 
 - [TabSelectionRejectionReason](#tabselectionrejectionreason) for possible rejection reasons.
- - [TabsHostPropsBase.rejectStaleNavStateUpdates](#host-rejectstalenavstateupdates)
+ - [rejectStaleNavStateUpdates](#host-rejectstalenavstateupdates)
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L137"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L144"}>
 ##### provenance {#tabselectionrejectedevent-provenance}
 </ReferenceHeading>
 
@@ -32,7 +34,7 @@ provenance: number;
 
 Provenance of the currently active navigation state.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L145"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L152"}>
 ##### rejectedBaseProvenance {#tabselectionrejectedevent-rejectedbaseprovenance}
 </ReferenceHeading>
 
@@ -42,7 +44,7 @@ rejectedBaseProvenance: number;
 
 Base provenance of the rejected navigation state update.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L141"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L148"}>
 ##### rejectedScreenKey {#tabselectionrejectedevent-rejectedscreenkey}
 </ReferenceHeading>
 
@@ -52,7 +54,7 @@ rejectedScreenKey: string;
 
 Screen key of the tab whose selection was rejected.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L149"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L156"}>
 ##### rejectionReason {#tabselectionrejectedevent-rejectionreason}
 </ReferenceHeading>
 
@@ -64,7 +66,7 @@ Reason the selection was rejected.
 
 **Type:** [`TabSelectionRejectionReason`](#tabselectionrejectionreason)
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L133"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L140"}>
 ##### selectedScreenKey {#tabselectionrejectedevent-selectedscreenkey}
 </ReferenceHeading>
 

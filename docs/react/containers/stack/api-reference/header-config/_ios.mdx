@@ -2,7 +2,53 @@ import Anchor from '@theme/MDXComponents/A';
 
 <Anchor id="header-config-ios" />
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L340"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L609"}>
+#### ios.backButtonDisplayMode {#header-config-ios-backbuttondisplaymode}
+</ReferenceHeading>
+
+```ts
+backButtonDisplayMode?: StackHeaderBackButtonDisplayModeIOS;
+```
+
+Controls how the back button title is displayed.
+
+**Type:** [`StackHeaderBackButtonDisplayModeIOS`](#stackheaderbackbuttondisplaymodeios)
+
+**Default:** `'default'`
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L623"}>
+#### ios.backButtonMenuEnabled {#header-config-ios-backbuttonmenuenabled}
+</ReferenceHeading>
+
+```ts
+backButtonMenuEnabled?: boolean;
+```
+
+Whether the back button shows the navigation history menu.
+
+Configured on the screen whose back button it applies to (the screen that
+is pushed on top). When `false`, the navigation history menu is not shown
+on either of the gestures that normally open it: long-pressing the back
+button and secondary-clicking it (trackpad / mouse right click); tapping
+it still pops the screen.
+
+**Default:** `true`
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L602"}>
+#### ios.backButtonTitle {#header-config-ios-backbuttontitle}
+</ReferenceHeading>
+
+```ts
+backButtonTitle?: string;
+```
+
+Title displayed next to the back button on this screen.
+
+Configured on the screen whose back button it applies to (the screen that
+is pushed on top). When unset, the system derives the back title from the
+previous screen's `title`.
+
+<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L730"}>
 #### ios.largeSubtitle {#header-config-ios-largesubtitle}
 </ReferenceHeading>
 
@@ -12,11 +58,11 @@ largeSubtitle?: string;
 
 Large subtitle text, displayed when `largeTitleEnabled = true`.
 
-When ScrollView is present on the screen, large header is displayed only when
-fully scrolled to top, otherwise it collapses to regular header. If `largeSubititle` is not defined,
-it falls back to regular subtitle.
+When ScrollView is present on the screen, large header is displayed only
+when fully scrolled to top, otherwise it collapses to regular header. If
+`largeSubtitle` is not defined, it falls back to regular subtitle.
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L346"}>
+<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L737"}>
 #### ios.largeSubtitleItem {#header-config-ios-largesubtitleitem}
 </ReferenceHeading>
 
@@ -24,11 +70,12 @@ it falls back to regular subtitle.
 largeSubtitleItem?: StackHeaderTitleCustomItemIOS;
 ```
 
-Custom item to display as a subtitle for large header. Takes precedence over largeSubtitle text.
+Custom item to display as a subtitle for large header. Takes precedence
+over largeSubtitle text.
 
 **Type:** [`StackHeaderTitleCustomItemIOS`](#stackheadertitlecustomitemios)
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L323"}>
+<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L711"}>
 #### ios.largeTitle {#header-config-ios-largetitle}
 </ReferenceHeading>
 
@@ -38,11 +85,11 @@ largeTitle?: string;
 
 Large title text, displayed when `largeTitleEnabled = true`.
 
-When ScrollView is present on the screen, large header is displayed only when
-fully scrolled to top, otherwise it collapses to regular header. If `largeTitle` is not defined,
-it falls back to regular title.
+When ScrollView is present on the screen, large header is displayed only
+when fully scrolled to top, otherwise it collapses to regular header. If
+`largeTitle` is not defined, it falls back to regular title.
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L329"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L719"}>
 #### ios.largeTitleEnabled {#header-config-ios-largetitleenabled}
 </ReferenceHeading>
 
@@ -50,9 +97,12 @@ it falls back to regular title.
 largeTitleEnabled?: boolean;
 ```
 
-Specifies if the header should display the large title. It collapses to a regular header when scrolling.
+Specifies if the header should display the large title. It collapses to a
+regular header when scrolling.
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L281"}>
+**Default:** `false`
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L655"}>
 #### ios.leadingItems {#header-config-ios-leadingitems}
 </ReferenceHeading>
 
@@ -64,13 +114,136 @@ A list of items placed starting from the leading edge.
 
 Items are placed next to the back button, if present. If there
 is not enough space to fit all leading items at once, they are all moved to
-overflow menu. This differs from trailing items, which are moved one by one.
+overflow menu. This differs from trailing items, which are moved one by
+one.
 
-Note: Custom items are not put into the overflow menu, but are removed entirely.
+Note: Custom items are not put into the overflow menu, but are removed
+entirely.
+
+Some fields of an item are supported only on a newer iOS:
+
+- `menuRepresentation` — iOS 16 or higher
+- `displayAsPalette` of a menu — iOS 17 or higher, ignored on older
+  versions
+- `hidesSharedBackground` and `identifier` — iOS 26 or higher
+- `visibilityPriority` — iOS 27 or higher
 
 **Type:** [`StackHeaderItemIOS[]`](#stackheaderitemios)
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L268"}>
+<ReferenceHeading platforms={[{"platform":"ios","from":"27"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L758"}>
+#### ios.minimizationBehavior {#header-config-ios-minimizationbehavior}
+</ReferenceHeading>
+
+```ts
+minimizationBehavior?: StackHeaderMinimizationBehaviorIOS;
+```
+
+Controls when the navigation bar minimizes in response to scrolling.
+
+When the navigation bar minimizes, an integrated top tab bar minimizes as
+well.
+
+**Type:** [`StackHeaderMinimizationBehaviorIOS`](#stackheaderminimizationbehaviorios)
+
+**Default:** `'automatic'`
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L747"}>
+#### ios.prompt {#header-config-ios-prompt}
+</ReferenceHeading>
+
+```ts
+prompt?: string;
+```
+
+A single line of text displayed at the top of the navigation bar,
+above the title.
+
+Setting this prop increases the height of the navigation bar.
+
+<ReferenceHeading platforms={[{"platform":"ios","from":"27"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L770"}>
+#### ios.restorationBehavior {#header-config-ios-restorationbehavior}
+</ReferenceHeading>
+
+```ts
+restorationBehavior?: StackHeaderRestorationBehaviorIOS;
+```
+
+Controls when a minimized navigation bar restores.
+
+Currently honored only together with
+`minimizationBehavior: 'onScrollDown'`. With other minimization behaviors,
+the system falls back to `'automatic'`.
+
+**Type:** [`StackHeaderRestorationBehaviorIOS`](#stackheaderrestorationbehaviorios)
+
+**Default:** `'automatic'`
+
+<ReferenceHeading platforms={[{"platform":"ios","from":"27"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L778"}>
+#### ios.safeAreaAdjustment {#header-config-ios-safeareaadjustment}
+</ReferenceHeading>
+
+```ts
+safeAreaAdjustment?: StackHeaderSafeAreaAdjustmentIOS;
+```
+
+Controls whether the safe area adjusts while the navigation bar
+minimizes.
+
+**Type:** [`StackHeaderSafeAreaAdjustmentIOS`](#stackheadersafeareaadjustmentios)
+
+**Default:** `'automatic'`
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L818"}>
+#### ios.scrollEdgeAppearance {#header-config-ios-scrolledgeappearance}
+</ReferenceHeading>
+
+```ts
+scrollEdgeAppearance?: StackHeaderAppearanceIOS;
+```
+
+Appearance of the header when the edge of scrollable content
+is aligned with the edge of the header.
+
+If unset, derives the configuration from `standardAppearance`,
+otherwise becomes a standalone definition. In both cases it keeps
+transparent background by default (`iOS < 18`).
+
+Native platform limitations:
+- On iOS 26, header items resolve the `button` / `prominentButton`
+  attributes once, from whichever appearance is in effect at the moment
+  the items are attached to the navigation bar, and do not update on
+  property changes or scroll edge transitions.
+
+The `subtitleFontFamily`, `subtitleFontSize`, `subtitleFontWeight`,
+`subtitleFontStyle` and `subtitleFontColor` fields are supported on iOS 26
+or higher.
+
+**Type:** [`StackHeaderAppearanceIOS`](#stackheaderappearanceios)
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L796"}>
+#### ios.standardAppearance {#header-config-ios-standardappearance}
+</ReferenceHeading>
+
+```ts
+standardAppearance?: StackHeaderAppearanceIOS;
+```
+
+Appearance of the header when the edge of scrollable content
+is not aligned with the edge of the header.
+
+Native platform limitations:
+- On iOS 26, header items resolve the `button` / `prominentButton`
+  attributes once, from whichever appearance is in effect at the moment
+  the items are attached to the navigation bar, and do not update on
+  property changes or scroll edge transitions.
+
+The `subtitleFontFamily`, `subtitleFontSize`, `subtitleFontWeight`,
+`subtitleFontStyle` and `subtitleFontColor` fields are supported on iOS 26
+or higher.
+
+**Type:** [`StackHeaderAppearanceIOS`](#stackheaderappearanceios)
+
+<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L632"}>
 #### ios.subtitleItem {#header-config-ios-subtitleitem}
 </ReferenceHeading>
 
@@ -84,7 +257,7 @@ Takes precedence over subtitle text.
 
 **Type:** [`StackHeaderTitleCustomItemIOS`](#stackheadertitlecustomitemios)
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L290"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L664"}>
 #### ios.titleItem {#header-config-ios-titleitem}
 </ReferenceHeading>
 
@@ -98,7 +271,7 @@ Takes precedence over title text.
 
 **Type:** [`StackHeaderTitleCustomItemIOS`](#stackheadertitlecustomitemios)
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"16"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L301"}>
+<ReferenceHeading platforms={[{"platform":"ios","from":"16"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L679"}>
 #### ios.titleMenu {#header-config-ios-titlemenu}
 </ReferenceHeading>
 
@@ -109,12 +282,16 @@ titleMenu?: StackHeaderMenuIOS;
 Menu definition for the title context menu.
 
 Configures a dropdown menu attached to the navigation bar title area.
-Works independently of [titleItem](#header-config-ios-titleitem); the menu appears for both
-plain text and custom view title.
+Works independently of
+[titleItem](#header-config-ios-titleitem); the menu appears
+for both plain text and custom view title.
+
+`displayAsPalette` is supported on iOS 17 or higher and ignored on older
+versions.
 
 **Type:** [`StackHeaderMenuIOS`](#stackheadermenuios)
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L312"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L700"}>
 #### ios.trailingItems {#header-config-ios-trailingitems}
 </ReferenceHeading>
 
@@ -124,8 +301,18 @@ trailingItems?: StackHeaderItemIOS[];
 
 A list of items placed starting from the trailing edge.
 
-If there is not enough space to fit some items, they are moved to the overflow menu, one by one.
+If there is not enough space to fit some items, they are moved to the
+overflow menu, one by one.
 
-Note: Custom items are not put into the overflow menu, but are removed entirely.
+Note: Custom items are not put into the overflow menu, but are removed
+entirely.
+
+Some fields of an item are supported only on a newer iOS:
+
+- `menuRepresentation` — iOS 16 or higher
+- `displayAsPalette` of a menu — iOS 17 or higher, ignored on older
+  versions
+- `hidesSharedBackground` and `identifier` — iOS 26 or higher
+- `visibilityPriority` — iOS 27 or higher
 
 **Type:** [`StackHeaderItemIOS[]`](#stackheaderitemios)

@@ -1,10 +1,13 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L66"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L57"}>
 #### TabsScreenRepeatedTabSelectionEffects {#tabsscreenrepeatedtabselectioneffects}
 </ReferenceHeading>
 
-Special effects triggered by selecting the already focused tab bar item.
+Special effects applied on repeated tab selection (selecting already focused
+tab bar item).
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L74"}>
+`popToRoot` has priority over `scrollToTop`.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L64"}>
 ##### popToRoot {#tabsscreenrepeatedtabselectioneffects-poptoroot}
 </ReferenceHeading>
 
@@ -12,13 +15,12 @@ Special effects triggered by selecting the already focused tab bar item.
 popToRoot?: boolean;
 ```
 
-When a Stack is nested inside the tab screen and repeated
-selection is detected, the Stack will pop to its root
-screen.
+When Stack is nested inside tab screen and repeated selection is detected,
+the Stack will pop to root screen.
 
 **Default:** `true`
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L82"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L71"}>
 ##### scrollToTop {#tabsscreenrepeatedtabselectioneffects-scrolltotop}
 </ReferenceHeading>
 
@@ -26,8 +28,7 @@ screen.
 scrollToTop?: boolean;
 ```
 
-When there is a ScrollView in the first descendant chain
-from the tab screen and repeated selection is detected, the
-ScrollView will be scrolled to top.
+When there is a ScrollView in first descendant chain from tab screen and
+repeated selection is detected, ScrollView will be scrolled to top.
 
 **Default:** `true`

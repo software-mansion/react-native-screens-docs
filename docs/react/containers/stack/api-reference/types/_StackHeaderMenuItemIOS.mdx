@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L41"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L34"}>
 #### StackHeaderMenuItemIOS {#stackheadermenuitemios}
 </ReferenceHeading>
 
@@ -8,7 +8,7 @@ A menu item is a leaf element that the user can interact with.
 Depending on its [itemType](#stackheadermenuitemios-itemtype), the item
 behaves as a one-shot action or a stateful toggle.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L82"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L75"}>
 ##### icon {#stackheadermenuitemios-icon}
 </ReferenceHeading>
 
@@ -18,12 +18,12 @@ icon?: PlatformIconIOS;
 
 Icon displayed for the menu item.
 
-For async image sources, the menu item renders without an icon first and updates
-when loaded.
+Supports SF Symbols, xcassets, and image sources. For async image sources,
+the menu item renders without an icon first and updates when loaded.
 
 **Type:** [`PlatformIconIOS`](../../../../common-types/index.mdx#platformiconios)
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L49"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L42"}>
 ##### id {#stackheadermenuitemios-id}
 </ReferenceHeading>
 
@@ -36,7 +36,7 @@ Unique identifier of the menu item.
 Used to locate the item inside a menu tree and to identify selected items
 in [StackHeaderMenuIOS.onSelectionChange](#stackheadermenuios-onselectionchange) callback.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L74"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L67"}>
 ##### initialToggleState {#stackheadermenuitemios-initialtogglestate}
 </ReferenceHeading>
 
@@ -52,7 +52,7 @@ item can set this to `true`.
 
 **Default:** `false`
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L63"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L56"}>
 ##### itemType {#stackheadermenuitemios-itemtype}
 </ReferenceHeading>
 
@@ -66,7 +66,7 @@ Determines the behavior of the menu item.
 
 **Default:** `'automatic'`
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L104"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L98"}>
 ##### keepsMenuPresented {#stackheadermenuitemios-keepsmenupresented}
 </ReferenceHeading>
 
@@ -79,11 +79,12 @@ Keeps the menu presented after this item is tapped.
 When enabled, selecting this item will not dismiss the menu,
 allowing the user to continue interacting with other items.
 
-This prop should only be used for items in top-level menus.
+This prop should only be used for items in top-level menus. Requires iOS
+16.0 or later.
 
 **Default:** `false`
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L92"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L85"}>
 ##### onPress {#stackheadermenuitemios-onpress}
 </ReferenceHeading>
 
@@ -100,7 +101,7 @@ parent menu instead.
 
 **Type:** [`StackHeaderPressHandler`](#stackheaderpresshandler)
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L57"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L50"}>
 ##### title {#stackheadermenuitemios-title}
 </ReferenceHeading>
 
@@ -110,7 +111,7 @@ title?: string;
 
 Title displayed for the menu item.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L53"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L46"}>
 ##### type {#stackheadermenuitemios-type}
 </ReferenceHeading>
 

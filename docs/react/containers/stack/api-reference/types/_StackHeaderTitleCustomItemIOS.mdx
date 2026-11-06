@@ -1,10 +1,10 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L221"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L333"}>
 #### StackHeaderTitleCustomItemIOS {#stackheadertitlecustomitemios}
 </ReferenceHeading>
 
-Custom-view header item used for the title / subtitle area.
+Custom view displayed in place of a title or subtitle of the header.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L225"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L337"}>
 ##### id {#stackheadertitlecustomitemios-id}
 </ReferenceHeading>
 
@@ -14,7 +14,7 @@ id: string;
 
 A unique identifier within the screen header.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L239"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L351"}>
 ##### render {#stackheadertitlecustomitemios-render}
 </ReferenceHeading>
 
@@ -25,8 +25,8 @@ render: StackHeaderElementFactory;
 A function that renders the custom view.
 
 The subview is sized by React Native's layout engine but positioned by the
-platform native layout. Each item's size is calculated independently and will
-not respect flex layout. Use static width and height for best results.
+platform native layout. Each item's size is calculated independently and
+will not respect flex layout. Use static width and height for best results.
 
 Note: Due to layout process limitations, text view will not resize and
 ellipsize to fit available space without manually setting desired view

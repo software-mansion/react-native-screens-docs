@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L208"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L277"}>
 #### PlatformIconAndroid {#platformiconandroid}
 </ReferenceHeading>
 
@@ -6,10 +6,11 @@
 type PlatformIconAndroid = PlatformIconAndroidDrawableResource | PlatformIconShared;
 ```
 
-Icon descriptor for an Android component.
+Icon of a native element on Android, such as a header item.
 
-The following variants are supported:
-- [PlatformIconAndroidDrawableResource](#platformiconandroiddrawableresource) — a drawable resource by name.
-- [PlatformIconShared](#platformiconshared) — a React Native image source.
+The `type` field selects the kind of the icon. The following kinds are
+supported:
+- [PlatformIconAndroidDrawableResource](#platformiconandroiddrawableresource) — a drawable resource.
+- [PlatformIconShared](#platformiconshared) — an image source.
 
 **Type:** [`PlatformIconAndroidDrawableResource`](#platformiconandroiddrawableresource) \| [`PlatformIconShared`](#platformiconshared)

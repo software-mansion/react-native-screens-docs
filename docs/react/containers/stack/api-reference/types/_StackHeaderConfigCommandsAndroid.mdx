@@ -1,10 +1,11 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L471"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L480"}>
 #### StackHeaderConfigCommandsAndroid {#stackheaderconfigcommandsandroid}
 </ReferenceHeading>
 
-Imperative commands for the Android header configuration.
+Commands of [Stack.HeaderConfig](#header-config) available on Android, through
+[\`ref.android\`](#stackheaderconfigref-android).
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L498"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L514"}>
 ##### updateToolbarMenuElements {#stackheaderconfigcommandsandroid-updatetoolbarmenuelements}
 </ReferenceHeading>
 
@@ -25,16 +26,23 @@ atomic batch:
 - updates apply in array order, so an `id` may repeat and later values
   win field by field;
 - once applied, each affected group emits at most one, coalesced
-  `onToolbarMenuGroupSelectionChange`.
+  `onSelectionChange`.
 
 Batches run in call order on a serial FIFO queue, so a later call is never
 overtaken by an earlier one whose icon happened to load late.
 
-Updates are applied to the live toolbar: they take effect only while the
-header is shown, and are discarded whenever the menu is rebuilt from the
-`toolbarMenu` prop — whether by a prop change or a structural change such
-as hiding and re-showing the header. They persist across unrelated
-re-renders. An update whose `id` is not in the current menu is ignored.
+Updates persist for the lifetime of the current `toolbarMenu`
+configuration: they survive every native header rebuild — an effective
+color scheme change, a header `type`, `maxLines` or
+`collapsedTitleGravityMode` change, hiding and re-showing the header,
+reattaching the screen (e.g. switching tabs) — and unrelated re-renders.
+Updates sent while the header is hidden are recorded — and emit their
+selection events — as usual, and take effect when the header is next
+shown. Only a `toolbarMenu` prop change resets them, dropping the
+batches still queued as well (see its docs). An update whose `id` is not
+in the current menu is ignored. An `icon` set via this command takes
+precedence over the icon declared in `toolbarMenu` until the next
+`toolbarMenu` change.
 
 **Parameters:**
 

@@ -1,12 +1,12 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L396"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L401"}>
 #### StackHeaderToolbarMenuAndroid {#stackheadertoolbarmenuandroid}
 </ReferenceHeading>
 
-A submenu element of the toolbar menu, opening a nested popup.
+Submenu of the toolbar menu.
 
 **Extends:** [`StackHeaderToolbarMenuItemBaseAndroid`](#stackheadertoolbarmenuitembaseandroid), [`StackHeaderToolbarMenuBaseAndroid`](#stackheadertoolbarmenubaseandroid)
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L419"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L425"}>
 ##### menuTitle {#stackheadertoolbarmenuandroid-menutitle}
 </ReferenceHeading>
 
@@ -16,15 +16,15 @@ menuTitle?: string;
 
 Header title displayed at the top of the submenu popup.
 
-Maps to Android's `SubMenu.setHeaderTitle()`. This is distinct from
-`title`, which controls the label shown in the parent menu's item row.
+This is distinct from `title`, which controls the label shown in the parent
+menu's item row.
 
-If `title` is changed by using the `updateToolbarMenuElements` view
-command, the menu title will also be changed to the new title (unless the
-new title is set to `undefined`). In order to keep the custom menu title,
-you should also include `menuTitle` in the view command.
+When left unset, the header falls back to `title`; when both are unset,
+the popup shows no header.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L406"}>
+**See:** [SubMenu.setHeaderTitle](https://developer.android.com/reference/android/view/SubMenu#setHeaderTitle(java.lang.CharSequence))
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L412"}>
 ##### type {#stackheadertoolbarmenuandroid-type}
 </ReferenceHeading>
 
@@ -34,5 +34,10 @@ type: "menu";
 
 Marks this object as a submenu.
 
-Android's `MenuItem` interface claims that nesting submenus isn't supported
-but Material's implementation handles it correctly.
+:::note
+
+This is an implementation detail and may change. Android's `MenuItem`
+interface claims that nesting submenus isn't supported but Material's
+implementation handles it correctly.
+
+:::

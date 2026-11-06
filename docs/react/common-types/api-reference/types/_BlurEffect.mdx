@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L15"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L34"}>
 #### BlurEffect {#blureffect}
 </ReferenceHeading>
 
@@ -27,12 +27,31 @@ type BlurEffect =
   | "systemChromeMaterialDark";
 ```
 
-Blur effect style applied to a material background.
+Blur effect applied to the background of a native view.
 
-Each value maps to a UIKit `UIBlurEffect.Style` of the same name. The following values are
-supported: `'none'`, `'extraLight'`, `'light'`, `'dark'`, `'regular'`, `'prominent'`,
-`'systemUltraThinMaterial'`, `'systemThinMaterial'`, `'systemMaterial'`,
-`'systemThickMaterial'`, `'systemChromeMaterial'`, and their explicit `Light` / `Dark`
-variants (e.g. `'systemMaterialLight'`, `'systemMaterialDark'`).
+`'none'` disables the blur effect. Every other value is the UIKit
+`UIBlurEffect.Style` of the same name; see the UIKit documentation for how
+each one looks. The following values are supported:
+- `'none'`
+- `'extraLight'`
+- `'light'`
+- `'dark'`
+- `'regular'`
+- `'prominent'`
+- `'systemUltraThinMaterial'`
+- `'systemThinMaterial'`
+- `'systemMaterial'`
+- `'systemThickMaterial'`
+- `'systemChromeMaterial'`
+- `'systemUltraThinMaterialLight'`
+- `'systemThinMaterialLight'`
+- `'systemMaterialLight'`
+- `'systemThickMaterialLight'`
+- `'systemChromeMaterialLight'`
+- `'systemUltraThinMaterialDark'`
+- `'systemThinMaterialDark'`
+- `'systemMaterialDark'`
+- `'systemThickMaterialDark'`
+- `'systemChromeMaterialDark'`
 
 **See:** [UIBlurEffect.Style](https://developer.apple.com/documentation/uikit/uiblureffect/style)

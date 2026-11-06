@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L69"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L93"}>
 #### InterfaceOrientation {#interfaceorientation}
 </ReferenceHeading>
 
@@ -14,14 +14,16 @@ type InterfaceOrientation =
   | "landscapeRight";
 ```
 
-Set of interface orientations a container supports.
+Interface orientations a screen supports.
 
 The following values are supported:
 - `'all'` — all orientations.
-- `'allButUpsideDown'` — all orientations except portrait upside-down.
-- `'portrait'` — portrait orientations.
-- `'portraitUp'` — upright portrait.
-- `'portraitDown'` — upside-down portrait.
-- `'landscape'` — landscape orientations.
-- `'landscapeLeft'` — landscape, rotated left.
-- `'landscapeRight'` — landscape, rotated right.
+- `'allButUpsideDown'` — all orientations but the upside-down portrait.
+- `'portrait'` — both the portrait-up and portrait-down orientations.
+- `'portraitUp'` — the portrait-up orientation.
+- `'portraitDown'` — the portrait-down orientation.
+- `'landscape'` — both the landscape-left and landscape-right orientations.
+- `'landscapeLeft'` — the landscape-left orientation.
+- `'landscapeRight'` — the landscape-right orientation.
+
+**See:** [UIInterfaceOrientationMask](https://developer.apple.com/documentation/uikit/uiinterfaceorientationmask)

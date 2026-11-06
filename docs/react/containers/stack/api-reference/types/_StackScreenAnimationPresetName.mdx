@@ -1,0 +1,43 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/animation/types.ts#L78"}>
+#### StackScreenAnimationPresetName {#stackscreenanimationpresetname}
+</ReferenceHeading>
+
+```ts
+type StackScreenAnimationPresetName =
+  | "default"
+  | "none"
+  | "fade"
+  | "slideFromRight"
+  | "slideFromLeft"
+  | "slideFromBottom"
+  | "slideFromTop"
+  | "fadeFromBottom"
+  | "fadeFromTop"
+  | "iosFromRight"
+  | "iosFromLeft";
+```
+
+Name of a transition preset.
+
+The following values are supported:
+- `'default'` — the activity transition of the device's Android version.
+- `'none'` — no visible animation.
+- `'fade'` — the screens cross-fade.
+- `'slideFromRight'` — the new screen slides in from the right and pushes
+  the previous one out to the left; a pop reverses it.
+- `'slideFromLeft'` — the new screen slides in from the left and pushes the
+  previous one out to the right; a pop reverses it.
+- `'slideFromBottom'` — the new screen slides up from the bottom over the
+  previous one; a pop slides it back down.
+- `'slideFromTop'` — the new screen slides down from the top over the
+  previous one; a pop slides it back up.
+- `'fadeFromBottom'` — the new screen fades in while rising from slightly
+  below; a pop fades it out while it falls.
+- `'fadeFromTop'` — the new screen fades in while falling from slightly
+  above; a pop fades it out while it rises.
+- `'iosFromRight'` — the new screen slides in from the right while the
+  previous one moves partly to the left and dims; a pop reverses it.
+- `'iosFromLeft'` — the new screen slides in from the left while the
+  previous one moves partly to the right and dims; a pop reverses it.
+
+Directions are physical: they are not mirrored in right-to-left layouts.

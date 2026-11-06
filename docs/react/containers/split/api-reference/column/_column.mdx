@@ -1,10 +1,16 @@
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L20"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L20"}>
 ### Column {#column}
 </ReferenceHeading>
 
+:::warning
+
+This API is experimental. It may change in a breaking way — or be removed entirely — in any release.
+
+:::
+
 **Extends:** `ViewProps`
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L26"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L26"}>
 #### children {#column-children}
 </ReferenceHeading>
 
@@ -12,60 +18,61 @@
 children?: ReactNode;
 ```
 
-Content rendered inside the column.
+Content of the column.
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L35"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L35"}>
 #### onDidAppear {#column-ondidappear}
 </ReferenceHeading>
 
 ```ts
-onDidAppear?: SplitScreenEventHandler<EmptyEventPayload>;
+onDidAppear?: NativeEventHandler<EmptyEventPayload>;
 ```
 
-A callback that gets invoked when the column did appear.
+A callback that gets invoked when the current `Split.Column` did appear.
 
 This is called as soon as the transition ends.
 
-**Type:** [`SplitScreenEventHandler`](#splitscreeneventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L44"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L44"}>
 #### onDidDisappear {#column-ondiddisappear}
 </ReferenceHeading>
 
 ```ts
-onDidDisappear?: SplitScreenEventHandler<EmptyEventPayload>;
+onDidDisappear?: NativeEventHandler<EmptyEventPayload>;
 ```
 
-A callback that gets invoked when the column did disappear.
+A callback that gets invoked when the current `Split.Column` did disappear.
 
 This is called as soon as the transition ends.
 
-**Type:** [`SplitScreenEventHandler`](#splitscreeneventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L53"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L53"}>
 #### onWillAppear {#column-onwillappear}
 </ReferenceHeading>
 
 ```ts
-onWillAppear?: SplitScreenEventHandler<EmptyEventPayload>;
+onWillAppear?: NativeEventHandler<EmptyEventPayload>;
 ```
 
-A callback that gets invoked when the column will appear.
+A callback that gets invoked when the current `Split.Column` will appear.
 
 This is called as soon as the transition begins.
 
-**Type:** [`SplitScreenEventHandler`](#splitscreeneventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L62"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L63"}>
 #### onWillDisappear {#column-onwilldisappear}
 </ReferenceHeading>
 
 ```ts
-onWillDisappear?: SplitScreenEventHandler<EmptyEventPayload>;
+onWillDisappear?: NativeEventHandler<EmptyEventPayload>;
 ```
 
-A callback that gets invoked when the column will disappear.
+A callback that gets invoked when the current `Split.Column` will
+disappear.
 
 This is called as soon as the transition begins.
 
-**Type:** [`SplitScreenEventHandler`](#splitscreeneventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>

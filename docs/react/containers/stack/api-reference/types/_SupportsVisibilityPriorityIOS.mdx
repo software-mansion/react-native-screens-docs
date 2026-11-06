@@ -1,0 +1,30 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L131"}>
+#### SupportsVisibilityPriorityIOS {#supportsvisibilitypriorityios}
+</ReferenceHeading>
+
+Field that sets the visibility priority of a header item.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L149"}>
+##### visibilityPriority {#supportsvisibilitypriorityios-visibilitypriority}
+</ReferenceHeading>
+
+```ts
+visibilityPriority?: StackHeaderItemVisibilityPriorityIOS;
+```
+
+Decides which items give way first when the header runs out of room.
+
+When the items do not fit, the header moves the ones with the lowest
+priority into the overflow ("...") menu, and keeps the higher ones.
+
+Only the relative order of the items matters.
+
+When the item is placed in an implicit group of items, the group
+inherits this priority.
+
+A custom item ([render](#stackheaderinlinecustomitemios-render))
+moved into the overflow menu has no content to show there.
+
+**Type:** [`StackHeaderItemVisibilityPriorityIOS`](#stackheaderitemvisibilitypriorityios)
+
+**Default:** `'standard'`
