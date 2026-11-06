@@ -1,29 +1,33 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L106"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L157"}>
 #### PlatformIconShared {#platformiconshared}
 </ReferenceHeading>
 
-```ts
-type PlatformIconShared = {
-  imageSource: ImageSourcePropType;
-  type: "imageSource";
-};
-```
+Icon loaded from an image source.
 
-Icon backed by a React Native image source, shared across platforms.
+The source takes the same values as the `source` of React Native's `Image`.
 
-Discriminated by `type: 'imageSource'`.
+:::note
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L114"}>
+This is an implementation detail and may change. On iOS, the image is
+loaded with React Native's image loader, so `headers` and the other fields
+of the source are used. On Android, only the `uri` of the source is used:
+its other fields are ignored and animated images are not supported.
+
+:::
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L167"}>
 ##### imageSource {#platformiconshared-imagesource}
 </ReferenceHeading>
 
 ```ts
-imageSource: ImageSourcePropType;
+imageSource: ImageSource;
 ```
 
-The image to render, in any form `Image`'s `source` accepts.
+Image source the icon is loaded from.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L110"}>
+**See:** [React Native: ImageSource](https://reactnative.dev/docs/image#imagesource)
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L161"}>
 ##### type {#platformiconshared-type}
 </ReferenceHeading>
 
@@ -31,4 +35,4 @@ The image to render, in any form `Image`'s `source` accepts.
 type: "imageSource";
 ```
 
-Discriminant selecting the image-source variant.
+Kind of the icon.

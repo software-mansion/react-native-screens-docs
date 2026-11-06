@@ -1,0 +1,29 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/animation/types.ts#L94"}>
+#### StackScreenAnimationTimingOptions {#stackscreenanimationtimingoptions}
+</ReferenceHeading>
+
+Options that change the timing of a preset.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/animation/types.ts#L99"}>
+##### duration {#stackscreenanimationtimingoptions-duration}
+</ReferenceHeading>
+
+```ts
+duration?: number;
+```
+
+Replaces the preset's reference duration (the longer of its push and pop)
+in milliseconds; both are rescaled by the same factor.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/animation/types.ts#L104"}>
+##### easing {#stackscreenanimationtimingoptions-easing}
+</ReferenceHeading>
+
+```ts
+easing?: StackScreenAnimationEasing;
+```
+
+Replaces the curve of every animated property of the preset. A predictive
+back gesture always scrubs linearly with the finger.
+
+**Type:** [`StackScreenAnimationEasing`](#stackscreenanimationeasing)

@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L195"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L262"}>
 #### PlatformIconIOS {#platformiconios}
 </ReferenceHeading>
 
@@ -10,12 +10,14 @@ type PlatformIconIOS =
   | PlatformIconShared;
 ```
 
-Icon descriptor for an iOS component.
+Icon of a native element on iOS, such as a header item.
 
-The following variants are supported:
-- [PlatformIconIOSSfSymbol](#platformiconiossfsymbol) — an SF Symbol by name.
-- [PlatformIconIOSXcasset](#platformiconiosxcasset) — an asset-catalog image by name.
-- [PlatformIconIOSTemplate](#platformiconiostemplate) — a template image source.
-- [PlatformIconShared](#platformiconshared) — a React Native image source.
+The `type` field selects the kind of the icon. The following kinds are
+supported:
+- [PlatformIconIOSSfSymbol](#platformiconiossfsymbol) — an SF Symbol.
+- [PlatformIconIOSXcasset](#platformiconiosxcasset) — an image from the app's asset catalog.
+- [PlatformIconIOSTemplate](#platformiconiostemplate) — an image source rendered as a template
+  image.
+- [PlatformIconShared](#platformiconshared) — an image source.
 
 **Type:** [`PlatformIconIOSSfSymbol`](#platformiconiossfsymbol) \| [`PlatformIconIOSXcasset`](#platformiconiosxcasset) \| [`PlatformIconIOSTemplate`](#platformiconiostemplate) \| [`PlatformIconShared`](#platformiconshared)

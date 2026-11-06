@@ -1,30 +1,29 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L99"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L100"}>
 #### StackHeaderBackgroundSubviewAndroid {#stackheaderbackgroundsubviewandroid}
 </ReferenceHeading>
 
-Custom React subview stretched across the header as its background.
+Custom view rendered behind the header content.
 
 <ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L112"}>
 ##### collapseMode {#stackheaderbackgroundsubviewandroid-collapsemode}
 </ReferenceHeading>
 
 ```ts
-collapseMode?: StackHeaderSubviewCollapseModeAndroid;
+collapseMode?: StackHeaderBackgroundSubviewCollapseModeAndroid;
 ```
 
-Controls how the background subview behaves when the app bar
-collapses.
+Controls how the background subview behaves when the app bar collapses.
 
-`pin` is not currently supported because the background subview is
+`'pin'` is not currently supported because the background subview is
 stretched to match the entire `AppBarLayout`, which causes pinned content
-to move immediately rather than staying fixed. Support for `pin` collapse
+to move immediately rather than staying fixed. Support for `'pin'` collapse
 mode might be added in the future.
 
-**Type:** [`StackHeaderSubviewCollapseModeAndroid`](#stackheadersubviewcollapsemodeandroid)
+**Type:** [`StackHeaderBackgroundSubviewCollapseModeAndroid`](#stackheaderbackgroundsubviewcollapsemodeandroid)
 
 **Default:** `'off'`
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L121"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L120"}>
 ##### render {#stackheaderbackgroundsubviewandroid-render}
 </ReferenceHeading>
 
@@ -32,8 +31,7 @@ mode might be added in the future.
 render: StackHeaderElementFactory;
 ```
 
-Render callback for the React element used as the header
-background.
+Render callback for the React element used as the header background.
 
 The subview is stretched to match the header (`AppBarLayout`) dimensions,
 so parent-relative sizing (e.g. `flex: 1`) works correctly.

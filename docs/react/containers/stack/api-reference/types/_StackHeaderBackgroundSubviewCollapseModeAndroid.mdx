@@ -3,9 +3,12 @@
 </ReferenceHeading>
 
 ```ts
-type StackHeaderBackgroundSubviewCollapseModeAndroid = StackHeaderSubviewCollapseModeAndroid;
+type StackHeaderBackgroundSubviewCollapseModeAndroid = "off" | "parallax";
 ```
 
-Alias of [StackHeaderSubviewCollapseModeAndroid](#stackheadersubviewcollapsemodeandroid).
+Behavior of the background subview when the app bar collapses.
 
-**Type:** [`StackHeaderSubviewCollapseModeAndroid`](#stackheadersubviewcollapsemodeandroid)
+The following values are available:
+- `'off'` - the subview scrolls away with the app bar,
+- `'parallax'` - the subview scrolls at a slower rate, creating a parallax
+  effect.

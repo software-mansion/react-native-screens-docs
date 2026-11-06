@@ -1,0 +1,36 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L79"}>
+#### SupportsMenuIOS {#supportsmenuios}
+</ReferenceHeading>
+
+Fields of a header item that can show a [menu](#stackheadermenuios).
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L83"}>
+##### menu {#supportsmenuios-menu}
+</ReferenceHeading>
+
+```ts
+menu?: StackHeaderMenuIOS;
+```
+
+Menu definition for the context menu that appears when item is tapped.
+
+**Type:** [`StackHeaderMenuIOS`](#stackheadermenuios)
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L95"}>
+##### menuRepresentation {#supportsmenuios-menurepresentation}
+</ReferenceHeading>
+
+```ts
+menuRepresentation?: StackHeaderMenuIOS;
+```
+
+Menu definition substituting the item when it is displayed in a menu.
+
+When the system moves the item into a menu (e.g. the navigation bar
+overflow menu), this menu is displayed in its place. Useful for custom
+items ([render](#stackheaderinlinecustomitemios-render)), which iOS
+doesn't display in the overflow menu otherwise.
+The `id`s used in the menu are expected to be unique across every `menu`
+and `menuRepresentation`.
+
+**Type:** [`StackHeaderMenuIOS`](#stackheadermenuios)

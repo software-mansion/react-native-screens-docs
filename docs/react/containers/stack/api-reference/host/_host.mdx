@@ -1,8 +1,8 @@
-<ReferenceHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/host/StackHost.types.ts#L12"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/host/StackHost.types.ts#L30"}>
 ### Host {#host}
 </ReferenceHeading>
 
-<ReferenceHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/host/StackHost.types.ts#L18"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/host/StackHost.types.ts#L37"}>
 #### children {#host-children}
 </ReferenceHeading>
 
@@ -10,16 +10,64 @@
 children: NonNullable<ViewProps["children"]>;
 ```
 
-Stack screens to display; wrap each screen in a `Stack.Screen`.
+Screens of the stack, declared with [Stack.Screen](#screen).
 
-<ReferenceHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/host/StackHost.types.ts#L24"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/host/StackHost.types.ts#L75"}>
+#### colorScheme {#host-colorscheme}
+</ReferenceHeading>
+
+```ts
+colorScheme?: StackColorScheme;
+```
+
+Specifies the color scheme used by the container and any child
+containers.
+
+Toolbar menu state survives a change of the effective color scheme:
+checkbox/radio selections and changes applied via the
+`updateToolbarMenuElements` view command are reapplied.
+
+**Type:** [`StackColorScheme`](#stackcolorscheme)
+
+:::note
+
+This is an implementation detail and may change. On Android, changing the
+effective color scheme rebuilds the header.
+
+:::
+
+**Default:** `'inherit'`
+
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/host/StackHost.types.ts#L58"}>
+#### direction {#host-direction}
+</ReferenceHeading>
+
+```ts
+direction?: StackDirection;
+```
+
+Specifies the layout direction of the native container, its views and
+child containers.
+
+**Type:** [`StackDirection`](#stackdirection)
+
+:::note
+
+This is an implementation detail and may change. On Android, this property
+relies on `react-native`'s `style.direction` (which sets the native Android
+`layoutDirection` View property). It is propagated via the view hierarchy,
+so `inherit` falls back to the direction set on one of the parent views.
+
+:::
+
+**Default:** `'inherit'`
+
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/host/StackHost.types.ts#L44"}>
 #### ref {#host-ref}
 </ReferenceHeading>
 
 ```ts
-ref?: React.RefObject<StackHostInstance | null>;
+ref?: React.Ref<HostInstance>;
 ```
 
-Ref to the underlying native stack host component.
-
-**Type:** `React.RefObject`\<[`StackHostInstance`](#stackhostinstance) \| `null`\>
+Ref to the native view of the stack.

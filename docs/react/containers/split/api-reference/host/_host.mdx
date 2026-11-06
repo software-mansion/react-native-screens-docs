@@ -1,10 +1,16 @@
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L228"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L291"}>
 ### Host {#host}
 </ReferenceHeading>
 
+:::warning
+
+This API is experimental. It may change in a breaking way — or be removed entirely — in any release.
+
+:::
+
 **Extends:** `ViewProps`
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L235"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L298"}>
 #### children {#host-children}
 </ReferenceHeading>
 
@@ -12,10 +18,10 @@
 children: NonNullable<ReactNode>;
 ```
 
-Columns to display; wrap each column in a `Split.Column`, and the optional
-inspector in a `Split.Inspector`.
+Columns of the Split, declared with [Split.Column](#column) and
+[Split.Inspector](#inspector).
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L312"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L396"}>
 #### colorScheme {#host-colorscheme}
 </ReferenceHeading>
 
@@ -23,13 +29,14 @@ inspector in a `Split.Inspector`.
 colorScheme?: SplitColorScheme;
 ```
 
-Specifies the color scheme used by the container and any child containers.
+Specifies the color scheme used by the container and any child
+containers.
 
 **Type:** [`SplitColorScheme`](#splitcolorscheme)
 
 **Default:** `'inherit'`
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L248"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L323"}>
 #### columnMetrics {#host-columnmetrics}
 </ReferenceHeading>
 
@@ -39,9 +46,20 @@ columnMetrics?: SplitColumnMetrics;
 
 An object describing bounds for column widths.
 
+It supports definitions for the following columns:
+
+- `primary` - the leftmost sidebar
+- `supplementary` - the intermediate sidebar
+
+On iOS 26 or higher, it also supports definitions for:
+
+- `secondary` - the view with the main content
+- `inspector` - the view which is providing additional data about the
+  secondary column
+
 **Type:** [`SplitColumnMetrics`](#splitcolumnmetrics)
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L255"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L331"}>
 #### displayModeButtonVisibility {#host-displaymodebuttonvisibility}
 </ReferenceHeading>
 
@@ -49,89 +67,97 @@ An object describing bounds for column widths.
 displayModeButtonVisibility?: SplitDisplayModeButtonVisibility;
 ```
 
-Determines whether the button for changing the Split display mode is visible on the screen.
+Determines whether the button for changing the Split display mode is
+visible on the screen.
 
 **Type:** [`SplitDisplayModeButtonVisibility`](#splitdisplaymodebuttonvisibility)
 
 **Default:** `'automatic'`
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L261"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L338"}>
 #### onCollapse {#host-oncollapse}
 </ReferenceHeading>
 
 ```ts
-onCollapse?: SplitHostEventHandler<EmptyEventPayload>;
+onCollapse?: NativeEventHandler<EmptyEventPayload>;
 ```
 
-A callback that gets invoked when the Split was collapsed to a single column.
+A callback that gets invoked when the Split was collapsed to a single
+column.
 
-**Type:** [`SplitHostEventHandler`](#splithosteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L271"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L350"}>
 #### onDisplayModeWillChange {#host-ondisplaymodewillchange}
 </ReferenceHeading>
 
 ```ts
-onDisplayModeWillChange?: SplitHostEventHandler<DisplayModeWillChangeEvent>;
+onDisplayModeWillChange?: NativeEventHandler<DisplayModeWillChangeEvent>;
 ```
 
-A callback that gets invoked when the Split displayMode has changed.
+A callback that gets invoked when the Split displayMode is about to
+change.
 
-The purpose of this callback is tracking displayMode updates on host from the JS side.
-These updates might be a consequence of some native interactions, like pressing native button or performing swipe gesture.
+The purpose of this callback is tracking displayMode updates on host from
+the JS side. These updates might be a consequence of some native
+interactions, like pressing native button or performing swipe gesture.
 
-**Type:** [`SplitHostEventHandler`](#splithosteventhandler)\<[`DisplayModeWillChangeEvent`](#displaymodewillchangeevent)\>
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`DisplayModeWillChangeEvent`](#displaymodewillchangeevent)\>
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L279"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L359"}>
 #### onExpand {#host-onexpand}
 </ReferenceHeading>
 
 ```ts
-onExpand?: SplitHostEventHandler<EmptyEventPayload>;
+onExpand?: NativeEventHandler<EmptyEventPayload>;
 ```
 
-A callback that gets invoked when the Split was expanded to multiple columns.
+A callback that gets invoked when the Split was expanded to multiple
+columns.
 
-**Type:** [`SplitHostEventHandler`](#splithosteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L288"}>
+<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L371"}>
 #### onInspectorHide {#host-oninspectorhide}
 </ReferenceHeading>
 
 ```ts
-onInspectorHide?: SplitHostEventHandler<EmptyEventPayload>;
+onInspectorHide?: NativeEventHandler<EmptyEventPayload>;
 ```
 
-A callback that gets invoked when the Split inspector is either programmatically hidden (in column presentation) or dismissed (in modal presentation).
+A callback that gets invoked when the Split inspector is either
+programmatically hidden (in column presentation) or dismissed (in modal
+presentation).
 
-The purpose of this callback depends on whether the Split is collapsed or expanded.
+The purpose of this callback depends on whether the Split is collapsed or
+expanded.
 
-**Type:** [`SplitHostEventHandler`](#splithosteventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L305"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L388"}>
 #### orientation {#host-orientation}
 </ReferenceHeading>
 
 ```ts
-orientation?: SplitHostOrientation;
+orientation?: SplitOrientation;
 ```
 
-Specifies supported orientations for the split host.
+Specifies supported orientations for the Split.
 
 Procedure for determining supported orientations:
 1. Traversal initiates from the root component and moves to the
    deepest child possible.
 2. Components are queried for their supported orientations:
-   - if `orientation` is explicitly set (e.g., `'portrait'`,
-     `'landscape'`), it is immediately used,
-   - if `orientation` is set to `'inherit'`, the parent component
+   - if `orientation` is explicitly set (e.g., `portrait`,
+     `landscape`), it is immediately used,
+   - if `orientation` is set to `inherit`, the parent component
      is queried.
 
-**Type:** [`SplitHostOrientation`](#splithostorientation)
+**Type:** [`SplitOrientation`](#splitorientation)
 
 **Default:** `'inherit'`
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L328"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L416"}>
 #### preferredDisplayMode {#host-preferreddisplaymode}
 </ReferenceHeading>
 
@@ -139,15 +165,18 @@ Procedure for determining supported orientations:
 preferredDisplayMode?: SplitDisplayMode;
 ```
 
-Specifies the display mode which will be preferred to use, if the layout requirements are met.
+Specifies the display mode which will be preferred to use, if the layout
+requirements are met.
 
-Preferred means that we may only suggest the OS which layout we're expecting, but the final decision is dependent on the device's type and size class.
+Preferred means that we may only suggest the OS which layout we're
+expecting, but the final decision is dependent on the device's type and
+size class.
 
 **Type:** [`SplitDisplayMode`](#splitdisplaymode)
 
 **Default:** `'automatic'`
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L338"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L429"}>
 #### preferredSplitBehavior {#host-preferredsplitbehavior}
 </ReferenceHeading>
 
@@ -155,15 +184,18 @@ Preferred means that we may only suggest the OS which layout we're expecting, bu
 preferredSplitBehavior?: SplitBehavior;
 ```
 
-Specifies the split behavior which will be preferred to use, if the layout requirements are met.
+Specifies the split behavior which will be preferred to use, if the layout
+requirements are met.
 
-Preferred means that we may only suggest the OS which layout we're expecting, but the final decision is dependent on the device's type and size class.
+Preferred means that we may only suggest the OS which layout we're
+expecting, but the final decision is dependent on the device's type and
+size class.
 
 **Type:** [`SplitBehavior`](#splitbehavior)
 
 **Default:** `'automatic'`
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L318"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L403"}>
 #### presentsWithGesture {#host-presentswithgesture}
 </ReferenceHeading>
 
@@ -173,7 +205,9 @@ presentsWithGesture?: boolean;
 
 Determines whether gestures are enabled to change the display mode.
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L348"}>
+**Default:** `true`
+
+<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L443"}>
 #### primaryBackgroundStyle {#host-primarybackgroundstyle}
 </ReferenceHeading>
 
@@ -183,13 +217,17 @@ primaryBackgroundStyle?: SplitPrimaryBackgroundStyle;
 
 Specifies the background style of the primary view controller.
 
-When set to `'default'`, the system default style is used.
+On iOS 18 or lower, we always fall back to `none` which is a system
+default value. Since iOS 26 the system default value is `sidebar`.
+
+According to the documentation, this property shouldn't have any effect
+on iOS. However, on iOS 26 the support for this prop was added.
 
 **Type:** [`SplitPrimaryBackgroundStyle`](#splitprimarybackgroundstyle)
 
 **Default:** `'default'`
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L355"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L451"}>
 #### primaryEdge {#host-primaryedge}
 </ReferenceHeading>
 
@@ -197,13 +235,14 @@ When set to `'default'`, the system default style is used.
 primaryEdge?: SplitPrimaryEdge;
 ```
 
-Indicates on which side primary sidebar is placed, affecting the split view layout.
+Indicates on which side primary sidebar is placed, affecting the split
+view layout.
 
 **Type:** [`SplitPrimaryEdge`](#splitprimaryedge)
 
 **Default:** `'leading'`
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L241"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L304"}>
 #### ref {#host-ref}
 </ReferenceHeading>
 
@@ -211,11 +250,11 @@ Indicates on which side primary sidebar is placed, affecting the split view layo
 ref?: Ref<SplitHostCommands>;
 ```
 
-Ref exposing the split host's imperative commands.
+Ref to the [commands](#splithostcommands) of the Split.
 
 **Type:** `Ref`\<[`SplitHostCommands`](#splithostcommands)\>
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L365"}>
+<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L464"}>
 #### showInspector {#host-showinspector}
 </ReferenceHeading>
 
@@ -225,10 +264,14 @@ showInspector?: boolean;
 
 Determines whether inspector column should be displayed.
 
-Inspector will be displayed on the trailing edge of the main (secondary) column (for expanded Split) or as a modal (for collapsed Split).
-The result on the interface for this prop depends on whether the Split is collapsed or expanded.
+Inspector will be displayed on the trailing edge of the main (secondary)
+column (for expanded Split) or as a modal (for collapsed Split). The
+result on the interface for this prop depends on whether the Split is
+collapsed or expanded.
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L371"}>
+**Default:** `false`
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L472"}>
 #### showSecondaryToggleButton {#host-showsecondarytogglebutton}
 </ReferenceHeading>
 
@@ -236,9 +279,12 @@ The result on the interface for this prop depends on whether the Split is collap
 showSecondaryToggleButton?: boolean;
 ```
 
-Determines whether a button to toggle to and from `'secondaryOnly'` display mode is visible.
+Determines whether a button to toggle to and from secondaryOnly display
+mode is visible.
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L383"}>
+**Default:** `false`
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L486"}>
 #### topColumnForCollapsing {#host-topcolumnforcollapsing}
 </ReferenceHeading>
 
@@ -246,10 +292,12 @@ Determines whether a button to toggle to and from `'secondaryOnly'` display mode
 topColumnForCollapsing?: SplitNavigableColumn;
 ```
 
-Specifies which column should be shown when the split view collapses to a single column.
+Specifies which column should be shown when the split view collapses to a
+single column.
 
-When the split view transitions from an expanded to a collapsed layout (e.g. rotating an iPad to portrait),
-this prop determines which column becomes the top (visible) column.
+When the split view transitions from an expanded to a collapsed layout
+(e.g. rotating an iPad to portrait), this prop determines which column
+becomes the top (visible) column.
 
 When not set, the system default behavior is used.
 

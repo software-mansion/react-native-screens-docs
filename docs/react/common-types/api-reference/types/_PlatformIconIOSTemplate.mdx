@@ -1,30 +1,27 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L140"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L203"}>
 #### PlatformIconIOSTemplate {#platformiconiostemplate}
 </ReferenceHeading>
 
-```ts
-type PlatformIconIOSTemplate = {
-  templateSource: ImageSourcePropType;
-  type: "templateSource";
-};
-```
+Icon loaded from an image source and rendered as a template image.
 
-Icon backed by a template image source, rendered with the component's tint.
+The colors of the image are ignored and only its alpha channel is used, so
+the icon is drawn in the current tint color.
 
-Discriminated by `type: 'templateSource'`.
+**See:** [UIImage.RenderingMode.alwaysTemplate](https://developer.apple.com/documentation/uikit/uiimage/renderingmode/alwaystemplate)
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L149"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L213"}>
 ##### templateSource {#platformiconiostemplate-templatesource}
 </ReferenceHeading>
 
 ```ts
-templateSource: ImageSourcePropType;
+templateSource: ImageSource;
 ```
 
-The image to render as a template, in any form `Image`'s `source` accepts. Its
-shape is used as a mask; the color comes from the component's tint.
+Image source the icon is loaded from.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L144"}>
+**See:** [React Native: ImageSource](https://reactnative.dev/docs/image#imagesource)
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L207"}>
 ##### type {#platformiconiostemplate-type}
 </ReferenceHeading>
 
@@ -32,4 +29,4 @@ shape is used as a mask; the color comes from the component's tint.
 type: "templateSource";
 ```
 
-Discriminant selecting the template-image variant.
+Kind of the icon.

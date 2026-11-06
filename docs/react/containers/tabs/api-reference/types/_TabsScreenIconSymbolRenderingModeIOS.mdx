@@ -1,0 +1,21 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreenIcon.types.ts#L42"}>
+#### TabsScreenIconSymbolRenderingModeIOS {#tabsscreeniconsymbolrenderingmodeios}
+</ReferenceHeading>
+
+```ts
+type TabsScreenIconSymbolRenderingModeIOS = "default" | "monochrome" | "original";
+```
+
+How the tab bar renders an `sfSymbol` icon on iOS. The names follow the
+SF Symbols rendering modes.
+
+The following values are supported:
+- `'default'` — the system behavior (UIKit's automatic mode), also used
+  when `renderingMode` is unset: system symbols are rendered in a single
+  color, the state-dependent item icon color; for custom symbols the
+  rendering mode set in the asset catalog may change it.
+- `'monochrome'` — the symbol is rendered in a single color: the
+  state-dependent item icon color (`tabBarItemIconColor`, `tabBarTintColor`).
+- `'original'` — the symbol keeps its own colors (Apple's "multicolor"
+  rendering) and ignores the item icon color. A symbol without color layers
+  is drawn as authored.

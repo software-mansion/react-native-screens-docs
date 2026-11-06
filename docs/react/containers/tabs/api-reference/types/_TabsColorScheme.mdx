@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L177"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L187"}>
 #### TabsColorScheme {#tabscolorscheme}
 </ReferenceHeading>
 
@@ -6,9 +6,11 @@
 type TabsColorScheme = ColorScheme | "inherit";
 ```
 
-Color scheme applied to a tabs container and its child containers.
+Color scheme used by Tabs and any child containers.
 
-Accepts any [ColorScheme](../../../../common-types/index.mdx#colorscheme) value, plus:
-- `'inherit'` — inherit the interface style from the parent.
+The following values are currently supported:
+- `'inherit'` — the interface style from parent,
+- `'light'` — the light interface style,
+- `'dark'` — the dark interface style.
 
 **Type:** [`ColorScheme`](../../../../common-types/index.mdx#colorscheme) \| `"inherit"`
