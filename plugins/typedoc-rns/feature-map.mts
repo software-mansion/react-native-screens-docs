@@ -14,7 +14,7 @@ import type {
 export interface Component {
   /** The section's anchor and the folder of its part: `host` → `#host`, `host/_host.mdx`. */
   id: string;
-  /** The section heading: `Host`, `Column & Inspector`. */
+  /** The section heading: `Host`, `Column`. */
   label: string;
   /** The component's public props type; its members are the section. */
   props: string;
@@ -94,7 +94,6 @@ export const FEATURES: Record<string, Feature> = {
       },
     ],
   },
-  // Split.Column and Split.Inspector share one props type, so they document as one section.
   'components/split': {
     entryPoint: `${LIB}/components/split/index.ts`,
     label: 'Split',
@@ -103,9 +102,15 @@ export const FEATURES: Record<string, Feature> = {
       { id: 'host', label: 'Host', props: 'SplitHostProps', merged: ['Host'] },
       {
         id: 'column',
-        label: 'Column & Inspector',
-        props: 'SplitScreenProps',
-        merged: ['Column', 'Inspector'],
+        label: 'Column',
+        props: 'SplitColumnProps',
+        merged: ['Column'],
+      },
+      {
+        id: 'inspector',
+        label: 'Inspector',
+        props: 'SplitInspectorProps',
+        merged: ['Inspector'],
       },
     ],
   },

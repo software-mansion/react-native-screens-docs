@@ -193,7 +193,7 @@ function signatureProblems(
 
 /**
  * True for `Props for {@link Tabs.Host}.`: the links name the components of the props type's
- * section (`Split.Column` and `Split.Inspector` share one), and the sentence ends.
+ * section, and the sentence ends.
  */
 function isPropsSummary(
   summary: readonly CommentDisplayPart[],
