@@ -1,0 +1,160 @@
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/contained-modal/ContainedModal.types.ts#L9"}>
+### ContainedModalOverContent {#over-content}
+</ReferenceHeading>
+
+:::warning
+
+This API is experimental. It may change in a breaking way — or be removed entirely — in any release.
+
+:::
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/contained-modal/ContainedModal.types.ts#L15"}>
+#### children {#over-content-children}
+</ReferenceHeading>
+
+```ts
+children?: ReactNode;
+```
+
+Content of the modal.
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/contained-modal/ContainedModal.types.ts#L31"}>
+#### isOpen {#over-content-isopen}
+</ReferenceHeading>
+
+```ts
+isOpen: boolean;
+```
+
+Requests the modal to be presented (`true`) or dismissed (`false`).
+
+`true` expresses intent, not a guarantee of visibility: the presentation
+is dropped when the targeted provider is already presenting another modal
+or an ancestor presentation is being dismissed at that moment, and
+`onPresentationRejected` fires instead. While
+the modal is suspended by navigation above its provider (e.g. a stack
+screen pushed over it) `isOpen` stays `true` although nothing is on
+screen; the presentation is restored when the covering content goes away.
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/contained-modal/ContainedModal.types.ts#L92"}>
+#### onDidAppear {#over-content-ondidappear}
+</ReferenceHeading>
+
+```ts
+onDidAppear?: NativeEventHandler<EmptyEventPayload>;
+```
+
+Called when the modal's view has appeared.
+
+Fires on the initial presentation, and again on every restore after a
+suspension - e.g. a stack screen pushed over the provider is popped, or
+the modal's containing native sheet is re-presented. A restore is not a
+re-open: the presentation relationship was kept and `isOpen` stayed
+`true` throughout the suspension.
+
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/contained-modal/ContainedModal.types.ts#L126"}>
+#### onDidDisappear {#over-content-ondiddisappear}
+</ReferenceHeading>
+
+```ts
+onDidDisappear?: NativeEventHandler<EmptyEventPayload>;
+```
+
+Called when the modal's view has disappeared.
+
+Fires on a programmatic dismissal (`isOpen` set to `false`). On a
+suspension it is NOT guaranteed: when a react-native-screens stack pushes
+over the provider, only `onWillDisappear` fires. Don't rely on a balanced
+Will/Did disappear pair around suspensions - key suspension logic off
+`onWillDisappear` and `onDidAppear` (restore) instead.
+
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+:::note
+
+This is an implementation detail and may change. The stack push detaches
+the views before the disappearance transition completes.
+
+:::
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/contained-modal/ContainedModal.types.ts#L64"}>
+#### onPresentationRejected {#over-content-onpresentationrejected}
+</ReferenceHeading>
+
+```ts
+onPresentationRejected?: NativeEventHandler<EmptyEventPayload>;
+```
+
+Called when `isOpen` flipped to `true` but the presentation was dropped:
+the target provider is already presenting another modal, an ancestor
+presentation is being dismissed at that moment, or no matching provider
+was found.
+
+The request is not queued and nothing retries it; the modal stays closed
+while `isOpen` remains `true`. Reconcile state here (e.g. set `isOpen`
+back to `false`, or re-open after the blocking modal closes).
+
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/contained-modal/ContainedModal.types.ts#L78"}>
+#### onWillAppear {#over-content-onwillappear}
+</ReferenceHeading>
+
+```ts
+onWillAppear?: NativeEventHandler<EmptyEventPayload>;
+```
+
+Called when the modal's view is about to appear.
+
+Fires on the initial presentation, and again on every restore after a
+suspension - e.g. a stack screen pushed over the provider is popped, or
+the modal's containing native sheet is re-presented. A restore is not a
+re-open: the presentation relationship was kept and `isOpen` stayed
+`true` throughout the suspension.
+
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/contained-modal/ContainedModal.types.ts#L108"}>
+#### onWillDisappear {#over-content-onwilldisappear}
+</ReferenceHeading>
+
+```ts
+onWillDisappear?: NativeEventHandler<EmptyEventPayload>;
+```
+
+Called when the modal's view is about to disappear.
+
+Fires on a programmatic dismissal (`isOpen` set to `false`), and when a
+suspension begins - e.g. a stack screen is pushed over the provider, or
+the modal's containing native sheet is dismissed natively. A suspension
+is not a dismissal: the presentation relationship is kept, `isOpen`
+stays `true`, and the appear events fire again on restore. Note that
+`onDidDisappear` is not guaranteed to follow on the suspension path -
+see its remarks.
+
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/contained-modal/ContainedModal.types.ts#L49"}>
+#### targetContainerId {#over-content-targetcontainerid}
+</ReferenceHeading>
+
+```ts
+targetContainerId: string;
+```
+
+The `containerId` of the [ContainedModalProvider](#provider) this modal is
+presented in.
+
+The targeted provider must be an ancestor of the modal in the React tree;
+the modal presents within that provider's bounds. Rendering a modal with
+no matching ancestor provider is a programming error. Must not be empty.
+
+:::note
+
+This is an implementation detail and may change. Without a matching
+provider, the modal asserts in debug builds; in release builds, the
+presentation is rejected and `onPresentationRejected` fires.
+
+:::
