@@ -51,8 +51,8 @@ export interface Section {
   /** A component's flattened `ios` / `android` props, in `PAGE_GROUPS` order; `[]` for a type. */
   platforms: PlatformProps[];
   /**
-   * The components the section documents, as users write them (`Tabs.Host`; `Split.Column` and
-   * `Split.Inspector` share one section); `[]` for a type. Their `@platform` is the section's.
+   * The components the section documents, as users write them (`Tabs.Host`); `[]` for a type.
+   * Their `@platform` is the section's.
    */
   components: DeclarationReflection[];
 }
