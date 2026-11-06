@@ -1,0 +1,45 @@
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/contained-modal/ContainedModal.types.ts#L134"}>
+### ContainedModalProvider {#provider}
+</ReferenceHeading>
+
+:::warning
+
+This API is experimental. It may change in a breaking way — or be removed entirely — in any release.
+
+:::
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/contained-modal/ContainedModal.types.ts#L140"}>
+#### children {#provider-children}
+</ReferenceHeading>
+
+```ts
+children?: ReactNode;
+```
+
+Content the matched contained modals are presented over.
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/contained-modal/ContainedModal.types.ts#L151"}>
+#### containerId {#provider-containerid}
+</ReferenceHeading>
+
+```ts
+containerId: string;
+```
+
+Identifies this provider; a modal targets it through `targetContainerId`.
+
+Must be unique among the providers on a modal's ancestor chain (two
+providers in unrelated subtrees may share an id). Must not be empty.
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/contained-modal/ContainedModal.types.ts#L162"}>
+#### style {#provider-style}
+</ReferenceHeading>
+
+```ts
+style?: StyleProp<ViewStyle>;
+```
+
+Style applied to the provider's host view.
+
+The provider is a regular container whose bounds define the area a
+matched contained modal is presented in.

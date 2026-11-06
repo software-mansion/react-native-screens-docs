@@ -2,35 +2,20 @@
 
 // Information architecture:
 //
-//   Fundamentals
 //   React Containers           Stack / Tabs / Split
-//   React Components & Modals  ScrollToTopGuard / SafeAreaView / FullWindowOverlay / FormSheet / PageSheet / ScrollViewMarker
+//   React Components & Modals  ScrollToTopGuard / SafeAreaView / FormSheet / ContainedModal / ScrollViewMarker
 //   React Common Types
-//   Guides
 //   Meta
 //
 // The sidebar is at most two levels deep: section → page. A family (Stack, Tabs, …) is ONE
-// page, `<dir>/index.mdx`, assembled from partials — hand-written `_*-empty.md` parts
-// (Overview, Guides) and the generated `api-reference/` folder (`yarn gen:api`). The page's
-// table of contents (h2/h3: Overview, Guides → guide titles, API Reference → Host / Screen
-// / … / Types) is its navigation; props and types sit at h4 and below, so they are
-// linkable anchors but never navigation entries.
-//
-// Hand-written parts that still need content are named `*-empty`.
+// page, `<dir>/index.mdx`, assembled from partials — hand-written `_*.md` parts (Overview)
+// and the generated `api-reference/` folder (`yarn gen:api`). The page's table of contents
+// (h2/h3: Overview, API Reference → Host / Screen / … / Types) is its navigation; props and
+// types sit at h4 and below, so they are linkable anchors but never navigation entries.
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   tutorialSidebar: [
-    {
-      type: 'category',
-      label: 'Fundamentals',
-      items: [
-        'fundamentals/intro-empty',
-        'fundamentals/installation-empty',
-        'fundamentals/getting-started-empty',
-        'fundamentals/configuration-empty',
-      ],
-    },
     {
       type: 'category',
       label: 'React Containers',
@@ -46,9 +31,8 @@ const sidebars = {
       items: [
         'react/components/scroll-to-top-guard/index',
         'react/components/safe-area-view/index',
-        'react/components/full-window-overlay/index',
         'react/components/form-sheet/index',
-        'react/components/page-sheet/index',
+        'react/components/contained-modal/index',
         'react/components/scroll-view-marker/index',
       ],
     },
@@ -62,23 +46,8 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Guides',
-      items: [
-        'guides/how-to-build-a-navigator/index',
-        'guides/platform-quirks-empty',
-        'guides/troubleshooting-empty',
-        'guides/migration-4-to-5-empty',
-      ],
-    },
-    {
-      type: 'category',
       label: 'Meta',
-      items: [
-        'meta/contributing/index',
-        'meta/releasing-empty',
-        'meta/compatibility-empty',
-        'meta/architecture/index',
-      ],
+      items: ['meta/contributing/index', 'meta/architecture/index'],
     },
   ],
 };
