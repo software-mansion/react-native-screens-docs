@@ -2,9 +2,11 @@
 
 // Information architecture:
 //
+//   Fundamentals
 //   React Containers           Stack / Tabs / Split
 //   React Components & Modals  ScrollToTopGuard / SafeAreaView / FormSheet / ContainedModal / ScrollViewMarker
 //   React Common Types
+//   Guides
 //   Meta
 //
 // The sidebar is at most two levels deep: section → page. A family (Stack, Tabs, …) is ONE
@@ -16,6 +18,11 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   tutorialSidebar: [
+    {
+      type: 'category',
+      label: 'Fundamentals',
+      items: ['fundamentals/intro'],
+    },
     {
       type: 'category',
       label: 'React Containers',
@@ -43,6 +50,11 @@ const sidebars = {
       id: 'react/common-types/index',
       label: 'React Common Types',
       className: 'sidebar-section-link',
+    },
+    {
+      type: 'category',
+      label: 'Guides',
+      items: ['guides/how-to-build-a-navigator'],
     },
     {
       type: 'category',
