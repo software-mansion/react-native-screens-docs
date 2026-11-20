@@ -9,6 +9,7 @@
 - [FormSheet](https://docs.swmansion.com/react-native-screens-docs/docs/react/components/form-sheet/): Overview
 - [How to build a navigator?](https://docs.swmansion.com/react-native-screens-docs/docs/guides/how-to-build-a-navigator)
 - [Introduction](https://docs.swmansion.com/react-native-screens-docs/docs/)
+- [PageSheet](https://docs.swmansion.com/react-native-screens-docs/docs/react/components/page-sheet/): Overview
 - [SafeAreaView](https://docs.swmansion.com/react-native-screens-docs/docs/react/components/safe-area-view/): Overview
 - [ScrollToTopGuard](https://docs.swmansion.com/react-native-screens-docs/docs/react/components/scroll-to-top-guard/): Overview
 - [ScrollViewMarker](https://docs.swmansion.com/react-native-screens-docs/docs/react/components/scroll-view-marker/): Overview
