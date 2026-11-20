@@ -1,0 +1,29 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreenIcon.types.ts#L114"}>
+#### TabsScreenIconImageSourceAndroid {#tabsscreeniconimagesourceandroid}
+</ReferenceHeading>
+
+Tab bar item icon on Android that uses an image from the provided resource.
+
+`tinting` defaults to `'default'`: the tab bar tints the image with the item
+icon color. `'original'` keeps the image's own colors.
+
+`imageSource` type doesn't support SVGs on Android. For loading SVGs use
+`drawableResource` type.
+
+**Extends:** [`PlatformIconShared`](../../../../common-types/index.mdx#platformiconshared)
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreenIcon.types.ts#L123"}>
+##### tinting {#tabsscreeniconimagesourceandroid-tinting}
+</ReferenceHeading>
+
+```ts
+tinting?: TabsScreenIconTintingAndroid;
+```
+
+How the tab bar tints this icon.
+
+`icon` and `selectedIcon` may use different values.
+
+**Type:** [`TabsScreenIconTintingAndroid`](#tabsscreenicontintingandroid)
+
+**Default:** `'default'`, which tints the icon.

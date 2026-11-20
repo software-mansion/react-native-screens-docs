@@ -115,7 +115,7 @@ const config = {
         },
         items: [
           {
-            to: 'docs/fundamentals/getting-started-empty',
+            to: 'docs/react/containers/stack',
             activeBasePath: 'docs',
             label: 'Docs',
             position: 'right',

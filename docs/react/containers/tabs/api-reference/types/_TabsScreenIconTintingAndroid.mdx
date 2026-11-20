@@ -1,0 +1,17 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreenIcon.types.ts#L102"}>
+#### TabsScreenIconTintingAndroid {#tabsscreenicontintingandroid}
+</ReferenceHeading>
+
+```ts
+type TabsScreenIconTintingAndroid = "default" | "tinted" | "original";
+```
+
+How the tab bar tints an `imageSource` or `drawableResource` icon on Android.
+
+The following values are supported:
+- `'default'` — the tab bar's default, also used when `tinting` is unset:
+  the icon is tinted, as with `'tinted'`.
+- `'tinted'` — the icon is drawn in the state-dependent item icon color
+  (`tabBarItemIconColor`).
+- `'original'` — the icon keeps its own colors and ignores the item icon
+  color, e.g. a multicolor VectorDrawable.

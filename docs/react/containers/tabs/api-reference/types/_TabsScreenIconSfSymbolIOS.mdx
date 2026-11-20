@@ -1,0 +1,31 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreenIcon.types.ts#L76"}>
+#### TabsScreenIconSfSymbolIOS {#tabsscreeniconsfsymbolios}
+</ReferenceHeading>
+
+Tab bar item icon on iOS that uses an SF Symbol with the specified name.
+
+If no system symbol matches, falls back to a custom symbol with that name
+from the app's asset catalog. `renderingMode` defaults to `'default'`, the
+system behavior: a single color for system symbols, while for custom symbols
+the rendering intent set in the asset catalog may change it. `'original'`
+shows the symbol's own color layers (Apple's "multicolor" rendering).
+
+**Extends:** [`PlatformIconIOSSfSymbol`](../../../../common-types/index.mdx#platformiconiossfsymbol)
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreenIcon.types.ts#L87"}>
+##### renderingMode {#tabsscreeniconsfsymbolios-renderingmode}
+</ReferenceHeading>
+
+```ts
+renderingMode?: TabsScreenIconSymbolRenderingModeIOS;
+```
+
+How the tab bar renders this symbol.
+
+Set `renderingMode` explicitly to be independent of the system behavior.
+
+`icon` and `selectedIcon` may use different values.
+
+**Type:** [`TabsScreenIconSymbolRenderingModeIOS`](#tabsscreeniconsymbolrenderingmodeios)
+
+**Default:** `'default'`, the system behavior.

@@ -1,19 +1,13 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L175"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L239"}>
 #### PlatformIconIOSXcasset {#platformiconiosxcasset}
 </ReferenceHeading>
 
-```ts
-type PlatformIconIOSXcasset = {
-  name: string;
-  type: "xcasset";
-};
-```
+Icon loaded by name from the app's asset catalog.
 
-Icon backed by an image in an asset catalog (xcasset), referenced by `name`.
+The image is looked up the way `UIImage(named:)` looks it up, so an image
+file in the app bundle with the same name is found too.
 
-Discriminated by `type: 'xcasset'`.
-
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L183"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L247"}>
 ##### name {#platformiconiosxcasset-name}
 </ReferenceHeading>
 
@@ -21,9 +15,9 @@ Discriminated by `type: 'xcasset'`.
 name: string;
 ```
 
-Name of the image set in the app's asset catalog.
+Name of the image set in the asset catalog.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L179"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L243"}>
 ##### type {#platformiconiosxcasset-type}
 </ReferenceHeading>
 
@@ -31,4 +25,4 @@ Name of the image set in the app's asset catalog.
 type: "xcasset";
 ```
 
-Discriminant selecting the asset-catalog variant.
+Kind of the icon.

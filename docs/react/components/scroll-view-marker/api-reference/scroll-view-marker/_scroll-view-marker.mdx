@@ -1,8 +1,8 @@
-<ReferenceHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L37"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L37"}>
 ### ScrollViewMarker {#scroll-view-marker}
 </ReferenceHeading>
 
-<ReferenceHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L44"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L50"}>
 #### children {#scroll-view-marker-children}
 </ReferenceHeading>
 
@@ -10,10 +10,18 @@
 children: NonNullable<ReactNode>;
 ```
 
-Content to mark; the scroll view the native side acts on is the one resolved in
-this subtree.
+Content of the marker, with the scroll view to mark as its child.
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L67"}>
+The scroll view must be the only direct child of the marker.
+
+:::note
+
+This is an implementation detail and may change. On Android, only a
+vertical scroll view is found.
+
+:::
+
+<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L66"}>
 #### scrollEdgeEffects {#scroll-view-marker-scrolledgeeffects}
 </ReferenceHeading>
 
@@ -21,21 +29,16 @@ this subtree.
 scrollEdgeEffects?: ScrollViewMarkerScrollEdgeEffectsIOS;
 ```
 
-Configures the scroll edge effect for the _content ScrollView_ (the ScrollView resolved in direct subtree of the ScrollViewMarker).
-Depending on values set, it will blur the scrolling content below certain UI elements (header items, search bar)
-for the specified edge of the ScrollView.
-
-When set in nested containers, i.e. Stack inside Tabs, or the other way around,
-the ScrollView will use only the innermost one's config.
-
-The supported values correspond to the `UIScrollEdgeEffect`'s `style` and `isHidden` props
-in the official UIKit documentation.
+Configures the scroll edge effect for the _content ScrollView_ (the
+ScrollView resolved in direct subtree of the ScrollViewMarker).
 
 **Type:** [`ScrollViewMarkerScrollEdgeEffectsIOS`](#scrollviewmarkerscrolledgeeffectsios)
 
+**Default:** `'automatic'` for each edge.
+
 **See:** [UIScrollEdgeEffect](https://developer.apple.com/documentation/uikit/uiscrolledgeeffect)
 
-<ReferenceHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L50"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/scroll-view-marker/ScrollViewMarker.types.ts#L56"}>
 #### style {#scroll-view-marker-style}
 </ReferenceHeading>
 
@@ -43,4 +46,4 @@ in the official UIKit documentation.
 style?: ViewProps['style'];
 ```
 
-Style applied to the marker's own view.
+Style of the marker's own view.

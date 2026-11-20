@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L88"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L116"}>
 #### ScrollEdgeEffect {#scrolledgeeffect}
 </ReferenceHeading>
 
@@ -6,10 +6,13 @@
 type ScrollEdgeEffect = "automatic" | "hard" | "soft" | "hidden";
 ```
 
-Visual effect applied at a scrollable edge.
+Effect applied to the scrolling content at an edge of a scroll view.
 
-The following values are supported:
-- `'automatic'` — the system default effect for the edge.
-- `'hard'` — a hard cut-off effect.
-- `'soft'` — a soft, fading effect.
-- `'hidden'` — no edge effect.
+The values map to the `style` and `isHidden` properties of the UIKit
+`UIScrollEdgeEffect`. The following values are supported:
+- `'automatic'` — the automatic scroll edge effect style.
+- `'hard'` — a scroll edge effect with a hard cutoff and dividing line.
+- `'soft'` — a soft-edged scroll edge effect.
+- `'hidden'` — no scroll edge effect.
+
+**See:** [UIScrollEdgeEffect.Style](https://developer.apple.com/documentation/uikit/uiscrolledgeeffect/style-swift.class/)

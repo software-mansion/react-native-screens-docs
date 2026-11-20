@@ -1,0 +1,26 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreenIcon.types.ts#L54"}>
+#### TabsScreenIconImageSourceIOS {#tabsscreeniconimagesourceios}
+</ReferenceHeading>
+
+Tab bar item icon on iOS that uses an image from the provided resource.
+
+With `renderingMode` set to `'template'` the image is tinted with the
+state-dependent icon color. With `'original'` it keeps its own colors.
+
+**Extends:** [`PlatformIconShared`](../../../../common-types/index.mdx#platformiconshared)
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreenIcon.types.ts#L63"}>
+##### renderingMode {#tabsscreeniconimagesourceios-renderingmode}
+</ReferenceHeading>
+
+```ts
+renderingMode?: TabsScreenIconImageRenderingModeIOS;
+```
+
+How the tab bar renders this image.
+
+`icon` and `selectedIcon` may use different values.
+
+**Type:** [`TabsScreenIconImageRenderingModeIOS`](#tabsscreeniconimagerenderingmodeios)
+
+**Default:** `'default'`, the system behavior.

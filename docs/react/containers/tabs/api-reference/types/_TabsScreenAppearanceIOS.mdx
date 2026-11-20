@@ -1,10 +1,10 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L58"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L62"}>
 #### TabsScreenAppearanceIOS {#tabsscreenappearanceios}
 </ReferenceHeading>
 
-iOS tab bar appearance configuration for a [Tabs.Screen](#screen).
+Appearance of the tab bar while the tab screen is selected.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L86"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L99"}>
 ##### compactInline {#tabsscreenappearanceios-compactinline}
 </ReferenceHeading>
 
@@ -12,16 +12,21 @@ iOS tab bar appearance configuration for a [Tabs.Screen](#screen).
 compactInline?: TabsScreenItemAppearanceIOS;
 ```
 
-Specifies the appearance of tab bar items when they are in compact inline layout.
+Specifies the appearance of tab bar items when they are in compact inline
+layout.
 
 Tab bar items in compact inline layout have the icon next to the title.
-Compact inline layout is used in compact-width environments, e.g. in landscape orientation on the iPhone 16 Pro.
+Compact inline layout is used in compact-width environments, e.g. in
+landscape orientation on the iPhone 16 Pro.
+
+Complete list of size classes for iOS and iPadOS devices is available in
+Apple's Human Interface Guidelines.
 
 **Type:** [`TabsScreenItemAppearanceIOS`](#tabsscreenitemappearanceios)
 
 **See:** [HIG: Device size classes](https://developer.apple.com/design/human-interface-guidelines/layout#iOS-iPadOS-device-size-classes)
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L76"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L84"}>
 ##### inline {#tabsscreenappearanceios-inline}
 </ReferenceHeading>
 
@@ -32,13 +37,17 @@ inline?: TabsScreenItemAppearanceIOS;
 Specifies the appearance of tab bar items when they are in inline layout.
 
 Tab bar items in inline layout have the icon next to the title.
-Inline layout is used in regular-width environments, e.g. in landscape orientation on the iPhone 16 Pro Max.
+Inline layout is used in regular-width environments, e.g. in landscape
+orientation on the iPhone 16 Pro Max.
+
+Complete list of size classes for iOS and iPadOS devices is available in
+Apple's Human Interface Guidelines.
 
 **Type:** [`TabsScreenItemAppearanceIOS`](#tabsscreenitemappearanceios)
 
 **See:** [HIG: Device size classes](https://developer.apple.com/design/human-interface-guidelines/layout#iOS-iPadOS-device-size-classes)
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L66"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L70"}>
 ##### stacked {#tabsscreenappearanceios-stacked}
 </ReferenceHeading>
 
@@ -53,7 +62,7 @@ Stacked layout is used e.g. on the iPhone in portrait orientation.
 
 **Type:** [`TabsScreenItemAppearanceIOS`](#tabsscreenitemappearanceios)
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L91"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L108"}>
 ##### tabBarBackgroundColor {#tabsscreenappearanceios-tabbarbackgroundcolor}
 </ReferenceHeading>
 
@@ -61,9 +70,12 @@ Stacked layout is used e.g. on the iPhone in portrait orientation.
 tabBarBackgroundColor?: ColorValue;
 ```
 
-Specifies the background color for the entire tab bar when tab screen is selected.
+Specifies the background color for the entire tab bar when tab screen is
+selected.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L100"}>
+This property does not affect the tab bar starting from iOS 26.
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L120"}>
 ##### tabBarBlurEffect {#tabsscreenappearanceios-tabbarblureffect}
 </ReferenceHeading>
 
@@ -71,15 +83,18 @@ Specifies the background color for the entire tab bar when tab screen is selecte
 tabBarBlurEffect?: TabsScreenBlurEffect;
 ```
 
-Specifies the blur effect applied to the tab bar when tab screen is selected.
+Specifies the blur effect applied to the tab bar when tab screen is
+selected.
 
-Works with backgroundColor's alpha \< 1.
+Works with backgroundColor's alpha `< 1`.
+
+This property does not affect the tab bar starting from iOS 26.
 
 **Type:** [`TabsScreenBlurEffect`](#tabsscreenblureffect)
 
 **Default:** `'systemDefault'`
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L104"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L127"}>
 ##### tabBarShadowColor {#tabsscreenappearanceios-tabbarshadowcolor}
 </ReferenceHeading>
 
@@ -88,3 +103,5 @@ tabBarShadowColor?: ColorValue;
 ```
 
 Specifies the shadow color for the tab bar when tab screen is selected.
+
+This property does not affect the tab bar starting from iOS 26.

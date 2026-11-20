@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L98"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L130"}>
 #### UserInterfaceStyle {#userinterfacestyle}
 </ReferenceHeading>
 
@@ -6,9 +6,12 @@
 type UserInterfaceStyle = "unspecified" | "light" | "dark";
 ```
 
-Interface style, including an unspecified (inherited) option.
+Interface style of a native view.
 
 The following values are supported:
-- `'unspecified'` — no explicit style; inherit from the system / parent.
+- `'unspecified'` — an unspecified interface style; the style of the parent
+  is used.
 - `'light'` — the light interface style.
 - `'dark'` — the dark interface style.
+
+**See:** [UIUserInterfaceStyle](https://developer.apple.com/documentation/uikit/uiuserinterfacestyle)

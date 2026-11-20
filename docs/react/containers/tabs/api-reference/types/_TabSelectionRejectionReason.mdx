@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L117"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L122"}>
 #### TabSelectionRejectionReason {#tabselectionrejectionreason}
 </ReferenceHeading>
 
@@ -9,7 +9,7 @@ type TabSelectionRejectionReason = "stale" | "repeated";
 Reason why a tab selection request was rejected by the native side.
 
 The following values are supported:
-- `'stale'` — the update was based on a stale navigation state, meaning a newer state has
-  already been applied. Only reported when
+- `'stale'` — the update was based on a stale navigation state, meaning a
+  newer state has already been applied. Only reported when
   [TabsHostPropsBase.rejectStaleNavStateUpdates](#host-rejectstalenavstateupdates) is enabled.
 - `'repeated'` — the requested tab is already selected.

@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L8"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L12"}>
 #### OnDismissEventPayload {#ondismisseventpayload}
 </ReferenceHeading>
 
@@ -8,9 +8,16 @@ type OnDismissEventPayload = {
 };
 ```
 
-Payload of the event emitted when a stack screen is dismissed.
+Payload of the native dismiss event.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L12"}>
+:::note
+
+This is an implementation detail and may change. [Stack.Screen](#screen) turns
+this event into a call of `onDismiss` or `onNativeDismiss`.
+
+:::
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L17"}>
 ##### isNativeDismiss {#ondismisseventpayload-isnativedismiss}
 </ReferenceHeading>
 
@@ -18,4 +25,5 @@ Payload of the event emitted when a stack screen is dismissed.
 isNativeDismiss: boolean;
 ```
 
-Whether the dismissal was initiated natively (e.g. a swipe-back gesture).
+Whether the user dismissed the screen natively (`true`) or the screen was
+popped because its `activityMode` became `'detached'` (`false`).

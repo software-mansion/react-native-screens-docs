@@ -2,38 +2,37 @@ import Anchor from '@theme/MDXComponents/A';
 
 <Anchor id="screen-android" />
 
-<ReferenceHeading platforms={[{"platform":"android","from":"21"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.android.types.ts#L150"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.android.types.ts#L185"}>
 #### android.icon {#screen-android-icon}
 </ReferenceHeading>
 
 ```ts
-icon?: PlatformIconAndroid;
+icon?: TabsScreenIconAndroid;
 ```
 
 Specifies the icon for the tab bar item.
 
-`imageSource` type doesn't support SVGs on Android. For loading SVGs use `drawableResource`
-type, which requires passing a drawable to resources via Android Studio.
+**Type:** [`TabsScreenIconAndroid`](#tabsscreeniconandroid)
 
-**Type:** [`PlatformIconAndroid`](../../../../common-types/index.mdx#platformiconandroid)
-
-<ReferenceHeading platforms={[{"platform":"android","from":"21"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.android.types.ts#L161"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.android.types.ts#L198"}>
 #### android.selectedIcon {#screen-android-selectedicon}
 </ReferenceHeading>
 
 ```ts
-selectedIcon?: PlatformIconAndroid;
+selectedIcon?: TabsScreenIconAndroid;
 ```
 
 Specifies the icon for tab bar item when it is selected.
 
 Supports the same values as `icon` property for given platform.
+`tinting` may differ from the one of `icon`, e.g. a drawable that is
+tinted while unselected and shows its own colors while selected.
 
 To use `selectedIcon`, `icon` must also be provided.
 
-**Type:** [`PlatformIconAndroid`](../../../../common-types/index.mdx#platformiconandroid)
+**Type:** [`TabsScreenIconAndroid`](#tabsscreeniconandroid)
 
-<ReferenceHeading platforms={[{"platform":"android","from":"21"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.android.types.ts#L140"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.android.types.ts#L179"}>
 #### android.standardAppearance {#screen-android-standardappearance}
 </ReferenceHeading>
 
@@ -44,7 +43,7 @@ standardAppearance?: TabsScreenAppearanceAndroid;
 Specifies the standard tab bar appearance.
 
 Allows to customize the appearance depending on the tab bar item state
-(normal, selected, focused, disabled). Configuration for the Bottom Navigation View
-is determined by the currently active tab screen.
+(normal, selected, focused, disabled). Configuration for the Bottom
+Navigation View is determined by the currently active tab screen.
 
 **Type:** [`TabsScreenAppearanceAndroid`](#tabsscreenappearanceandroid)

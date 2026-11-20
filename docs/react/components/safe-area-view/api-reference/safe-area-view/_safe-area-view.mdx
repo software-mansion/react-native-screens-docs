@@ -1,4 +1,4 @@
-<ReferenceHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/safe-area/SafeAreaView.types.ts#L31"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/safe-area/SafeAreaView.types.ts#L34"}>
 ### SafeAreaView {#safe-area-view}
 </ReferenceHeading>
 
@@ -10,7 +10,7 @@ This API is experimental. It may change in a breaking way — or be removed enti
 
 **Extends:** `ViewProps`
 
-<ReferenceHeading platforms={[{"platform":"android","from":"21"},{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/safe-area/SafeAreaView.types.ts#L37"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/safe-area/SafeAreaView.types.ts#L45"}>
 #### edges {#safe-area-view-edges}
 </ReferenceHeading>
 
@@ -18,11 +18,16 @@ This API is experimental. It may change in a breaking way — or be removed enti
 edges?: Readonly<Partial<Record<Edge, boolean>>>;
 ```
 
-Specifies the edges to which safe-area insets are applied.
+Edges of the view that are inset by the safe area.
+
+For each edge set to `true`, the inset of that edge is added to the
+view's own margin. The other edges are not inset.
 
 **Type:** `Readonly`\<`Partial`\<`Record`\<[`Edge`](#edge), `boolean`\>\>\>
 
-<ReferenceHeading platforms={[{"platform":"android","from":"21"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/safe-area/SafeAreaView.types.ts#L44"}>
+**Default:** No edge is inset.
+
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/safe-area/SafeAreaView.types.ts#L52"}>
 #### insetType {#safe-area-view-insettype}
 </ReferenceHeading>
 
@@ -30,6 +35,8 @@ Specifies the edges to which safe-area insets are applied.
 insetType?: InsetType;
 ```
 
-Specifies which set of insets is used to compute the safe area.
+Kind of insets the view takes into account.
 
 **Type:** [`InsetType`](#insettype)
+
+**Default:** `'all'`

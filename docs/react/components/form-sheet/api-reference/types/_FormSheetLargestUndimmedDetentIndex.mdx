@@ -1,0 +1,15 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/form-sheet/FormSheet.types.ts#L52"}>
+#### FormSheetLargestUndimmedDetentIndex {#formsheetlargestundimmeddetentindex}
+</ReferenceHeading>
+
+```ts
+type FormSheetLargestUndimmedDetentIndex = number | "none" | "last";
+```
+
+Largest detent of a sheet at which the content underneath is not dimmed.
+
+The following values are supported:
+- a number — zero-based index of a detent in `detents`; the content
+  underneath is dimmed only at the detents above it.
+- `'none'` — the content underneath is dimmed at every detent.
+- `'last'` — the content underneath is never dimmed.

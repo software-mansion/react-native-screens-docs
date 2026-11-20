@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L185"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L198"}>
 #### TabsDirection {#tabsdirection}
 </ReferenceHeading>
 
@@ -6,9 +6,11 @@
 type TabsDirection = Direction | "inherit";
 ```
 
-Layout direction applied to a tabs container and its child containers.
+Layout direction of Tabs, their views and child containers.
 
-Accepts any [Direction](../../../../common-types/index.mdx#direction) value, plus:
-- `'inherit'` — inherit the layout direction from the parent.
+The following values are currently supported:
+- `'inherit'` — uses parent's layout direction,
+- `'ltr'` — forces left-to-right layout direction,
+- `'rtl'` — forces right-to-left layout direction.
 
 **Type:** [`Direction`](../../../../common-types/index.mdx#direction) \| `"inherit"`

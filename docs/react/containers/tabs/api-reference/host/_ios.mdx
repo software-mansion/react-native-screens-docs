@@ -2,7 +2,7 @@ import Anchor from '@theme/MDXComponents/A';
 
 <Anchor id="host-ios" />
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.ios.types.ts#L109"}>
+<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.ios.types.ts#L143"}>
 #### ios.bottomAccessory {#host-ios-bottomaccessory}
 </ReferenceHeading>
 
@@ -12,24 +12,20 @@ bottomAccessory?: TabsBottomAccessoryComponentFactory;
 
 Specifies component used as bottom accessory.
 
-This prop is a function that accepts `environment` as a parameter and returns
-the component that will be rendered in the bottom accessory — see
-[TabsBottomAccessoryEnvironment](#tabsbottomaccessoryenvironment) for the possible environments. If this prop is
-`undefined`, the bottom accessory will not be rendered.
+This prop is a function that accepts `environment` as a parameter and
+returns the component that will be rendered in the bottom accessory.
+
+If this prop is `undefined`, the bottom accessory will not be rendered.
+
+In order to allow accessory rendering based on environment, the component
+is rendered 2 times for both `'regular'` and `'inline'` environments at the
+same time. Environment determines which component is visible at given
+moment. This might require implementing a solution to share state between
+both rendered components (e.g. usage of context).
 
 **Type:** [`TabsBottomAccessoryComponentFactory`](#tabsbottomaccessorycomponentfactory)
 
-:::warning
-
-In order to allow accessory rendering based on environment, the component is
-rendered 2 times for both `'regular'` and `'inline'` environments at the same time.
-Environment determines which component is visible at given moment. This might
-require implementing a solution to share state between both rendered components
-(e.g. usage of context).
-
-:::
-
-<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.ios.types.ts#L116"}>
+<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.ios.types.ts#L150"}>
 #### ios.bottomAccessoryHidden {#host-ios-bottomaccessoryhidden}
 </ReferenceHeading>
 
@@ -41,23 +37,44 @@ Hides the bottom accessory with animation.
 
 **Default:** `false`
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.ios.types.ts#L134"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.ios.types.ts#L212"}>
 #### ios.onMoreTabSelected {#host-ios-onmoretabselected}
 </ReferenceHeading>
 
 ```ts
-onMoreTabSelected?: TabsHostEventHandler<MoreTabSelectedEvent>;
+onMoreTabSelected?: NativeEventHandler<MoreTabSelectedEvent>;
 ```
 
 A callback that gets invoked when the user taps the "More" tab bar item.
 
-This event fires when the user taps the system-generated "More" tab bar item.
-It does NOT fire when a tab is selected from within the More list — that triggers
-the normal `onTabSelected` event instead.
+This event fires when the user taps the system-generated "More" tab bar
+item. It does NOT fire when a tab is selected from within the More list —
+that triggers the normal `onTabSelected` event instead.
 
-**Type:** [`TabsHostEventHandler`](#tabshosteventhandler)\<[`MoreTabSelectedEvent`](#moretabselectedevent)\>
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`MoreTabSelectedEvent`](#moretabselectedevent)\>
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"18"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.ios.types.ts#L123"}>
+<ReferenceHeading platforms={[{"platform":"ios","from":"27"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.ios.types.ts#L201"}>
+#### ios.prominentScreenKey {#host-ios-prominentscreenkey}
+</ReferenceHeading>
+
+```ts
+prominentScreenKey?: string;
+```
+
+`screenKey` of the tab screen that should receive the prominent treatment.
+
+Must match the `screenKey` of one of the child `Tabs.Screen`s. Where
+supported, that tab receives enhanced visual emphasis in the tab bar - it
+is detached from the other items onto its own surface and stays visible
+when the tab bar minimizes on scroll (see `tabBarMinimizeBehavior`).
+
+When omitted, a tab with `role: 'search'` and
+`automaticallyActivatesSearch` enabled becomes prominent automatically,
+otherwise no tab is prominent.
+
+**See:** [UITabBarController.prominentTabIdentifier](https://developer.apple.com/documentation/uikit/uitabbarcontroller/prominenttabidentifier)
+
+<ReferenceHeading platforms={[{"platform":"ios","from":"18"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.ios.types.ts#L157"}>
 #### ios.tabBarControllerMode {#host-ios-tabbarcontrollermode}
 </ReferenceHeading>
 
@@ -71,7 +88,27 @@ Specifies the display mode for the tab bar.
 
 **Default:** `'automatic'`
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.ios.types.ts#L90"}>
+<ReferenceHeading platforms={[{"platform":"ios","from":"18"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.ios.types.ts#L105"}>
+#### ios.tabBarHiddenAnimationEnabled {#host-ios-tabbarhiddenanimationenabled}
+</ReferenceHeading>
+
+```ts
+tabBarHiddenAnimationEnabled?: boolean;
+```
+
+Whether changes of `tabBarHidden` are animated.
+
+When `true`, the tab bar is hidden and shown with the system transition.
+When `false`, the tab bar disappears and reappears immediately.
+
+On versions earlier than iOS 18 the tab bar visibility is never animated,
+regardless of this prop.
+
+**Default:** `true`
+
+**See:** [UITabBarController.setTabBarHidden(\_:animated:)](https://developer.apple.com/documentation/uikit/uitabbarcontroller/settabbarhidden(_:animated:))
+
+<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.ios.types.ts#L125"}>
 #### ios.tabBarMinimizeBehavior {#host-ios-tabbarminimizebehavior}
 </ReferenceHeading>
 
@@ -85,7 +122,40 @@ Specifies the minimize behavior for the tab bar.
 
 **Default:** `'automatic'`
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"13"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.ios.types.ts#L83"}>
+<ReferenceHeading platforms={[{"platform":"ios","from":"27"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.ios.types.ts#L184"}>
+#### ios.tabBarSidebarPreferredPlacement {#host-ios-tabbarsidebarpreferredplacement}
+</ReferenceHeading>
+
+```ts
+tabBarSidebarPreferredPlacement?: TabBarSidebarPreferredPlacement;
+```
+
+Specifies whether the sidebar or the tab bar is preferred when only one of
+them can be displayed.
+
+This prop requires `tabBarControllerMode` to be set to `'tabSidebar'`.
+Otherwise, the sidebar is not considered a supported mode and the tab bar
+is always displayed.
+
+The button that shows the sidebar is visible only when the screen has a
+header. After using it, the sidebar is displayed and the content is
+accessible.
+
+The sidebar can also be shown with a swipe from the leading edge. In this
+case, the sidebar overlaps the content, and the content is not accessible
+until the sidebar is hidden.
+
+The sidebar is enabled only when the interface has a regular horizontal
+size class. On iPhone, this applies only to larger models (e.g. Pro Max,
+Plus and Air) in landscape orientation. On other iPhones (e.g. iPhone 18
+Pro), and on all iPhones in portrait orientation, the tab bar is always
+displayed.
+
+**Type:** [`TabBarSidebarPreferredPlacement`](#tabbarsidebarpreferredplacement)
+
+**Default:** `'automatic'`
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.ios.types.ts#L118"}>
 #### ios.tabBarTintColor {#host-ios-tabbartintcolor}
 </ReferenceHeading>
 
@@ -95,8 +165,8 @@ tabBarTintColor?: ColorValue;
 
 Specifies the color used for selected tab's text and icon color.
 
-Starting from iOS 26, it also impacts glow of Liquid Glass tab
-selection view.
+Starting from iOS 26, it also impacts glow of Liquid Glass tab selection
+view.
 
 `tabBarItemTitleFontColor` and `tabBarItemIconColor` defined on
-`Tabs.Screen` override this color.
+[Tabs.Screen](#screen) component override this color.

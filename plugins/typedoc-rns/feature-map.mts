@@ -153,6 +153,25 @@ export const FEATURES: Record<string, Feature> = {
       },
     ],
   },
+  'components/modals/contained-modal': {
+    entryPoint: `${LIB}/components/modals/contained-modal/index.ts`,
+    label: 'ContainedModal',
+    dir: 'react/components/contained-modal',
+    components: [
+      {
+        id: 'provider',
+        label: 'ContainedModalProvider',
+        props: 'ContainedModalProviderProps',
+        merged: ['ContainedModalProvider'],
+      },
+      {
+        id: 'over-content',
+        label: 'ContainedModalOverContent',
+        props: 'ContainedModalProps',
+        merged: ['ContainedModalOverContent'],
+      },
+    ],
+  },
   'components/scroll-view-marker': {
     entryPoint: `${LIB}/components/scroll-view-marker/index.ts`,
     label: 'ScrollViewMarker',

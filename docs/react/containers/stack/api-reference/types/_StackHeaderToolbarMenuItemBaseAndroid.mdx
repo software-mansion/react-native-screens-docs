@@ -1,10 +1,10 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L149"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L150"}>
 #### StackHeaderToolbarMenuItemBaseAndroid {#stackheadertoolbarmenuitembaseandroid}
 </ReferenceHeading>
 
-Base fields shared by toolbar menu items and submenus.
+Fields shared by the items and the submenus of the toolbar menu.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L197"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L190"}>
 ##### accessibilityLabel {#stackheadertoolbarmenuitembaseandroid-accessibilitylabel}
 </ReferenceHeading>
 
@@ -12,8 +12,7 @@ Base fields shared by toolbar menu items and submenus.
 accessibilityLabel?: string;
 ```
 
-Sets the accessibility label (content description) for the menu
-element.
+Sets the accessibility label (content description) for the menu element.
 
 When `undefined`, Android uses the `title` for the accessibility label when
 the item is placed in the toolbar. There is no default accessibility label
@@ -23,7 +22,7 @@ Due to native platform limitations, it's not possible to provide `testID`
 for menu items inside overflow menu/submenus. If possible, use
 `accessibilityLabel` instead.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L209"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L202"}>
 ##### disabled {#stackheadertoolbarmenuitembaseandroid-disabled}
 </ReferenceHeading>
 
@@ -35,7 +34,7 @@ Specifies if the menu element should be disabled.
 
 **Default:** `false`
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L203"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L196"}>
 ##### hidden {#stackheadertoolbarmenuitembaseandroid-hidden}
 </ReferenceHeading>
 
@@ -47,7 +46,7 @@ Specifies if the menu element should be hidden.
 
 **Default:** `false`
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L236"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L235"}>
 ##### icon {#stackheadertoolbarmenuitembaseandroid-icon}
 </ReferenceHeading>
 
@@ -57,15 +56,21 @@ icon?: PlatformIconAndroid;
 
 Specifies the icon for the menu element.
 
-Note that `'imageSource'` doesn't support SVGs on Android; use `'drawableResource'`,
-which requires adding a drawable to resources via Android Studio.
-
 The icon will be visible only if the menu element is shown in the
 Toolbar.
 
+An icon set via the `updateToolbarMenuElements` view command takes
+precedence over this one until the next `toolbarMenu` change.
+
+`'imageSource'` type doesn't support SVGs on Android. For loading SVGs use
+`'drawableResource'` type.
+
+`'drawableResource'` type requires passing a drawable to resources via
+Android Studio.
+
 **Type:** [`PlatformIconAndroid`](../../../../common-types/index.mdx#platformiconandroid)
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L270"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L269"}>
 ##### iconTintColorDisabled {#stackheadertoolbarmenuitembaseandroid-icontintcolordisabled}
 </ReferenceHeading>
 
@@ -73,14 +78,14 @@ Toolbar.
 iconTintColorDisabled?: ColorValue;
 ```
 
-Specifies the tint color to apply to the menu element icon when
-it is disabled.
+Specifies the tint color to apply to the menu element icon when it is
+disabled.
 
 Due to native platform limitations, if you set this prop, you should also
 provide `iconTintColorNormal`. Otherwise, the icon will become
 transparent when the item is not disabled.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L260"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L259"}>
 ##### iconTintColorFocused {#stackheadertoolbarmenuitembaseandroid-icontintcolorfocused}
 </ReferenceHeading>
 
@@ -88,14 +93,14 @@ transparent when the item is not disabled.
 iconTintColorFocused?: ColorValue;
 ```
 
-Specifies the tint color to apply to the menu element icon when
-it is focused (e.g. by keyboard navigation).
+Specifies the tint color to apply to the menu element icon when it is
+focused (e.g. by keyboard navigation).
 
 Due to native platform limitations, if you set this prop, you must also
 provide `iconTintColorNormal`. Otherwise, the icon will become
 transparent.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L240"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L239"}>
 ##### iconTintColorNormal {#stackheadertoolbarmenuitembaseandroid-icontintcolornormal}
 </ReferenceHeading>
 
@@ -105,7 +110,7 @@ iconTintColorNormal?: ColorValue;
 
 Specifies the tint color to apply to the menu element icon.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L250"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L249"}>
 ##### iconTintColorPressed {#stackheadertoolbarmenuitembaseandroid-icontintcolorpressed}
 </ReferenceHeading>
 
@@ -113,14 +118,14 @@ Specifies the tint color to apply to the menu element icon.
 iconTintColorPressed?: ColorValue;
 ```
 
-Specifies the tint color to apply to the menu element icon when
-it is pressed.
+Specifies the tint color to apply to the menu element icon when it is
+pressed.
 
 Due to native platform limitations, if you set this prop, you must also
 provide `iconTintColorNormal`. Otherwise, the icon will become
 transparent.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L153"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L154"}>
 ##### id {#stackheadertoolbarmenuitembaseandroid-id}
 </ReferenceHeading>
 
@@ -130,7 +135,7 @@ id: string;
 
 Unique identifier of the menu element.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L225"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L218"}>
 ##### showAsAction {#stackheadertoolbarmenuitembaseandroid-showasaction}
 </ReferenceHeading>
 
@@ -138,8 +143,8 @@ Unique identifier of the menu element.
 showAsAction?: StackHeaderToolbarMenuItemShowAsActionAndroid;
 ```
 
-Specifies whether the element should be displayed as a button in
-the Toolbar.
+Specifies whether the element should be displayed as a button in the
+Toolbar.
 
 This prop only affects top-level menu elements. Items inside
 submenus are always displayed in the popup and ignore this
@@ -153,7 +158,7 @@ adapt to subsequent layout or orientation changes.
 
 **Default:** `'never'`
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L164"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L158"}>
 ##### title {#stackheadertoolbarmenuitembaseandroid-title}
 </ReferenceHeading>
 
@@ -163,13 +168,7 @@ title?: string;
 
 Title of the menu element.
 
-If `title` is changed for the element of type `'menu'` by using the
-`updateToolbarMenuElements` view command, the menu title (`menuTitle`)
-will also be changed to the new title (unless the new title is set to
-`undefined`). In order to keep the custom menu title, you should also
-include `menuTitle` in the view command.
-
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L174"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L168"}>
 ##### titleCondensed {#stackheadertoolbarmenuitembaseandroid-titlecondensed}
 </ReferenceHeading>
 
@@ -177,14 +176,14 @@ include `menuTitle` in the view command.
 titleCondensed?: string;
 ```
 
-Shorter title used for the menu element when it is displayed as
-a button in the Toolbar.
+Shorter title used for the menu element when it is displayed as a button
+in the Toolbar.
 
 When the element is shown in the Toolbar with a text label, this
 condensed title is used instead of `title`. The full `title` is still
 used everywhere else (the overflow menu and submenus).
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L183"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L177"}>
 ##### tooltipText {#stackheadertoolbarmenuitembaseandroid-tooltiptext}
 </ReferenceHeading>
 
@@ -192,8 +191,8 @@ used everywhere else (the overflow menu and submenus).
 tooltipText?: string;
 ```
 
-Tooltip shown on long-press (or pointer hover) of the menu
-element when it is displayed as a button in the Toolbar.
+Tooltip shown on long-press (or pointer hover) of the menu element when it
+is displayed as a button in the Toolbar.
 
 Applies only to elements shown as a button in the Toolbar; it has no
 effect on elements placed in the overflow menu.

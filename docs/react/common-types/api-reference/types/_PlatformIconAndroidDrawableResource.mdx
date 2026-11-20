@@ -1,19 +1,13 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L123"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L177"}>
 #### PlatformIconAndroidDrawableResource {#platformiconandroiddrawableresource}
 </ReferenceHeading>
 
-```ts
-type PlatformIconAndroidDrawableResource = {
-  name: string;
-  type: "drawableResource";
-};
-```
+Icon loaded from an Android drawable resource.
 
-Icon backed by an Android drawable resource, referenced by `name`.
+The resource is looked up by name among the drawables of the app first and
+then among the drawables of the Android system.
 
-Discriminated by `type: 'drawableResource'`.
-
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L131"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L191"}>
 ##### name {#platformiconandroiddrawableresource-name}
 </ReferenceHeading>
 
@@ -21,9 +15,11 @@ Discriminated by `type: 'drawableResource'`.
 name: string;
 ```
 
-Name of the drawable resource, without the extension or the `@drawable/` prefix.
+Name of the drawable resource, without the file extension.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L127"}>
+**Example:** For `res/drawable/ic_search.xml`: ```tsx { type: 'drawableResource', name: 'ic_search' } ```
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L181"}>
 ##### type {#platformiconandroiddrawableresource-type}
 </ReferenceHeading>
 
@@ -31,4 +27,4 @@ Name of the drawable resource, without the extension or the `@drawable/` prefix.
 type: "drawableResource";
 ```
 
-Discriminant selecting the drawable-resource variant.
+Kind of the icon.
