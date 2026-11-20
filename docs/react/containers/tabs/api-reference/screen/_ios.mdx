@@ -33,7 +33,7 @@ of the screen stack nested in this tab.
 </ReferenceHeading>
 
 ```ts
-experimental_userInterfaceStyle?: UserInterfaceStyle;
+experimental_userInterfaceStyle?: TabsUserInterfaceStyle;
 ```
 
 :::warning
@@ -44,7 +44,7 @@ This API is experimental. It may change in a breaking way — or be removed enti
 
 Allows to override system appearance for the tab bar.
 
-**Type:** [`UserInterfaceStyle`](../../../../common-types/index.mdx#userinterfacestyle)
+**Type:** [`TabsUserInterfaceStyle`](#tabsuserinterfacestyle)
 
 :::info
 
@@ -107,7 +107,7 @@ behavior is reverted.
 </ReferenceHeading>
 
 ```ts
-role?: "search";
+role?: TabsScreenRole;
 ```
 
 Gives this tab a system role. Currently the only role is `'search'`,
@@ -123,6 +123,8 @@ enabled. On iOS 27+ the detached (prominent) placement can be given to any
 tab instead through
 [ios.prominentScreenKey](#host-ios-prominentscreenkey) on
 [Tabs.Host](#host).
+
+**Type:** [`TabsScreenRole`](#tabsscreenrole)
 
 :::tip
 
