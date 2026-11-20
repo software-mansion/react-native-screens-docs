@@ -7,7 +7,7 @@
 </ReferenceHeading>
 
 ```ts
-backgroundEffect?: SheetBackgroundEffect;
+backgroundEffect?: PageSheetBackgroundEffect;
 ```
 
 Material the system renders behind the sheet's content.
@@ -15,7 +15,7 @@ Material the system renders behind the sheet's content.
 The material is drawn behind the native container, so an opaque
 `nativeContainerStyle.backgroundColor` covers it.
 
-**Type:** [`SheetBackgroundEffect`](../../../../common-types/index.mdx#sheetbackgroundeffect)
+**Type:** [`PageSheetBackgroundEffect`](#pagesheetbackgroundeffect)
 
 **Default:** `'automatic'`
 
@@ -39,7 +39,7 @@ Content of the sheet.
 </ReferenceHeading>
 
 ```ts
-detents?: SheetDetents;
+detents?: PageSheetDetents;
 ```
 
 Defines the resting positions of the sheet.
@@ -48,7 +48,7 @@ If the prop is not set or the array is empty, the sheet has a single
 large detent. On Android, at most three detents are supported.
 `'fitToContents'` is supported on iOS 16+.
 
-**Type:** [`SheetDetents`](../../../../common-types/index.mdx#sheetdetents)
+**Type:** [`PageSheetDetents`](#pagesheetdetents)
 
 :::note
 
@@ -65,14 +65,14 @@ medium and large detents are used.
 </ReferenceHeading>
 
 ```ts
-initialDetentIndex?: SheetInitialDetentIndex;
+initialDetentIndex?: PageSheetInitialDetentIndex;
 ```
 
 The index of the detent the sheet should snap to when first opened.
 
 This prop only applies when the sheet transitions from closed to open.
 
-**Type:** [`SheetInitialDetentIndex`](../../../../common-types/index.mdx#sheetinitialdetentindex)
+**Type:** [`PageSheetInitialDetentIndex`](#pagesheetinitialdetentindex)
 
 **Default:** `0`
 
@@ -95,12 +95,12 @@ Presentation is driven by state transitions: updating this property from
 </ReferenceHeading>
 
 ```ts
-largestUndimmedDetentIndex?: SheetLargestUndimmedDetentIndex;
+largestUndimmedDetentIndex?: PageSheetLargestUndimmedDetentIndex;
 ```
 
 The largest sheet detent for which a view underneath won't be dimmed.
 
-**Type:** [`SheetLargestUndimmedDetentIndex`](../../../../common-types/index.mdx#sheetlargestundimmeddetentindex)
+**Type:** [`PageSheetLargestUndimmedDetentIndex`](#pagesheetlargestundimmeddetentindex)
 
 **Default:** `'none'`
 
@@ -109,19 +109,19 @@ The largest sheet detent for which a view underneath won't be dimmed.
 </ReferenceHeading>
 
 ```ts
-nativeContainerStyle?: StyleProp<SheetNativeContainerStyleProps>;
+nativeContainerStyle?: StyleProp<PageSheetNativeContainerStyleProps>;
 ```
 
 Style applied to the native container hosting the sheet content.
 
-**Type:** `StyleProp`\<[`SheetNativeContainerStyleProps`](../../../../common-types/index.mdx#sheetnativecontainerstyleprops)\>
+**Type:** `StyleProp`\<[`PageSheetNativeContainerStyleProps`](#pagesheetnativecontainerstyleprops)\>
 
 <ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L308"}>
 #### onDetentChanged {#page-sheet-ondetentchanged}
 </ReferenceHeading>
 
 ```ts
-onDetentChanged?: NativeEventHandler<SheetDetentChangedEvent>;
+onDetentChanged?: NativeEventHandler<PageSheetDetentChangedEvent>;
 ```
 
 Called when the sheet settles at a new detent.
@@ -129,7 +129,7 @@ Called when the sheet settles at a new detent.
 Provides the `index` of the newly selected detent from the `detents`
 array.
 
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`SheetDetentChangedEvent`](../../../../common-types/index.mdx#sheetdetentchangedevent)\>
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`PageSheetDetentChangedEvent`](#pagesheetdetentchangedevent)\>
 
 :::note
 
@@ -245,7 +245,7 @@ called as soon as the transition begins.
 </ReferenceHeading>
 
 ```ts
-preferredCornerRadius?: SheetPreferredCornerRadius;
+preferredCornerRadius?: PageSheetPreferredCornerRadius;
 ```
 
 The corner radius that the sheet will attempt to present with.
@@ -253,7 +253,7 @@ The corner radius that the sheet will attempt to present with.
 If set to `'systemDefault'` or a negative number, the system's default
 corner radius is used.
 
-**Type:** [`SheetPreferredCornerRadius`](../../../../common-types/index.mdx#sheetpreferredcornerradius)
+**Type:** [`PageSheetPreferredCornerRadius`](#pagesheetpreferredcornerradius)
 
 **Default:** `'systemDefault'`
 

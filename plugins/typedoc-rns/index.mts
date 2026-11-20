@@ -5,17 +5,21 @@ import { MarkdownPageEvent } from 'typedoc-plugin-markdown';
 
 import type { RnsParts } from './theme.mts';
 
+import { aliasProblems } from './alias-gate.mts';
 import { commentProblems } from './gates.mts';
 import { resolveCrossFamilyLinks } from './links.mts';
 import { restoreRnInternalNames } from './rn-internal-names.mts';
 import { RnsRouter } from './router.mts';
 import { RnsTheme } from './theme.mts';
 import { transform } from './transform.mts';
+import { keepWrittenAliases } from './written-types.mts';
 
 // The pull requests where the doc comment rules are written.
 const RULES = 'RFC-1947, RFC-1960';
 
 export function load(app: Application): void {
+  keepWrittenAliases(app);
+
   app.converter.on(Converter.EVENT_RESOLVE_END, context => {
     restoreRnInternalNames(context.project);
     const { errors, warnings } = commentProblems(context.project);
@@ -31,6 +35,14 @@ export function load(app: Application): void {
       app.logger.error(
         `[typedoc-rns] ${errors.length} doc comment problem(s). The rules: ${RULES}\n` +
           errors.join('\n'),
+      );
+    }
+    const aliases = aliasProblems(context);
+    if (aliases.length > 0) {
+      app.logger.error(
+        `[typedoc-rns] ${aliases.length} type(s) show another name than the library alias ` +
+          'they are written with:\n' +
+          aliases.join('\n'),
       );
     }
   });
