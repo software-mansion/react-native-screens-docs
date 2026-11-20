@@ -23,10 +23,12 @@ const PLATFORM_LABELS: Record<TagPlatform, string> = {
   windows: 'Windows',
 };
 
-/** `≥ 13` from the first version alone, `13–18` with the last one too. */
+/** `≥ 18` from the first version alone, `≤ 18` from the last one alone, `16–18` from both. */
 function versions({ from, to }: PlatformEntry): string | undefined {
-  if (!from) return undefined;
-  return to ? `${from}–${to}` : `≥ ${from}`;
+  if (from && to) return `${from}–${to}`;
+  if (from) return `≥ ${from}`;
+  if (to) return `≤ ${to}`;
+  return undefined;
 }
 
 function PlatformChip(entry: PlatformEntry) {
@@ -68,11 +70,11 @@ function SourceLink({ href }: { href: string }) {
 
 /**
  * A heading in a generated API reference — a component section, a type, or a prop, field or
- * method — followed by a chip for each platform of its `@platform` tag
- * (`android >= 21` → **Android** ≥ 21, `ios 13 - 18` → **iOS** 13–18), in the tag's order, and
- * a link to its declaration in the library repository. The heading stays a Markdown heading,
- * so its anchor and the table of contents keep working. Registered as an MDX component
- * (src/theme/MDXComponents.js).
+ * method — followed by a chip for each platform of its `@platform` tag (`android >= 33` →
+ * **Android** ≥ 33, `ios <= 18` → **iOS** ≤ 18, `ios 16 - 18` → **iOS** 16–18), in the tag's
+ * order, and a link to its declaration in the library repository. The heading stays a
+ * Markdown heading, so its anchor and the table of contents keep working. Registered as an MDX
+ * component (src/theme/MDXComponents.js).
  */
 export default function ReferenceHeading({
   children,
