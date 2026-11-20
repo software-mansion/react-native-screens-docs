@@ -234,25 +234,28 @@ export const TAG_PLATFORMS = [
 export type TagPlatform = (typeof TAG_PLATFORMS)[number];
 
 /**
- * One entry of a `@platform` tag: `ios >= 13` → `{ platform: 'ios', from: '13' }`,
- * `ios 13 - 18` → `{ platform: 'ios', from: '13', to: '18' }`.
+ * One entry of a `@platform` tag: `ios` → `{ platform: 'ios' }`,
+ * `ios >= 18` → `{ platform: 'ios', from: '18' }`,
+ * `ios <= 18` → `{ platform: 'ios', to: '18' }`,
+ * `ios 16 - 18` → `{ platform: 'ios', from: '16', to: '18' }`.
  */
-export type PlatformEntry = { platform: TagPlatform } & (
-  | { from?: undefined; to?: undefined }
-  | {
-      /** The first version the symbol works on. */
-      from: string;
-      /** The last version the symbol works on; only with a first one. */
-      to?: string;
-    }
-);
+export interface PlatformEntry {
+  platform: TagPlatform;
+  /** The first version the symbol works on; without it, the library's minimum. */
+  from?: string;
+  /**
+   * The last version the symbol works on, inclusive: `ios <= 18` covers every 18.x; without
+   * it, the newest one.
+   */
+  to?: string;
+}
 
 const VERSION = String.raw`\d+(?:\.\d+)*`;
 
-// `web`, `ios >= 18`, `ios 13 - 18`, `windows >= 10.0.17763`: lower case, one space on each
-// side of the operator, `>=` or `-`.
+// `web`, `ios >= 18`, `ios <= 18`, `ios 16 - 18`, `windows >= 10.0.17763`: lower case, one
+// space on each side of the operator, `>=`, `<=` or `-`.
 const PLATFORM_ENTRY = new RegExp(
-  `^([a-z]+)(?: >= (${VERSION})| (${VERSION}) - (${VERSION}))?$`,
+  `^([a-z]+)(?: >= (${VERSION})| <= (${VERSION})| (${VERSION}) - (${VERSION}))?$`,
 );
 
 /** Compares dotted versions part by part: `15.1` comes after `15`, `10.0.17763` after `10`. */
@@ -288,12 +291,13 @@ export function parsePlatformTag(text: string): {
     const match = PLATFORM_ENTRY.exec(entry);
     if (!match) {
       errors.push(
-        `"${entry}" is not \`<platform>\`, \`<platform> >= <version>\` or \`<platform> <version> - <version>\``,
+        `"${entry}" is not \`<platform>\`, \`<platform> >= <version>\`, \`<platform> <= <version>\` or \`<platform> <version> - <version>\``,
       );
       continue;
     }
-    const [, name, since, rangeFrom, rangeTo] = match;
+    const [, name, since, until, rangeFrom, rangeTo] = match;
     const from = since ?? rangeFrom;
+    const to = until ?? rangeTo;
     if (!TAG_PLATFORMS.includes(name as TagPlatform)) {
       errors.push(`"${name}" is not a platform (${TAG_PLATFORMS.join(', ')})`);
     } else if (entries.some(known => known.platform === name)) {
@@ -305,12 +309,11 @@ export function parsePlatformTag(text: string): {
     ) {
       errors.push(`"${entry}": the first version is not below the last`);
     } else {
-      const platform = name as TagPlatform;
-      entries.push(
-        from
-          ? { platform, from, ...(rangeTo && { to: rangeTo }) }
-          : { platform },
-      );
+      entries.push({
+        platform: name as TagPlatform,
+        ...(from && { from }),
+        ...(to && { to }),
+      });
     }
   }
   return { entries, errors };
