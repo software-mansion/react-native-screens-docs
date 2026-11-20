@@ -4,23 +4,16 @@
 
 ```ts
 type StackScreenAnimationPresetName =
-  | "default"
-  | "none"
-  | "fade"
-  | "slideFromRight"
-  | "slideFromLeft"
-  | "slideFromBottom"
-  | "slideFromTop"
-  | "fadeFromBottom"
-  | "fadeFromTop"
-  | "iosFromRight"
-  | "iosFromLeft";
+  | StackScreenAnimationUntimedPresetName
+  | StackScreenAnimationTimedPresetName
+  | StackScreenAnimationFadeFromEdgePresetName;
 ```
 
 Name of a transition preset.
 
 The following values are supported:
-- `'default'` — the activity transition of the device's Android version.
+- `'default'` — a cross-zoom below API 33 and, from API 33 on, the
+  horizontal slide of Android 13, which follows the layout direction.
 - `'none'` — no visible animation.
 - `'fade'` — the screens cross-fade.
 - `'slideFromRight'` — the new screen slides in from the right and pushes
@@ -40,4 +33,7 @@ The following values are supported:
 - `'iosFromLeft'` — the new screen slides in from the left while the
   previous one moves partly to the right and dims; a pop reverses it.
 
-Directions are physical: they are not mirrored in right-to-left layouts.
+The edges in the names are physical: they are not mirrored in right-to-left
+layouts.
+
+**Type:** [`StackScreenAnimationUntimedPresetName`](#stackscreenanimationuntimedpresetname) \| [`StackScreenAnimationTimedPresetName`](#stackscreenanimationtimedpresetname) \| [`StackScreenAnimationFadeFromEdgePresetName`](#stackscreenanimationfadefromedgepresetname)

@@ -1,13 +1,15 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L57"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L65"}>
 #### TabsScreenRepeatedTabSelectionEffects {#tabsscreenrepeatedtabselectioneffects}
 </ReferenceHeading>
 
-Special effects applied on repeated tab selection (selecting already focused
-tab bar item).
+Special effects for repeated tab selection (selecting already focused tab
+bar item).
 
-`popToRoot` has priority over `scrollToTop`.
+[popToRoot](#tabsscreenrepeatedtabselectioneffects-poptoroot) has
+priority over
+[scrollToTop](#tabsscreenrepeatedtabselectioneffects-scrolltotop).
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L64"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L73"}>
 ##### popToRoot {#tabsscreenrepeatedtabselectioneffects-poptoroot}
 </ReferenceHeading>
 
@@ -20,7 +22,7 @@ the Stack will pop to root screen.
 
 **Default:** `true`
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L71"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L84"}>
 ##### scrollToTop {#tabsscreenrepeatedtabselectioneffects-scrolltotop}
 </ReferenceHeading>
 
@@ -28,7 +30,9 @@ the Stack will pop to root screen.
 scrollToTop?: boolean;
 ```
 
-When there is a ScrollView in first descendant chain from tab screen and
-repeated selection is detected, ScrollView will be scrolled to top.
+When repeated selection is detected, the content scroll view of the tab
+screen is scrolled to the top.
+
+The content scroll view can be designated with a [ScrollViewMarker](../../../../components/scroll-view-marker/index.mdx#scroll-view-marker).
 
 **Default:** `true`

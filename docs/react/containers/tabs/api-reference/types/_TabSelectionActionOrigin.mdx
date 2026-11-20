@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L74"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L81"}>
 #### TabSelectionActionOrigin {#tabselectionactionorigin}
 </ReferenceHeading>
 
@@ -12,9 +12,9 @@ The following values are supported:
 - `'user'` — direct native UI interaction (e.g. tab bar tap, iOS tab
   drag-and-drop).
 - `'programmaticJs'` — JS-initiated request delivered via the
-  `navStateRequest` prop.
-- `'programmaticNative'` — request initiated from the native side by an actor
-  integrating directly against the native container.
+  [navStateRequest](#host-navstaterequest) prop.
+- `'programmaticNative'` — request initiated from the native side by an
+  actor integrating directly against the native container.
 - `'implicit'` — platform side effect not attributable to an explicit actor
   (e.g. UIKit reshuffling the selection during a horizontal size-class
   transition on iPad). Currently only emitted on iOS.

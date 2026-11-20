@@ -1,17 +1,13 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/form-sheet/FormSheet.types.ts#L12"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/form-sheet/FormSheet.types.ts#L22"}>
 #### FormSheetDetentChangedEvent {#formsheetdetentchangedevent}
 </ReferenceHeading>
 
-Payload of the [onDetentChanged](#form-sheet-ondetentchanged)
-event.
-
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/form-sheet/FormSheet.types.ts#L17"}>
-##### index {#formsheetdetentchangedevent-index}
-</ReferenceHeading>
-
 ```ts
-index: number;
+type FormSheetDetentChangedEvent = SheetDetentChangedEvent;
 ```
 
-Zero-based index of the detent the sheet settled at, in
-[detents](#form-sheet-detents).
+Payload of the form sheet's `onDetentChanged` event.
+
+See [SheetDetentChangedEvent](../../../../common-types/index.mdx#sheetdetentchangedevent) for its fields.
+
+**Type:** [`SheetDetentChangedEvent`](../../../../common-types/index.mdx#sheetdetentchangedevent)

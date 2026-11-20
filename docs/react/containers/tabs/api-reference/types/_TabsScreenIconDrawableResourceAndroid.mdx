@@ -1,30 +1,25 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreenIcon.types.ts#L137"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreenIcon.types.ts#L108"}>
 #### TabsScreenIconDrawableResourceAndroid {#tabsscreenicondrawableresourceandroid}
 </ReferenceHeading>
 
-Tab bar item icon on Android that uses a drawable resource with the given
-name.
-
-`tinting` defaults to `'default'`: the tab bar tints the drawable with the
-item icon color. `'original'` keeps the drawable's own colors, e.g. of a
-multicolor VectorDrawable.
-
-Requires passing a drawable to resources via Android Studio.
+Tab bar item icon on Android, loaded from a drawable resource.
 
 **Extends:** [`PlatformIconAndroidDrawableResource`](../../../../common-types/index.mdx#platformiconandroiddrawableresource)
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreenIcon.types.ts#L147"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreenIcon.types.ts#L121"}>
 ##### tinting {#tabsscreenicondrawableresourceandroid-tinting}
 </ReferenceHeading>
 
 ```ts
-tinting?: TabsScreenIconTintingAndroid;
+tinting?: PlatformIconTintingAndroid;
 ```
 
 How the tab bar tints this icon.
 
-`icon` and `selectedIcon` may use different values.
+[icon](#screen-android-icon) and
+[selectedIcon](#screen-android-selectedicon) may use
+different values.
 
-**Type:** [`TabsScreenIconTintingAndroid`](#tabsscreenicontintingandroid)
+**Type:** [`PlatformIconTintingAndroid`](../../../../common-types/index.mdx#platformicontintingandroid)
 
-**Default:** `'default'`, which tints the icon.
+**Default:** `'default'`

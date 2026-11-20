@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L157"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L167"}>
 #### PlatformIconShared {#platformiconshared}
 </ReferenceHeading>
 
@@ -11,11 +11,13 @@ The source takes the same values as the `source` of React Native's `Image`.
 This is an implementation detail and may change. On iOS, the image is
 loaded with React Native's image loader, so `headers` and the other fields
 of the source are used. On Android, only the `uri` of the source is used:
-its other fields are ignored and animated images are not supported.
+its other fields are ignored and animated images are not supported. SVG
+images are not supported on Android either; use a
+[drawable resource](#platformiconandroiddrawableresource) instead.
 
 :::
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L167"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L180"}>
 ##### imageSource {#platformiconshared-imagesource}
 </ReferenceHeading>
 
@@ -27,7 +29,7 @@ Image source the icon is loaded from.
 
 **See:** [React Native: ImageSource](https://reactnative.dev/docs/image#imagesource)
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L161"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/shared/types.ts#L173"}>
 ##### type {#platformiconshared-type}
 </ReferenceHeading>
 

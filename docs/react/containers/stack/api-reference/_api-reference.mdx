@@ -3,14 +3,12 @@ import Screen from './screen/_screen.mdx';
 import HeaderConfig from './header-config/_header-config.mdx';
 import HeaderConfigAndroid from './header-config/_android.mdx';
 import HeaderConfigIos from './header-config/_ios.mdx';
-import TypeOnDismissEventPayload from './types/_OnDismissEventPayload.mdx';
 import TypeStackColorScheme from './types/_StackColorScheme.mdx';
 import TypeStackDirection from './types/_StackDirection.mdx';
 import TypeStackHeaderAppearanceIOS from './types/_StackHeaderAppearanceIOS.mdx';
 import TypeStackHeaderBackButtonDisplayModeIOS from './types/_StackHeaderBackButtonDisplayModeIOS.mdx';
 import TypeStackHeaderBackgroundSubviewAndroid from './types/_StackHeaderBackgroundSubviewAndroid.mdx';
 import TypeStackHeaderBackgroundSubviewCollapseModeAndroid from './types/_StackHeaderBackgroundSubviewCollapseModeAndroid.mdx';
-import TypeStackHeaderBaseItemIOS from './types/_StackHeaderBaseItemIOS.mdx';
 import TypeStackHeaderButtonAppearanceIOS from './types/_StackHeaderButtonAppearanceIOS.mdx';
 import TypeStackHeaderButtonStateAppearanceIOS from './types/_StackHeaderButtonStateAppearanceIOS.mdx';
 import TypeStackHeaderCollapsedTitleGravityModeAndroid from './types/_StackHeaderCollapsedTitleGravityModeAndroid.mdx';
@@ -22,6 +20,7 @@ import TypeStackHeaderFixedSpacerItemIOS from './types/_StackHeaderFixedSpacerIt
 import TypeStackHeaderFlexibleSpacerItemIOS from './types/_StackHeaderFlexibleSpacerItemIOS.mdx';
 import TypeStackHeaderInlineCustomItemIOS from './types/_StackHeaderInlineCustomItemIOS.mdx';
 import TypeStackHeaderInlineItemIOS from './types/_StackHeaderInlineItemIOS.mdx';
+import TypeStackHeaderItemBaseIOS from './types/_StackHeaderItemBaseIOS.mdx';
 import TypeStackHeaderItemIOS from './types/_StackHeaderItemIOS.mdx';
 import TypeStackHeaderItemVariantIOS from './types/_StackHeaderItemVariantIOS.mdx';
 import TypeStackHeaderItemVisibilityPriorityIOS from './types/_StackHeaderItemVisibilityPriorityIOS.mdx';
@@ -37,6 +36,10 @@ import TypeStackHeaderPressHandler from './types/_StackHeaderPressHandler.mdx';
 import TypeStackHeaderRestorationBehaviorIOS from './types/_StackHeaderRestorationBehaviorIOS.mdx';
 import TypeStackHeaderSafeAreaAdjustmentIOS from './types/_StackHeaderSafeAreaAdjustmentIOS.mdx';
 import TypeStackHeaderSpacerItemIOS from './types/_StackHeaderSpacerItemIOS.mdx';
+import TypeStackHeaderSupportsIdentifierIOS from './types/_StackHeaderSupportsIdentifierIOS.mdx';
+import TypeStackHeaderSupportsMenuIOS from './types/_StackHeaderSupportsMenuIOS.mdx';
+import TypeStackHeaderSupportsSharedBackgroundIOS from './types/_StackHeaderSupportsSharedBackgroundIOS.mdx';
+import TypeStackHeaderSupportsVisibilityPriorityIOS from './types/_StackHeaderSupportsVisibilityPriorityIOS.mdx';
 import TypeStackHeaderTitleCustomItemIOS from './types/_StackHeaderTitleCustomItemIOS.mdx';
 import TypeStackHeaderTitleHorizontalGravityAndroid from './types/_StackHeaderTitleHorizontalGravityAndroid.mdx';
 import TypeStackHeaderTitleVerticalGravityAndroid from './types/_StackHeaderTitleVerticalGravityAndroid.mdx';
@@ -52,6 +55,8 @@ import TypeStackHeaderToolbarMenuItemShowAsActionAndroid from './types/_StackHea
 import TypeStackHeaderToolbarMenuItemTypeAndroid from './types/_StackHeaderToolbarMenuItemTypeAndroid.mdx';
 import TypeStackHeaderToolbarSubviewAndroid from './types/_StackHeaderToolbarSubviewAndroid.mdx';
 import TypeStackHeaderTypeAndroid from './types/_StackHeaderTypeAndroid.mdx';
+import TypeStackPlatformIconAndroid from './types/_StackPlatformIconAndroid.mdx';
+import TypeStackPlatformIconIOS from './types/_StackPlatformIconIOS.mdx';
 import TypeStackScreenActivityMode from './types/_StackScreenActivityMode.mdx';
 import TypeStackScreenAnimation from './types/_StackScreenAnimation.mdx';
 import TypeStackScreenAnimationBezier from './types/_StackScreenAnimationBezier.mdx';
@@ -69,10 +74,6 @@ import TypeStackScreenAnimationUntimedPresetName from './types/_StackScreenAnima
 import TypeStackScreenAnimationUntimedPresetRef from './types/_StackScreenAnimationUntimedPresetRef.mdx';
 import TypeStackScreenDismissHandler from './types/_StackScreenDismissHandler.mdx';
 import TypeStackScreenReplaceAnimation from './types/_StackScreenReplaceAnimation.mdx';
-import TypeSupportsIdentifierIOS from './types/_SupportsIdentifierIOS.mdx';
-import TypeSupportsMenuIOS from './types/_SupportsMenuIOS.mdx';
-import TypeSupportsSharedBackgroundIOS from './types/_SupportsSharedBackgroundIOS.mdx';
-import TypeSupportsVisibilityPriorityIOS from './types/_SupportsVisibilityPriorityIOS.mdx';
 
 <Host />
 
@@ -92,8 +93,6 @@ import TypeSupportsVisibilityPriorityIOS from './types/_SupportsVisibilityPriori
 
 ### Types {#types}
 
-<TypeOnDismissEventPayload />
-
 <TypeStackColorScheme />
 
 <TypeStackDirection />
@@ -105,8 +104,6 @@ import TypeSupportsVisibilityPriorityIOS from './types/_SupportsVisibilityPriori
 <TypeStackHeaderBackgroundSubviewAndroid />
 
 <TypeStackHeaderBackgroundSubviewCollapseModeAndroid />
-
-<TypeStackHeaderBaseItemIOS />
 
 <TypeStackHeaderButtonAppearanceIOS />
 
@@ -129,6 +126,8 @@ import TypeSupportsVisibilityPriorityIOS from './types/_SupportsVisibilityPriori
 <TypeStackHeaderInlineCustomItemIOS />
 
 <TypeStackHeaderInlineItemIOS />
+
+<TypeStackHeaderItemBaseIOS />
 
 <TypeStackHeaderItemIOS />
 
@@ -160,6 +159,14 @@ import TypeSupportsVisibilityPriorityIOS from './types/_SupportsVisibilityPriori
 
 <TypeStackHeaderSpacerItemIOS />
 
+<TypeStackHeaderSupportsIdentifierIOS />
+
+<TypeStackHeaderSupportsMenuIOS />
+
+<TypeStackHeaderSupportsSharedBackgroundIOS />
+
+<TypeStackHeaderSupportsVisibilityPriorityIOS />
+
 <TypeStackHeaderTitleCustomItemIOS />
 
 <TypeStackHeaderTitleHorizontalGravityAndroid />
@@ -189,6 +196,10 @@ import TypeSupportsVisibilityPriorityIOS from './types/_SupportsVisibilityPriori
 <TypeStackHeaderToolbarSubviewAndroid />
 
 <TypeStackHeaderTypeAndroid />
+
+<TypeStackPlatformIconAndroid />
+
+<TypeStackPlatformIconIOS />
 
 <TypeStackScreenActivityMode />
 
@@ -223,11 +234,3 @@ import TypeSupportsVisibilityPriorityIOS from './types/_SupportsVisibilityPriori
 <TypeStackScreenDismissHandler />
 
 <TypeStackScreenReplaceAnimation />
-
-<TypeSupportsIdentifierIOS />
-
-<TypeSupportsMenuIOS />
-
-<TypeSupportsSharedBackgroundIOS />
-
-<TypeSupportsVisibilityPriorityIOS />

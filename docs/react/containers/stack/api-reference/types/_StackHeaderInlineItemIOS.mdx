@@ -1,12 +1,12 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L186"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L216"}>
 #### StackHeaderInlineItemIOS {#stackheaderinlineitemios}
 </ReferenceHeading>
 
-Native header item with text label.
+Native header item with a title or an icon.
 
-**Extends:** [`StackHeaderBaseItemIOS`](#stackheaderbaseitemios), [`SupportsMenuIOS`](#supportsmenuios), [`SupportsIdentifierIOS`](#supportsidentifierios), [`SupportsSharedBackgroundIOS`](#supportssharedbackgroundios), [`SupportsVisibilityPriorityIOS`](#supportsvisibilitypriorityios)
+**Extends:** [`StackHeaderItemBaseIOS`](#stackheaderitembaseios), [`StackHeaderSupportsMenuIOS`](#stackheadersupportsmenuios), [`StackHeaderSupportsIdentifierIOS`](#stackheadersupportsidentifierios), [`StackHeaderSupportsSharedBackgroundIOS`](#stackheadersupportssharedbackgroundios), [`StackHeaderSupportsVisibilityPriorityIOS`](#stackheadersupportsvisibilitypriorityios)
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L222"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L258"}>
 ##### disabled {#stackheaderinlineitemios-disabled}
 </ReferenceHeading>
 
@@ -18,11 +18,11 @@ Whether the item is disabled.
 
 A disabled item is grayed out and does not respond to user interaction:
 neither [onPress](#stackheaderinlineitemios-onpress) nor
-[menu](#supportsmenuios-menu) is triggered.
+[menu](#stackheadersupportsmenuios-menu) is triggered.
 
 **Default:** `false`
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L231"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L269"}>
 ##### onPress {#stackheaderinlineitemios-onpress}
 </ReferenceHeading>
 
@@ -33,12 +33,12 @@ onPress?: StackHeaderPressHandler;
 Callback invoked when the header item is pressed.
 
 Fires when the user taps the header item. When combined with
-[menu](#supportsmenuios-menu), tapping fires `onPress` and
+[menu](#stackheadersupportsmenuios-menu), tapping fires `onPress` and
 long-pressing shows the menu.
 
 **Type:** [`StackHeaderPressHandler`](#stackheaderpresshandler)
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L211"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L246"}>
 ##### tintColor {#stackheaderinlineitemios-tintcolor}
 </ReferenceHeading>
 
@@ -53,7 +53,7 @@ the tint affects the emphasized background instead.
 
 When unset, the item uses the default system tint.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L195"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L227"}>
 ##### type {#stackheaderinlineitemios-type}
 </ReferenceHeading>
 
@@ -63,7 +63,7 @@ type: "item";
 
 Marks this object as a header item definition.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L201"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L234"}>
 ##### variant {#stackheaderinlineitemios-variant}
 </ReferenceHeading>
 

@@ -4,8 +4,8 @@
 
 ```ts
 type DisplayModeWillChangeEvent = {
-  currentDisplayMode: string;
-  nextDisplayMode: string;
+  currentDisplayMode: SplitDisplayMode;
+  nextDisplayMode: SplitDisplayMode;
 };
 ```
 
@@ -13,26 +13,26 @@ Payload of the
 [onDisplayModeWillChange](#host-ondisplaymodewillchange)
 event.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L21"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L20"}>
 ##### currentDisplayMode {#displaymodewillchangeevent-currentdisplaymode}
 </ReferenceHeading>
 
 ```ts
-currentDisplayMode: string;
+currentDisplayMode: SplitDisplayMode;
 ```
 
 Display mode of the Split before the change.
 
-One of the [SplitDisplayMode](#splitdisplaymode) values.
+**Type:** [`SplitDisplayMode`](#splitdisplaymode)
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L28"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L26"}>
 ##### nextDisplayMode {#displaymodewillchangeevent-nextdisplaymode}
 </ReferenceHeading>
 
 ```ts
-nextDisplayMode: string;
+nextDisplayMode: SplitDisplayMode;
 ```
 
 Display mode of the Split after the change.
 
-One of the [SplitDisplayMode](#splitdisplaymode) values.
+**Type:** [`SplitDisplayMode`](#splitdisplaymode)

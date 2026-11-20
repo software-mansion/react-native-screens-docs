@@ -1,4 +1,4 @@
-<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L20"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L9"}>
 ### Column {#column}
 </ReferenceHeading>
 
@@ -10,7 +10,7 @@ This API is experimental. It may change in a breaking way — or be removed enti
 
 **Extends:** `ViewProps`
 
-<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L26"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L15"}>
 #### children {#column-children}
 </ReferenceHeading>
 
@@ -20,7 +20,33 @@ children?: ReactNode;
 
 Content of the column.
 
-<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L35"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L38"}>
+#### disableStackIntegration {#column-disablestackintegration}
+</ReferenceHeading>
+
+```ts
+disableStackIntegration?: boolean;
+```
+
+Keeps the column a plain one even when its content is a `Stack.Host`.
+
+By default a `Stack.Host` rendered as a direct child of the column is
+integrated with the column. The stack navigates the column, and the header
+of the stack is the navigation bar of the column. The host has to be the
+only child of the column then.
+
+With this prop the stack is nested in the column like any other content.
+Set it when there is a view between the column and the `Stack.Host`, as
+the integration does not work then. A stack rendered inside `Tabs`, a
+sheet or a contained modal is never integrated, so it does not need the
+prop.
+
+The value is read when the column is mounted. Changing it later has no
+effect.
+
+**Default:** `false`
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L47"}>
 #### onDidAppear {#column-ondidappear}
 </ReferenceHeading>
 
@@ -34,7 +60,7 @@ This is called as soon as the transition ends.
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L44"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L56"}>
 #### onDidDisappear {#column-ondiddisappear}
 </ReferenceHeading>
 
@@ -48,7 +74,7 @@ This is called as soon as the transition ends.
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L53"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L65"}>
 #### onWillAppear {#column-onwillappear}
 </ReferenceHeading>
 
@@ -62,7 +88,7 @@ This is called as soon as the transition begins.
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L63"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitScreen.types.ts#L75"}>
 #### onWillDisappear {#column-onwilldisappear}
 </ReferenceHeading>
 

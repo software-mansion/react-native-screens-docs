@@ -1,8 +1,8 @@
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L54"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L59"}>
 ### Screen {#screen}
 </ReferenceHeading>
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L73"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L78"}>
 #### activityMode {#screen-activitymode}
 </ReferenceHeading>
 
@@ -18,7 +18,7 @@ and at least one screen must stay attached.
 
 **Type:** [`StackScreenActivityMode`](#stackscreenactivitymode)
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L183"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L172"}>
 #### animation {#screen-animation}
 </ReferenceHeading>
 
@@ -32,25 +32,9 @@ popped.
 The value on the incoming screen drives a push; the value on the outgoing
 screen drives a pop, including the predictive back gesture. A replace
 plays the pop animation of the outgoing screen or the push animation of
-the incoming one, see `replaceAnimation`. Changing it on the top screen
-takes effect for the next pop.
-
-A preset is either its name or an object
-`{ type: 'preset', name, ...options }`:
-
-- `duration` (ms) replaces the preset's reference duration, the longer of
-  its push and pop; both are rescaled by the same factor, so
-  `fadeFromBottom` with `duration: 500` pushes in 500 ms and pops in about
-  357 ms.
-- `easing` replaces the curve of every animated property of the preset: a
-  curve name or a cubic bezier `[x1, y1, x2, y2]`. A predictive back
-  gesture always scrubs linearly with the finger.
-- `distance`, accepted by `fadeFromBottom` and `fadeFromTop` only, replaces
-  how far the moving screen rises or falls: a number is
-  density-independent pixels, `'N%'` a fraction of the container. Defaults
-  to `'8%'`.
-
-`default` and `none` take no options.
+the incoming one, see
+[replaceAnimation](#screen-replaceanimation). Changing it
+on the top screen takes effect for the next pop.
 
 **Type:** [`StackScreenAnimation`](#stackscreenanimation)
 
@@ -65,7 +49,7 @@ warning and falls back to `default`.
 
 **Default:** `'default'`
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L60"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L65"}>
 #### children {#screen-children}
 </ReferenceHeading>
 
@@ -75,7 +59,7 @@ children?: ViewProps["children"];
 
 Content of the screen.
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L96"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L101"}>
 #### onDidAppear {#screen-ondidappear}
 </ReferenceHeading>
 
@@ -87,7 +71,7 @@ Called when the screen has appeared.
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L108"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L113"}>
 #### onDidDisappear {#screen-ondiddisappear}
 </ReferenceHeading>
 
@@ -99,7 +83,7 @@ Called when the screen has disappeared.
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L116"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L120"}>
 #### onDismiss {#screen-ondismiss}
 </ReferenceHeading>
 
@@ -107,12 +91,12 @@ Called when the screen has disappeared.
 onDismiss?: StackScreenDismissHandler;
 ```
 
-Called when the screen was popped because its `activityMode` became
-`'detached'`.
+Called when the screen was popped because its
+[activityMode](#screen-activitymode) became `'detached'`.
 
 **Type:** [`StackScreenDismissHandler`](#stackscreendismisshandler)
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L127"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L132"}>
 #### onNativeDismiss {#screen-onnativedismiss}
 </ReferenceHeading>
 
@@ -124,11 +108,12 @@ Called when the user dismissed the screen natively, such as with the back
 button or the back gesture, while it was still `'attached'`.
 
 The screen is no longer on the native stack: remove it from your state
-instead of changing its `activityMode` to `'detached'`.
+instead of changing its
+[activityMode](#screen-activitymode) to `'detached'`.
 
 **Type:** [`StackScreenDismissHandler`](#stackscreendismisshandler)
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L134"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L140"}>
 #### onNativeDismissPrevented {#screen-onnativedismissprevented}
 </ReferenceHeading>
 
@@ -137,11 +122,12 @@ onNativeDismissPrevented?: NativeEventHandler<EmptyEventPayload>;
 ```
 
 Called when the user tries to dismiss the screen natively, but
-`preventNativeDismiss` stops it.
+[preventNativeDismiss](#screen-preventnativedismiss) stops
+it.
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L90"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L95"}>
 #### onWillAppear {#screen-onwillappear}
 </ReferenceHeading>
 
@@ -153,7 +139,7 @@ Called when the screen is about to appear.
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L102"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L107"}>
 #### onWillDisappear {#screen-onwilldisappear}
 </ReferenceHeading>
 
@@ -165,7 +151,7 @@ Called when the screen is about to disappear.
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L144"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L150"}>
 #### preventNativeDismiss {#screen-preventnativedismiss}
 </ReferenceHeading>
 
@@ -178,7 +164,7 @@ back button or the system back.
 
 **Default:** `false`
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L191"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L180"}>
 #### replaceAnimation {#screen-replaceanimation}
 </ReferenceHeading>
 
@@ -193,7 +179,7 @@ top of the stack.
 
 **Default:** `'pop'`
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L82"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/screen/StackScreen.types.ts#L87"}>
 #### screenKey {#screen-screenkey}
 </ReferenceHeading>
 

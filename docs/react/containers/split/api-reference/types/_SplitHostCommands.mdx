@@ -1,22 +1,22 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L268"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L298"}>
 #### SplitHostCommands {#splithostcommands}
 </ReferenceHeading>
 
 ```ts
 type SplitHostCommands = {
-  hide: (column: Exclude<SplitNavigableColumn, "secondary">) => void;
+  hide: (column: SplitSidebarColumn) => void;
   show: (column: SplitNavigableColumn) => void;
 };
 ```
 
 Commands of [Split.Host](#host), available through its `ref`.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L283"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L315"}>
 ##### hide {#splithostcommands-hide}
 </ReferenceHeading>
 
 ```ts
-hide: (column: Exclude<SplitNavigableColumn, "secondary">) => void;
+hide: (column: SplitSidebarColumn) => void;
 ```
 
 Hides a sidebar column using UIKit's native transition to the closest
@@ -26,11 +26,11 @@ supported display mode. UIKit does not support hiding the secondary column.
 
 **Parameters:**
 
-- `column`: `Exclude`\<[`SplitNavigableColumn`](#splitnavigablecolumn), `"secondary"`\> — The sidebar column to hide.
+- `column`: [`SplitSidebarColumn`](#splitsidebarcolumn) — The sidebar column to hide.
 
 **Returns:** `void`
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L275"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L306"}>
 ##### show {#splithostcommands-show}
 </ReferenceHeading>
 

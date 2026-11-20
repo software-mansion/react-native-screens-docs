@@ -2,7 +2,7 @@ import Anchor from '@theme/MDXComponents/A';
 
 <Anchor id="header-config-android" />
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L611"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L713"}>
 #### android.backButtonIcon {#header-config-android-backbuttonicon}
 </ReferenceHeading>
 
@@ -12,17 +12,11 @@ backButtonIcon?: PlatformIconAndroid;
 
 Custom icon for the back button.
 
-`'imageSource'` type doesn't support SVGs on Android. For loading SVGs use
-`'drawableResource'` type.
-
-`'drawableResource'` type requires passing a drawable to resources via
-Android Studio.
-
 **Type:** [`PlatformIconAndroid`](../../../../common-types/index.mdx#platformiconandroid)
 
 **Default:** The native back arrow (`homeAsUpIndicator`) is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L597"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L706"}>
 #### android.backButtonTintColorFocused {#header-config-android-backbuttontintcolorfocused}
 </ReferenceHeading>
 
@@ -30,14 +24,19 @@ Android Studio.
 backButtonTintColorFocused?: ColorValue;
 ```
 
-Tint color applied to the back button icon when it is focused
-(e.g. by keyboard navigation).
+Tint color applied to the back button icon when it is focused (e.g. by
+keyboard navigation).
+
+:::info
 
 Due to native platform limitations, if you set this prop, you must also
-provide `backButtonTintColorNormal`. Otherwise, the icon will become
-transparent.
+provide
+[backButtonTintColorNormal](#header-config-android-backbuttontintcolornormal).
+Otherwise, the icon will become transparent.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L574"}>
+:::
+
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L681"}>
 #### android.backButtonTintColorNormal {#header-config-android-backbuttontintcolornormal}
 </ReferenceHeading>
 
@@ -47,11 +46,9 @@ backButtonTintColorNormal?: ColorValue;
 
 Tint color applied to the back button icon in its normal state.
 
-When `undefined`, the default tint color is used. This applies to the
-native back arrow and `'drawableResource'` icons that have an associated
-tint. For `'imageSource'` icons, no tint is applied by default.
+**Default:** No tint is applied: the native back arrow and `'drawableResource'` icons keep their own tint, `'imageSource'` icons are drawn as is.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L585"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L693"}>
 #### android.backButtonTintColorPressed {#header-config-android-backbuttontintcolorpressed}
 </ReferenceHeading>
 
@@ -61,11 +58,16 @@ backButtonTintColorPressed?: ColorValue;
 
 Tint color applied to the back button icon when it is pressed.
 
-Due to native platform limitations, if you set this prop, you must also
-provide `backButtonTintColorNormal`. Otherwise, the icon will become
-transparent.
+:::info
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L762"}>
+Due to native platform limitations, if you set this prop, you must also
+provide
+[backButtonTintColorNormal](#header-config-android-backbuttontintcolornormal).
+Otherwise, the icon will become transparent.
+
+:::
+
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L875"}>
 #### android.backgroundColor {#header-config-android-backgroundcolor}
 </ReferenceHeading>
 
@@ -77,11 +79,11 @@ Background color of the header.
 
 Applies to all header types. For `'medium'` / `'large'` headers this is the
 color of the expanded state — the collapsed state color is controlled by
-[StackHeaderConfigPropsAndroid.scrolledBackgroundColor](#header-config-android-scrolledbackgroundcolor).
+[scrolledBackgroundColor](#header-config-android-scrolledbackgroundcolor).
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L545"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L654"}>
 #### android.backgroundSubview {#header-config-android-backgroundsubview}
 </ReferenceHeading>
 
@@ -93,7 +95,7 @@ Custom view rendered behind the header content.
 
 **Type:** [`StackHeaderBackgroundSubviewAndroid`](#stackheaderbackgroundsubviewandroid)
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L557"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L666"}>
 #### android.centerSubview {#header-config-android-centersubview}
 </ReferenceHeading>
 
@@ -105,7 +107,7 @@ Custom view placed in the center slot of the toolbar.
 
 **Type:** [`StackHeaderToolbarSubviewAndroid`](#stackheadertoolbarsubviewandroid)
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1198"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1383"}>
 #### android.collapsedSubtitleColor {#header-config-android-collapsedsubtitlecolor}
 </ReferenceHeading>
 
@@ -113,12 +115,13 @@ Custom view placed in the center slot of the toolbar.
 collapsedSubtitleColor?: ColorValue;
 ```
 
-Color of the collapsed subtitle text. Applies to `'medium'` and `'large'`
-headers only.
+Color of the collapsed subtitle text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1206"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1393"}>
 #### android.collapsedSubtitleFontFamily {#header-config-android-collapsedsubtitlefontfamily}
 </ReferenceHeading>
 
@@ -126,12 +129,13 @@ headers only.
 collapsedSubtitleFontFamily?: string;
 ```
 
-Font family of the collapsed subtitle text. Applies to `'medium'` and
-`'large'` headers only.
+Font family of the collapsed subtitle text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1214"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1403"}>
 #### android.collapsedSubtitleFontSize {#header-config-android-collapsedsubtitlefontsize}
 </ReferenceHeading>
 
@@ -139,12 +143,13 @@ Font family of the collapsed subtitle text. Applies to `'medium'` and
 collapsedSubtitleFontSize?: number;
 ```
 
-Font size (SP) of the collapsed subtitle text. Applies to `'medium'` and
-`'large'` headers only.
+Font size (SP) of the collapsed subtitle text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1230"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1423"}>
 #### android.collapsedSubtitleFontStyle {#header-config-android-collapsedsubtitlefontstyle}
 </ReferenceHeading>
 
@@ -152,12 +157,13 @@ Font size (SP) of the collapsed subtitle text. Applies to `'medium'` and
 collapsedSubtitleFontStyle?: "normal" | "italic";
 ```
 
-Font style of the collapsed subtitle text. Applies to `'medium'` and
-`'large'` headers only.
+Font style of the collapsed subtitle text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1222"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1413"}>
 #### android.collapsedSubtitleFontWeight {#header-config-android-collapsedsubtitlefontweight}
 </ReferenceHeading>
 
@@ -165,12 +171,13 @@ Font style of the collapsed subtitle text. Applies to `'medium'` and
 collapsedSubtitleFontWeight?: TextStyle['fontWeight'];
 ```
 
-Font weight of the collapsed subtitle text. Applies to `'medium'` and
-`'large'` headers only.
+Font weight of the collapsed subtitle text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1118"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1283"}>
 #### android.collapsedTitleColor {#header-config-android-collapsedtitlecolor}
 </ReferenceHeading>
 
@@ -178,12 +185,13 @@ Font weight of the collapsed subtitle text. Applies to `'medium'` and
 collapsedTitleColor?: ColorValue;
 ```
 
-Color of the collapsed title text. Applies to `'medium'` and `'large'`
-headers only.
+Color of the collapsed title text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1126"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1293"}>
 #### android.collapsedTitleFontFamily {#header-config-android-collapsedtitlefontfamily}
 </ReferenceHeading>
 
@@ -191,12 +199,13 @@ headers only.
 collapsedTitleFontFamily?: string;
 ```
 
-Font family of the collapsed title text. Applies to `'medium'` and
-`'large'` headers only.
+Font family of the collapsed title text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1134"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1303"}>
 #### android.collapsedTitleFontSize {#header-config-android-collapsedtitlefontsize}
 </ReferenceHeading>
 
@@ -204,12 +213,13 @@ Font family of the collapsed title text. Applies to `'medium'` and
 collapsedTitleFontSize?: number;
 ```
 
-Font size (SP) of the collapsed title text. Applies to `'medium'` and
-`'large'` headers only.
+Font size (SP) of the collapsed title text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1150"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1323"}>
 #### android.collapsedTitleFontStyle {#header-config-android-collapsedtitlefontstyle}
 </ReferenceHeading>
 
@@ -217,12 +227,13 @@ Font size (SP) of the collapsed title text. Applies to `'medium'` and
 collapsedTitleFontStyle?: "normal" | "italic";
 ```
 
-Font style of the collapsed title text. Applies to `'medium'` and `'large'`
-headers only.
+Font style of the collapsed title text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1142"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1313"}>
 #### android.collapsedTitleFontWeight {#header-config-android-collapsedtitlefontweight}
 </ReferenceHeading>
 
@@ -230,12 +241,13 @@ headers only.
 collapsedTitleFontWeight?: TextStyle['fontWeight'];
 ```
 
-Font weight of the collapsed title text. Applies to `'medium'` and
-`'large'` headers only.
+Font weight of the collapsed title text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L946"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1063"}>
 #### android.collapsedTitleGravityMode {#header-config-android-collapsedtitlegravitymode}
 </ReferenceHeading>
 
@@ -246,21 +258,31 @@ collapsedTitleGravityMode?: StackHeaderCollapsedTitleGravityModeAndroid;
 Anchor used when resolving the collapsed title's horizontal gravity.
 
 Applies to `'medium'` / `'large'` headers only and affects only the
-collapsed state; it is only visually meaningful with
-`collapsedTitleHorizontalGravity: 'center'`.
+collapsed state; it is only visually meaningful when
+[collapsedTitleHorizontalGravity](#header-config-android-collapsedtitlehorizontalgravity)
+is `'center'`.
 
-Because the underlying Material field is set at construction time, changing
-this prop rebuilds the header.
+**Type:** [`StackHeaderCollapsedTitleGravityModeAndroid`](#stackheadercollapsedtitlegravitymodeandroid)
+
+:::info
 
 If the header is laid out during a screen transition, due to a native bug,
 the title and the subtitle might be laid out incorrectly when
 `'entireSpace'` gravity mode is used.
 
-**Type:** [`StackHeaderCollapsedTitleGravityModeAndroid`](#stackheadercollapsedtitlegravitymodeandroid)
+:::
+
+:::note
+
+This is an implementation detail and may change. Because the underlying
+Material field is set at construction time, changing this prop rebuilds the
+header.
+
+:::
 
 **Default:** `'availableSpace'`
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L913"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1026"}>
 #### android.collapsedTitleHorizontalGravity {#header-config-android-collapsedtitlehorizontalgravity}
 </ReferenceHeading>
 
@@ -272,13 +294,14 @@ Horizontal alignment of the title (and subtitle) in the collapsed state.
 
 Applies to `'medium'` / `'large'` headers only; ignored for `'small'`. The
 subtitle always follows the title's alignment. `'center'` is further
-affected by `collapsedTitleGravityMode`.
+affected by
+[collapsedTitleGravityMode](#header-config-android-collapsedtitlegravitymode).
 
 **Type:** [`StackHeaderTitleHorizontalGravityAndroid`](#stackheadertitlehorizontalgravityandroid)
 
 **Default:** `'start'`
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L925"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1038"}>
 #### android.collapsedTitleVerticalGravity {#header-config-android-collapsedtitleverticalgravity}
 </ReferenceHeading>
 
@@ -294,7 +317,7 @@ Applies to `'medium'` / `'large'` headers only; ignored for `'small'`.
 
 **Default:** `'center'`
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1000"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1123"}>
 #### android.contentInsetEnd {#header-config-android-contentinsetend}
 </ReferenceHeading>
 
@@ -304,13 +327,15 @@ contentInsetEnd?: number;
 
 End inset of the toolbar content area.
 
-The end-side counterpart of `contentInsetStart`. Applies to all header
-types. Like its start-side counterpart it is a minimum, so it is inert
-while the toolbar menu shows items that already reach further in.
+The end-side counterpart of
+[contentInsetStart](#header-config-android-contentinsetstart).
+Applies to all header types. Like its start-side counterpart it is a
+minimum, so it is inert while the toolbar menu shows items that already
+reach further in.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L988"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1109"}>
 #### android.contentInsetStart {#header-config-android-contentinsetstart}
 </ReferenceHeading>
 
@@ -329,13 +354,18 @@ visible.
 Applies to all header types. On `'medium'` / `'large'` it affects the
 collapsed title only.
 
+:::info
+
 By default, native platform applies non-zero inset which makes centered
 collapsed title look off-center when
-`collapsedTitleGravityMode: 'availableSpace'` is used.
+[collapsedTitleGravityMode](#header-config-android-collapsedtitlegravitymode)
+is `'availableSpace'`.
+
+:::
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1158"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1333"}>
 #### android.expandedSubtitleColor {#header-config-android-expandedsubtitlecolor}
 </ReferenceHeading>
 
@@ -343,12 +373,13 @@ collapsed title look off-center when
 expandedSubtitleColor?: ColorValue;
 ```
 
-Color of the expanded subtitle text. Applies to `'medium'` and `'large'`
-headers only.
+Color of the expanded subtitle text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1166"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1343"}>
 #### android.expandedSubtitleFontFamily {#header-config-android-expandedsubtitlefontfamily}
 </ReferenceHeading>
 
@@ -356,12 +387,13 @@ headers only.
 expandedSubtitleFontFamily?: string;
 ```
 
-Font family of the expanded subtitle text. Applies to `'medium'` and
-`'large'` headers only.
+Font family of the expanded subtitle text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1174"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1353"}>
 #### android.expandedSubtitleFontSize {#header-config-android-expandedsubtitlefontsize}
 </ReferenceHeading>
 
@@ -369,12 +401,13 @@ Font family of the expanded subtitle text. Applies to `'medium'` and
 expandedSubtitleFontSize?: number;
 ```
 
-Font size (SP) of the expanded subtitle text. Applies to `'medium'` and
-`'large'` headers only.
+Font size (SP) of the expanded subtitle text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1190"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1373"}>
 #### android.expandedSubtitleFontStyle {#header-config-android-expandedsubtitlefontstyle}
 </ReferenceHeading>
 
@@ -382,12 +415,13 @@ Font size (SP) of the expanded subtitle text. Applies to `'medium'` and
 expandedSubtitleFontStyle?: "normal" | "italic";
 ```
 
-Font style of the expanded subtitle text. Applies to `'medium'` and
-`'large'` headers only.
+Font style of the expanded subtitle text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1182"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1363"}>
 #### android.expandedSubtitleFontWeight {#header-config-android-expandedsubtitlefontweight}
 </ReferenceHeading>
 
@@ -395,12 +429,13 @@ Font style of the expanded subtitle text. Applies to `'medium'` and
 expandedSubtitleFontWeight?: TextStyle['fontWeight'];
 ```
 
-Font weight of the expanded subtitle text. Applies to `'medium'` and
-`'large'` headers only.
+Font weight of the expanded subtitle text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1078"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1233"}>
 #### android.expandedTitleColor {#header-config-android-expandedtitlecolor}
 </ReferenceHeading>
 
@@ -408,12 +443,13 @@ Font weight of the expanded subtitle text. Applies to `'medium'` and
 expandedTitleColor?: ColorValue;
 ```
 
-Color of the expanded title text. Applies to `'medium'` and `'large'`
-headers only.
+Color of the expanded title text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1086"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1243"}>
 #### android.expandedTitleFontFamily {#header-config-android-expandedtitlefontfamily}
 </ReferenceHeading>
 
@@ -421,12 +457,13 @@ headers only.
 expandedTitleFontFamily?: string;
 ```
 
-Font family of the expanded title text. Applies to `'medium'` and `'large'`
-headers only.
+Font family of the expanded title text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1094"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1253"}>
 #### android.expandedTitleFontSize {#header-config-android-expandedtitlefontsize}
 </ReferenceHeading>
 
@@ -434,12 +471,13 @@ headers only.
 expandedTitleFontSize?: number;
 ```
 
-Font size (SP) of the expanded title text. Applies to `'medium'` and
-`'large'` headers only.
+Font size (SP) of the expanded title text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1110"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1273"}>
 #### android.expandedTitleFontStyle {#header-config-android-expandedtitlefontstyle}
 </ReferenceHeading>
 
@@ -447,12 +485,13 @@ Font size (SP) of the expanded title text. Applies to `'medium'` and
 expandedTitleFontStyle?: "normal" | "italic";
 ```
 
-Font style of the expanded title text. Applies to `'medium'` and `'large'`
-headers only.
+Font style of the expanded title text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1102"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1263"}>
 #### android.expandedTitleFontWeight {#header-config-android-expandedtitlefontweight}
 </ReferenceHeading>
 
@@ -460,12 +499,13 @@ headers only.
 expandedTitleFontWeight?: TextStyle['fontWeight'];
 ```
 
-Font weight of the expanded title text. Applies to `'medium'` and `'large'`
-headers only.
+Font weight of the expanded title text.
+
+Applies to `'medium'` and `'large'` headers only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L887"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L999"}>
 #### android.expandedTitleHorizontalGravity {#header-config-android-expandedtitlehorizontalgravity}
 </ReferenceHeading>
 
@@ -476,14 +516,14 @@ expandedTitleHorizontalGravity?: StackHeaderTitleHorizontalGravityAndroid;
 Horizontal alignment of the title (and subtitle) in the expanded state.
 
 Applies to `'medium'` / `'large'` headers only; ignored for `'small'` (use
-`titleCentered` instead). The subtitle always follows the title's
-alignment.
+[titleCentered](#header-config-android-titlecentered)
+instead). The subtitle always follows the title's alignment.
 
 **Type:** [`StackHeaderTitleHorizontalGravityAndroid`](#stackheadertitlehorizontalgravityandroid)
 
 **Default:** `'start'`
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L899"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1011"}>
 #### android.expandedTitleVerticalGravity {#header-config-android-expandedtitleverticalgravity}
 </ReferenceHeading>
 
@@ -499,7 +539,7 @@ Applies to `'medium'` / `'large'` headers only; ignored for `'small'`.
 
 **Default:** `'bottom'`
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L551"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L660"}>
 #### android.leadingSubview {#header-config-android-leadingsubview}
 </ReferenceHeading>
 
@@ -511,7 +551,7 @@ Custom view placed in the leading (start) slot of the toolbar.
 
 **Type:** [`StackHeaderToolbarSubviewAndroid`](#stackheadertoolbarsubviewandroid)
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L750"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L863"}>
 #### android.liftOnScroll {#header-config-android-liftonscroll}
 </ReferenceHeading>
 
@@ -523,22 +563,29 @@ Whether the app bar lifts (applies a tonal/elevation shift) when content is
 scrolled beneath it.
 
 For reliable behavior the content scroll view should be designated with a
-`ScrollViewMarker`. Without it, the app bar cannot always locate the scroll
-view, which can cause the lifted state to flicker while scrolling.
+[ScrollViewMarker](../../../../components/scroll-view-marker/index.mdx#scroll-view-marker). Without it, the app bar cannot always locate the
+scroll view, which can cause the lifted state to flicker while scrolling.
 
-Applies to the `'small'` header only. For `'medium'` and `'large'` headers
-the Material `CollapsingToolbarLayout` uses a fade title-collapse mode that
-installs its own content scrim and disables the app bar's lift-on-scroll,
-so this prop has no effect there. The collapsed appearance of those headers
-is instead controlled by that content scrim — see
-[StackHeaderConfigPropsAndroid.scrolledBackgroundColor](#header-config-android-scrolledbackgroundcolor).
+Applies to the `'small'` header only.
 
-Has no effect while the header is `transparent` (there is no scrolling
-content behavior installed in that mode).
+Has no effect while the header is
+[transparent](#header-config-transparent) (there is no
+scrolling content behavior installed in that mode).
+
+:::info
+
+For `'medium'` and `'large'` headers the Material `CollapsingToolbarLayout`
+uses a fade title-collapse mode that installs its own content scrim and
+disables the app bar's lift-on-scroll, so this prop has no effect there.
+The collapsed appearance of those headers is instead controlled by that
+content scrim — see
+[scrolledBackgroundColor](#header-config-android-scrolledbackgroundcolor).
+
+:::
 
 **Default:** `true`
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L967"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1086"}>
 #### android.maxLines {#header-config-android-maxlines}
 </ReferenceHeading>
 
@@ -556,12 +603,17 @@ collapsed title is always a single line regardless of this value.
 
 A value less than `1` is invalid and falls back to `1`.
 
-Changing this value at runtime rebuilds the header. This is required due to
-a native platform limitation.
+:::note
+
+This is an implementation detail and may change. Changing this value at
+runtime rebuilds the header. This is required due to a native platform
+limitation.
+
+:::
 
 **Default:** `1`
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L626"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L721"}>
 #### android.overflowIcon {#header-config-android-overflowicon}
 </ReferenceHeading>
 
@@ -572,17 +624,11 @@ overflowIcon?: PlatformIconAndroid;
 Custom icon for the overflow menu button (the three-dots button that opens
 the toolbar menu's overflow popup).
 
-`'imageSource'` type doesn't support SVGs on Android. For loading SVGs use
-`'drawableResource'` type.
-
-`'drawableResource'` type requires passing a drawable to resources via
-Android Studio.
-
 **Type:** [`PlatformIconAndroid`](../../../../common-types/index.mdx#platformiconandroid)
 
 **Default:** The Material 3 Expressive default overflow icon is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L661"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L755"}>
 #### android.overflowIconTintColorFocused {#header-config-android-overflowicontintcolorfocused}
 </ReferenceHeading>
 
@@ -590,14 +636,19 @@ Android Studio.
 overflowIconTintColorFocused?: ColorValue;
 ```
 
-Tint color applied to the overflow menu icon when it is focused
-(e.g. by keyboard navigation).
+Tint color applied to the overflow menu icon when it is focused (e.g. by
+keyboard navigation).
+
+:::info
 
 Due to native platform limitations, if you set this prop, you must also
-provide `overflowIconTintColorNormal`. Otherwise, the icon will become
-transparent.
+provide
+[overflowIconTintColorNormal](#header-config-android-overflowicontintcolornormal).
+Otherwise, the icon will become transparent.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L638"}>
+:::
+
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L730"}>
 #### android.overflowIconTintColorNormal {#header-config-android-overflowicontintcolornormal}
 </ReferenceHeading>
 
@@ -607,12 +658,9 @@ overflowIconTintColorNormal?: ColorValue;
 
 Tint color applied to the overflow menu icon in its normal state.
 
-When `undefined`, the default tint (the Material theme's menu icon color)
-is used. This applies to the default overflow icon and `'drawableResource'`
-icons that have an associated tint. For `'imageSource'` icons, no tint is
-applied by default.
+**Default:** No tint is applied: the default overflow icon and `'drawableResource'` icons keep their own tint, `'imageSource'` icons are drawn as is.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L649"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L742"}>
 #### android.overflowIconTintColorPressed {#header-config-android-overflowicontintcolorpressed}
 </ReferenceHeading>
 
@@ -622,11 +670,16 @@ overflowIconTintColorPressed?: ColorValue;
 
 Tint color applied to the overflow menu icon when it is pressed.
 
-Due to native platform limitations, if you set this prop, you must also
-provide `overflowIconTintColorNormal`. Otherwise, the icon will become
-transparent.
+:::info
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L784"}>
+Due to native platform limitations, if you set this prop, you must also
+provide
+[overflowIconTintColorNormal](#header-config-android-overflowicontintcolornormal).
+Otherwise, the icon will become transparent.
+
+:::
+
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L898"}>
 #### android.scrolledBackgroundColor {#header-config-android-scrolledbackgroundcolor}
 </ReferenceHeading>
 
@@ -643,16 +696,17 @@ this color. Requires
 [liftOnScroll](#header-config-android-liftonscroll).
 
 For `'medium'` / `'large'` headers, this is the color of the content scrim
-that fades in as the header collapses. The scrim is drawn above the
-header background (and the `backgroundSubview`, if any) but below the
-toolbar content.
+that fades in as the header collapses. The scrim is drawn above the header
+background (and the
+[backgroundSubview](#header-config-android-backgroundsubview),
+if any) but below the toolbar content.
 
 A translucent color is composited over the header background instead of
 replacing it.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L686"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L785"}>
 #### android.scrollFlagEnterAlways {#header-config-android-scrollflagenteralways}
 </ReferenceHeading>
 
@@ -662,12 +716,15 @@ scrollFlagEnterAlways?: boolean;
 
 When enabled, the header re-expands as soon as the user scrolls back toward
 the top of the content, regardless of the ScrollView's current scroll
-position. Without this flag, the header only begins expanding once the list
-has reached the top of its content. Requires `scrollFlagScroll`.
+position.
+
+Without this flag, the header only begins expanding once the list has
+reached the top of its content. Requires
+[scrollFlagScroll](#header-config-android-scrollflagscroll).
 
 **Default:** `false`
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L699"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L801"}>
 #### android.scrollFlagEnterAlwaysCollapsed {#header-config-android-scrollflagenteralwayscollapsed}
 </ReferenceHeading>
 
@@ -675,16 +732,19 @@ has reached the top of its content. Requires `scrollFlagScroll`.
 scrollFlagEnterAlwaysCollapsed?: boolean;
 ```
 
-Modifies `scrollFlagEnterAlways` so that the initial re-entry stops at the
-header's collapsed height (the toolbar); the remainder expands only after
-the ScrollView reaches the top of its content. Requires
-`scrollFlagEnterAlways`.
+Modifies
+[scrollFlagEnterAlways](#header-config-android-scrollflagenteralways)
+so that the initial re-entry stops at the header's collapsed height (the
+toolbar); the remainder expands only after the ScrollView reaches the top
+of its content.
+
+Requires `scrollFlagEnterAlways`.
 
 This flag does not have any effect for `'small'` header.
 
 **Default:** `false`
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L716"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L821"}>
 #### android.scrollFlagExitUntilCollapsed {#header-config-android-scrollflagexituntilcollapsed}
 </ReferenceHeading>
 
@@ -693,18 +753,24 @@ scrollFlagExitUntilCollapsed?: boolean;
 ```
 
 When enabled, the header collapses only until its minimum height (the
-toolbar) remains pinned at the top. Without this flag, the entire header
-scrolls off the screen. Requires `scrollFlagScroll`.
+toolbar) remains pinned at the top.
+
+Without this flag, the entire header scrolls off the screen. Requires
+[scrollFlagScroll](#header-config-android-scrollflagscroll).
 
 Setting this flag for `'small'` header is equivalent to disabling
 `scrollFlagScroll`.
 
+:::note
+
 Even when this flag is disabled, a strip with the height of the system top
 inset (status bar and display cutout) remains visible at the top.
 
-**Default:** `false` for `'small'` headers, `true` for `'medium'` and `'large'` headers.
+:::
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L676"}>
+**Default:** `false` for the `'small'` header and `true` for the `'medium'` and `'large'` headers.
+
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L771"}>
 #### android.scrollFlagScroll {#header-config-android-scrollflagscroll}
 </ReferenceHeading>
 
@@ -712,17 +778,18 @@ inset (status bar and display cutout) remains visible at the top.
 scrollFlagScroll?: boolean;
 ```
 
-Whether the header reacts to nested scroll. Required for any other
-`scrollFlag*` prop to take effect.
+Whether the header reacts to nested scroll.
+
+Required for any other `scrollFlag*` prop to take effect.
 
 Changing any `scrollFlag*` at runtime while the header is partially
 collapsed snaps it back to its fully expanded state. A fully collapsed
 header stays collapsed, unless the new flags do not allow collapsing at
 all - then it expands.
 
-**Default:** `false` for `'small'` headers, `true` for `'medium'` and `'large'` headers.
+**Default:** `false` for the `'small'` header and `true` for the `'medium'` and `'large'` headers.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L727"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L836"}>
 #### android.scrollFlagSnap {#header-config-android-scrollflagsnap}
 </ReferenceHeading>
 
@@ -731,13 +798,16 @@ scrollFlagSnap?: boolean;
 ```
 
 When enabled, the header snaps to its nearest edge (fully expanded, or
-fully collapsed as defined by `scrollFlagExitUntilCollapsed`) after a
-scroll gesture ends, instead of resting partway. Requires
-`scrollFlagScroll`.
+fully collapsed as defined by
+[scrollFlagExitUntilCollapsed](#header-config-android-scrollflagexituntilcollapsed))
+after a scroll gesture ends, instead of resting partway.
 
-**Default:** `false` for `'small'` headers, `true` for `'medium'` and `'large'` headers.
+Requires
+[scrollFlagScroll](#header-config-android-scrollflagscroll).
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L814"}>
+**Default:** `false` for the `'small'` header and `true` for the `'medium'` and `'large'` headers.
+
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L927"}>
 #### android.statusBarScrimColor {#header-config-android-statusbarscrimcolor}
 </ReferenceHeading>
 
@@ -753,24 +823,23 @@ of the window, drawn above the toolbar content. When not provided, the
 strip follows the header's effective background color:
 [backgroundColor](#header-config-android-backgroundcolor) at
 rest, animating together with the lift-on-scroll transition towards
-[StackHeaderConfigPropsAndroid.scrolledBackgroundColor](#header-config-android-scrolledbackgroundcolor).
+[scrolledBackgroundColor](#header-config-android-scrolledbackgroundcolor).
 An explicit color is applied statically, without tracking.
 
 For `'medium'` / `'large'` headers, the scrim fades in and out together
 with the content scrim as the header collapses. When not provided, it
-matches the content scrim color
-([StackHeaderConfigPropsAndroid.scrolledBackgroundColor](#header-config-android-scrolledbackgroundcolor)).
+matches the content scrim color (`scrolledBackgroundColor`).
 
 Set to `'transparent'` to disable the scrim entirely.
 
-The default scrim is installed only when the color it follows resolves to
-a fully opaque color; translucent headers stay see-through. An explicit
+The default scrim is installed only when the color it follows resolves to a
+fully opaque color; translucent headers stay see-through. An explicit
 translucent color is honored and composites over the header background in
 the status-bar area (for `'medium'` / `'large'` headers the content scrim
 is excluded from that area while a scrim is installed, so the two scrims
 never stack).
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L875"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L987"}>
 #### android.subtitleCentered {#header-config-android-subtitlecentered}
 </ReferenceHeading>
 
@@ -786,7 +855,7 @@ independently of the title. See
 
 **Default:** `false`
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1042"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1183"}>
 #### android.subtitleColor {#header-config-android-subtitlecolor}
 </ReferenceHeading>
 
@@ -794,11 +863,13 @@ independently of the title. See
 subtitleColor?: ColorValue;
 ```
 
-Color of the subtitle text. Applies to `'small'` header only.
+Color of the subtitle text.
+
+Applies to `'small'` header only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1049"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1193"}>
 #### android.subtitleFontFamily {#header-config-android-subtitlefontfamily}
 </ReferenceHeading>
 
@@ -806,11 +877,13 @@ Color of the subtitle text. Applies to `'small'` header only.
 subtitleFontFamily?: string;
 ```
 
-Font family of the subtitle text. Applies to `'small'` header only.
+Font family of the subtitle text.
+
+Applies to `'small'` header only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1056"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1203"}>
 #### android.subtitleFontSize {#header-config-android-subtitlefontsize}
 </ReferenceHeading>
 
@@ -818,11 +891,13 @@ Font family of the subtitle text. Applies to `'small'` header only.
 subtitleFontSize?: number;
 ```
 
-Font size (SP) of the subtitle text. Applies to `'small'` header only.
+Font size (SP) of the subtitle text.
+
+Applies to `'small'` header only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1070"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1223"}>
 #### android.subtitleFontStyle {#header-config-android-subtitlefontstyle}
 </ReferenceHeading>
 
@@ -830,11 +905,13 @@ Font size (SP) of the subtitle text. Applies to `'small'` header only.
 subtitleFontStyle?: "normal" | "italic";
 ```
 
-Font style of the subtitle text. Applies to `'small'` header only.
+Font style of the subtitle text.
+
+Applies to `'small'` header only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1063"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1213"}>
 #### android.subtitleFontWeight {#header-config-android-subtitlefontweight}
 </ReferenceHeading>
 
@@ -842,11 +919,13 @@ Font style of the subtitle text. Applies to `'small'` header only.
 subtitleFontWeight?: TextStyle['fontWeight'];
 ```
 
-Font weight of the subtitle text. Applies to `'small'` header only.
+Font weight of the subtitle text.
+
+Applies to `'small'` header only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L863"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L975"}>
 #### android.titleCentered {#header-config-android-titlecentered}
 </ReferenceHeading>
 
@@ -857,14 +936,16 @@ titleCentered?: boolean;
 Horizontally centers the title within the app bar.
 
 Applies to the `'small'` header only; ignored for `'medium'` / `'large'`
-(use `expandedTitleHorizontalGravity` / `collapsedTitleHorizontalGravity`
-instead). The title is centered independently of the subtitle. Combining
-a centered title with left and/or center subviews is not recommended — they
-may overlap or be laid out incorrectly.
+(use
+[expandedTitleHorizontalGravity](#header-config-android-expandedtitlehorizontalgravity) /
+[collapsedTitleHorizontalGravity](#header-config-android-collapsedtitlehorizontalgravity)
+instead). The title is centered independently of the subtitle. Combining a
+centered title with leading and/or center subviews is not recommended —
+they may overlap or be laid out incorrectly.
 
 **Default:** `false`
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1007"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1133"}>
 #### android.titleColor {#header-config-android-titlecolor}
 </ReferenceHeading>
 
@@ -872,11 +953,13 @@ may overlap or be laid out incorrectly.
 titleColor?: ColorValue;
 ```
 
-Color of the title text. Applies to `'small'` header only.
+Color of the title text.
+
+Applies to `'small'` header only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1014"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1143"}>
 #### android.titleFontFamily {#header-config-android-titlefontfamily}
 </ReferenceHeading>
 
@@ -884,11 +967,13 @@ Color of the title text. Applies to `'small'` header only.
 titleFontFamily?: string;
 ```
 
-Font family of the title text. Applies to `'small'` header only.
+Font family of the title text.
+
+Applies to `'small'` header only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1021"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1153"}>
 #### android.titleFontSize {#header-config-android-titlefontsize}
 </ReferenceHeading>
 
@@ -896,11 +981,13 @@ Font family of the title text. Applies to `'small'` header only.
 titleFontSize?: number;
 ```
 
-Font size (SP) of the title text. Applies to `'small'` header only.
+Font size (SP) of the title text.
+
+Applies to `'small'` header only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1035"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1173"}>
 #### android.titleFontStyle {#header-config-android-titlefontstyle}
 </ReferenceHeading>
 
@@ -908,11 +995,13 @@ Font size (SP) of the title text. Applies to `'small'` header only.
 titleFontStyle?: "normal" | "italic";
 ```
 
-Font style of the title text. Applies to `'small'` header only.
+Font style of the title text.
+
+Applies to `'small'` header only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1028"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L1163"}>
 #### android.titleFontWeight {#header-config-android-titlefontweight}
 </ReferenceHeading>
 
@@ -920,11 +1009,13 @@ Font style of the title text. Applies to `'small'` header only.
 titleFontWeight?: TextStyle['fontWeight'];
 ```
 
-Font weight of the title text. Applies to `'small'` header only.
+Font weight of the title text.
+
+Applies to `'small'` header only.
 
 **Default:** Material's default is used.
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L839"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L952"}>
 #### android.toolbarMenu {#header-config-android-toolbarmenu}
 </ReferenceHeading>
 
@@ -934,27 +1025,27 @@ toolbarMenu?: StackHeaderToolbarMenuBaseAndroid;
 
 Toolbar menu configuration.
 
-This prop serves as initial configuration of the toolbar menu. If you
-want to change some property in runtime, use `updateToolbarMenuElements`
+This prop serves as initial configuration of the toolbar menu. If you want
+to change some property in runtime, use
+[updateToolbarMenuElements](#stackheaderconfigcommandsandroid-updatetoolbarmenuelements)
 view command.
 
-Changing this prop at runtime rebuilds the toolbar menu and resets all
-of its runtime state: checkbox/radio selections return to their
-`initialToggleState` and every change applied via
-`updateToolbarMenuElements` is discarded, including batches still
-waiting in the queue (e.g. for an icon download). Any real change
-counts, even one only swapping an item's icon; re-sending an identical
-menu is a no-op and preserves the state.
+Changing this prop at runtime rebuilds the toolbar menu and resets all of
+its runtime state: checkbox/radio selections return to their
+[initialToggleState](#stackheadertoolbarmenuitemandroid-initialtogglestate)
+and every change applied via `updateToolbarMenuElements` is discarded,
+including batches still waiting in the queue (e.g. for an icon download).
+Any real change counts, even one only swapping an item's icon; re-sending
+an identical menu is a no-op and preserves the state.
 
-An invalid menu is rejected, such as one with duplicate item or group ids,
-a `groupId` that is not declared at the same menu level, or more than one
-`initialToggleState` in a single-selection group. The menu is validated
-when the prop is set, and a rejected menu leaves the previous one in
-effect.
+An invalid menu is rejected — for example duplicate item or group ids, a
+[groupId](#stackheadertoolbarmenuitemandroid-groupid) that is not
+declared at the same menu level, or more than one `initialToggleState` in a
+single-selection group. A rejected menu throws an error during render.
 
 **Type:** [`StackHeaderToolbarMenuBaseAndroid`](#stackheadertoolbarmenubaseandroid)
 
-<ReferenceHeading platforms={[{"platform":"android","from":"28"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L849"}>
+<ReferenceHeading platforms={[{"platform":"android","from":"28"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L959"}>
 #### android.toolbarMenuGroupDividerEnabled {#header-config-android-toolbarmenugroupdividerenabled}
 </ReferenceHeading>
 
@@ -964,11 +1055,9 @@ toolbarMenuGroupDividerEnabled?: boolean;
 
 Enables visual dividers between menu groups.
 
-On earlier versions, the value of this prop is ignored.
-
 **Default:** `false`
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L563"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L672"}>
 #### android.trailingSubview {#header-config-android-trailingsubview}
 </ReferenceHeading>
 
@@ -980,7 +1069,7 @@ Custom view placed in the trailing (end) slot of the toolbar.
 
 **Type:** [`StackHeaderToolbarSubviewAndroid`](#stackheadertoolbarsubviewandroid)
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L539"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L648"}>
 #### android.type {#header-config-android-type}
 </ReferenceHeading>
 
@@ -993,10 +1082,15 @@ Specifies the type of the Material 3 app bar.
 M3 Expressive headers aren't currently supported (there is no stable
 `MDC-Android` version yet).
 
-Changing this prop at runtime rebuilds the header. Toolbar menu state
-survives the rebuild — see `updateToolbarMenuElements`.
-
 **Type:** [`StackHeaderTypeAndroid`](#stackheadertypeandroid)
+
+:::note
+
+This is an implementation detail and may change. Changing this prop at
+runtime rebuilds the header. Toolbar menu state survives the rebuild — see
+[updateToolbarMenuElements](#stackheaderconfigcommandsandroid-updatetoolbarmenuelements).
+
+:::
 
 **Default:** `'small'`
 

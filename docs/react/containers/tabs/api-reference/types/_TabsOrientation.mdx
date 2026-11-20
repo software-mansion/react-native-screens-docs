@@ -1,12 +1,12 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L38"}>
-#### TabsScreenOrientation {#tabsscreenorientation}
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L42"}>
+#### TabsOrientation {#tabsorientation}
 </ReferenceHeading>
 
 ```ts
-type TabsScreenOrientation = InterfaceOrientation | "inherit";
+type TabsOrientation = InterfaceOrientation | "inherit";
 ```
 
-Supported orientations of a tab screen.
+Interface orientations a tab screen supports.
 
 The following values are currently supported:
 - `'inherit'` — tab screen supports the same orientations as parent
@@ -16,7 +16,8 @@ The following values are currently supported:
   portrait interface orientation,
 - `'portrait'` — tab screen supports both portrait-up and portrait-down
   interface orientations,
-- `'portraitUp'` — tab screen supports a portrait-up interface orientation,
+- `'portraitUp'` — tab screen supports a portrait-up interface
+  orientation,
 - `'portraitDown'` — tab screen supports a portrait-down interface
   orientation,
 - `'landscape'` — tab screen supports both landscape-left and
@@ -25,6 +26,9 @@ The following values are currently supported:
   orientation,
 - `'landscapeRight'` — tab screen supports landscape-right interface
   orientation.
+
+The supported values (apart from `'inherit'`, `'portrait'`, `'portraitUp'`,
+`'portraitDown'`) correspond to the official UIKit documentation.
 
 **Type:** [`InterfaceOrientation`](../../../../common-types/index.mdx#interfaceorientation) \| `"inherit"`
 
