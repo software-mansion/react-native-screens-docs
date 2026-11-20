@@ -18,12 +18,19 @@ const RULES = 'RFC-1947, RFC-1960';
 export function load(app: Application): void {
   app.converter.on(Converter.EVENT_RESOLVE_END, context => {
     restoreRnInternalNames(context.project);
+    const { errors, warnings } = commentProblems(context.project);
+    // Printed, not logged: `treatWarningsAsErrors` would make a logged warning stop the run.
+    if (warnings.length > 0) {
+      console.warn(
+        `[typedoc-rns] ${warnings.length} @platform warning(s):\n` +
+          warnings.join('\n'),
+      );
+    }
     // An error logged here stops TypeDoc before it writes any output.
-    const lines = commentProblems(context.project);
-    if (lines.length > 0) {
+    if (errors.length > 0) {
       app.logger.error(
-        `[typedoc-rns] ${lines.length} doc comment problem(s). The rules: ${RULES}\n` +
-          lines.join('\n'),
+        `[typedoc-rns] ${errors.length} doc comment problem(s). The rules: ${RULES}\n` +
+          errors.join('\n'),
       );
     }
   });

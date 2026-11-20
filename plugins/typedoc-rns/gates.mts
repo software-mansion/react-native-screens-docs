@@ -4,6 +4,7 @@ import {
   ReflectionType,
   type Comment,
   type CommentDisplayPart,
+  type CommentTag,
   type ProjectReflection,
   type Reflection,
   type SignatureReflection,
@@ -39,15 +40,23 @@ const ALLOWED_TAGS = new Set<string>([
   '@link',
 ]);
 
-// The declarations with no comment of their own to check: modules and namespaces, re-exports,
-// and an object literal's anonymous `__type`, whose keys are checked. Any other declaration,
-// a new kind included, is checked. Parameters, type parameters and signatures are not
-// declarations; they are checked with the function they belong to.
+// A re-export's comment is its target's, and an object literal's `__type` has none; the target
+// and the keys are checked instead.
+const NO_COMMENT_OF_ITS_OWN =
+  ReflectionKind.Reference | ReflectionKind.TypeLiteral;
+
+// The declarations `reflectionProblems` skips: modules and namespaces, which need no summary,
+// and those with no comment of their own. Any other declaration, a new kind included, is
+// checked. Parameters, type parameters and signatures are not declarations; they are checked
+// with the function they belong to.
 const NOT_CHECKED =
-  ReflectionKind.Module |
-  ReflectionKind.Namespace |
-  ReflectionKind.Reference |
-  ReflectionKind.TypeLiteral;
+  ReflectionKind.Module | ReflectionKind.Namespace | NO_COMMENT_OF_ITS_OWN;
+
+// The members of a type that say where they work: props, fields, inline object keys, commands,
+// a ref's `ios` / `android` keys. Not enum members, which are values of a type, like the
+// literals of a union. Not accessors: their comments sit on signatures `commentOf` does not
+// read.
+const MEMBER = ReflectionKind.Property | ReflectionKind.Method;
 
 const COMPONENTS = Object.values(FEATURES).flatMap(
   feature => feature.components,
@@ -137,18 +146,25 @@ function hasTrailingZero(version: string | undefined): boolean {
   return /\.0$/.test(version ?? '');
 }
 
+function platformTags(comment: Comment | undefined): CommentTag[] {
+  return (comment?.blockTags ?? []).filter(tag => tag.tag === '@platform');
+}
+
 /**
- * What is wrong with a `@platform` tag, or with its absence. A platform without a version is
- * supported from the library's minimum.
+ * A `@platform` tag the grammar rejects. The theme draws a heading's chips from the tag and
+ * throws on such a tag, so it is an error wherever it is.
  */
-function platformProblems(comment: Comment | undefined): string[] {
-  const tags = (comment?.blockTags ?? []).filter(
-    tag => tag.tag === '@platform',
-  );
-  if (tags.length === 0) return ['no @platform'];
-  if (tags.length > 1) return ['more than one @platform tag'];
-  const { entries, errors } = parsePlatformTag(text(tags[0]!.content));
-  if (errors.length > 0) return [`malformed @platform: ${errors.join('; ')}`];
+function malformedPlatform(tag: CommentTag): string[] {
+  const { errors } = parsePlatformTag(text(tag.content));
+  return errors.length > 0 ? [`malformed @platform: ${errors.join('; ')}`] : [];
+}
+
+/**
+ * What is wrong with the way a readable `@platform` tag is written: the order of its platforms
+ * and a trailing `.0`. A platform without a version is supported from the library's minimum.
+ */
+function platformStyle(tag: CommentTag): string[] {
+  const { entries } = parsePlatformTag(text(tag.content));
   const problems: string[] = [];
   const names = entries.map(entry => entry.platform);
   if (names.join() !== [...names].sort().join()) {
@@ -160,6 +176,59 @@ function platformProblems(comment: Comment | undefined): string[] {
     }
   }
   return problems;
+}
+
+/** A gate's findings: errors fail the run, warnings are only printed. */
+export interface Findings {
+  errors: string[];
+  warnings: string[];
+}
+
+/**
+ * What is wrong with the `@platform` of a component or a member, which should have exactly one.
+ * A missing tag and the way a tag is written are warnings; more than one tag or a malformed one
+ * are errors. A component and a prop report all of it as errors.
+ */
+function requiredPlatform(comment: Comment | undefined): Findings {
+  const tags = platformTags(comment);
+  if (tags.length === 0) return { errors: [], warnings: ['no @platform'] };
+  if (tags.length > 1) {
+    return { errors: ['more than one @platform tag'], warnings: [] };
+  }
+  const malformed = malformedPlatform(tags[0]!);
+  return malformed.length > 0
+    ? { errors: malformed, warnings: [] }
+    : { errors: [], warnings: platformStyle(tags[0]!) };
+}
+
+/** `TypeAlias` → `type alias`. */
+function kindName(kind: ReflectionKind): string {
+  return ReflectionKind[kind]!.replace(/(?<!^)([A-Z])/g, ' $1').toLowerCase();
+}
+
+/**
+ * The `@platform` of a declaration that is neither a component nor a prop. A member that is
+ * not a prop (a field, an inline object key, a command, a ref's `ios` / `android` key) should
+ * have one; anything else (a type, its signatures, a namespace, an enum member) should not
+ * (R1, RFC-1947). These rules are newer than many of the library's comments, so they warn; a
+ * tag the theme cannot read is still an error.
+ */
+function nonPropPlatformFindings(reflection: DeclarationReflection): Findings {
+  if (reflection.kindOf(MEMBER)) return requiredPlatform(commentOf(reflection));
+  const tags = [
+    reflection.comment,
+    ...signaturesOf(reflection).map(signature => signature.comment),
+  ].flatMap(platformTags);
+  if (tags.length === 0) return { errors: [], warnings: [] };
+  const malformed = tags.flatMap(malformedPlatform);
+  return malformed.length > 0
+    ? { errors: malformed, warnings: [] }
+    : {
+        errors: [],
+        warnings: [
+          `this ${kindName(reflection.kind)} has @platform; only components, props and the fields of types have one`,
+        ],
+      };
 }
 
 /** What is wrong with a signature's `@typeParam`, `@param` and `@returns`. */
@@ -214,10 +283,15 @@ function isPropsSummary(
   );
 }
 
+/** True for a member of a props type (`props`), the `ios` / `android` keys included. */
+function isProp(reflection: Reflection, props: Set<Reflection>): boolean {
+  return reflection.parent !== undefined && props.has(reflection.parent);
+}
+
 /**
  * What is wrong with one reflection's comment, given what the reference shows of it. A
- * component and a prop (a member of `props`) say which platforms they work on; the `@platform`
- * of a type, a props type or a type's member is not checked.
+ * component and a prop say which platforms they work on; the `@platform` of everything else is
+ * checked by `nonPropPlatformFindings`.
  */
 function reflectionProblems(
   reflection: DeclarationReflection,
@@ -226,10 +300,9 @@ function reflectionProblems(
   const comment = commentOf(reflection);
   const problems: string[] = [];
   if (!text(comment?.summary ?? [])) problems.push('no summary');
-  const isProp =
-    reflection.parent !== undefined && props.has(reflection.parent);
-  if (isComponent(reflection) || isProp) {
-    problems.push(...platformProblems(comment));
+  if (isComponent(reflection) || isProp(reflection, props)) {
+    const { errors, warnings } = requiredPlatform(comment);
+    problems.push(...errors, ...warnings);
   }
   // A component's own signature is not documented; its props type is.
   if (isComponent(reflection)) return problems;
@@ -275,15 +348,22 @@ function tagProblems(comment: Comment): string[] {
 }
 
 /**
- * A `Name (file:line) — problem` line for every doc comment that breaks RFC-1947 or RFC-1960:
- * each declaration has a summary; a component and each prop have a well-formed `@platform`;
- * a function documents its type parameters, parameters and return value; a component's props
- * type says whose props it holds; a comment uses only RFC-1947's tags. A member a type
- * inherits is checked once, on the type that declares it.
+ * A `Name (file:line) — problem` line for every doc comment that breaks RFC-1947 or RFC-1960.
+ * Errors: each declaration has a summary; a component and each prop have a well-formed
+ * `@platform`; a function documents its type parameters, parameters and return value; a
+ * component's props type says whose props it holds; a comment uses only RFC-1947's tags; no
+ * `@platform` is unreadable. Warnings: members that are not props (fields, inline keys,
+ * commands, ref keys) have a `@platform`, written in order and without a trailing `.0`, and
+ * nothing else has one. A member a type inherits is checked once, on the type that declares it.
  */
-export function commentProblems(project: ProjectReflection): string[] {
-  const lines = new Map<string, string>();
-  const report = (reflection: Reflection, problems: string[]) => {
+export function commentProblems(project: ProjectReflection): Findings {
+  const errors = new Map<string, string>();
+  const warnings = new Map<string, string>();
+  const report = (
+    lines: Map<string, string>,
+    reflection: Reflection,
+    problems: string[],
+  ) => {
     const where = sourceLocation(reflection);
     for (const problem of problems) {
       const key = `${where} ${problem}`;
@@ -302,14 +382,22 @@ export function commentProblems(project: ProjectReflection): string[] {
         ? signaturesOf(reflection).map(signature => signature.comment)
         : []),
     ]) {
-      if (comment) report(reflection, tagProblems(comment));
+      if (comment) report(errors, reflection, tagProblems(comment));
     }
+    if (!(reflection instanceof DeclarationReflection)) continue;
+    // Namespaces and modules too: a `@platform` there would never be shown.
     if (
-      reflection instanceof DeclarationReflection &&
-      !reflection.kindOf(NOT_CHECKED)
+      !reflection.kindOf(NO_COMMENT_OF_ITS_OWN) &&
+      !isComponent(reflection) &&
+      !isProp(reflection, props)
     ) {
-      report(reflection, reflectionProblems(reflection, props));
+      const findings = nonPropPlatformFindings(reflection);
+      report(errors, reflection, findings.errors);
+      report(warnings, reflection, findings.warnings);
+    }
+    if (!reflection.kindOf(NOT_CHECKED)) {
+      report(errors, reflection, reflectionProblems(reflection, props));
     }
   }
-  return [...lines.values()];
+  return { errors: [...errors.values()], warnings: [...warnings.values()] };
 }
