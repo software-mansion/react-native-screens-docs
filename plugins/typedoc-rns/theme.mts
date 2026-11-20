@@ -25,7 +25,7 @@ import {
   outputRoot,
   platformEntriesOf,
 } from './feature-map.mts';
-import type { Layout, RnsRouter, Section } from './router.mts';
+import type { Commands, Layout, RnsRouter, Section } from './router.mts';
 import { signaturePartials } from './signature.mts';
 import { typePartials } from './types.mts';
 
@@ -107,7 +107,8 @@ function renderMemberContainer(
   model: DeclarationReflection,
   options: { headingLevel: number; nested?: boolean; titlePrefix?: string },
 ): string {
-  // An `ios` / `android` prop renders nothing here: its props follow the section's (below).
+  // An `ios` / `android` prop, or such a key of a commands type, renders nothing here: what it
+  // holds follows as `ios.x` (below, and in `renderCommands`).
   if (ctx.router.isFlattenedProp(model)) {
     return '';
   }
@@ -133,6 +134,58 @@ function renderMemberContainer(
   return md.join('\n\n');
 }
 
+/**
+ * A component's Commands block, one level below its section heading: the type's comment, its
+ * own commands, then the commands of its `ios` / `android` keys as `ios.x`, each group opening
+ * with an empty anchor (`#header-config-commands-ios`), the target of links to that key and its
+ * type. The heading does not name the type, which users need to type the ref
+ * (`useRef<StackHeaderConfigRef>(null)`), so a `Type` line names it, as a prop's does; unlinked,
+ * as a link would only lead back here.
+ */
+function renderCommands(
+  ctx: RnsThemeContext,
+  commands: Commands,
+  level: number,
+): string {
+  const comment = commentOf(commands.model);
+  const typeLine = `**Type:** \`${commands.model.name}\``;
+  const description = comment
+    ? withoutPlatformTag(ctx, commands.model, () =>
+        withCommentChanges(ctx, comment, { lead: typeLine }, () =>
+          ctx.partials.comment(comment, { headingLevel: level }),
+        ),
+      )
+    : typeLine;
+  const commandsOf = (
+    model: DeclarationReflection,
+    titlePrefix?: string,
+  ): string[] =>
+    membersOf(model).map(member =>
+      renderMemberContainer(ctx, member, {
+        headingLevel: level + 1,
+        titlePrefix,
+      }),
+    );
+  return (
+    [
+      ...(commands.platforms.length > 0 ? [ANCHOR_IMPORT] : []),
+      referenceHeading(
+        commands.model,
+        `${'#'.repeat(level)} Commands {#${ctx.router.getAnchor(commands.model)}}`,
+      ),
+      description,
+      ...commandsOf(commands.model),
+      ...commands.platforms.flatMap(platform => [
+        `<Anchor id="${ctx.router.getAnchor(platform.model)}" />`,
+        ...commandsOf(platform.model, `${platform.key}.`),
+      ]),
+    ]
+      // The flattened `ios` / `android` keys of the type render as '' among its own commands.
+      .filter(Boolean)
+      .join('\n\n')
+  );
+}
+
 /** A section's name, struck through when it is deprecated, as a member's name is. */
 function sectionTitle(section: Section): string {
   return section.model.isDeprecated() ? `~~${section.title}~~` : section.title;
@@ -152,12 +205,12 @@ function partName(section: Section): string {
  * import per part, then the parts in page order. The parts are parked on the page for
  * index.mts to write — a template can only return the one file TypeDoc asked for.
  *
- * A component's `ios.x` / `android.x` props get a part each, right after the section's own
- * and with no separator between them, so they read as the rest of that section. Each part
- * opens with an empty anchor (`#host-ios`), the target of links to the platform props type and
- * to the `ios` prop. The anchor is Docusaurus's MDX `a` component, which registers the id with
- * the build's broken-anchor check and offsets the scroll target under the navbar; MDX renders a
- * literal `<a id>` without either.
+ * A component's `ios.x` / `android.x` props get a part each, and its commands one more, right
+ * after the section's own and with no separator between them, so they read as the rest of that
+ * section. Each platform part opens with an empty anchor (`#host-ios`), the target of links to
+ * the platform props type and to the `ios` prop. The anchor is Docusaurus's MDX `a` component,
+ * which registers the id with the build's broken-anchor check and offsets the scroll target
+ * under the navbar; MDX renders a literal `<a id>` without either.
  */
 function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
   const root = outputRoot(layout.feature);
@@ -215,6 +268,14 @@ function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
               }),
             ),
           ].join('\n\n'),
+        ),
+      );
+    }
+    const commands = section.commands;
+    if (commands) {
+      usages.push(
+        part(commands.part, `${name}Commands`, () =>
+          renderCommands(ctx, commands, level + 1),
         ),
       );
     }

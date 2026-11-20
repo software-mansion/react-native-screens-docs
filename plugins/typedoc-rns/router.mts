@@ -40,6 +40,21 @@ export interface PlatformProps {
   part: string;
 }
 
+/**
+ * The commands of a component section: the type the feature map names, which the component's
+ * `ref` prop holds. They render in a part of their own after the section's props, and the type
+ * is not listed among the Types. Its `ios` / `android` keys hold a commands type each; their
+ * commands follow as `ios.x` / `android.x`, like a section's platform props.
+ */
+export interface Commands {
+  /** The type the `ref` prop holds (`StackHeaderConfigRef`, `SplitHostCommands`). */
+  model: DeclarationReflection;
+  /** The part's file, relative to the family's `api-reference/` (`header-config/_commands`). */
+  part: string;
+  /** The commands types behind the model's `ios` / `android` keys, in `PAGE_GROUPS` order. */
+  platforms: { key: PageGroup; model: DeclarationReflection }[];
+}
+
 /** One section of a family page: a component's props, or a type. */
 export interface Section {
   kind: 'component' | 'type';
@@ -50,6 +65,8 @@ export interface Section {
   part?: string;
   /** A component's flattened `ios` / `android` props, in `PAGE_GROUPS` order; `[]` for a type. */
   platforms: PlatformProps[];
+  /** A component's commands, when the feature map names some. */
+  commands?: Commands;
   /**
    * The components the section documents, as users write them (`Tabs.Host`); `[]` for a type.
    * Their `@platform` is the section's.
@@ -61,6 +78,27 @@ export interface Section {
 export interface Layout {
   feature: Feature;
   sections: Section[];
+}
+
+/**
+ * Why a type cannot be shown as a list of commands, or `undefined`. The list is the type's own
+ * members, so it needs some, and the members of a base it extends would be neither listed nor
+ * linked.
+ */
+function commandsTypeProblem(type: DeclarationReflection): string | undefined {
+  if (type.extendedTypes?.length) {
+    return (
+      `${type.name} extends another type, which a Commands block cannot show — ` +
+      'write its commands out.'
+    );
+  }
+  if (membersOf(type).length === 0) {
+    return (
+      `${type.name} has no members of its own — a commands type is an interface or ` +
+      'an object type.'
+    );
+  }
+  return undefined;
 }
 
 // The hand-written page of a family is its Overview; TypeDoc's own module index, the
@@ -112,7 +150,10 @@ function moduleOf(reflection: Reflection | undefined): Reflection | undefined {
 export class RnsRouter extends MemberRouter {
   /** page model → { feature, sections } */
   #layouts = new Map<RouterTarget, Layout>();
-  /** the `ios` / `android` props whose props are flattened into their section */
+  /**
+   * the `ios` / `android` props whose props, and the `ios` / `android` keys of a commands type
+   * whose commands, are flattened into their section
+   */
   #flattenedProps = new Set<RouterTarget>();
   /** the props types rendered as a component's section */
   #componentModels = new Set<RouterTarget>();
@@ -133,9 +174,10 @@ export class RnsRouter extends MemberRouter {
   }
 
   /**
-   * True for a component's `ios` / `android` prop. It renders no entry: its props follow the
-   * section's as `ios.x`, each with its own `@platform`. The comments of the prop and of its
-   * props type are not rendered.
+   * True for a component's `ios` / `android` prop, and for such a key of its commands type. It
+   * renders no entry: its props follow the section's as `ios.x`, and its commands the commands
+   * type's, each with its own `@platform`. The comments of the key and of the type it holds are
+   * not rendered.
    */
   isFlattenedProp(model: RouterTarget): boolean {
     return this.#flattenedProps.has(model);
@@ -221,6 +263,8 @@ export class RnsRouter extends MemberRouter {
       const sections: Section[] = [];
       const sectionOf = new Map<Component, Section>();
       const flattened = new Set<DeclarationReflection>();
+      // commands type → the component whose section shows it
+      const commandsOwners = new Map<DeclarationReflection, Component>();
 
       for (const component of feature.components) {
         const model = models.find(
@@ -266,12 +310,35 @@ export class RnsRouter extends MemberRouter {
           });
         }
 
+        // The commands type and the types behind its `ios` / `android` keys leave the Types list.
+        // Links to them resolve to the block (`header-config-commands`) and to the start of each
+        // key's group (`header-config-commands-ios`), which the theme anchors.
+        const commands = this.#commandsOf(
+          feature,
+          component,
+          model,
+          models,
+          commandsOwners,
+        );
+        if (commands) {
+          flattened.add(commands.model);
+          anchors.set(commands.model, `${component.id}-commands`);
+          for (const platform of commands.platforms) {
+            flattened.add(platform.model);
+            anchors.set(
+              platform.model,
+              `${component.id}-commands-${platform.key}`,
+            );
+          }
+        }
+
         const section: Section = {
           kind: 'component',
           model,
           title: component.label,
           anchor: component.id,
           platforms,
+          commands,
           components: [],
         };
         sections.push(section);
@@ -345,6 +412,96 @@ export class RnsRouter extends MemberRouter {
     this.#rewriteUrls(anchors);
     this.#routeInheritedMembers();
     return result;
+  }
+
+  /**
+   * The commands the feature map gives a component, checked against its `ref` prop, which must
+   * hold the type as `Ref<…>`. The type's `ios` / `android` keys are flattened: their commands
+   * types join the block, and the keys render nothing, like a section's `ios` / `android` props.
+   * Anything the block could not show in full is reported as an error, which fails the run once
+   * the pages are written; the type then stays among the Types, or the key a plain member. A
+   * type shown here is recorded in `owners`, so another component cannot claim it too.
+   */
+  #commandsOf(
+    feature: Feature,
+    component: Component,
+    model: DeclarationReflection,
+    models: DeclarationReflection[],
+    owners: Map<DeclarationReflection, Component>,
+  ): Commands | undefined {
+    if (!component.commands) return undefined;
+    const report = (problem: string): undefined => {
+      this.application.logger.error(
+        `[typedoc-rns] ${feature.label}/${component.label}: ${problem}`,
+      );
+      return undefined;
+    };
+
+    const target = models.find(
+      candidate => candidate.name === component.commands,
+    );
+    if (!target) {
+      return report(
+        `its commands type ${component.commands} is not a type this family exports. ` +
+          'Fix feature-map.mts or the library barrel.',
+      );
+    }
+    // A second block for one type would repeat its anchors, and links could reach only one.
+    const owner = owners.get(target);
+    if (owner) {
+      return report(
+        `its commands type ${target.name} is already ${owner.label}'s — a commands type ` +
+          'belongs to one component.',
+      );
+    }
+    // Compared by qualified name: the displayed name follows the source's spelling (`Ref` or
+    // `React.Ref`).
+    const ref = membersOf(model).find(member => member.name === 'ref')?.type;
+    const argument =
+      ref?.type === 'reference' &&
+      ref.qualifiedName === 'React.Ref' &&
+      ref.package === '@types/react'
+        ? ref.typeArguments?.[0]
+        : undefined;
+    if (argument?.type !== 'reference' || argument.reflection !== target) {
+      return report(
+        `its \`ref\` prop must be \`Ref<${target.name}>\` to show ${target.name} as its commands.`,
+      );
+    }
+    // The block's anchor is the section's plus `commands`, the anchor such a prop would have.
+    if (membersOf(model).some(member => member.name === 'commands')) {
+      return report(
+        'a prop named `commands` takes the anchor of the Commands block.',
+      );
+    }
+    const problem = commandsTypeProblem(target);
+    if (problem) return report(problem);
+
+    const platforms: Commands['platforms'] = [];
+    for (const key of PAGE_GROUPS) {
+      const member = membersOf(target).find(child => child.name === key);
+      if (!member) continue;
+      const holds =
+        member.type?.type === 'reference'
+          ? (member.type.reflection as DeclarationReflection | undefined)
+          : undefined;
+      if (!holds || !models.includes(holds)) {
+        report(
+          `\`${target.name}.${key}\` is not flattened — its type must be a plain reference to a ` +
+            'type this family exports.',
+        );
+        continue;
+      }
+      const keyProblem = commandsTypeProblem(holds);
+      if (keyProblem) {
+        report(keyProblem);
+        continue;
+      }
+      this.#flattenedProps.add(member);
+      platforms.push({ key, model: holds });
+    }
+    owners.set(target, component);
+    return { model: target, part: `${component.id}/_commands`, platforms };
   }
 
   /** The member that documents this one: itself, or the base member it inherits. */
