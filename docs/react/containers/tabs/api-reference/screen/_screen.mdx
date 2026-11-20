@@ -1,8 +1,8 @@
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L236"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L241"}>
 ### Screen {#screen}
 </ReferenceHeading>
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L188"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L194"}>
 #### accessibilityLabel {#screen-accessibilitylabel}
 </ReferenceHeading>
 
@@ -10,9 +10,9 @@
 accessibilityLabel?: string;
 ```
 
-accessibilityLabel for the `Tabs.Screen`
+accessibilityLabel for the [Tabs.Screen](#screen)
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L138"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L152"}>
 #### badgeValue {#screen-badgevalue}
 </ReferenceHeading>
 
@@ -29,7 +29,7 @@ On Android, the value is interpreted in the following order:
 - otherwise if the string is empty, displays "small dot" badge;
 - otherwise, displays the value as a text.
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L112"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L126"}>
 #### children {#screen-children}
 </ReferenceHeading>
 
@@ -39,7 +39,7 @@ children?: ReactNode;
 
 Content of the tab screen.
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L216"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L221"}>
 #### onDidAppear {#screen-ondidappear}
 </ReferenceHeading>
 
@@ -52,7 +52,7 @@ This is called as soon as the transition ends.
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L230"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L235"}>
 #### onDidDisappear {#screen-ondiddisappear}
 </ReferenceHeading>
 
@@ -65,7 +65,7 @@ This is called as soon as the transition ends.
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L209"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L214"}>
 #### onWillAppear {#screen-onwillappear}
 </ReferenceHeading>
 
@@ -78,7 +78,7 @@ This is called as soon as the transition begins.
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L223"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L228"}>
 #### onWillDisappear {#screen-onwilldisappear}
 </ReferenceHeading>
 
@@ -91,12 +91,12 @@ This is called as soon as the transition begins.
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L174"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L181"}>
 #### orientation {#screen-orientation}
 </ReferenceHeading>
 
 ```ts
-orientation?: TabsScreenOrientation;
+orientation?: TabsOrientation;
 ```
 
 Specifies supported orientations for the tab screen.
@@ -110,22 +110,18 @@ Procedure for determining supported orientations:
    - if `orientation` is set to `'inherit'`, the parent component
      is queried.
 
-Note that:
-- some components (like `Split.Host`) may choose not to query
-  its child components,
-- Stack v4 (legacy) implementation returns some supported orientations,
-  overriding orientation from the tab screen **unless** the Stack v4
-  screen has no explicit `screenOrientation` prop and
-  `featureFlags.experiment.iosOrientationInheritanceFixEnabled` is
-  enabled (the default), in which case it returns `'inherit'` and no
-  longer overrides the parent (see
-  https://github.com/software-mansion/react-native-screens/pull/4408).
+**Type:** [`TabsOrientation`](#tabsorientation)
 
-**Type:** [`TabsScreenOrientation`](#tabsscreenorientation)
+:::info
+
+Some components (like [Split.Host](../../../split/index.mdx#host)) may choose not to query its
+child components.
+
+:::
 
 **Default:** `'inherit'`
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L104"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L119"}>
 #### preventNativeSelection {#screen-preventnativeselection}
 </ReferenceHeading>
 
@@ -137,7 +133,7 @@ When set to `true`, prevents native tab selection for this screen.
 
 **Default:** `false`
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L97"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L112"}>
 #### screenKey {#screen-screenkey}
 </ReferenceHeading>
 
@@ -148,7 +144,7 @@ screenKey: string;
 Identifies screen, e.g. when receiving
 [onTabSelected](#host-ontabselected) event.
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L146"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L160"}>
 #### specialEffects {#screen-specialeffects}
 </ReferenceHeading>
 
@@ -156,14 +152,14 @@ Identifies screen, e.g. when receiving
 specialEffects?: TabsScreenSpecialEffects;
 ```
 
-Specifies which special effects (also known as microinteractions)
-are enabled for the tab screen.
+Specifies which special effects (also known as microinteractions) are
+enabled for the tab screen.
 
 **Type:** [`TabsScreenSpecialEffects`](#tabsscreenspecialeffects)
 
 **Default:** All special effects are enabled by default.
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L118"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L132"}>
 #### style {#screen-style}
 </ReferenceHeading>
 
@@ -171,11 +167,11 @@ are enabled for the tab screen.
 style?: StyleProp<TabsScreenStyleProps>;
 ```
 
-Style applied to the view of the tab screen.
+Style of the tab screen.
 
 **Type:** `StyleProp`\<[`TabsScreenStyleProps`](#tabsscreenstyleprops)\>
 
-<ReferenceHeading platforms={[{"platform":"android","from":"26"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L200"}>
+<ReferenceHeading platforms={[{"platform":"android","from":"26"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L206"}>
 #### tabBarItemAccessibilityLabel {#screen-tabbaritemaccessibilitylabel}
 </ReferenceHeading>
 
@@ -185,7 +181,7 @@ tabBarItemAccessibilityLabel?: string;
 
 accessibilityLabel for the TabBarItem
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L194"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L200"}>
 #### tabBarItemTestID {#screen-tabbaritemtestid}
 </ReferenceHeading>
 
@@ -195,7 +191,7 @@ tabBarItemTestID?: string;
 
 testID for the TabBarItem
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L182"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L188"}>
 #### testID {#screen-testid}
 </ReferenceHeading>
 
@@ -203,9 +199,9 @@ testID for the TabBarItem
 testID?: string;
 ```
 
-testID for the `Tabs.Screen`
+testID for the [Tabs.Screen](#screen)
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L124"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.types.ts#L138"}>
 #### title {#screen-title}
 </ReferenceHeading>
 

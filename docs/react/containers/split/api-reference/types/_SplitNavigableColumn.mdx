@@ -1,9 +1,9 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L263"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/split/SplitHost.types.ts#L293"}>
 #### SplitNavigableColumn {#splitnavigablecolumn}
 </ReferenceHeading>
 
 ```ts
-type SplitNavigableColumn = "primary" | "supplementary" | "secondary";
+type SplitNavigableColumn = SplitSidebarColumn | "secondary";
 ```
 
 Column of a Split.
@@ -12,3 +12,5 @@ The following values are currently supported:
 - `'primary'` — the primary sidebar is shown
 - `'supplementary'` — the supplementary sidebar is shown
 - `'secondary'` — the secondary (main content) column is shown
+
+**Type:** [`SplitSidebarColumn`](#splitsidebarcolumn) \| `"secondary"`

@@ -153,6 +153,19 @@ export const FEATURES: Record<string, Feature> = {
       },
     ],
   },
+  'components/modals/page-sheet': {
+    entryPoint: `${LIB}/components/modals/page-sheet/index.ts`,
+    label: 'PageSheet',
+    dir: 'react/components/page-sheet',
+    components: [
+      {
+        id: 'page-sheet',
+        label: 'PageSheet',
+        props: 'PageSheetProps',
+        merged: ['PageSheet'],
+      },
+    ],
+  },
   'components/modals/contained-modal': {
     entryPoint: `${LIB}/components/modals/contained-modal/index.ts`,
     label: 'ContainedModal',

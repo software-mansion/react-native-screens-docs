@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L15"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L16"}>
 #### TabsHostNavStateRequest {#tabshostnavstaterequest}
 </ReferenceHeading>
 
@@ -9,9 +9,10 @@ type TabsHostNavStateRequest = {
 };
 ```
 
-Navigation state update requested from the native side.
+Navigation state requested from JS, passed to
+[navStateRequest](#host-navstaterequest).
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L52"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L59"}>
 ##### baseProvenance {#tabshostnavstaterequest-baseprovenance}
 </ReferenceHeading>
 
@@ -46,7 +47,7 @@ It is named `baseProvenance` (rather than `provenance`) to disambiguate it
 from the `provenance` field on the [TabSelectedEvent](#tabselectedevent) payload, which
 carries the provenance of the state *resulting* from a transition.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L22"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/host/TabsHost.types.ts#L27"}>
 ##### selectedScreenKey {#tabshostnavstaterequest-selectedscreenkey}
 </ReferenceHeading>
 
@@ -56,4 +57,6 @@ selectedScreenKey: string;
 
 Valid screen key.
 
-It must correspond to one of the keys you assign to the `Tabs.Screen`s.
+It must correspond to the
+[screenKey](#screen-screenkey) of one of the
+[Tabs.Screen](#screen) components.

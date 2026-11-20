@@ -1,0 +1,311 @@
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L101"}>
+### PageSheet {#page-sheet}
+</ReferenceHeading>
+
+<ReferenceHeading platforms={[{"platform":"ios","from":"26.1"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L234"}>
+#### backgroundEffect {#page-sheet-backgroundeffect}
+</ReferenceHeading>
+
+```ts
+backgroundEffect?: SheetBackgroundEffect;
+```
+
+Material the system renders behind the sheet's content.
+
+The material is drawn behind the native container, so an opaque
+`nativeContainerStyle.backgroundColor` covers it.
+
+**Type:** [`SheetBackgroundEffect`](../../../../common-types/index.mdx#sheetbackgroundeffect)
+
+**Default:** `'automatic'`
+
+**See:**
+
+- [PageSheetBackgroundEffect](#pagesheetbackgroundeffect)
+ - [UIPresentationController.backgroundEffect](https://developer.apple.com/documentation/uikit/uipresentationcontroller/backgroundeffect)
+
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L107"}>
+#### children {#page-sheet-children}
+</ReferenceHeading>
+
+```ts
+children?: ReactNode;
+```
+
+Content of the sheet.
+
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L137"}>
+#### detents {#page-sheet-detents}
+</ReferenceHeading>
+
+```ts
+detents?: SheetDetents;
+```
+
+Defines the resting positions of the sheet.
+
+If the prop is not set or the array is empty, the sheet has a single
+large detent. On Android, at most three detents are supported.
+`'fitToContents'` is supported on iOS 16+.
+
+**Type:** [`SheetDetents`](../../../../common-types/index.mdx#sheetdetents)
+
+:::note
+
+This is an implementation detail and may change. On iOS 15,
+`'fitToContents'` falls back to a large detent, and only the system's
+medium and large detents are used.
+
+:::
+
+**See:** [UISheetPresentationController.detents](https://developer.apple.com/documentation/uikit/uisheetpresentationcontroller/detents)
+
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L180"}>
+#### initialDetentIndex {#page-sheet-initialdetentindex}
+</ReferenceHeading>
+
+```ts
+initialDetentIndex?: SheetInitialDetentIndex;
+```
+
+The index of the detent the sheet should snap to when first opened.
+
+This prop only applies when the sheet transitions from closed to open.
+
+**Type:** [`SheetInitialDetentIndex`](../../../../common-types/index.mdx#sheetinitialdetentindex)
+
+**Default:** `0`
+
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L119"}>
+#### isOpen {#page-sheet-isopen}
+</ReferenceHeading>
+
+```ts
+isOpen: boolean;
+```
+
+Determines whether the sheet is currently visible.
+
+Presentation is driven by state transitions: updating this property from
+`false` to `true` triggers the sheet to present, while changing it from
+`true` to `false` triggers a programmatic dismissal.
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L169"}>
+#### largestUndimmedDetentIndex {#page-sheet-largestundimmeddetentindex}
+</ReferenceHeading>
+
+```ts
+largestUndimmedDetentIndex?: SheetLargestUndimmedDetentIndex;
+```
+
+The largest sheet detent for which a view underneath won't be dimmed.
+
+**Type:** [`SheetLargestUndimmedDetentIndex`](../../../../common-types/index.mdx#sheetlargestundimmeddetentindex)
+
+**Default:** `'none'`
+
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L218"}>
+#### nativeContainerStyle {#page-sheet-nativecontainerstyle}
+</ReferenceHeading>
+
+```ts
+nativeContainerStyle?: StyleProp<SheetNativeContainerStyleProps>;
+```
+
+Style applied to the native container hosting the sheet content.
+
+**Type:** `StyleProp`\<[`SheetNativeContainerStyleProps`](../../../../common-types/index.mdx#sheetnativecontainerstyleprops)\>
+
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L308"}>
+#### onDetentChanged {#page-sheet-ondetentchanged}
+</ReferenceHeading>
+
+```ts
+onDetentChanged?: NativeEventHandler<SheetDetentChangedEvent>;
+```
+
+Called when the sheet settles at a new detent.
+
+Provides the `index` of the newly selected detent from the `detents`
+array.
+
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`SheetDetentChangedEvent`](../../../../common-types/index.mdx#sheetdetentchangedevent)\>
+
+:::note
+
+This is an implementation detail and may change. On iOS 15, the sheet
+uses only the system's medium and large detents, and the index refers to
+them: `0` for medium and `1` for large. With fewer than two detents, the
+index is always `0`.
+
+:::
+
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L252"}>
+#### onDidAppear {#page-sheet-ondidappear}
+</ReferenceHeading>
+
+```ts
+onDidAppear?: NativeEventHandler<EmptyEventPayload>;
+```
+
+A callback that gets invoked when the sheet did appear. This is called
+as soon as the transition ends.
+
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L268"}>
+#### onDidDisappear {#page-sheet-ondiddisappear}
+</ReferenceHeading>
+
+```ts
+onDidDisappear?: NativeEventHandler<EmptyEventPayload>;
+```
+
+A callback that gets invoked when the sheet did disappear. This is
+called as soon as the transition ends.
+
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L279"}>
+#### onDismiss {#page-sheet-ondismiss}
+</ReferenceHeading>
+
+```ts
+onDismiss?: NativeEventHandler<EmptyEventPayload>;
+```
+
+Called when the sheet is dismissed programmatically.
+
+This event is fired when the sheet was dismissed via the `isOpen` prop
+changing to `false`.
+
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L291"}>
+#### onNativeDismiss {#page-sheet-onnativedismiss}
+</ReferenceHeading>
+
+```ts
+onNativeDismiss?: NativeEventHandler<EmptyEventPayload>;
+```
+
+Called when the sheet is dismissed natively.
+
+It is highly recommended to use this callback to synchronize your local
+React state to prevent UI mismatches, e.g. by setting `isOpen` back to
+`false`.
+
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L321"}>
+#### onNativeDismissPrevented {#page-sheet-onnativedismissprevented}
+</ReferenceHeading>
+
+```ts
+onNativeDismissPrevented?: NativeEventHandler<EmptyEventPayload>;
+```
+
+Called when the user attempts to dismiss the sheet by swiping down or
+tapping the backdrop, but the dismissal is prevented.
+
+This event is only fired if `preventNativeDismiss` is set to `true`. It is
+useful for triggering custom feedback, such as an alert to inform the user
+why the sheet cannot be closed.
+
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L244"}>
+#### onWillAppear {#page-sheet-onwillappear}
+</ReferenceHeading>
+
+```ts
+onWillAppear?: NativeEventHandler<EmptyEventPayload>;
+```
+
+A callback that gets invoked when the sheet will appear. This is
+called as soon as the transition begins.
+
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L260"}>
+#### onWillDisappear {#page-sheet-onwilldisappear}
+</ReferenceHeading>
+
+```ts
+onWillDisappear?: NativeEventHandler<EmptyEventPayload>;
+```
+
+A callback that gets invoked when the sheet will disappear. This is
+called as soon as the transition begins.
+
+**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
+
+<ReferenceHeading platforms={[{"platform":"android","from":"33"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L161"}>
+#### preferredCornerRadius {#page-sheet-preferredcornerradius}
+</ReferenceHeading>
+
+```ts
+preferredCornerRadius?: SheetPreferredCornerRadius;
+```
+
+The corner radius that the sheet will attempt to present with.
+
+If set to `'systemDefault'` or a negative number, the system's default
+corner radius is used.
+
+**Type:** [`SheetPreferredCornerRadius`](../../../../common-types/index.mdx#sheetpreferredcornerradius)
+
+**Default:** `'systemDefault'`
+
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L149"}>
+#### prefersGrabberVisible {#page-sheet-prefersgrabbervisible}
+</ReferenceHeading>
+
+```ts
+prefersGrabberVisible?: boolean;
+```
+
+Determines whether the sheet shows a grabber at the top.
+
+When `true`, a small grabber indicator is shown at the top of the sheet to
+hint that the sheet can be resized.
+
+**Default:** `false`
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L197"}>
+#### prefersScrollingExpandsWhenScrolledToEdge {#page-sheet-prefersscrollingexpandswhenscrolledtoedge}
+</ReferenceHeading>
+
+```ts
+prefersScrollingExpandsWhenScrolledToEdge?: boolean;
+```
+
+Determines whether scrolling expands the sheet to a larger detent.
+
+When set to `true`, scrolling up within a child scroll view (starting from
+the top edge) will first expand the sheet to a larger detent before
+scrolling the content. When set to `false`, scrolling within the child
+scroll view will scroll the content normally without expanding the sheet.
+Note that manual dragging of the sheet's non-scrollable area will still
+expand the sheet regardless of this setting.
+
+**Default:** `true`
+
+**See:** [UISheetPresentationController.prefersScrollingExpandsWhenScrolledToEdge](https://developer.apple.com/documentation/uikit/uisheetpresentationcontroller/prefersscrollingexpandswhenscrolledtoedge)
+
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L211"}>
+#### preventNativeDismiss {#page-sheet-preventnativedismiss}
+</ReferenceHeading>
+
+```ts
+preventNativeDismiss?: boolean;
+```
+
+Prevents the user from dismissing the sheet natively by swiping down or
+tapping the backdrop.
+
+When set to `true`, the sheet will resist the swipe-down gesture and
+backdrop tap, remaining on the resting detent. Programmatically dismissing
+the sheet via `isOpen={false}` will still work.
+
+**Default:** `false`

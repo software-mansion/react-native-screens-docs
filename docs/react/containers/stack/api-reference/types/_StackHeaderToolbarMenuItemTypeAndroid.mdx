@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L282"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L322"}>
 #### StackHeaderToolbarMenuItemTypeAndroid {#stackheadertoolbarmenuitemtypeandroid}
 </ReferenceHeading>
 
@@ -6,10 +6,13 @@
 type StackHeaderToolbarMenuItemTypeAndroid = "action" | "toggle" | "automatic";
 ```
 
-Behavior of a menu item when it is clicked.
+How a menu item behaves when clicked.
 
 The following values are available:
-- `'action'` - the item fires `onPress` without any toggle state,
-- `'toggle'` - the item is checkable; requires `groupId`,
-- `'automatic'` - the item becomes checkable if it has a `groupId`,
-  otherwise it behaves as an action.
+- `'action'` — the item fires
+  [onPress](#stackheadertoolbarmenuitemandroid-onpress) without any
+  toggle state,
+- `'toggle'` — the item is checkable; requires
+  [groupId](#stackheadertoolbarmenuitemandroid-groupid),
+- `'automatic'` — the item becomes checkable if it has a `groupId`, otherwise
+  it behaves as an action.

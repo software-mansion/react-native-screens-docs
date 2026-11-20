@@ -2,7 +2,7 @@ import Anchor from '@theme/MDXComponents/A';
 
 <Anchor id="screen-android" />
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.android.types.ts#L185"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.android.types.ts#L255"}>
 #### android.icon {#screen-android-icon}
 </ReferenceHeading>
 
@@ -12,9 +12,15 @@ icon?: TabsScreenIconAndroid;
 
 Specifies the icon for the tab bar item.
 
+The `type` field selects the kind of the icon, see
+[TabsScreenIconAndroid](#tabsscreeniconandroid).
+
+If no [selectedIcon](#screen-android-selectedicon) is
+provided, this icon will also be used as the selected state icon.
+
 **Type:** [`TabsScreenIconAndroid`](#tabsscreeniconandroid)
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.android.types.ts#L198"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.android.types.ts#L287"}>
 #### android.selectedIcon {#screen-android-selectedicon}
 </ReferenceHeading>
 
@@ -24,15 +30,22 @@ selectedIcon?: TabsScreenIconAndroid;
 
 Specifies the icon for tab bar item when it is selected.
 
-Supports the same values as `icon` property for given platform.
-`tinting` may differ from the one of `icon`, e.g. a drawable that is
-tinted while unselected and shows its own colors while selected.
-
-To use `selectedIcon`, `icon` must also be provided.
+Supports the same values as [icon](#screen-android-icon)
+property.
 
 **Type:** [`TabsScreenIconAndroid`](#tabsscreeniconandroid)
 
-<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.android.types.ts#L179"}>
+:::info
+
+To use `selectedIcon`, `icon` must also be provided.
+
+:::
+
+**Default:** The [icon](#screen-android-icon) is used.
+
+**Example:** The drawable is shown tinted while unselected and in its own colors while selected: ```tsx <Tabs.Screen screenKey="favorites" title="Favorites" android={{ icon: { type: 'drawableResource', name: 'ic_star' }, selectedIcon: { type: 'drawableResource', name: 'ic_star', tinting: 'original', }, }}> <FavoritesScreen /> </Tabs.Screen> ```
+
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.android.types.ts#L242"}>
 #### android.standardAppearance {#screen-android-standardappearance}
 </ReferenceHeading>
 
@@ -43,7 +56,11 @@ standardAppearance?: TabsScreenAppearanceAndroid;
 Specifies the standard tab bar appearance.
 
 Allows to customize the appearance depending on the tab bar item state
-(normal, selected, focused, disabled). Configuration for the Bottom
-Navigation View is determined by the currently active tab screen.
+([normal](#tabsscreenappearanceandroid-normal),
+[selected](#tabsscreenappearanceandroid-selected),
+[focused](#tabsscreenappearanceandroid-focused),
+[disabled](#tabsscreenappearanceandroid-disabled)). The tab bar uses
+the configuration of the currently selected tab screen, except for the
+fields that apply to this tab only.
 
 **Type:** [`TabsScreenAppearanceAndroid`](#tabsscreenappearanceandroid)

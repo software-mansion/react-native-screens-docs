@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L24"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/ios/StackHeaderMenu.ios.types.ts#L25"}>
 #### StackHeaderMenuItemTypeIOS {#stackheadermenuitemtypeios}
 </ReferenceHeading>
 
@@ -8,15 +8,16 @@ type StackHeaderMenuItemTypeIOS = "action" | "toggle" | "automatic";
 
 Behavior of a menu item.
 
-The following values are supported:
+The following values are available:
 - `'action'` — a button that fires
   [onPress](#stackheadermenuitemios-onpress) when tapped. Cannot be
-  used inside a `singleSelection` menu.
+  used inside a [singleSelection](#stackheadermenuios-singleselection)
+  menu.
 - `'toggle'` — a stateful item whose on/off state is tracked automatically.
-  Toggle items do not fire `onPress`; instead, parent menu
-  (or Single Selection Root in case of
-  [singleSelection](#stackheadermenuios-singleselection))
-  is passed currently selected items with
-  [onSelectionChange](#stackheadermenuios-onselectionchange)
+  Toggle items do not fire `onPress`; instead, parent menu (or Single
+  Selection Root in case of
+  [singleSelection](#stackheadermenuios-singleselection)) is passed
+  currently selected items with
+  [onSelectionChange](#stackheadermenuios-onselectionchange).
 - `'automatic'` — resolved at render time: becomes `'toggle'` when the item
   is under `singleSelection` hierarchy, `'action'` otherwise.

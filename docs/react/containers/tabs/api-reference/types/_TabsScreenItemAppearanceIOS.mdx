@@ -1,10 +1,10 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L133"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L145"}>
 #### TabsScreenItemAppearanceIOS {#tabsscreenitemappearanceios}
 </ReferenceHeading>
 
-Appearance of tab bar items in one layout, for each item state.
+Appearance of tab bar items in each state.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L158"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L187"}>
 ##### disabled {#tabsscreenitemappearanceios-disabled}
 </ReferenceHeading>
 
@@ -13,12 +13,19 @@ disabled?: TabsScreenItemStateAppearanceIOS;
 ```
 
 Defines appearance for tab bar items when they are disabled.
-The appearance is determined by the configuration of the currently selected
-tab.
+
+The appearance is determined by the configuration of the currently
+selected tab.
 
 **Type:** [`TabsScreenItemStateAppearanceIOS`](#tabsscreenitemstateappearanceios)
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L152"}>
+:::info
+
+Disabling a tab is not supported in v5, so this appearance is not shown.
+
+:::
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L176"}>
 ##### focused {#tabsscreenitemappearanceios-focused}
 </ReferenceHeading>
 
@@ -27,12 +34,13 @@ focused?: TabsScreenItemStateAppearanceIOS;
 ```
 
 Defines appearance for a tab bar item when it receives focus.
-The appearance is determined by the configuration of the currently selected
-tab.
+
+The appearance is determined by the configuration of the currently
+selected tab.
 
 **Type:** [`TabsScreenItemStateAppearanceIOS`](#tabsscreenitemstateappearanceios)
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L140"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L156"}>
 ##### normal {#tabsscreenitemappearanceios-normal}
 </ReferenceHeading>
 
@@ -42,12 +50,13 @@ normal?: TabsScreenItemStateAppearanceIOS;
 
 Defines appearance for all tab bar items which are in their enabled,
 unselected and unfocused state.
-The color scheme is determined by the configuration of the currently
+
+The appearance is determined by the configuration of the currently
 selected tab.
 
 **Type:** [`TabsScreenItemStateAppearanceIOS`](#tabsscreenitemstateappearanceios)
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L146"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.ios.types.ts#L166"}>
 ##### selected {#tabsscreenitemappearanceios-selected}
 </ReferenceHeading>
 
@@ -56,7 +65,8 @@ selected?: TabsScreenItemStateAppearanceIOS;
 ```
 
 Defines appearance for the tab bar item that is currently active.
-The appearance is determined by the configuration of the currently selected
-tab itself.
+
+The appearance is determined by the configuration of the currently
+selected tab itself.
 
 **Type:** [`TabsScreenItemStateAppearanceIOS`](#tabsscreenitemstateappearanceios)

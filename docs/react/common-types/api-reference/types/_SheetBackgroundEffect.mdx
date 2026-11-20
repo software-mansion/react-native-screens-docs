@@ -1,0 +1,22 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/sheet/Sheet.types.ts#L121"}>
+#### SheetBackgroundEffect {#sheetbackgroundeffect}
+</ReferenceHeading>
+
+```ts
+type SheetBackgroundEffect =
+  | "automatic"
+  | "none"
+  | SheetBackgroundEffectColor
+  | SheetBackgroundEffectBlur;
+```
+
+Material the system renders behind the sheet's content.
+
+The following values are supported:
+- `'automatic'` — the system's default material for sheets.
+- `'none'` — no material at all; the sheet is transparent and only its
+  content is drawn.
+- [SheetBackgroundEffectColor](#sheetbackgroundeffectcolor) — a flat fill of the given color.
+- [SheetBackgroundEffectBlur](#sheetbackgroundeffectblur) — a blur of the given style.
+
+**Type:** `"automatic"` \| `"none"` \| [`SheetBackgroundEffectColor`](#sheetbackgroundeffectcolor) \| [`SheetBackgroundEffectBlur`](#sheetbackgroundeffectblur)

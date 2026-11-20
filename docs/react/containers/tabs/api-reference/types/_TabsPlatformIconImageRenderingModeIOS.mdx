@@ -1,0 +1,23 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreenIcon.types.ts#L26"}>
+#### TabsPlatformIconImageRenderingModeIOS {#tabsplatformiconimagerenderingmodeios}
+</ReferenceHeading>
+
+```ts
+type TabsPlatformIconImageRenderingModeIOS = PlatformIconImageRenderingModeIOS;
+```
+
+How the tab bar renders an `'imageSource'` icon on iOS. The names follow
+`UIImage.RenderingMode`.
+
+The following values are supported:
+- `'default'` — the system behavior (UIKit's automatic mode), also used
+  when [renderingMode](#tabsscreeniconimagesourceios-renderingmode) is
+  unset: the tab bar decides how to draw the image.
+- `'template'` — the image is used as a template image: its shape is drawn
+  in the state-dependent item icon color
+  ([tabBarItemIconColor](#tabsscreenitemstateappearanceios-tabbaritemiconcolor),
+  [tabBarTintColor](#host-ios-tabbartintcolor)).
+- `'original'` — the image keeps its own colors and ignores the item icon
+  color.
+
+**Type:** [`PlatformIconImageRenderingModeIOS`](../../../../common-types/index.mdx#platformiconimagerenderingmodeios)

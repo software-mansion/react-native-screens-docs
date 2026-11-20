@@ -4,7 +4,7 @@
 //
 //   Fundamentals
 //   React Containers           Stack / Tabs / Split
-//   React Components & Modals  ScrollToTopGuard / SafeAreaView / FormSheet / ContainedModal / ScrollViewMarker
+//   React Components & Modals  ScrollToTopGuard / SafeAreaView / FormSheet / PageSheet / ContainedModal / ScrollViewMarker
 //   React Common Types
 //   Guides
 //   Meta
@@ -39,6 +39,7 @@ const sidebars = {
         'react/components/scroll-to-top-guard/index',
         'react/components/safe-area-view/index',
         'react/components/form-sheet/index',
+        'react/components/page-sheet/index',
         'react/components/contained-modal/index',
         'react/components/scroll-view-marker/index',
       ],

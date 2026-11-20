@@ -1,14 +1,15 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L441"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L530"}>
 #### StackHeaderToolbarMenuElementOptionsAndroid {#stackheadertoolbarmenuelementoptionsandroid}
 </ReferenceHeading>
 
 Options for updating a toolbar menu element at runtime.
 
-Omitted keys preserve current values. Explicit `undefined` resets to default.
+Accepts the fields of [StackHeaderToolbarMenuItemBaseAndroid](#stackheadertoolbarmenuitembaseandroid) except
+[id](#stackheadertoolbarmenuitembaseandroid-id).
 
 **Extends:** `Partial`\<`Omit`\<[`StackHeaderToolbarMenuItemBaseAndroid`](#stackheadertoolbarmenuitembaseandroid), `"id"`\>\>
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L450"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L541"}>
 ##### checked {#stackheadertoolbarmenuelementoptionsandroid-checked}
 </ReferenceHeading>
 
@@ -18,10 +19,10 @@ checked?: boolean;
 
 Sets the checked state of the menu item.
 
-In single-selection groups, setting `checked: true`
-automatically unchecks other group members.
+In single-selection groups, setting `checked: true` automatically unchecks
+other group members.
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L459"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L554"}>
 ##### menuTitle {#stackheadertoolbarmenuelementoptionsandroid-menutitle}
 </ReferenceHeading>
 
@@ -32,5 +33,7 @@ menuTitle?: string;
 Sets the header title of a submenu popup.
 
 Only applies to `type: 'menu'` elements. Ignored if the target is a regular
-menu item. Setting it to `undefined` drops the `menuTitle` prop as well,
-leaving the header to fall back to `title`.
+menu item. Setting it to `undefined` drops the
+[menuTitle](#stackheadertoolbarmenuandroid-menutitle) prop as well,
+leaving the header to fall back to
+[title](#stackheadertoolbarmenuitembaseandroid-title).

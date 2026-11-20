@@ -1,0 +1,42 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L73"}>
+#### StackHeaderItemBaseIOS {#stackheaderitembaseios}
+</ReferenceHeading>
+
+Identifier, title and icon of a header item.
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L97"}>
+##### icon {#stackheaderitembaseios-icon}
+</ReferenceHeading>
+
+```ts
+icon?: PlatformIconIOS;
+```
+
+Icon displayed for the header item.
+
+Supports SF Symbols, xcassets, and image sources. For async image sources,
+the item renders without an icon first and updates when loaded. Ignored
+when custom view ([render](#stackheaderinlinecustomitemios-render))
+is set.
+
+**Type:** [`PlatformIconIOS`](../../../../common-types/index.mdx#platformiconios)
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L79"}>
+##### id {#stackheaderitembaseios-id}
+</ReferenceHeading>
+
+```ts
+id: string;
+```
+
+A unique identifier within the screen header.
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L85"}>
+##### title {#stackheaderitembaseios-title}
+</ReferenceHeading>
+
+```ts
+title?: string;
+```
+
+A title for the item that is displayed in the header.

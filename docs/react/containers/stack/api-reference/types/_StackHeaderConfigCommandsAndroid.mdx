@@ -1,11 +1,11 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L480"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L580"}>
 #### StackHeaderConfigCommandsAndroid {#stackheaderconfigcommandsandroid}
 </ReferenceHeading>
 
-Commands of [Stack.HeaderConfig](#header-config) available on Android, through
-[\`ref.android\`](#stackheaderconfigref-android).
+Android-specific commands of [Stack.HeaderConfig](#header-config), available through
+[StackHeaderConfigRef.android](#stackheaderconfigref-android).
 
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L514"}>
+<ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L621"}>
 ##### updateToolbarMenuElements {#stackheaderconfigcommandsandroid-updatetoolbarmenuelements}
 </ReferenceHeading>
 
@@ -18,31 +18,37 @@ updateToolbarMenuElements: (updates:
 Applies one or more updates to the toolbar menu in a single batch.
 
 Accepts a single update or an array of them; each targets a menu element
-by `id` and applies its `options`. The call is queued and applied as one
-atomic batch:
-- if any update carries an `icon` that loads asynchronously, the whole
-  batch waits for every icon before applying (updates are never applied
-  partially);
+by [id](#stackheadertoolbarmenuelementupdateandroid-id) and applies
+its [options](#stackheadertoolbarmenuelementupdateandroid-options).
+The call is queued and applied as one atomic batch:
+- if any update carries an
+  [icon](#stackheadertoolbarmenuitembaseandroid-icon) that loads
+  asynchronously, the whole batch waits for every icon before applying
+  (updates are never applied partially);
 - updates apply in array order, so an `id` may repeat and later values
   win field by field;
 - once applied, each affected group emits at most one, coalesced
-  `onSelectionChange`.
+  [onSelectionChange](#stackheadertoolbarmenugroupandroid-onselectionchange)
+  call.
 
 Batches run in call order on a serial FIFO queue, so a later call is never
 overtaken by an earlier one whose icon happened to load late.
 
-Updates persist for the lifetime of the current `toolbarMenu`
+Updates persist for the lifetime of the current
+[toolbarMenu](#header-config-android-toolbarmenu)
 configuration: they survive every native header rebuild — an effective
-color scheme change, a header `type`, `maxLines` or
-`collapsedTitleGravityMode` change, hiding and re-showing the header,
-reattaching the screen (e.g. switching tabs) — and unrelated re-renders.
-Updates sent while the header is hidden are recorded — and emit their
-selection events — as usual, and take effect when the header is next
-shown. Only a `toolbarMenu` prop change resets them, dropping the
-batches still queued as well (see its docs). An update whose `id` is not
-in the current menu is ignored. An `icon` set via this command takes
-precedence over the icon declared in `toolbarMenu` until the next
-`toolbarMenu` change.
+color scheme change, a header
+[type](#header-config-android-type),
+[maxLines](#header-config-android-maxlines) or
+[collapsedTitleGravityMode](#header-config-android-collapsedtitlegravitymode)
+change, hiding and re-showing the header, reattaching the screen (e.g.
+switching tabs) — and unrelated re-renders. Updates sent while the header
+is hidden are recorded — and emit their selection events — as usual, and
+take effect when the header is next shown. Only a `toolbarMenu` prop change
+resets them, dropping the batches still queued as well (see its docs). An
+update whose `id` is not in the current menu is ignored. An `icon` set via
+this command takes precedence over the icon declared in `toolbarMenu` until
+the next `toolbarMenu` change.
 
 **Parameters:**
 

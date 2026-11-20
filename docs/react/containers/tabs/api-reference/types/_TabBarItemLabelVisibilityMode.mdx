@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.android.types.ts#L17"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/tabs/screen/TabsScreen.android.types.ts#L20"}>
 #### TabBarItemLabelVisibilityMode {#tabbaritemlabelvisibilitymode}
 </ReferenceHeading>
 
@@ -9,10 +9,13 @@ type TabBarItemLabelVisibilityMode = "auto" | "selected" | "labeled" | "unlabele
 Label visibility mode of the tab bar items.
 
 The following values are available:
-- `'auto'` — the label behaves as in “labeled” mode when there are 3
-  items or less, or as in “selected” mode when there are 4 items or more
-- `'selected'` — the label is only shown on the selected navigation item
-- `'labeled'` — the label is shown on all navigation items
-- `'unlabeled'` — the label is hidden for all navigation items
+- `'auto'` — the label behaves as in `'labeled'` mode when there are 3
+  items or less, or as in `'selected'` mode when there are 4 items or more.
+- `'selected'` — the label is only shown on the selected navigation item.
+- `'labeled'` — the label is shown on all navigation items.
+- `'unlabeled'` — the label is hidden for all navigation items.
+
+The supported values correspond to the official Material Components
+documentation.
 
 **See:** [Material Components documentation](https://github.com/material-components/material-components-android/blob/master/docs/components/BottomNavigation.md#making-navigation-bar-accessible)

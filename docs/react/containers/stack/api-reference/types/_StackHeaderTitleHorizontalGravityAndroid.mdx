@@ -1,4 +1,4 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L29"}>
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L41"}>
 #### StackHeaderTitleHorizontalGravityAndroid {#stackheadertitlehorizontalgravityandroid}
 </ReferenceHeading>
 
@@ -6,9 +6,12 @@
 type StackHeaderTitleHorizontalGravityAndroid = "start" | "center" | "end";
 ```
 
-Horizontal alignment of the header title.
+Horizontal alignment of the title and the subtitle of a `'medium'` or
+`'large'` header.
 
 The following values are supported:
-- `'start'`
+- `'start'` — the start edge: left in left-to-right layouts, right in
+  right-to-left layouts.
 - `'center'`
-- `'end'`
+- `'end'` — the end edge: right in left-to-right layouts, left in
+  right-to-left layouts.

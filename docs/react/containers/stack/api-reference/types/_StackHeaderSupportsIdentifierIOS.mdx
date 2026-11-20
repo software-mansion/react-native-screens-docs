@@ -1,0 +1,24 @@
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L184"}>
+#### StackHeaderSupportsIdentifierIOS {#stackheadersupportsidentifierios}
+</ReferenceHeading>
+
+Field of a header item that identifies it across screens for transition
+animations.
+
+<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L199"}>
+##### identifier {#stackheadersupportsidentifierios-identifier}
+</ReferenceHeading>
+
+```ts
+identifier?: string;
+```
+
+Stable identifier used to match the item across different screens
+for more intelligent animation on transition.
+
+When navigating between screens, iOS tries to match similarly looking items
+(i.e. same sfSymbol) and animate between them. If the heuristic fails, a
+simpler crossfade is applied. In a situation where visually different items
+should be logically considered the same across screens, you may use this
+prop to tell this fact to the system. The identifier shouldn't be updated
+at runtime; doing so will result in item rebuild and visual flash.
