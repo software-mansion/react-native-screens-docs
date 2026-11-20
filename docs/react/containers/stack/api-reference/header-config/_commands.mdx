@@ -1,12 +1,17 @@
-<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L580"}>
-#### StackHeaderConfigCommandsAndroid {#stackheaderconfigcommandsandroid}
+import Anchor from '@theme/MDXComponents/A';
+
+<ReferenceHeading source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.types.ts#L106"}>
+#### Commands {#header-config-commands}
 </ReferenceHeading>
 
-Android-specific commands of [Stack.HeaderConfig](#header-config), available through
-[StackHeaderConfigRef.android](#stackheaderconfigref-android).
+Commands of [Stack.HeaderConfig](#header-config), available through its `ref`.
+
+**Type:** `StackHeaderConfigRef`
+
+<Anchor id="header-config-commands-android" />
 
 <ReferenceHeading platforms={[{"platform":"android"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.android.types.ts#L621"}>
-##### updateToolbarMenuElements {#stackheaderconfigcommandsandroid-updatetoolbarmenuelements}
+##### android.updateToolbarMenuElements {#header-config-commands-android-updatetoolbarmenuelements}
 </ReferenceHeading>
 
 ```ts
@@ -53,5 +58,41 @@ the next `toolbarMenu` change.
 **Parameters:**
 
 - `updates`: [`StackHeaderToolbarMenuElementUpdateAndroid`](#stackheadertoolbarmenuelementupdateandroid) \| [`StackHeaderToolbarMenuElementUpdateAndroid[]`](#stackheadertoolbarmenuelementupdateandroid) — A single update object or an array of updates.
+
+**Returns:** `void`
+
+<Anchor id="header-config-commands-ios" />
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L927"}>
+##### ios.setMenuItemOptions {#header-config-commands-ios-setmenuitemoptions}
+</ReferenceHeading>
+
+```ts
+setMenuItemOptions: (menuElementId: string, options: StackHeaderMenuItemOptionsIOS) => void;
+```
+
+Updates properties of a menu action (leaf item) at runtime.
+
+**Parameters:**
+
+- `menuElementId`: `string` — The ID of the menu action to update.
+- `options`: [`StackHeaderMenuItemOptionsIOS`](#stackheadermenuitemoptionsios) — Object with properties to change. Omitted keys preserve current values. Explicit `undefined` resets to default.
+
+**Returns:** `void`
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L939"}>
+##### ios.setMenuOptions {#header-config-commands-ios-setmenuoptions}
+</ReferenceHeading>
+
+```ts
+setMenuOptions: (menuElementId: string, options: StackHeaderMenuOptionsIOS) => void;
+```
+
+Updates properties of a submenu at runtime.
+
+**Parameters:**
+
+- `menuElementId`: `string` — The ID of the submenu to update.
+- `options`: [`StackHeaderMenuOptionsIOS`](#stackheadermenuoptionsios) — Object with properties to change. Omitted keys preserve current values. Explicit `undefined` resets to default.
 
 **Returns:** `void`

@@ -24,6 +24,13 @@ export interface Component {
    * (`Tabs.Host`).
    */
   merged: string[];
+  /**
+   * The type of the component's commands, which its `ref` prop holds as `Ref<…>`
+   * (`ref?: Ref<StackHeaderConfigRef>` → `'StackHeaderConfigRef'`). They render under
+   * `Commands` after the section's props, and the type leaves the Types list. Left out for a
+   * component without commands, also when its `ref` holds a native view.
+   */
+  commands?: string;
 }
 
 /** A component family: one docs page. */
@@ -72,6 +79,7 @@ export const FEATURES: Record<string, Feature> = {
         label: 'HeaderConfig',
         props: 'StackHeaderConfigProps',
         merged: ['StackHeaderConfigPropsBase', 'HeaderConfig'],
+        commands: 'StackHeaderConfigRef',
       },
     ],
   },
@@ -99,7 +107,13 @@ export const FEATURES: Record<string, Feature> = {
     label: 'Split',
     dir: 'react/containers/split',
     components: [
-      { id: 'host', label: 'Host', props: 'SplitHostProps', merged: ['Host'] },
+      {
+        id: 'host',
+        label: 'Host',
+        props: 'SplitHostProps',
+        merged: ['Host'],
+        commands: 'SplitHostCommands',
+      },
       {
         id: 'column',
         label: 'Column',
