@@ -43,7 +43,25 @@ To use `selectedIcon`, `icon` must also be provided.
 
 **Default:** The [icon](#screen-android-icon) is used.
 
-**Example:** The drawable is shown tinted while unselected and in its own colors while selected: ```tsx <Tabs.Screen screenKey="favorites" title="Favorites" android={{ icon: { type: 'drawableResource', name: 'ic_star' }, selectedIcon: { type: 'drawableResource', name: 'ic_star', tinting: 'original', }, }}> <FavoritesScreen /> </Tabs.Screen> ```
+**Example:**
+
+The drawable is shown tinted while unselected and in its own colors while
+selected:
+```tsx
+<Tabs.Screen
+  screenKey="favorites"
+  title="Favorites"
+  android={{
+    icon: { type: 'drawableResource', name: 'ic_star' },
+    selectedIcon: {
+      type: 'drawableResource',
+      name: 'ic_star',
+      tinting: 'original',
+    },
+  }}>
+  <FavoritesScreen />
+</Tabs.Screen>
+```
 
 <ReferenceHeading platforms={[{"platform":"android"}]} source={"src/components/tabs/screen/TabsScreen.android.types.ts#L242"}>
 #### android.standardAppearance {#screen-android-standardappearance}

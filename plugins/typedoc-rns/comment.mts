@@ -54,9 +54,18 @@ export function escapeModuleSyntax(markdown: string): string {
     .join('\n');
 }
 
-/** One paragraph that does not open with a list, quote, code block or admonition. */
+/**
+ * One paragraph that does not open with a list, quote, code block or admonition, and holds no
+ * code block. A code block may follow a sentence without a blank line (`For X:` and a ```` ``` ````
+ * line below); joined onto one line, its fences would no longer start a line and it would render
+ * as inline text.
+ */
 export function isInline(text: string): boolean {
-  return !text.includes('\n\n') && !/^(```|:::|[-*>] |\d+\. )/.test(text);
+  return (
+    !text.includes('\n\n') &&
+    !/^(```|:::|[-*>] |\d+\. )/.test(text) &&
+    !/^\s*(```|~~~)/m.test(text)
+  );
 }
 
 /** A paragraph joined onto one line, without the indentation its continuation lines had. */
@@ -66,7 +75,8 @@ export function oneLine(text: string): string {
 
 /**
  * `**Label:** body` for a single paragraph, joined onto one line; the label on a line of its own
- * when the body has several paragraphs or opens with a list, quote or code block.
+ * when the body has several paragraphs, opens with a list, quote or code block, or holds a code
+ * block.
  */
 export function labeled(label: string, body: string): string {
   const text = body.trim();
