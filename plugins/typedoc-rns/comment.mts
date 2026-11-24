@@ -28,16 +28,13 @@ const LABELS: Record<string, string> = {
  * and a comment written for it would run in readers' browsers. Code blocks are left as written.
  */
 export function escapeModuleSyntax(markdown: string): string {
-  // The open block's marker; only the same character, at least as many times, closes it.
   let fence: string | undefined;
   return markdown
     .split('\n')
     .map(line => {
-      const marker = /^\s*(`{3,}|~{3,})/.exec(line)?.[1];
+      const marker = fenceOf(line);
       if (fence) {
-        if (marker && marker[0] === fence[0] && marker.length >= fence.length) {
-          fence = undefined;
-        }
+        if (closes(fence, marker)) fence = undefined;
         return line;
       }
       if (marker) {
@@ -54,9 +51,47 @@ export function escapeModuleSyntax(markdown: string): string {
     .join('\n');
 }
 
-/** One paragraph that does not open with a list, quote, code block or admonition. */
+/** The ```` ``` ```` or `~~~` run (or a longer one) a line starts with, if it starts with one. */
+function fenceOf(line: string): string | undefined {
+  return /^\s*(`{3,}|~{3,})/.exec(line)?.[1];
+}
+
+/** Whether `marker` closes a block opened with `fence`: the same character, as many or more. */
+function closes(fence: string, marker: string | undefined): boolean {
+  return (
+    marker !== undefined &&
+    marker[0] === fence[0] &&
+    marker.length >= fence.length
+  );
+}
+
+/**
+ * Whether the text holds a code block: a line opening one and a later line closing it. A
+ * ```` ``` ```` with nothing to close it, such as the end of a code span that opened mid-line,
+ * is not one.
+ */
+function hasCodeBlock(text: string): boolean {
+  let fence: string | undefined;
+  for (const line of text.split('\n')) {
+    const marker = fenceOf(line);
+    if (fence === undefined) fence = marker;
+    else if (closes(fence, marker)) return true;
+  }
+  return false;
+}
+
+/**
+ * One paragraph that does not open with a list, quote or admonition and holds no code block. A
+ * code block may follow a sentence without a blank line (`For X:` and a ```` ``` ```` line
+ * below); joined onto one line, its fences would no longer start a line and it would render as
+ * inline text.
+ */
 export function isInline(text: string): boolean {
-  return !text.includes('\n\n') && !/^(```|:::|[-*>] |\d+\. )/.test(text);
+  return (
+    !text.includes('\n\n') &&
+    !/^(:::|[-*>] |\d+\. )/.test(text) &&
+    !hasCodeBlock(text)
+  );
 }
 
 /** A paragraph joined onto one line, without the indentation its continuation lines had. */
@@ -66,7 +101,8 @@ export function oneLine(text: string): string {
 
 /**
  * `**Label:** body` for a single paragraph, joined onto one line; the label on a line of its own
- * when the body has several paragraphs or opens with a list, quote or code block.
+ * when the body has several paragraphs, opens with a list, quote or code block, or holds a code
+ * block.
  */
 export function labeled(label: string, body: string): string {
   const text = body.trim();

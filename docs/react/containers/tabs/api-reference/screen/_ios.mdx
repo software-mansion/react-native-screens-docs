@@ -186,7 +186,25 @@ To use `selectedIcon`, `icon` must also be provided.
 
 **Default:** The [icon](#screen-ios-icon) is used.
 
-**Example:** The symbol is shown tinted while unselected and in its own colors while selected: ```tsx <Tabs.Screen screenKey="favorites" title="Favorites" ios={{ icon: { type: 'sfSymbol', name: 'leaf' }, selectedIcon: { type: 'sfSymbol', name: 'leaf', renderingMode: 'original', }, }}> <FavoritesScreen /> </Tabs.Screen> ```
+**Example:**
+
+The symbol is shown tinted while unselected and in its own colors while
+selected:
+```tsx
+<Tabs.Screen
+  screenKey="favorites"
+  title="Favorites"
+  ios={{
+    icon: { type: 'sfSymbol', name: 'leaf' },
+    selectedIcon: {
+      type: 'sfSymbol',
+      name: 'leaf',
+      renderingMode: 'original',
+    },
+  }}>
+  <FavoritesScreen />
+</Tabs.Screen>
+```
 
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/tabs/screen/TabsScreen.ios.types.ts#L305"}>
 #### ios.standardAppearance {#screen-ios-standardappearance}
