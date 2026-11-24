@@ -1,8 +1,8 @@
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L101"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L74"}>
 ### PageSheet {#page-sheet}
 </ReferenceHeading>
 
-<ReferenceHeading platforms={[{"platform":"ios","from":"26.1"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L234"}>
+<ReferenceHeading platforms={[{"platform":"ios","from":"26.1"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L207"}>
 #### backgroundEffect {#page-sheet-backgroundeffect}
 </ReferenceHeading>
 
@@ -19,12 +19,9 @@ The material is drawn behind the native container, so an opaque
 
 **Default:** `'automatic'`
 
-**See:**
+**See:** [UIPresentationController.backgroundEffect](https://developer.apple.com/documentation/uikit/uipresentationcontroller/backgroundeffect)
 
-- [PageSheetBackgroundEffect](#pagesheetbackgroundeffect)
- - [UIPresentationController.backgroundEffect](https://developer.apple.com/documentation/uikit/uipresentationcontroller/backgroundeffect)
-
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L107"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L80"}>
 #### children {#page-sheet-children}
 </ReferenceHeading>
 
@@ -34,7 +31,7 @@ children?: ReactNode;
 
 Content of the sheet.
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L137"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L111"}>
 #### detents {#page-sheet-detents}
 </ReferenceHeading>
 
@@ -44,9 +41,9 @@ detents?: PageSheetDetents;
 
 Defines the resting positions of the sheet.
 
-If the prop is not set or the array is empty, the sheet has a single
-large detent. On Android, at most three detents are supported.
-`'fitToContents'` is supported on iOS 16+.
+An empty array also gives the sheet a single large detent. On Android, at
+most three detents are supported. `'fitToContents'` is supported on
+iOS 16+.
 
 **Type:** [`PageSheetDetents`](#pagesheetdetents)
 
@@ -58,9 +55,11 @@ medium and large detents are used.
 
 :::
 
+**Default:** The sheet has a single large detent.
+
 **See:** [UISheetPresentationController.detents](https://developer.apple.com/documentation/uikit/uisheetpresentationcontroller/detents)
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L180"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L154"}>
 #### initialDetentIndex {#page-sheet-initialdetentindex}
 </ReferenceHeading>
 
@@ -76,7 +75,7 @@ This prop only applies when the sheet transitions from closed to open.
 
 **Default:** `0`
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L119"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L92"}>
 #### isOpen {#page-sheet-isopen}
 </ReferenceHeading>
 
@@ -90,7 +89,7 @@ Presentation is driven by state transitions: updating this property from
 `false` to `true` triggers the sheet to present, while changing it from
 `true` to `false` triggers a programmatic dismissal.
 
-<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L169"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L143"}>
 #### largestUndimmedDetentIndex {#page-sheet-largestundimmeddetentindex}
 </ReferenceHeading>
 
@@ -104,7 +103,7 @@ The largest sheet detent for which a view underneath won't be dimmed.
 
 **Default:** `'none'`
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L218"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L192"}>
 #### nativeContainerStyle {#page-sheet-nativecontainerstyle}
 </ReferenceHeading>
 
@@ -116,7 +115,7 @@ Style applied to the native container hosting the sheet content.
 
 **Type:** `StyleProp`\<[`PageSheetNativeContainerStyleProps`](#pagesheetnativecontainerstyleprops)\>
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L308"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L281"}>
 #### onDetentChanged {#page-sheet-ondetentchanged}
 </ReferenceHeading>
 
@@ -140,7 +139,7 @@ index is always `0`.
 
 :::
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L252"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L225"}>
 #### onDidAppear {#page-sheet-ondidappear}
 </ReferenceHeading>
 
@@ -153,7 +152,7 @@ as soon as the transition ends.
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L268"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L241"}>
 #### onDidDisappear {#page-sheet-ondiddisappear}
 </ReferenceHeading>
 
@@ -166,7 +165,7 @@ called as soon as the transition ends.
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L279"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L252"}>
 #### onDismiss {#page-sheet-ondismiss}
 </ReferenceHeading>
 
@@ -181,7 +180,7 @@ changing to `false`.
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L291"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L264"}>
 #### onNativeDismiss {#page-sheet-onnativedismiss}
 </ReferenceHeading>
 
@@ -197,7 +196,7 @@ React state to prevent UI mismatches, e.g. by setting `isOpen` back to
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L321"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L294"}>
 #### onNativeDismissPrevented {#page-sheet-onnativedismissprevented}
 </ReferenceHeading>
 
@@ -214,7 +213,7 @@ why the sheet cannot be closed.
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L244"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L217"}>
 #### onWillAppear {#page-sheet-onwillappear}
 </ReferenceHeading>
 
@@ -227,7 +226,7 @@ called as soon as the transition begins.
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L260"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L233"}>
 #### onWillDisappear {#page-sheet-onwilldisappear}
 </ReferenceHeading>
 
@@ -240,7 +239,7 @@ called as soon as the transition begins.
 
 **Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
-<ReferenceHeading platforms={[{"platform":"android","from":"33"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L161"}>
+<ReferenceHeading platforms={[{"platform":"android","from":"33"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L135"}>
 #### preferredCornerRadius {#page-sheet-preferredcornerradius}
 </ReferenceHeading>
 
@@ -257,7 +256,7 @@ corner radius is used.
 
 **Default:** `'systemDefault'`
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L149"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L123"}>
 #### prefersGrabberVisible {#page-sheet-prefersgrabbervisible}
 </ReferenceHeading>
 
@@ -272,7 +271,7 @@ hint that the sheet can be resized.
 
 **Default:** `false`
 
-<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L197"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L171"}>
 #### prefersScrollingExpandsWhenScrolledToEdge {#page-sheet-prefersscrollingexpandswhenscrolledtoedge}
 </ReferenceHeading>
 
@@ -293,7 +292,7 @@ expand the sheet regardless of this setting.
 
 **See:** [UISheetPresentationController.prefersScrollingExpandsWhenScrolledToEdge](https://developer.apple.com/documentation/uikit/uisheetpresentationcontroller/prefersscrollingexpandswhenscrolledtoedge)
 
-<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L211"}>
+<ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/modals/page-sheet/PageSheet.types.ts#L185"}>
 #### preventNativeDismiss {#page-sheet-preventnativedismiss}
 </ReferenceHeading>
 

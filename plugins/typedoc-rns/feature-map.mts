@@ -194,8 +194,14 @@ export const FEATURES: Record<string, Feature> = {
       {
         id: 'over-content',
         label: 'ContainedModalOverContent',
-        props: 'ContainedModalProps',
+        props: 'ContainedModalOverContentProps',
         merged: ['ContainedModalOverContent'],
+      },
+      {
+        id: 'replacing-content',
+        label: 'ContainedModalReplacingContent',
+        props: 'ContainedModalReplacingContentProps',
+        merged: ['ContainedModalReplacingContent'],
       },
     ],
   },
