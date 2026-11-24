@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './styles.module.css';
+// The library commit the reference is generated from, written by `yarn gen:api`.
+import lock from '@site/api-reference.lock.json';
 
 // The entries the API reference generator writes; Babel drops the type-only import.
 import type {
@@ -10,7 +12,10 @@ import type {
 type ReferenceHeadingProps = {
   children: React.ReactNode;
   platforms?: PlatformEntry[];
-  /** The declaration in the library repository, at its line. */
+  /**
+   * The declaration's path in the library and its line, `src/…#L12`; the link opens it at the
+   * locked commit, so the line matches the code the reference describes.
+   */
   source?: string;
 };
 
@@ -87,7 +92,9 @@ export default function ReferenceHeading({
       {platforms.map(entry => (
         <PlatformChip key={entry.platform} {...entry} />
       ))}
-      {source && <SourceLink href={source} />}
+      {source && (
+        <SourceLink href={`${lock.repository}/blob/${lock.commit}/${source}`} />
+      )}
     </div>
   );
 }
