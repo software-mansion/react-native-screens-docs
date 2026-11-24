@@ -21,6 +21,39 @@ const LABELS: Record<string, string> = {
   '@deprecated': 'Deprecated',
 };
 
+/**
+ * Comment text with `import` and `export` at the start of a line written as a character
+ * reference (`&#105;mport`), which renders the same letter. MDX runs such a line as JavaScript
+ * when it opens a paragraph, so a sentence like "import this type…" would break the site build,
+ * and a comment written for it would run in readers' browsers. Code blocks are left as written.
+ */
+export function escapeModuleSyntax(markdown: string): string {
+  // The open block's marker; only the same character, at least as many times, closes it.
+  let fence: string | undefined;
+  return markdown
+    .split('\n')
+    .map(line => {
+      const marker = /^\s*(`{3,}|~{3,})/.exec(line)?.[1];
+      if (fence) {
+        if (marker && marker[0] === fence[0] && marker.length >= fence.length) {
+          fence = undefined;
+        }
+        return line;
+      }
+      if (marker) {
+        fence = marker;
+        return line;
+      }
+      // Indented lines too: callers trim the text, which can bring one to the line's start.
+      return line.replace(
+        /^(\s*)(i(?=mport\b)|e(?=xport\b))/,
+        (_, indent: string, letter: string) =>
+          `${indent}&#${letter.charCodeAt(0)};`,
+      );
+    })
+    .join('\n');
+}
+
 /** One paragraph that does not open with a list, quote, code block or admonition. */
 export function isInline(text: string): boolean {
   return !text.includes('\n\n') && !/^(```|:::|[-*>] |\d+\. )/.test(text);

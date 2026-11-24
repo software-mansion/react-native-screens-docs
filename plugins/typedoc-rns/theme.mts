@@ -15,6 +15,7 @@ import {
 
 import {
   type CommentChanges,
+  escapeModuleSyntax,
   renderComment,
   withCommentChanges,
 } from './comment.mts';
@@ -68,6 +69,9 @@ function referenceHeading(
   platformsFrom: DeclarationReflection = reflection,
 ): string {
   const platforms = platformEntriesOf(platformsFrom);
+  // Not a full URL, only the file and line, e.g. `src/components/tabs/TabsHost.tsx#L12`
+  // (sourceLinkTemplate in typedoc.config.mjs). ReferenceHeading prepends the repository and
+  // the commit from api-reference.lock.json.
   const source = reflection.sources?.[0]?.url;
   const props = [
     platforms.length > 0 && `platforms={${JSON.stringify(platforms)}}`,
@@ -330,8 +334,15 @@ class RnsThemeContext extends MarkdownThemeContext {
       ...signatures,
       ...typePartials(this, basePartials),
       ...declarationPartials(this, { ...basePartials, ...signatures }),
+      // Every comment's text comes through the stock partial here, so it is escaped once.
       comment: (model, options) =>
-        renderComment(this, basePartials.comment, model, options),
+        renderComment(
+          this,
+          (text, textOptions) =>
+            escapeModuleSyntax(basePartials.comment(text, textOptions)),
+          model,
+          options,
+        ),
       memberContainer: (model, options) =>
         renderMemberContainer(this, model, options),
       // Optional shows in the declaration below the heading (`colorScheme?: …`).

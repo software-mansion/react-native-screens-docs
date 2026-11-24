@@ -18,3 +18,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# `yarn gen:api`'s own: the library checkouts `--ref` fetches and the output before its checks
+/.lib

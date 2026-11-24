@@ -54,12 +54,17 @@ export interface Feature {
  */
 export type PageGroup = 'android' | 'ios';
 
-export const LIB_REPO = '../react-native-screens';
+/**
+ * The library checkout the reference is generated from: the sibling checkout, unless
+ * `yarn gen:api --ref` / `--lib` names another one (scripts/gen-api.mjs).
+ */
+export const LIB_REPO = process.env.RNS_LIB_REPO || '../react-native-screens';
 const LIB = `${LIB_REPO}/src`;
 
 /**
- * The families, keyed by TypeDoc module name — the entry point's path relative to the entry
- * points' common base, so `src/components/tabs/index.ts` is the module `components/tabs`.
+ * The families, keyed by TypeDoc module name — the entry point's path relative to the
+ * library's `src` (`displayBasePath` in typedoc.config.mjs), so `src/components/tabs/index.ts`
+ * is the module `components/tabs`.
  */
 export const FEATURES: Record<string, Feature> = {
   'components/stack': {
