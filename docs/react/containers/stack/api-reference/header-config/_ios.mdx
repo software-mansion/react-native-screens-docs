@@ -45,8 +45,9 @@ backButtonTitle?: string;
 Title displayed next to the back button on this screen.
 
 Configured on the screen whose back button it applies to (the screen that
-is pushed on top). When unset, the system derives the back title from the
-previous screen's [title](#header-config-title).
+is pushed on top).
+
+**Default:** The system derives the back title from the previous screen's [title](#header-config-title).
 
 <ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L828"}>
 #### ios.largeSubtitle {#header-config-ios-largesubtitle}
@@ -59,8 +60,9 @@ largeSubtitle?: string;
 Large subtitle text, displayed when `largeTitleEnabled = true`.
 
 When ScrollView is present on the screen, large header is displayed only
-when fully scrolled to top, otherwise it collapses to regular header. If
-`largeSubtitle` is not defined, it falls back to regular subtitle.
+when fully scrolled to top, otherwise it collapses to regular header.
+
+**Default:** The regular subtitle is used.
 
 <ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L838"}>
 #### ios.largeSubtitleItem {#header-config-ios-largesubtitleitem}
@@ -88,8 +90,9 @@ largeTitle?: string;
 Large title text, displayed when `largeTitleEnabled = true`.
 
 When ScrollView is present on the screen, large header is displayed only
-when fully scrolled to top, otherwise it collapses to regular header. If
-`largeTitle` is not defined, it falls back to regular title.
+when fully scrolled to top, otherwise it collapses to regular header.
+
+**Default:** The regular title is used.
 
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L817"}>
 #### ios.largeTitleEnabled {#header-config-ios-largetitleenabled}
@@ -201,10 +204,8 @@ scrollEdgeAppearance?: StackHeaderAppearanceIOS;
 Appearance of the header when the edge of scrollable content
 is aligned with the edge of the header.
 
-If unset, derives the configuration from
-[standardAppearance](#header-config-ios-standardappearance),
-otherwise becomes a standalone definition. In both cases it keeps
-transparent background by default (`iOS < 18`).
+When set, it becomes a standalone definition. Whether set or derived, it
+keeps transparent background by default (`iOS < 18`).
 
 **Type:** [`StackHeaderAppearanceIOS`](#stackheaderappearanceios)
 
@@ -216,6 +217,8 @@ at the moment the items are attached to the navigation bar, and do not
 update on property changes or scroll edge transitions.
 
 :::
+
+**Default:** The configuration is derived from [standardAppearance](#header-config-ios-standardappearance).
 
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"https://github.com/software-mansion/react-native-screens/blob/main/src/components/stack/header/StackHeaderConfig.ios.types.ts#L892"}>
 #### ios.standardAppearance {#header-config-ios-standardappearance}
