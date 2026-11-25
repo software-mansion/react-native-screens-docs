@@ -1,0 +1,7 @@
+{
+  "current": { "label": "next", "banner": "unreleased" },
+  "versions": [
+    { "name": "5.x", "branch": "5.x", "label": "5.x", "banner": "none" }
+  ],
+  "latest": "5.x"
+}
