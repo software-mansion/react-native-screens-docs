@@ -8,6 +8,7 @@ import {
 } from 'typedoc';
 import type { MarkdownThemeContext } from 'typedoc-plugin-markdown';
 
+import { type CodeLinkContext, recordReferencesIn } from './code-links.mts';
 import {
   type CommentChanges,
   type CommentContext,
@@ -18,7 +19,9 @@ import { indent } from './signature.mts';
 import { type InlineContext, inlineType } from './types.mts';
 
 type Partials = MarkdownThemeContext['partials'];
-type Context = CommentContext & InlineContext & { router: RnsRouter };
+type Context = CommentContext &
+  InlineContext &
+  CodeLinkContext & { router: RnsRouter };
 
 function urlOf(ctx: MarkdownThemeContext, reflection: Reflection | undefined) {
   return reflection && ctx.router.hasUrl(reflection)
@@ -27,9 +30,9 @@ function urlOf(ctx: MarkdownThemeContext, reflection: Reflection | undefined) {
 }
 
 /**
- * `**Type:**` with the type of a prop, a field or a type alias, and its links: types inside a
- * ```ts block cannot be links. Omitted when the line would have no link, and for object and
- * function literals, whose keys or parameters follow.
+ * `**Type:**` with the type of a prop, a field or a type alias, and its links. Omitted when the
+ * line would have no link, and for object and function literals, whose keys or parameters
+ * follow.
  */
 function typeLine(
   ctx: InlineContext,
@@ -167,7 +170,14 @@ function interfaceDeclaration(
     .sort((a, b) => sourceLine(a) - sourceLine(b))
     .map(member => indent(memberDeclaration(ctx, member)));
   const name = `interface ${model.name}${typeParameterList(model)}`;
-  const bases = documentedBases(ctx, model).map(type => type.toString());
+  const baseTypes = documentedBases(ctx, model);
+  // The head is written with `toString()`; the types it names are recorded for their links.
+  for (const type of baseTypes) recordReferencesIn(ctx, type);
+  for (const parameter of model.typeParameters ?? []) {
+    recordReferencesIn(ctx, parameter.type);
+    recordReferencesIn(ctx, parameter.default);
+  }
+  const bases = baseTypes.map(type => type.toString());
   const head = bases.length
     ? `${name}\n  extends ${bases.join(',\n    ')} {`
     : `${name} {`;

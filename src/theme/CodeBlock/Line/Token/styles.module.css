@@ -1,0 +1,17 @@
+/*
+A type name reads as code, in its token's colour and weight, until the pointer is on it, as
+go-to-definition does in an editor. `.markdown a` (typography.css) gives links a bottom border
+and weight 500; the `.markdown` prefix outranks it.
+*/
+:global(.markdown) .link {
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+:global(.markdown) .link:hover {
+  color: var(--ifm-color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
