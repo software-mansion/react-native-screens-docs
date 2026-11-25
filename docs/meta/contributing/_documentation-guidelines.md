@@ -62,7 +62,7 @@ These ship via swizzle / preset and can be used in any `.md` / `.mdx` page witho
 
 ### Images and videos
 
-- Static images live in `static/img/`. Reference them with leading slash, e.g. `![](/img/screen-anatomy.png)`.
+- Static images live in `static/img/`. Reference them with leading slash, e.g. `![](/img/screen-anatomy.png)`. Files in `static/` are shared by every docs version: changing one changes it on released versions too, so to change an image for the next version only, add it under a new name.
 - Screen recordings live in `static/recordings/`. **Always compress before committing** — see [`CONTRIBUTING.md`](https://github.com/software-mansion/react-native-screens-docs/blob/main/CONTRIBUTING.md#recording-conventions) for the ffmpeg command and the 500 KB / 10 s / no-audio constraints.
 - Light/dark variants — ship both `featureName_light.mov` and `featureName_dark.mov`, then render with the `<ThemedImage>` (for images) or the equivalent `<ThemedVideo>` swizzle pattern when one lands.
 - Never embed third-party CDNs. Everything must live in this repo so docs are reproducible offline.
@@ -94,9 +94,8 @@ Use ⚠️ when the component works but with caveats — explain those in **Rema
 
 ### Versioning
 
-- `docs/` is the next/development version. Most PRs target this folder.
-- `versioned_docs/<version>/` is a snapshot for a stable release. Edits here are backports — keep them surgical.
-- Cutting a new version is a deliberate action: `yarn docusaurus docs:version 5.x`. Don't run this without coordination — it freezes the entire `docs/` tree under that label.
+- `docs/` on `main` is `next`, the unreleased version. Most PRs target `main`.
+- A released version is its own branch (`5.x`); a change to it is a pull request to that branch. See [Versions](https://github.com/software-mansion/react-native-screens-docs/blob/main/CONTRIBUTING.md#versions) in `CONTRIBUTING.md`.
 - Don't introduce a "Migration from N-1 to N" page until the new major actually exists in stable. Future-version migration guides rot quickly.
 
 ### When in doubt
