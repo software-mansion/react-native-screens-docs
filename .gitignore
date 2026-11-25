@@ -21,3 +21,10 @@ yarn-error.log*
 
 # `yarn gen:api`'s own: the library checkouts `--ref` fetches and the output before its checks
 /.lib
+
+# The versions `yarn docs:assemble` adds from their branches
+/versioned_docs
+/versioned_sidebars
+/versions.json
+/assembled-static
+/.docs-assemble

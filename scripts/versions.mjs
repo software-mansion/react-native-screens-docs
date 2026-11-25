@@ -1,7 +1,7 @@
 // The docs versions. `main` is the unreleased version, `next`; every other version is a branch
 // of this repository (`5.x`, …) whose content `yarn docs:assemble` adds to the site as a
 // Docusaurus version. `version-map.json` names them; the site is built from `main`, so `main`'s
-// copy is the one that counts. Read by docusaurus.config.js.
+// copy is the one that counts. Read by docusaurus.config.js and scripts/docs-assemble.mjs.
 
 import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -11,8 +11,13 @@ const VERSION_MAP_FILE = fileURLToPath(
 );
 
 /** Docusaurus' list of the versions in `versioned_docs/`, written by `yarn docs:assemble`. */
-const ASSEMBLED_VERSIONS_FILE = fileURLToPath(
+export const ASSEMBLED_VERSIONS_FILE = fileURLToPath(
   new URL('../versions.json', import.meta.url),
+);
+
+/** The static files only an assembled version has, served next to `static/`. */
+export const ASSEMBLED_STATIC_DIR = fileURLToPath(
+  new URL('../assembled-static', import.meta.url),
 );
 
 /** The path segment of the unreleased version, `main`'s own content. */
