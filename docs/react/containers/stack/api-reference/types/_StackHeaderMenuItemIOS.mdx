@@ -2,6 +2,19 @@
 #### StackHeaderMenuItemIOS {#stackheadermenuitemios}
 </ReferenceHeading>
 
+```ts
+interface StackHeaderMenuItemIOS {
+  id: string;
+  type: "menuItem";
+  title?: string;
+  itemType?: StackHeaderMenuItemTypeIOS;
+  initialToggleState?: boolean;
+  icon?: StackPlatformIconIOS;
+  onPress?: StackHeaderPressHandler;
+  keepsMenuPresented?: boolean;
+}
+```
+
 Represents a single actionable item inside a [StackHeaderMenuIOS](#stackheadermenuios) menu.
 
 A menu item is a leaf element that the user can interact with.

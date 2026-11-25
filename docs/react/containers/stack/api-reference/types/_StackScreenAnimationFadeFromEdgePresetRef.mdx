@@ -2,6 +2,15 @@
 #### StackScreenAnimationFadeFromEdgePresetRef {#stackscreenanimationfadefromedgepresetref}
 </ReferenceHeading>
 
+```ts
+interface StackScreenAnimationFadeFromEdgePresetRef
+  extends StackScreenAnimationTimingOptions {
+  type: "preset";
+  name: StackScreenAnimationFadeFromEdgePresetName;
+  distance?: StackScreenAnimationLength;
+}
+```
+
 A `fadeFromBottom` or `fadeFromTop` preset with options.
 
 **Extends:** [`StackScreenAnimationTimingOptions`](#stackscreenanimationtimingoptions)

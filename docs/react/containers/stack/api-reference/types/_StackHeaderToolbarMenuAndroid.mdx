@@ -2,6 +2,15 @@
 #### StackHeaderToolbarMenuAndroid {#stackheadertoolbarmenuandroid}
 </ReferenceHeading>
 
+```ts
+interface StackHeaderToolbarMenuAndroid
+  extends StackHeaderToolbarMenuItemBaseAndroid,
+    StackHeaderToolbarMenuBaseAndroid {
+  type: "menu";
+  menuTitle?: string;
+}
+```
+
 Submenu of the toolbar menu.
 
 Pressing a submenu opens a popup with its own elements.

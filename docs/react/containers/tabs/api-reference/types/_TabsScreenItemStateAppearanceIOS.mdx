@@ -2,6 +2,19 @@
 #### TabsScreenItemStateAppearanceIOS {#tabsscreenitemstateappearanceios}
 </ReferenceHeading>
 
+```ts
+interface TabsScreenItemStateAppearanceIOS {
+  tabBarItemTitleFontFamily?: string;
+  tabBarItemTitleFontSize?: number;
+  tabBarItemTitleFontWeight?: TextStyle['fontWeight'];
+  tabBarItemTitleFontStyle?: "normal" | "italic";
+  tabBarItemTitleFontColor?: ColorValue;
+  tabBarItemTitlePositionAdjustment?: TabsScreenItemTitlePositionAdjustmentIOS;
+  tabBarItemIconColor?: ColorValue;
+  tabBarItemBadgeBackgroundColor?: ColorValue;
+}
+```
+
 Appearance of tab bar items in one state.
 
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/tabs/screen/TabsScreen.ios.types.ts#L293"}>

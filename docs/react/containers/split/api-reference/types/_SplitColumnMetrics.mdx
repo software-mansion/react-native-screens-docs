@@ -2,6 +2,22 @@
 #### SplitColumnMetrics {#splitcolumnmetrics}
 </ReferenceHeading>
 
+```ts
+interface SplitColumnMetrics {
+  minimumPrimaryColumnWidth?: number;
+  maximumPrimaryColumnWidth?: number;
+  preferredPrimaryColumnWidthOrFraction?: number;
+  minimumSupplementaryColumnWidth?: number;
+  maximumSupplementaryColumnWidth?: number;
+  preferredSupplementaryColumnWidthOrFraction?: number;
+  minimumSecondaryColumnWidth?: number;
+  preferredSecondaryColumnWidthOrFraction?: number;
+  minimumInspectorColumnWidth?: number;
+  maximumInspectorColumnWidth?: number;
+  preferredInspectorColumnWidthOrFraction?: number;
+}
+```
+
 Widths of the columns of a Split.
 
 <ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"src/components/split/SplitHost.types.ts#L260"}>

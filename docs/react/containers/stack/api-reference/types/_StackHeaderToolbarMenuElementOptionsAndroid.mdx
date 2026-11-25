@@ -2,6 +2,14 @@
 #### StackHeaderToolbarMenuElementOptionsAndroid {#stackheadertoolbarmenuelementoptionsandroid}
 </ReferenceHeading>
 
+```ts
+interface StackHeaderToolbarMenuElementOptionsAndroid
+  extends Partial<Omit<StackHeaderToolbarMenuItemBaseAndroid, "id">> {
+  checked?: boolean;
+  menuTitle?: string;
+}
+```
+
 Options for updating a toolbar menu element at runtime.
 
 Accepts the fields of [StackHeaderToolbarMenuItemBaseAndroid](#stackheadertoolbarmenuitembaseandroid) except
