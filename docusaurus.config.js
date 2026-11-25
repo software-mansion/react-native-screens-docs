@@ -73,6 +73,15 @@ const versions = assembledVersions
       },
     };
 
+// Where the docs are, relative to baseUrl; an assembled version's pages are under
+// `/docs/<name>/`.
+const DOCS_PATH = '/docs/';
+const latestPath = `${DOCS_PATH}${versionMap.latest}/`;
+/** Every assembled version but the latest. */
+const olderVersionPaths = [CURRENT_PATH, ...(assembledVersions ?? [])]
+  .filter(name => name !== versionMap.latest)
+  .map(name => `${DOCS_PATH}${name}/`);
+
 /** The branch of the repository that holds a version's content. */
 function branchOf(/** @type {string} */ versionName) {
   return versionName === 'current'
@@ -168,7 +177,25 @@ const config = {
   clientModules: [require.resolve('./src/clientModules/topbarBannerRefresh.ts')],
 
   plugins: [
-    require('./plugins/swm-geo'),
+    [
+      require('./plugins/swm-geo'),
+      // llms.txt lists the latest version only, not a copy of every page per version.
+      {
+        excludePaths: assembledVersions ? olderVersionPaths : [],
+      },
+    ],
+    // `/docs/…`, every page's URL before versions, leads to the same page in the latest version,
+    // keeping `?search#hash`. A page the latest version does not have gets no redirect. Only
+    // `yarn build` writes the redirects; `yarn start` does not serve them.
+    assembledVersions && [
+      '@docusaurus/plugin-client-redirects',
+      {
+        createRedirects: (/** @type {string} */ path) =>
+          path.startsWith(latestPath)
+            ? DOCS_PATH + path.slice(latestPath.length)
+            : undefined,
+      },
+    ],
     process.env.NODE_ENV === 'production' && [
       '@docusaurus/plugin-google-tag-manager',
       {

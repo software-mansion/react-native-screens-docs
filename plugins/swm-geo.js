@@ -65,7 +65,12 @@ function buildStructuredData(siteConfig) {
   };
 }
 
-function buildLlmsTxt({ siteConfig, routesPaths, readPage }) {
+function buildLlmsTxt({
+  siteConfig,
+  routesPaths,
+  readPage,
+  excludePaths = [],
+}) {
   const { baseUrl, title, tagline, url } = siteConfig;
   const grouped = new Map();
 
@@ -73,6 +78,9 @@ function buildLlmsTxt({ siteConfig, routesPaths, readPage }) {
     if (!route.startsWith(baseUrl) || route.endsWith('404.html')) continue;
 
     const relative = route.slice(baseUrl.length);
+    if (excludePaths.some((prefix) => `/${relative}`.startsWith(prefix))) {
+      continue;
+    }
     const html = readPage(relative);
     if (!html) continue;
 
@@ -106,7 +114,11 @@ function buildLlmsTxt({ siteConfig, routesPaths, readPage }) {
   return lines.join('\n');
 }
 
-module.exports = function swmGeoPlugin(context) {
+/**
+ * @param {{ excludePaths?: string[] }} options `excludePaths`: site-relative path prefixes
+ *   (`/docs/next/`) whose pages llms.txt leaves out.
+ */
+module.exports = function swmGeoPlugin(context, options = {}) {
   return {
     name: 'swm-geo',
 
@@ -132,7 +144,12 @@ module.exports = function swmGeoPlugin(context) {
 
       await fs.promises.writeFile(
         path.join(outDir, 'llms.txt'),
-        buildLlmsTxt({ siteConfig, routesPaths, readPage }),
+        buildLlmsTxt({
+          siteConfig,
+          routesPaths,
+          readPage,
+          excludePaths: options.excludePaths,
+        }),
         'utf8',
       );
     },
