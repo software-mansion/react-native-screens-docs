@@ -1,20 +1,72 @@
+# Builds the docs with every version of version-map.json and publishes them to GitHub Pages
+# (the `gh-pages` branch). `main`'s code builds the site; each version's content comes from its
+# branch (`yarn docs:assemble`), so a push to `main` or to a version branch publishes the whole
+# site again. Version branches have this file because they are cut from `main`. Their copy checks
+# out `main` and runs its scripts with the copy's own steps, so a change to the steps here
+# reaches a version branch only when it is copied there. Pull requests are built the same way,
+# without publishing.
 name: docs publish
 
 on:
   push:
-    branches:
-      - main
+    branches: [main, '*.x']
+  pull_request:
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Build and list what would change on gh-pages, without publishing
+        type: boolean
+        default: false
+
+concurrency:
+  # One publish at a time. A newer run replaces one still waiting, which loses nothing: each
+  # builds the tips of all the branches. Dry runs wait apart, so they never replace a publish.
+  # A new commit to a pull request cancels its older build.
+  group: ${{ github.event_name == 'pull_request' && format('docs-check-{0}', github.ref) || inputs.dry_run && 'docs-dry-run' || 'docs-publish' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   docs-publish:
-    if: github.repository == 'software-mansion/react-native-screens-docs'
+    # Forks have no version branches to publish.
+    if: github.event_name == 'pull_request' || github.repository == 'software-mansion/react-native-screens-docs'
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - name: Check out
         uses: actions/checkout@v4
+        with:
+          # `main`'s code, also for a push to a version branch; empty: a pull request's own merge
+          # commit.
+          ref: ${{ github.event_name != 'pull_request' && 'main' || '' }}
+          # Every branch, for the versions' content.
+          fetch-depth: 0
+          # The deploy step has its own token; the pull request's code never gets one.
+          persist-credentials: false
+
+      # A pull request to a version branch changes that version's content, which `main`'s code
+      # builds: the pull request becomes the version, and the checkout moves to `main`. A version
+      # of the checkout's map whose branch is not cut yet is checked with the checkout's own
+      # `docs/`; a push never does that, so it fails instead of publishing a stand-in.
+      - name: Choose the versions' content for a pull request
+        if: github.event_name == 'pull_request'
+        env:
+          BASE: ${{ github.base_ref }}
+        run: |
+          args=()
+          own=$(git show origin/main:version-map.json 2> /dev/null |
+            jq -r --arg branch "$BASE" '.versions[] | select(.branch == $branch) | .name')
+          if [ -n "$own" ]; then
+            args+=(--ref "$own=$(git rev-parse HEAD)")
+            git checkout --quiet --detach origin/main
+          fi
+          while read -r name branch; do
+            if [ "$name" != "$own" ] && ! git rev-parse --verify --quiet "origin/$branch" > /dev/null; then
+              echo "::notice::$branch does not exist yet; $name is checked with the checkout's docs/."
+              args+=(--dir "$name=.")
+            fi
+          done < <(jq -r '.versions[] | "\(.name) \(.branch)"' version-map.json)
+          echo "ASSEMBLE_ARGS=${args[*]}" >> "$GITHUB_ENV"
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -25,10 +77,38 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
+      - name: Assemble the versions
+        # Unquoted to split into arguments: version names and SHAs have no spaces or glob
+        # characters.
+        run: yarn docs:assemble $ASSEMBLE_ARGS
+
       - name: Build docs
         run: yarn build
 
+      - name: Check docs llms.txt
+        run: |
+          file=build/llms.txt
+          if [ ! -s "$file" ]; then
+            echo "::error::$file is missing or empty"
+            exit 1
+          fi
+          count=$(grep -cE '^- \[[^]]+\]\(https://docs\.swmansion\.com/react-native-screens-docs/[^)]+\)' "$file" || true)
+          if [ "$count" -eq 0 ]; then
+            echo "::error::$file lists no pages"
+            exit 1
+          fi
+          echo "llms.txt lists $count pages"
+
+      - name: List what would change on gh-pages
+        if: github.event_name == 'workflow_dispatch' && inputs.dry_run
+        run: |
+          git worktree add --detach ../gh-pages origin/gh-pages
+          # Pages that only changed, and the hashed bundles every build renames, are left out.
+          diff -rq --exclude=.git --exclude=.nojekyll --exclude=assets ../gh-pages build |
+            grep '^Only in' | sed 's|\.\./gh-pages|gh-pages|' || true
+
       - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && !inputs.dry_run)
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build
