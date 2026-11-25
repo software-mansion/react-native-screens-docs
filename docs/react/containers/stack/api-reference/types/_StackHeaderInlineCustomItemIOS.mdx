@@ -2,6 +2,18 @@
 #### StackHeaderInlineCustomItemIOS {#stackheaderinlinecustomitemios}
 </ReferenceHeading>
 
+```ts
+interface StackHeaderInlineCustomItemIOS
+  extends StackHeaderSupportsMenuIOS,
+    StackHeaderSupportsIdentifierIOS,
+    StackHeaderSupportsSharedBackgroundIOS,
+    StackHeaderSupportsVisibilityPriorityIOS {
+  id: string;
+  type: "item";
+  render: StackHeaderElementFactory;
+}
+```
+
 Header item with custom view.
 
 **Extends:** [`StackHeaderSupportsMenuIOS`](#stackheadersupportsmenuios), [`StackHeaderSupportsIdentifierIOS`](#stackheadersupportsidentifierios), [`StackHeaderSupportsSharedBackgroundIOS`](#stackheadersupportssharedbackgroundios), [`StackHeaderSupportsVisibilityPriorityIOS`](#stackheadersupportsvisibilitypriorityios)

@@ -2,6 +2,17 @@
 #### StackHeaderToolbarMenuItemAndroid {#stackheadertoolbarmenuitemandroid}
 </ReferenceHeading>
 
+```ts
+interface StackHeaderToolbarMenuItemAndroid
+  extends StackHeaderToolbarMenuItemBaseAndroid {
+  type: "menuItem";
+  groupId?: string;
+  itemType?: StackHeaderToolbarMenuItemTypeAndroid;
+  initialToggleState?: boolean;
+  onPress?: StackHeaderPressHandler;
+}
+```
+
 Item of the toolbar menu.
 
 Depending on its

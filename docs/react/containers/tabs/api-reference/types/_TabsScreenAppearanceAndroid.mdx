@@ -2,6 +2,30 @@
 #### TabsScreenAppearanceAndroid {#tabsscreenappearanceandroid}
 </ReferenceHeading>
 
+```ts
+interface TabsScreenAppearanceAndroid {
+  tabBarBackgroundColor?: ColorValue;
+  tabBarItemRippleColor?: ColorValue;
+  tabBarItemLabelVisibilityMode?: TabBarItemLabelVisibilityMode;
+  normal?: TabsScreenItemStateAppearanceAndroid;
+  selected?: TabsScreenItemStateAppearanceAndroid;
+  focused?: TabsScreenItemStateAppearanceAndroid;
+  disabled?: TabsScreenItemStateAppearanceAndroid;
+  tabBarItemIconSize?: number;
+  tabBarItemActiveIndicatorColor?: ColorValue;
+  tabBarItemActiveIndicatorEnabled?: boolean;
+  tabBarItemActiveIndicatorWidth?: number;
+  tabBarItemActiveIndicatorHeight?: number;
+  tabBarItemTitleFontFamily?: string;
+  tabBarItemTitleSmallLabelFontSize?: number;
+  tabBarItemTitleLargeLabelFontSize?: number;
+  tabBarItemTitleFontWeight?: TextStyle['fontWeight'];
+  tabBarItemTitleFontStyle?: "normal" | "italic";
+  tabBarItemBadgeBackgroundColor?: ColorValue;
+  tabBarItemBadgeTextColor?: ColorValue;
+}
+```
+
 Appearance of the tab bar and of its items.
 
 <ReferenceHeading source={"src/components/tabs/screen/TabsScreen.android.types.ts#L122"}>

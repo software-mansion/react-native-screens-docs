@@ -2,6 +2,14 @@
 #### StackHeaderMenuItemOptionsIOS {#stackheadermenuitemoptionsios}
 </ReferenceHeading>
 
+```ts
+interface StackHeaderMenuItemOptionsIOS {
+  title?: string;
+  icon?: StackPlatformIconIOS;
+  toggleState?: boolean;
+}
+```
+
 Options for updating a menu action (leaf item) at runtime.
 
 Omitted keys preserve current values. Explicit `undefined` resets to default.

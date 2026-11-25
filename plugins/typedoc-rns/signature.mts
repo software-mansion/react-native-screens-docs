@@ -41,7 +41,8 @@ function relabel(md: string, level: number, labels: string[]): string {
     .join('\n');
 }
 
-function indent(md: string): string {
+/** Every line that has text, indented by two spaces. */
+export function indent(md: string): string {
   return md.replace(/^(?=.)/gm, '  ');
 }
 

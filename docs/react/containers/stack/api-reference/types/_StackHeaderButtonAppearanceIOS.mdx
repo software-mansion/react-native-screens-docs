@@ -2,6 +2,15 @@
 #### StackHeaderButtonAppearanceIOS {#stackheaderbuttonappearanceios}
 </ReferenceHeading>
 
+```ts
+interface StackHeaderButtonAppearanceIOS {
+  normal?: StackHeaderButtonStateAppearanceIOS;
+  highlighted?: StackHeaderButtonStateAppearanceIOS;
+  disabled?: StackHeaderButtonStateAppearanceIOS;
+  focused?: StackHeaderButtonStateAppearanceIOS;
+}
+```
+
 Per-state appearance of header items of a single variant.
 
 For each state left unset, UIKit derives the appearance from

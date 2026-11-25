@@ -2,6 +2,21 @@
 #### StackHeaderInlineItemIOS {#stackheaderinlineitemios}
 </ReferenceHeading>
 
+```ts
+interface StackHeaderInlineItemIOS
+  extends StackHeaderItemBaseIOS,
+    StackHeaderSupportsMenuIOS,
+    StackHeaderSupportsIdentifierIOS,
+    StackHeaderSupportsSharedBackgroundIOS,
+    StackHeaderSupportsVisibilityPriorityIOS {
+  type: "item";
+  variant?: StackHeaderItemVariantIOS;
+  tintColor?: ColorValue;
+  disabled?: boolean;
+  onPress?: StackHeaderPressHandler;
+}
+```
+
 Native header item with a title or an icon.
 
 **Extends:** [`StackHeaderItemBaseIOS`](#stackheaderitembaseios), [`StackHeaderSupportsMenuIOS`](#stackheadersupportsmenuios), [`StackHeaderSupportsIdentifierIOS`](#stackheadersupportsidentifierios), [`StackHeaderSupportsSharedBackgroundIOS`](#stackheadersupportssharedbackgroundios), [`StackHeaderSupportsVisibilityPriorityIOS`](#stackheadersupportsvisibilitypriorityios)

@@ -2,6 +2,29 @@
 #### StackHeaderAppearanceIOS {#stackheaderappearanceios}
 </ReferenceHeading>
 
+```ts
+interface StackHeaderAppearanceIOS {
+  titleFontFamily?: string;
+  titleFontSize?: number;
+  titleFontWeight?: TextStyle['fontWeight'];
+  titleFontStyle?: "normal" | "italic";
+  titleFontColor?: ColorValue;
+  largeTitleFontFamily?: string;
+  largeTitleFontSize?: number;
+  largeTitleFontWeight?: TextStyle['fontWeight'];
+  largeTitleFontStyle?: "normal" | "italic";
+  largeTitleFontColor?: ColorValue;
+  subtitleFontFamily?: string;
+  subtitleFontSize?: number;
+  subtitleFontWeight?: TextStyle['fontWeight'];
+  subtitleFontStyle?: "normal" | "italic";
+  subtitleFontColor?: ColorValue;
+  button?: StackHeaderButtonAppearanceIOS;
+  prominentButton?: StackHeaderButtonAppearanceIOS;
+  backButton?: StackHeaderButtonAppearanceIOS;
+}
+```
+
 Fonts and colors of the header text and the header items.
 
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L701"}>

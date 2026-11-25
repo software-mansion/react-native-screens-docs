@@ -2,6 +2,20 @@
 #### StackHeaderMenuIOS {#stackheadermenuios}
 </ReferenceHeading>
 
+```ts
+interface StackHeaderMenuIOS {
+  id: string;
+  type: "menu";
+  title?: string;
+  singleSelection?: boolean;
+  icon?: StackPlatformIconIOS;
+  displayInline?: boolean;
+  displayAsPalette?: boolean;
+  children: StackHeaderMenuElementIOS[];
+  onSelectionChange?: StackHeaderMenuSelectionHandler;
+}
+```
+
 Represents a menu (or submenu) that groups
 [StackHeaderMenuElementIOS](#stackheadermenuelementios) children.
 
