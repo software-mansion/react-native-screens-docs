@@ -14,6 +14,14 @@ import {
 } from 'typedoc-plugin-markdown';
 
 import {
+  type CodeLinks,
+  definitions,
+  inCode,
+  recordReference,
+  typeEntryNames,
+  unlinkedNames,
+} from './code-links.mts';
+import {
   type CommentChanges,
   escapeModuleSyntax,
   renderComment,
@@ -195,6 +203,33 @@ function sectionTitle(section: Section): string {
   return section.model.isDeprecated() ? `~~${section.title}~~` : section.title;
 }
 
+/**
+ * Reports a part whose ```ts blocks would link a name to two places, or show a documented type
+ * without a link. An error logged while rendering fails the run.
+ */
+function reportCodeLinks(
+  ctx: RnsThemeContext,
+  file: string,
+  body: string,
+  codeLinks: CodeLinks,
+): void {
+  const logger = ctx.theme.application.logger;
+  if (codeLinks.conflicts.size > 0) {
+    logger.error(
+      `[typedoc-rns] ${file}: the code blocks name two types called ` +
+        `${[...codeLinks.conflicts].join(', ')}; one link per part cannot tell them apart.`,
+    );
+  }
+  const unlinked = unlinkedNames(body, codeLinks, ctx.rnsTypeEntryNames);
+  if (unlinked.length > 0) {
+    logger.error(
+      `[typedoc-rns] ${file}: a code block shows ${unlinked.join(', ')} without a link. ` +
+        'In a declaration, render the type through partials.someType or record it with ' +
+        'recordReferencesIn; in an @example, write it as ```tsx.',
+    );
+  }
+}
+
 /** A part's path doubles as its MDX component name: `types/_BlurEffect` → `TypeBlurEffect`. */
 function partName(section: Section): string {
   return section.kind === 'component'
@@ -221,14 +256,33 @@ function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
   const parts: RnsParts['parts'] = [];
   const imports: string[] = [];
 
-  const part = (path: string, name: string, render: () => string): string => {
+  /**
+   * Renders one part file. Its ```ts blocks' links follow its content as definitions
+   * (code-links.mts); a documented type a block shows without one is reported.
+   */
+  const part = (
+    path: string,
+    name: string,
+    entry: DeclarationReflection,
+    render: () => string,
+  ): string => {
     // Links are relative to the file they are written into, so a part resolves them from its
     // own folder while a link to this family's own page stays a bare anchor (`urlTo` below).
     ctx.rnsPartFile = `${root}/${path}${ctx.router.extension}`;
+    const codeLinks: CodeLinks = {
+      entry,
+      links: new Map(),
+      conflicts: new Set(),
+    };
+    ctx.rnsCodeLinks = codeLinks;
     try {
-      parts.push({ path, body: render() });
+      const body = render();
+      reportCodeLinks(ctx, `${root}/${path}`, body, codeLinks);
+      const links = definitions(codeLinks);
+      parts.push({ path, body: links ? `${body}\n\n${links}` : body });
     } finally {
       ctx.rnsPartFile = undefined;
+      ctx.rnsCodeLinks = undefined;
     }
     imports.push(`import ${name} from './${path}${ctx.router.extension}';`);
     return `<${name} />`;
@@ -243,7 +297,7 @@ function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
     const name = partName(section);
     const level = section.kind === 'component' ? TOP_LEVEL : TYPE_LEVEL;
     const usages = [
-      part(section.part!, name, () =>
+      part(section.part!, name, section.model, () =>
         [
           // A component section's chips are its component's: the props type has no `@platform`.
           referenceHeading(
@@ -261,7 +315,7 @@ function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
       // `host/_ios` → `HostIos`
       const platformName = `${name}${platform.key[0]!.toUpperCase()}${platform.key.slice(1)}`;
       usages.push(
-        part(platform.part, platformName, () =>
+        part(platform.part, platformName, platform.model, () =>
           [
             ANCHOR_IMPORT,
             `<Anchor id="${ctx.router.getAnchor(platform.model)}" />`,
@@ -278,7 +332,7 @@ function renderFeaturePage(ctx: RnsThemeContext, layout: Layout): string {
     const commands = section.commands;
     if (commands) {
       usages.push(
-        part(commands.part, `${name}Commands`, () =>
+        part(commands.part, `${name}Commands`, commands.model, () =>
           renderCommands(ctx, commands, level + 1),
         ),
       );
@@ -304,8 +358,20 @@ class RnsThemeContext extends MarkdownThemeContext {
   readonly rnsCommentChanges = new Map<Comment, CommentChanges>();
   /** Above 0 while a type renders into a line of text (`inlineType`). */
   rnsInlineDepth = 0;
+  /** Above 0 while a ```ts block renders (code-links.mts `inCode`). */
+  rnsCodeDepth = 0;
+  /** The links of the part `renderFeaturePage` is rendering now, `undefined` otherwise. */
+  declare rnsCodeLinks: CodeLinks | undefined;
   /** The router is always ours here — `typedoc.config.mjs` sets `router: 'rns'`. */
   declare router: RnsRouter;
+
+  #typeEntryNames: Set<string> | undefined;
+
+  /** The names of the documented types (code-links.mts `typeEntryNames`). */
+  get rnsTypeEntryNames(): Set<string> {
+    this.#typeEntryNames ??= typeEntryNames(this);
+    return this.#typeEntryNames;
+  }
 
   override urlTo(reflection: Reflection): string {
     const [targetFile, fragment] = this.router
@@ -329,11 +395,26 @@ class RnsThemeContext extends MarkdownThemeContext {
     super(theme, page, options);
     const basePartials = this.partials;
     const signatures = signaturePartials(this, basePartials);
+    const declarations = declarationPartials(this, {
+      ...basePartials,
+      ...signatures,
+    });
     this.partials = {
       ...this.partials,
       ...signatures,
       ...typePartials(this, basePartials),
-      ...declarationPartials(this, { ...basePartials, ...signatures }),
+      ...declarations,
+      // The partials that write a declaration as a ```ts block; the types they name are recorded
+      // for the block's links (code-links.mts). A ```ts block another stock partial writes would
+      // show its types unlinked, which `reportCodeLinks` reports.
+      declarationTitle: model =>
+        inCode(this, () => declarations.declarationTitle(model)),
+      signatureTitle: (model, options) =>
+        inCode(this, () => basePartials.signatureTitle(model, options)),
+      referenceType: model => {
+        recordReference(this, model);
+        return basePartials.referenceType(model);
+      },
       // Every comment's text comes through the stock partial here, so it is escaped once.
       comment: (model, options) =>
         renderComment(

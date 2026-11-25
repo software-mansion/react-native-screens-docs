@@ -64,6 +64,8 @@ const config = {
           breadcrumbs: true,
           sidebarPath: require.resolve('./sidebars.js'),
           sidebarCollapsible: false,
+          // Links on the type names in the API reference's code blocks.
+          remarkPlugins: [require('./plugins/remark-type-links')],
           editUrl:
             'https://github.com/software-mansion/react-native-screens-docs/edit/main/',
           lastVersion: 'current',
