@@ -1,0 +1,41 @@
+/*
+The toggle is positioned on the code block's bottom border, inside the container, so the code
+block's bottom margin moves to the container.
+*/
+.container {
+  position: relative;
+  margin-bottom: var(--ifm-leading);
+}
+
+.container :global(.theme-code-block) {
+  margin-bottom: 0;
+}
+
+/* A pill in the page's background, so it stands out from the code block it sits on. */
+.toggle {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 18px;
+  padding: 0;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 9px;
+  background-color: var(--ifm-background-color);
+  color: var(--ifm-color-emphasis-700);
+  cursor: pointer;
+}
+
+.toggle:hover,
+.toggle:focus-visible {
+  color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+}
+
+.up {
+  transform: rotate(180deg);
+}

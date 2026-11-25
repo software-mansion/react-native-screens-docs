@@ -82,6 +82,27 @@ function unfenced(block: string): string {
   return block.replace(/^```ts\n|\n```$/g, '');
 }
 
+/** `code` in a ```ts block. */
+function fenced(code: string): string {
+  return `\`\`\`ts\n${code}\n\`\`\``;
+}
+
+/**
+ * A declaration whose body spans lines, in a `<CollapsibleDeclaration>`: shown up to its `{`,
+ * with `…` and its last line in place of the members, which the entry lists below it, and
+ * expandable to the whole code (src/components/CollapsibleDeclaration).
+ */
+function collapsible(code: string): string {
+  const head = code.slice(0, code.indexOf('{\n') + 1);
+  const tail = code.slice(code.lastIndexOf('\n') + 1);
+  return [
+    '<CollapsibleDeclaration>',
+    fenced(`${head} … ${tail}`),
+    fenced(code),
+    '</CollapsibleDeclaration>',
+  ].join('\n\n');
+}
+
 /**
  * `<T extends X = Y>` for an interface's type parameters, written out because a type
  * parameter's own `toString()` names its kind.
@@ -124,11 +145,13 @@ function memberDeclaration(
 }
 
 /**
- * An interface's declaration as a ```ts block, the way a type alias opens with its own. It
- * shows what the entry documents: the bases the `Extends` line names and the members listed
- * below (`documentedBases`, `isInheritedMember`), in the order the source declares them; the
- * members of a base with no entry of its own are listed as the interface's. An interface with
- * call or index signatures gets no block: the lists below the description show those.
+ * An interface's declaration, the way a type alias opens with its own, collapsed to its name
+ * and bases (`collapsible`). It shows what the entry documents: the bases the `Extends` line
+ * names and the members listed below (`documentedBases`, `isInheritedMember`), in the order the
+ * source declares them; the members of a base with no entry of its own are listed as the
+ * interface's. `extends` always starts a line of its own, with one base per line, so a single
+ * base reads the same on every entry. An interface with call or index signatures gets no
+ * block: the lists below the description show those.
  */
 function interfaceDeclaration(
   ctx: Context,
@@ -145,15 +168,25 @@ function interfaceDeclaration(
     .map(member => indent(memberDeclaration(ctx, member)));
   const name = `interface ${model.name}${typeParameterList(model)}`;
   const bases = documentedBases(ctx, model).map(type => type.toString());
-  const oneLine = `${bases.length ? `${name} extends ${bases[0]}` : name} {`;
-  // As Prettier writes it: one short base on the name's line, otherwise `extends` below the
-  // name and each further base on a line of its own.
-  const head =
-    bases.length > 1 || (bases.length === 1 && oneLine.length > 80)
-      ? `${name}\n  extends ${bases.join(',\n    ')} {`
-      : oneLine;
-  const body = members.length ? [head, ...members, '}'] : [`${head}}`];
-  return ['```ts', ...body, '```'].join('\n');
+  const head = bases.length
+    ? `${name}\n  extends ${bases.join(',\n    ')} {`
+    : `${name} {`;
+  if (!members.length) return fenced(`${head}}`);
+  return collapsible([head, ...members, '}'].join('\n'));
+}
+
+/**
+ * A type alias of an object literal opens with its declaration as the stock partial writes
+ * it; that block is made collapsible like an interface's.
+ */
+function collapseAliasDeclaration(
+  ctx: Context,
+  model: DeclarationReflection,
+  md: string,
+): string {
+  const title = ctx.partials.declarationTitle(model);
+  if (!model.children?.length || !title || !md.startsWith(title)) return md;
+  return `${collapsible(unfenced(title))}${md.slice(title.length)}`;
 }
 
 /**
@@ -209,12 +242,15 @@ export function declarationPartials(
         base.memberWithGroups(model, options),
       );
       const body = line && !model.comment ? `${line}\n\n${md}` : md;
-      // The stock partial opens only a type alias with its declaration. A component's section
-      // lists its props instead.
-      const declaration =
-        model.kindOf(ReflectionKind.Interface) && !isComponent
-          ? interfaceDeclaration(ctx, model)
-          : undefined;
+      // A component's section lists its props instead of a declaration.
+      if (isComponent) return body;
+      if (model.kindOf(ReflectionKind.TypeAlias)) {
+        return collapseAliasDeclaration(ctx, model, body);
+      }
+      // The stock partial opens only a type alias with its declaration.
+      const declaration = model.kindOf(ReflectionKind.Interface)
+        ? interfaceDeclaration(ctx, model)
+        : undefined;
       return declaration ? `${declaration}\n\n${body}` : body;
     },
     members: (model, options) =>

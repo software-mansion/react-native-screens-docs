@@ -2,6 +2,12 @@
 #### TabSelectionRejectedEvent {#tabselectionrejectedevent}
 </ReferenceHeading>
 
+<CollapsibleDeclaration>
+
+```ts
+type TabSelectionRejectedEvent = { … };
+```
+
 ```ts
 type TabSelectionRejectedEvent = {
   provenance: number;
@@ -11,6 +17,8 @@ type TabSelectionRejectedEvent = {
   selectedScreenKey: string;
 };
 ```
+
+</CollapsibleDeclaration>
 
 Payload of the event emitted when the native side rejects a tab selection
 request.
