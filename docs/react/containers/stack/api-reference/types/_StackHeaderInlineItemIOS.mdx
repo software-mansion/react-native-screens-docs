@@ -2,6 +2,17 @@
 #### StackHeaderInlineItemIOS {#stackheaderinlineitemios}
 </ReferenceHeading>
 
+<CollapsibleDeclaration>
+
+```ts
+interface StackHeaderInlineItemIOS
+  extends StackHeaderItemBaseIOS,
+    StackHeaderSupportsMenuIOS,
+    StackHeaderSupportsIdentifierIOS,
+    StackHeaderSupportsSharedBackgroundIOS,
+    StackHeaderSupportsVisibilityPriorityIOS { … }
+```
+
 ```ts
 interface StackHeaderInlineItemIOS
   extends StackHeaderItemBaseIOS,
@@ -16,6 +27,8 @@ interface StackHeaderInlineItemIOS
   onPress?: StackHeaderPressHandler;
 }
 ```
+
+</CollapsibleDeclaration>
 
 Native header item with a title or an icon.
 

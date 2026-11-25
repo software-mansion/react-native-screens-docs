@@ -2,6 +2,12 @@
 #### TabSelectionPreventedEvent {#tabselectionpreventedevent}
 </ReferenceHeading>
 
+<CollapsibleDeclaration>
+
+```ts
+type TabSelectionPreventedEvent = { … };
+```
+
 ```ts
 type TabSelectionPreventedEvent = {
   preventedScreenKey: string;
@@ -9,6 +15,8 @@ type TabSelectionPreventedEvent = {
   selectedScreenKey: string;
 };
 ```
+
+</CollapsibleDeclaration>
 
 Payload of the event emitted when the native side prevents a tab selection
 because the target screen has
