@@ -1,4 +1,4 @@
-<ReferenceHeading source={"src/components/stack/screen/animation/types.ts#L108"}>
+<ReferenceHeading source={"src/components/stack/screen/animation/types.ts#L94"}>
 #### StackScreenAnimationFadeFromEdgePresetName {#stackscreenanimationfadefromedgepresetname}
 </ReferenceHeading>
 
@@ -9,3 +9,9 @@ type StackScreenAnimationFadeFromEdgePresetName = "fadeFromBottom" | "fadeFromTo
 Names of the [presets](#stackscreenanimationpresetname) that accept
 [distance](#stackscreenanimationfadefromedgepresetref-distance) and the
 timing options.
+
+The following values are supported:
+- `'fadeFromBottom'` — the new screen fades in while rising from slightly
+  below; a pop fades it out while it falls.
+- `'fadeFromTop'` — the new screen fades in while falling from slightly
+  above; a pop fades it out while it rises.

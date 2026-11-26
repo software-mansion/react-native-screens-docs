@@ -1,4 +1,4 @@
-<ReferenceHeading source={"src/components/stack/screen/animation/types.ts#L116"}>
+<ReferenceHeading source={"src/components/stack/screen/animation/types.ts#L121"}>
 #### StackScreenAnimationTimedPresetName {#stackscreenanimationtimedpresetname}
 </ReferenceHeading>
 
@@ -15,3 +15,21 @@ type StackScreenAnimationTimedPresetName =
 
 Names of the [presets](#stackscreenanimationpresetname) that accept
 the timing options.
+
+The following values are supported:
+- `'fade'` — the screens cross-fade.
+- `'slideFromRight'` — the new screen slides in from the right and pushes
+  the previous one out to the left; a pop reverses it.
+- `'slideFromLeft'` — the new screen slides in from the left and pushes the
+  previous one out to the right; a pop reverses it.
+- `'slideFromBottom'` — the new screen slides up from the bottom over the
+  previous one; a pop slides it back down.
+- `'slideFromTop'` — the new screen slides down from the top over the
+  previous one; a pop slides it back up.
+- `'iosFromRight'` — the new screen slides in from the right while the
+  previous one moves partly to the left and dims; a pop reverses it.
+- `'iosFromLeft'` — the new screen slides in from the left while the
+  previous one moves partly to the right and dims; a pop reverses it.
+
+The edges in the names are physical: they are not mirrored in right-to-left
+layouts.

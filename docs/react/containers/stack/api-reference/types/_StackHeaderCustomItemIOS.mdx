@@ -1,0 +1,61 @@
+<ReferenceHeading source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L280"}>
+#### StackHeaderCustomItemIOS {#stackheadercustomitemios}
+</ReferenceHeading>
+
+<CollapsibleDeclaration>
+
+```ts
+interface StackHeaderCustomItemIOS
+  extends StackHeaderItemBaseIOS,
+    StackHeaderSupportsMenuIOS,
+    StackHeaderSupportsIdentifierIOS,
+    StackHeaderSupportsInlineVisualModificationsIOS,
+    StackHeaderSupportsVisibilityPriorityIOS { … }
+```
+
+```ts
+interface StackHeaderCustomItemIOS
+  extends StackHeaderItemBaseIOS,
+    StackHeaderSupportsMenuIOS,
+    StackHeaderSupportsIdentifierIOS,
+    StackHeaderSupportsInlineVisualModificationsIOS,
+    StackHeaderSupportsVisibilityPriorityIOS {
+  type: "custom";
+  render: StackHeaderElementFactory;
+}
+```
+
+</CollapsibleDeclaration>
+
+Header item with custom view.
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L302"}>
+##### render {#stackheadercustomitemios-render}
+</ReferenceHeading>
+
+```ts
+render: StackHeaderElementFactory;
+```
+
+A function that renders the custom view.
+
+The subview is sized by React Native's layout engine but positioned by the
+platform native layout. Each item's size is calculated independently and
+will not respect flex layout. Use static width and height for best results.
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L291"}>
+##### type {#stackheadercustomitemios-type}
+</ReferenceHeading>
+
+```ts
+type: "custom";
+```
+
+Marks this object as a custom item definition.
+
+[type:StackHeaderElementFactory]: #stackheaderelementfactory
+[type:StackHeaderItemBaseIOS]: #stackheaderitembaseios
+[type:StackHeaderSupportsIdentifierIOS]: #stackheadersupportsidentifierios
+[type:StackHeaderSupportsInlineVisualModificationsIOS]: #stackheadersupportsinlinevisualmodificationsios
+[type:StackHeaderSupportsMenuIOS]: #stackheadersupportsmenuios
+[type:StackHeaderSupportsVisibilityPriorityIOS]: #stackheadersupportsvisibilitypriorityios

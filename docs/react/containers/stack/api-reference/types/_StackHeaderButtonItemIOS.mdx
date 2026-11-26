@@ -1,0 +1,135 @@
+<ReferenceHeading source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L206"}>
+#### StackHeaderButtonItemIOS {#stackheaderbuttonitemios}
+</ReferenceHeading>
+
+<CollapsibleDeclaration>
+
+```ts
+interface StackHeaderButtonItemIOS
+  extends StackHeaderItemBaseIOS,
+    StackHeaderSupportsMenuIOS,
+    StackHeaderSupportsIdentifierIOS,
+    StackHeaderSupportsInlineVisualModificationsIOS,
+    StackHeaderSupportsVisibilityPriorityIOS { … }
+```
+
+```ts
+interface StackHeaderButtonItemIOS
+  extends StackHeaderItemBaseIOS,
+    StackHeaderSupportsMenuIOS,
+    StackHeaderSupportsIdentifierIOS,
+    StackHeaderSupportsInlineVisualModificationsIOS,
+    StackHeaderSupportsVisibilityPriorityIOS {
+  type: "button";
+  title?: string;
+  icon?: StackPlatformIconIOS;
+  variant?: StackHeaderItemVariantIOS;
+  tintColor?: ColorValue;
+  disabled?: boolean;
+  onPress?: StackHeaderPressHandler;
+}
+```
+
+</CollapsibleDeclaration>
+
+Native header item with a title or an icon.
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L263"}>
+##### disabled {#stackheaderbuttonitemios-disabled}
+</ReferenceHeading>
+
+```ts
+disabled?: boolean;
+```
+
+Whether the item is disabled.
+
+A disabled item is grayed out and does not respond to user interaction:
+neither [onPress](#stackheaderbuttonitemios-onpress) nor
+[menu](#stackheadersupportsmenuios-menu) is triggered.
+
+**Default:** `false`
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L233"}>
+##### icon {#stackheaderbuttonitemios-icon}
+</ReferenceHeading>
+
+```ts
+icon?: StackPlatformIconIOS;
+```
+
+Icon displayed for the header item.
+
+Supports SF Symbols, xcassets, and image sources. For async image sources,
+the item renders without an icon first and updates when loaded.
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L274"}>
+##### onPress {#stackheaderbuttonitemios-onpress}
+</ReferenceHeading>
+
+```ts
+onPress?: StackHeaderPressHandler;
+```
+
+Callback invoked when the header item is pressed.
+
+Fires when the user taps the header item. When combined with
+[menu](#stackheadersupportsmenuios-menu), tapping fires `onPress` and
+long-pressing shows the menu.
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L251"}>
+##### tintColor {#stackheaderbuttonitemios-tintcolor}
+</ReferenceHeading>
+
+```ts
+tintColor?: ColorValue;
+```
+
+Tint color of the item.
+
+Applied to the item's title and icon. For `'prominent'` items on iOS 26,
+the tint affects the emphasized background instead.
+
+**Default:** The default system tint is used.
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L223"}>
+##### title {#stackheaderbuttonitemios-title}
+</ReferenceHeading>
+
+```ts
+title?: string;
+```
+
+A title for the item that is displayed in the header.
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L217"}>
+##### type {#stackheaderbuttonitemios-type}
+</ReferenceHeading>
+
+```ts
+type: "button";
+```
+
+Marks this object as a button item definition.
+
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L240"}>
+##### variant {#stackheaderbuttonitemios-variant}
+</ReferenceHeading>
+
+```ts
+variant?: StackHeaderItemVariantIOS;
+```
+
+Visual variant (style) of the item.
+
+**Default:** `'plain'`
+
+[type:ColorValue]: https://reactnative.dev/docs/colors
+[type:StackHeaderItemBaseIOS]: #stackheaderitembaseios
+[type:StackHeaderItemVariantIOS]: #stackheaderitemvariantios
+[type:StackHeaderPressHandler]: #stackheaderpresshandler
+[type:StackHeaderSupportsIdentifierIOS]: #stackheadersupportsidentifierios
+[type:StackHeaderSupportsInlineVisualModificationsIOS]: #stackheadersupportsinlinevisualmodificationsios
+[type:StackHeaderSupportsMenuIOS]: #stackheadersupportsmenuios
+[type:StackHeaderSupportsVisibilityPriorityIOS]: #stackheadersupportsvisibilitypriorityios
+[type:StackPlatformIconIOS]: #stackplatformiconios
