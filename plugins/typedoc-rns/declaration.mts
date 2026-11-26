@@ -13,6 +13,11 @@ import {
   type CommentContext,
   withCommentChanges,
 } from './comment.mts';
+import {
+  ACCEPTS_REACT_NATIVE,
+  reactNativeType,
+  type ReactNativeDocsPage,
+} from './react-native-types.mts';
 import type { RnsRouter } from './router.mts';
 import { indent } from './signature.mts';
 import { type InlineContext, inlineType } from './types.mts';
@@ -48,47 +53,28 @@ function documentedBases(
 }
 
 /**
- * React Native props types a component's props extend, with the page of React Native's docs
- * that lists them. The reference leaves their props out (`excludeExternals`), so it points
- * there instead.
- */
-const REACT_NATIVE_PROPS = new Map([
-  [
-    'ViewProps',
-    { label: 'View props', url: 'https://reactnative.dev/docs/view#props' },
-  ],
-]);
-
-/** The React Native props a base adds, if `REACT_NATIVE_PROPS` lists it. */
-function reactNativeProps(type: SomeType) {
-  return type instanceof ReferenceType && type.package === 'react-native'
-    ? REACT_NATIVE_PROPS.get(type.name)
-    : undefined;
-}
-
-/**
  * Lines for the bases (`documentedBases`) of an entry with no declaration block: a component's
- * props type, or an interface with call or index signatures. A component's React Native bases
- * listed in `REACT_NATIVE_PROPS` become one sentence that links to their props in React Native's
- * docs; any other base goes in an `**Extends:**` line.
+ * props type, or an interface with call or index signatures. A component's react-native bases
+ * that react-native-types.mts lists become one sentence that links to React Native's docs; any
+ * other base goes in an `**Extends:**` line.
  */
 function basesLines(
   ctx: InlineContext,
   model: DeclarationReflection,
   isComponent: boolean,
 ): string | undefined {
-  const accepted: { label: string; url: string }[] = [];
+  const accepted: ReactNativeDocsPage[] = [];
   const others: SomeType[] = [];
   for (const type of documentedBases(ctx, model)) {
-    const props = isComponent ? reactNativeProps(type) : undefined;
-    if (props) accepted.push(props);
+    const page = isComponent ? reactNativeType(type) : undefined;
+    if (page) accepted.push(page);
     else others.push(type);
   }
   const lines: string[] = [];
   if (accepted.length) {
     const links = accepted.map(({ label, url }) => `[${label}](${url})`);
     lines.push(
-      `Accepts React Native's ${new Intl.ListFormat('en').format(links)}.`,
+      `${ACCEPTS_REACT_NATIVE} ${new Intl.ListFormat('en').format(links)}.`,
     );
   }
   if (others.length) {
