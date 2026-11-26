@@ -11,6 +11,7 @@
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "gen:api": "tsc -p plugins/typedoc-rns && node scripts/gen-api.mjs",
+    "docs:assemble": "node scripts/docs-assemble.mjs",
     "typecheck": "tsc -p plugins/typedoc-rns",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",

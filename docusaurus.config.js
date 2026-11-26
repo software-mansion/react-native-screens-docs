@@ -7,6 +7,7 @@ const darkCodeTheme = require('./src/theme/CodeBlock/highlighting-dark.js');
 import { topbarBannerReservationScript } from '@swmansion/t-rex-ui/topbar-banner'; // eslint-disable-line import/first
 import { TOP_BAR_BANNER } from './src/components/topbarBanner.config.ts'; // eslint-disable-line import/first
 import {
+  ASSEMBLED_STATIC_DIR,
   CURRENT_BRANCH,
   CURRENT_PATH,
   readAssembledVersions,
@@ -154,6 +155,13 @@ const config = {
   ],
 
   customFields: { apiReferenceLocks },
+
+  // `static/` is served for every version, so a file there is the copy every version gets;
+  // `assembled-static/` holds the files only assembled versions have (scripts/docs-assemble.mjs).
+  staticDirectories: [
+    'static',
+    ...(assembledVersions ? [ASSEMBLED_STATIC_DIR] : []),
+  ],
 
   headTags: bannerReservationHeadTags,
 
