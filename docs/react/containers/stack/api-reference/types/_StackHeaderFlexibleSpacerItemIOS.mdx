@@ -1,16 +1,17 @@
-<ReferenceHeading source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L350"}>
+<ReferenceHeading source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L345"}>
 #### StackHeaderFlexibleSpacerItemIOS {#stackheaderflexiblespaceritemios}
 </ReferenceHeading>
 
 <CollapsibleDeclaration>
 
 ```ts
-interface StackHeaderFlexibleSpacerItemIOS { … }
+interface StackHeaderFlexibleSpacerItemIOS
+  extends StackHeaderItemBaseIOS { … }
 ```
 
 ```ts
-interface StackHeaderFlexibleSpacerItemIOS {
-  id: string;
+interface StackHeaderFlexibleSpacerItemIOS
+  extends StackHeaderItemBaseIOS {
   type: "spacer";
   sizing: "flexible";
 }
@@ -25,17 +26,7 @@ Separates items defined in
 [trailingItems](#header-config-ios-trailingitems). For iOS 26
 it splits liquid glass bubble for two adjacent items.
 
-<ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L356"}>
-##### id {#stackheaderflexiblespaceritemios-id}
-</ReferenceHeading>
-
-```ts
-id: string;
-```
-
-A unique identifier within the screen header.
-
-<ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L368"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L358"}>
 ##### sizing {#stackheaderflexiblespaceritemios-sizing}
 </ReferenceHeading>
 
@@ -45,7 +36,7 @@ sizing: "flexible";
 
 Marks this object as a flexible-size spacer definition.
 
-<ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L362"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L352"}>
 ##### type {#stackheaderflexiblespaceritemios-type}
 </ReferenceHeading>
 
@@ -54,3 +45,5 @@ type: "spacer";
 ```
 
 Marks this object as a spacer definition.
+
+[type:StackHeaderItemBaseIOS]: #stackheaderitembaseios

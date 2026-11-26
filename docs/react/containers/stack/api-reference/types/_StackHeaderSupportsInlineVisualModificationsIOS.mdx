@@ -1,0 +1,52 @@
+<ReferenceHeading source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L113"}>
+#### StackHeaderSupportsInlineVisualModificationsIOS {#stackheadersupportsinlinevisualmodificationsios}
+</ReferenceHeading>
+
+<CollapsibleDeclaration>
+
+```ts
+interface StackHeaderSupportsInlineVisualModificationsIOS { … }
+```
+
+```ts
+interface StackHeaderSupportsInlineVisualModificationsIOS {
+  hidesSharedBackground?: boolean;
+  paddingRemoved?: boolean;
+}
+```
+
+</CollapsibleDeclaration>
+
+Fields of a header item that control its visual appearance inside the bar.
+
+<ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L125"}>
+##### hidesSharedBackground {#stackheadersupportsinlinevisualmodificationsios-hidessharedbackground}
+</ReferenceHeading>
+
+```ts
+hidesSharedBackground?: boolean;
+```
+
+Whether the liquid glass background for this item should be hidden.
+
+On iOS 26, adjacent bar button items are grouped inside a shared liquid
+glass background. Setting this to `true` removes the shared background
+from this item.
+
+**Default:** `false`
+
+<ReferenceHeading platforms={[{"platform":"ios","from":"27"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L137"}>
+##### paddingRemoved {#stackheadersupportsinlinevisualmodificationsios-paddingremoved}
+</ReferenceHeading>
+
+```ts
+paddingRemoved?: boolean;
+```
+
+Whether the internal padding around the item's content should be removed.
+
+Bar button items reserve internal padding around their content
+inside the liquid glass background. Setting this to `true` removes that
+padding, so the item's content spans its full frame.
+
+**Default:** `false`

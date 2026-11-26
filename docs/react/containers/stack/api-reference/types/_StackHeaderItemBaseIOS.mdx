@@ -1,4 +1,4 @@
-<ReferenceHeading source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L73"}>
+<ReferenceHeading source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L75"}>
 #### StackHeaderItemBaseIOS {#stackheaderitembaseios}
 </ReferenceHeading>
 
@@ -11,31 +11,16 @@ interface StackHeaderItemBaseIOS { … }
 ```ts
 interface StackHeaderItemBaseIOS {
   id: string;
-  title?: string;
-  icon?: StackPlatformIconIOS;
 }
 ```
 
 </CollapsibleDeclaration>
 
-Identifier, title and icon of a header item.
+Field shared by every item that can be placed in
+[leadingItems](#header-config-ios-leadingitems) and
+[trailingItems](#header-config-ios-trailingitems).
 
-<ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L97"}>
-##### icon {#stackheaderitembaseios-icon}
-</ReferenceHeading>
-
-```ts
-icon?: StackPlatformIconIOS;
-```
-
-Icon displayed for the header item.
-
-Supports SF Symbols, xcassets, and image sources. For async image sources,
-the item renders without an icon first and updates when loaded. Ignored
-when custom view ([render](#stackheaderinlinecustomitemios-render))
-is set.
-
-<ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L79"}>
+<ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L81"}>
 ##### id {#stackheaderitembaseios-id}
 </ReferenceHeading>
 
@@ -44,15 +29,3 @@ id: string;
 ```
 
 A unique identifier within the screen header.
-
-<ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L85"}>
-##### title {#stackheaderitembaseios-title}
-</ReferenceHeading>
-
-```ts
-title?: string;
-```
-
-A title for the item that is displayed in the header.
-
-[type:StackPlatformIconIOS]: #stackplatformiconios

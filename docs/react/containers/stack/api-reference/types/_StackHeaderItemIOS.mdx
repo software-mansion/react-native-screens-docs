@@ -1,11 +1,11 @@
-<ReferenceHeading source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L383"}>
+<ReferenceHeading source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L381"}>
 #### StackHeaderItemIOS {#stackheaderitemios}
 </ReferenceHeading>
 
 ```ts
 type StackHeaderItemIOS =
-  | StackHeaderInlineItemIOS
-  | StackHeaderInlineCustomItemIOS
+  | StackHeaderButtonItemIOS
+  | StackHeaderCustomItemIOS
   | StackHeaderSpacerItemIOS;
 ```
 
@@ -13,6 +13,13 @@ Item that can be placed in
 [leadingItems](#header-config-ios-leadingitems) and
 [trailingItems](#header-config-ios-trailingitems).
 
-[type:StackHeaderInlineCustomItemIOS]: #stackheaderinlinecustomitemios
-[type:StackHeaderInlineItemIOS]: #stackheaderinlineitemios
+The kind of the item, and with it the set of supported props, is selected
+with `type`:
+- `'button'` — [StackHeaderButtonItemIOS](#stackheaderbuttonitemios),
+- `'custom'` — [StackHeaderCustomItemIOS](#stackheadercustomitemios),
+- `'spacer'` — [StackHeaderSpacerItemIOS](#stackheaderspaceritemios), further distinguished by
+  `sizing`.
+
+[type:StackHeaderButtonItemIOS]: #stackheaderbuttonitemios
+[type:StackHeaderCustomItemIOS]: #stackheadercustomitemios
 [type:StackHeaderSpacerItemIOS]: #stackheaderspaceritemios
