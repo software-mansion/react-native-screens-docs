@@ -1,7 +1,7 @@
 import React from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useDocsVersion } from '@docusaurus/plugin-content-docs/client';
 import styles from './styles.module.css';
-// The library commit the reference is generated from, written by `yarn gen:api`.
-import lock from '@site/api-reference.lock.json';
 
 // The entries the API reference generator writes; Babel drops the type-only import.
 import type {
@@ -14,7 +14,8 @@ type ReferenceHeadingProps = {
   platforms?: PlatformEntry[];
   /**
    * The declaration's path in the library and its line, `src/…#L12`; the link opens it at the
-   * locked commit, so the line matches the code the reference describes.
+   * library commit the page's version is generated from, so the line matches the code the
+   * reference describes.
    */
   source?: string;
 };
@@ -46,8 +47,19 @@ function PlatformChip(entry: PlatformEntry) {
   );
 }
 
+type Lock = { repository: string; commit: string };
+
+/** The `api-reference.lock.json` of the version the page belongs to (docusaurus.config.js). */
+function useVersionLock(): Lock {
+  const { version } = useDocsVersion();
+  const { customFields } = useDocusaurusContext().siteConfig;
+  return (customFields.apiReferenceLocks as Record<string, Lock>)[version];
+}
+
 /** `</>`: a link to the declaration, opened in a new tab. */
-function SourceLink({ href }: { href: string }) {
+function SourceLink({ source }: { source: string }) {
+  const lock = useVersionLock();
+  const href = `${lock.repository}/blob/${lock.commit}/${source}`;
   return (
     <a
       className={styles.source}
@@ -92,9 +104,7 @@ export default function ReferenceHeading({
       {platforms.map(entry => (
         <PlatformChip key={entry.platform} {...entry} />
       ))}
-      {source && (
-        <SourceLink href={`${lock.repository}/blob/${lock.commit}/${source}`} />
-      )}
+      {source && <SourceLink source={source} />}
     </div>
   );
 }

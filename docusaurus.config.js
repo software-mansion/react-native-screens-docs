@@ -6,6 +6,14 @@ const darkCodeTheme = require('./src/theme/CodeBlock/highlighting-dark.js');
 
 import { topbarBannerReservationScript } from '@swmansion/t-rex-ui/topbar-banner'; // eslint-disable-line import/first
 import { TOP_BAR_BANNER } from './src/components/topbarBanner.config.ts'; // eslint-disable-line import/first
+import {
+  CURRENT_BRANCH,
+  CURRENT_PATH,
+  readAssembledVersions,
+  readJsonFile,
+  readVersionMap,
+} from './scripts/versions.mjs'; // eslint-disable-line import/first
+import { fileURLToPath } from 'node:url'; // eslint-disable-line import/first
 
 const firstBannerZone = TOP_BAR_BANNER.zones[0];
 const bannerReservationHeadTags = firstBannerZone
@@ -21,6 +29,72 @@ const bannerReservationHeadTags = firstBannerZone
       },
     ]
   : [];
+
+// Without `versions.json`, `docs/` is the only version, at `/docs/…`. With it, written by
+// `yarn docs:assemble`, each version of version-map.json has its own path, `/docs/5.x/…`, and
+// `docs/` itself is `/docs/next/…`.
+const versionMap = readVersionMap();
+const assembledVersions = readAssembledVersions();
+if (assembledVersions) {
+  const mapped = versionMap.versions.map(version => version.name);
+  if (assembledVersions.join() !== mapped.join()) {
+    throw new Error(
+      `versions.json (${assembledVersions.join(', ')}) does not match version-map.json ` +
+        `(${mapped.join(', ')}); run \`yarn docs:assemble\` again.`,
+    );
+  }
+}
+
+/** @type {import('@docusaurus/plugin-content-docs').Options['versions']} */
+const versions = assembledVersions
+  ? Object.fromEntries([
+      [
+        'current',
+        {
+          label: versionMap.current.label,
+          path: CURRENT_PATH,
+          banner: versionMap.current.banner,
+        },
+      ],
+      // An explicit path, so a version's URLs stay the same when it stops being the latest.
+      ...versionMap.versions.map(version => [
+        version.name,
+        { label: version.label, path: version.name, banner: version.banner },
+      ]),
+    ])
+  : // `docs/` alone is published as the latest release.
+    {
+      current: {
+        label: versionMap.versions.find(
+          version => version.name === versionMap.latest,
+        )?.label,
+        banner: 'none',
+      },
+    };
+
+/** The branch of the repository that holds a version's content. */
+function branchOf(/** @type {string} */ versionName) {
+  return versionName === 'current'
+    ? CURRENT_BRANCH
+    : versionMap.versions.find(version => version.name === versionName)?.branch;
+}
+
+/**
+ * The library commit each version's API reference is generated from, by version name;
+ * ReferenceHeading links the reference's source to it. `yarn gen:api` writes a branch's lock,
+ * and `yarn docs:assemble` copies it next to the version's content.
+ */
+const apiReferenceLocks = Object.fromEntries([
+  ['current', readJson('./api-reference.lock.json')],
+  ...(assembledVersions ?? []).map(name => [
+    name,
+    readJson(`./versioned_docs/version-${name}/api-reference.lock.json`),
+  ]),
+]);
+
+function readJson(/** @type {string} */ path) {
+  return readJsonFile(fileURLToPath(new URL(path, import.meta.url)));
+}
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -66,15 +140,11 @@ const config = {
           sidebarCollapsible: false,
           // Links on the type names in the API reference's code blocks.
           remarkPlugins: [require('./plugins/remark-type-links')],
-          editUrl:
-            'https://github.com/software-mansion/react-native-screens-docs/edit/main/',
-          lastVersion: 'current',
-          versions: {
-            current: {
-              label: '5.x',
-              banner: 'none',
-            },
-          },
+          // A page's source on its version's branch, where `docs/` holds it.
+          editUrl: ({ version, docPath }) =>
+            `https://github.com/software-mansion/react-native-screens-docs/edit/${branchOf(version)}/docs/${docPath}`,
+          lastVersion: assembledVersions ? versionMap.latest : 'current',
+          versions,
         },
         theme: {
           customCss: require.resolve('./src/css/index.css'),
@@ -82,6 +152,8 @@ const config = {
       }),
     ],
   ],
+
+  customFields: { apiReferenceLocks },
 
   headTags: bannerReservationHeadTags,
 
@@ -116,9 +188,11 @@ const config = {
           srcDark: 'img/logo-dark.svg',
         },
         items: [
+          // The Stack page of the version being read; elsewhere, of the version last picked in the
+          // dropdown, or the latest one.
           {
-            to: 'docs/react/containers/stack',
-            activeBasePath: 'docs',
+            type: 'doc',
+            docId: 'react/containers/stack/index',
             label: 'Docs',
             position: 'right',
           },
