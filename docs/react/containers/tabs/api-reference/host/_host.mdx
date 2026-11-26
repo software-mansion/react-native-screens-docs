@@ -22,8 +22,6 @@ colorScheme?: TabsColorScheme;
 
 Specifies the color scheme used by the container and any child containers.
 
-**Type:** [`TabsColorScheme`](#tabscolorscheme)
-
 **Default:** `'inherit'`
 
 <ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"src/components/tabs/host/TabsHost.types.ts#L356"}>
@@ -40,8 +38,6 @@ containers.
 On iOS, the value will fallback to direction of the **native** app
 (`userInterfaceLayoutDirection`), potentially ignoring `react-native`'s
 override (e.g. when `forceRTL` is used).
-
-**Type:** [`TabsDirection`](#tabsdirection)
 
 :::tip
 
@@ -75,8 +71,6 @@ nativeContainerStyle?: StyleProp<TabsHostNativeContainerStyleProps>;
 
 Allows for native container view customization.
 
-**Type:** `StyleProp`\<[`TabsHostNativeContainerStyleProps`](#tabshostnativecontainerstyleprops)\>
-
 :::note
 
 This is an implementation detail and may change. On Android, style is
@@ -101,8 +95,6 @@ This prop can be thought of as a "next navigation state suggestion for the
 native side". Depending on configuration and the provenance of the update
 the update might get accepted or rejected.
 
-**Type:** [`TabsHostNavStateRequest`](#tabshostnavstaterequest)
-
 **See:**
 
 - [rejectStaleNavStateUpdates](#host-rejectstalenavstateupdates)
@@ -119,8 +111,6 @@ onTabSelected?: NativeEventHandler<TabSelectedEvent>;
 
 A callback that gets invoked when the selected tab changes.
 
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`TabSelectedEvent`](#tabselectedevent)\>
-
 <ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"src/components/tabs/host/TabsHost.types.ts#L390"}>
 #### onTabSelectionPrevented {#host-ontabselectionprevented}
 </ReferenceHeading>
@@ -134,8 +124,6 @@ because the target screen has
 [preventNativeSelection](#screen-preventnativeselection)
 enabled.
 
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`TabSelectionPreventedEvent`](#tabselectionpreventedevent)\>
-
 **See:** [TabSelectionPreventedEvent](#tabselectionpreventedevent)
 
 <ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"src/components/tabs/host/TabsHost.types.ts#L378"}>
@@ -148,8 +136,6 @@ onTabSelectionRejected?: NativeEventHandler<TabSelectionRejectedEvent>;
 
 A callback that gets invoked when the native side rejects a tab selection
 request.
-
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`TabSelectionRejectedEvent`](#tabselectionrejectedevent)\>
 
 **See:** [TabSelectionRejectedEvent](#tabselectionrejectedevent)
 

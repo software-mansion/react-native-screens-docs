@@ -16,8 +16,6 @@ Changing it to `'attached'` pushes the screen and changing it to
 `'detached'` pops it. Only the topmost attached screen can be popped,
 and at least one screen must stay attached.
 
-**Type:** [`StackScreenActivityMode`](#stackscreenactivitymode)
-
 <ReferenceHeading platforms={[{"platform":"android"}]} source={"src/components/stack/screen/StackScreen.types.ts#L172"}>
 #### animation {#screen-animation}
 </ReferenceHeading>
@@ -35,8 +33,6 @@ plays the pop animation of the outgoing screen or the push animation of
 the incoming one, see
 [replaceAnimation](#screen-replaceanimation). Changing it
 on the top screen takes effect for the next pop.
-
-**Type:** [`StackScreenAnimation`](#stackscreenanimation)
 
 :::note
 
@@ -69,8 +65,6 @@ onDidAppear?: NativeEventHandler<EmptyEventPayload>;
 
 Called when the screen has appeared.
 
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
-
 <ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"src/components/stack/screen/StackScreen.types.ts#L113"}>
 #### onDidDisappear {#screen-ondiddisappear}
 </ReferenceHeading>
@@ -80,8 +74,6 @@ onDidDisappear?: NativeEventHandler<EmptyEventPayload>;
 ```
 
 Called when the screen has disappeared.
-
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
 <ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"src/components/stack/screen/StackScreen.types.ts#L120"}>
 #### onDismiss {#screen-ondismiss}
@@ -93,8 +85,6 @@ onDismiss?: StackScreenDismissHandler;
 
 Called when the screen was popped because its
 [activityMode](#screen-activitymode) became `'detached'`.
-
-**Type:** [`StackScreenDismissHandler`](#stackscreendismisshandler)
 
 <ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"src/components/stack/screen/StackScreen.types.ts#L132"}>
 #### onNativeDismiss {#screen-onnativedismiss}
@@ -111,8 +101,6 @@ The screen is no longer on the native stack: remove it from your state
 instead of changing its
 [activityMode](#screen-activitymode) to `'detached'`.
 
-**Type:** [`StackScreenDismissHandler`](#stackscreendismisshandler)
-
 <ReferenceHeading platforms={[{"platform":"android"}]} source={"src/components/stack/screen/StackScreen.types.ts#L140"}>
 #### onNativeDismissPrevented {#screen-onnativedismissprevented}
 </ReferenceHeading>
@@ -125,8 +113,6 @@ Called when the user tries to dismiss the screen natively, but
 [preventNativeDismiss](#screen-preventnativedismiss) stops
 it.
 
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
-
 <ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"src/components/stack/screen/StackScreen.types.ts#L95"}>
 #### onWillAppear {#screen-onwillappear}
 </ReferenceHeading>
@@ -137,8 +123,6 @@ onWillAppear?: NativeEventHandler<EmptyEventPayload>;
 
 Called when the screen is about to appear.
 
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
-
 <ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"src/components/stack/screen/StackScreen.types.ts#L107"}>
 #### onWillDisappear {#screen-onwilldisappear}
 </ReferenceHeading>
@@ -148,8 +132,6 @@ onWillDisappear?: NativeEventHandler<EmptyEventPayload>;
 ```
 
 Called when the screen is about to disappear.
-
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
 <ReferenceHeading platforms={[{"platform":"android"}]} source={"src/components/stack/screen/StackScreen.types.ts#L150"}>
 #### preventNativeDismiss {#screen-preventnativedismiss}
@@ -174,8 +156,6 @@ replaceAnimation?: StackScreenReplaceAnimation;
 
 Which animation a replace plays when this screen is the one replacing the
 top of the stack.
-
-**Type:** [`StackScreenReplaceAnimation`](#stackscreenreplaceanimation)
 
 **Default:** `'pop'`
 

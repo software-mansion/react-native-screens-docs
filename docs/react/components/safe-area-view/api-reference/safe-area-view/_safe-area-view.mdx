@@ -8,7 +8,7 @@ This API is experimental. It may change in a breaking way — or be removed enti
 
 :::
 
-**Extends:** `ViewProps`
+Accepts React Native's [View props](https://reactnative.dev/docs/view#props).
 
 <ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"src/components/safe-area/SafeAreaView.types.ts#L45"}>
 #### edges {#safe-area-view-edges}
@@ -23,8 +23,6 @@ Edges of the view that are inset by the safe area.
 For each edge set to `true`, the inset of that edge is added to the
 view's own margin. The other edges are not inset.
 
-**Type:** `Readonly`\<`Partial`\<`Record`\<[`Edge`](#edge), `boolean`\>\>\>
-
 **Default:** No edge is inset.
 
 <ReferenceHeading platforms={[{"platform":"android"}]} source={"src/components/safe-area/SafeAreaView.types.ts#L52"}>
@@ -36,8 +34,6 @@ insetType?: InsetType;
 ```
 
 Kind of insets the view takes into account.
-
-**Type:** [`InsetType`](#insettype)
 
 **Default:** `'all'`
 

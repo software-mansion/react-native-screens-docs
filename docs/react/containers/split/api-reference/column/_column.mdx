@@ -8,7 +8,7 @@ This API is experimental. It may change in a breaking way — or be removed enti
 
 :::
 
-**Extends:** `ViewProps`
+Accepts React Native's [View props](https://reactnative.dev/docs/view#props).
 
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/split/SplitScreen.types.ts#L15"}>
 #### children {#column-children}
@@ -58,8 +58,6 @@ A callback that gets invoked when the current `Split.Column` did appear.
 
 This is called as soon as the transition ends.
 
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
-
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/split/SplitScreen.types.ts#L56"}>
 #### onDidDisappear {#column-ondiddisappear}
 </ReferenceHeading>
@@ -71,8 +69,6 @@ onDidDisappear?: NativeEventHandler<EmptyEventPayload>;
 A callback that gets invoked when the current `Split.Column` did disappear.
 
 This is called as soon as the transition ends.
-
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/split/SplitScreen.types.ts#L65"}>
 #### onWillAppear {#column-onwillappear}
@@ -86,8 +82,6 @@ A callback that gets invoked when the current `Split.Column` will appear.
 
 This is called as soon as the transition begins.
 
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
-
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/split/SplitScreen.types.ts#L75"}>
 #### onWillDisappear {#column-onwilldisappear}
 </ReferenceHeading>
@@ -100,8 +94,6 @@ A callback that gets invoked when the current `Split.Column` will
 disappear.
 
 This is called as soon as the transition begins.
-
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
 [type:EmptyEventPayload]: ../../../../common-types/index.mdx#emptyeventpayload
 [type:NativeEventHandler]: ../../../../common-types/index.mdx#nativeeventhandler

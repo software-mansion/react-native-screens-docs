@@ -151,8 +151,8 @@ function renderMemberContainer(
  * own commands, then the commands of its `ios` / `android` keys as `ios.x`, each group opening
  * with an empty anchor (`#header-config-commands-ios`), the target of links to that key and its
  * type. The heading does not name the type, which users need to type the ref
- * (`useRef<StackHeaderConfigRef>(null)`), so a `Type` line names it, as a prop's does; unlinked,
- * as a link would only lead back here.
+ * (`useRef<StackHeaderConfigRef>(null)`), so a `Type` line names it; unlinked, as a link would only
+ * lead back here.
  */
 function renderCommands(
   ctx: RnsThemeContext,

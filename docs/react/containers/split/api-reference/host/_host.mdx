@@ -8,7 +8,7 @@ This API is experimental. It may change in a breaking way — or be removed enti
 
 :::
 
-**Extends:** `ViewProps`
+Accepts React Native's [View props](https://reactnative.dev/docs/view#props).
 
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/split/SplitHost.types.ts#L330"}>
 #### children {#host-children}
@@ -31,8 +31,6 @@ colorScheme?: SplitColorScheme;
 
 Specifies the color scheme used by the container and any child
 containers.
-
-**Type:** [`SplitColorScheme`](#splitcolorscheme)
 
 **Default:** `'inherit'`
 
@@ -57,8 +55,6 @@ On iOS 26 or higher, it also supports definitions for:
 - `inspector` - the view which is providing additional data about the
   secondary column
 
-**Type:** [`SplitColumnMetrics`](#splitcolumnmetrics)
-
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/split/SplitHost.types.ts#L363"}>
 #### displayModeButtonVisibility {#host-displaymodebuttonvisibility}
 </ReferenceHeading>
@@ -69,8 +65,6 @@ displayModeButtonVisibility?: SplitDisplayModeButtonVisibility;
 
 Determines whether the button for changing the Split display mode is
 visible on the screen.
-
-**Type:** [`SplitDisplayModeButtonVisibility`](#splitdisplaymodebuttonvisibility)
 
 **Default:** `'automatic'`
 
@@ -84,8 +78,6 @@ onCollapse?: NativeEventHandler<EmptyEventPayload>;
 
 A callback that gets invoked when the Split was collapsed to a single
 column.
-
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/split/SplitHost.types.ts#L382"}>
 #### onDisplayModeWillChange {#host-ondisplaymodewillchange}
@@ -102,8 +94,6 @@ The purpose of this callback is tracking displayMode updates on host from
 the JS side. These updates might be a consequence of some native
 interactions, like pressing native button or performing swipe gesture.
 
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`DisplayModeWillChangeEvent`](#displaymodewillchangeevent)\>
-
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/split/SplitHost.types.ts#L391"}>
 #### onExpand {#host-onexpand}
 </ReferenceHeading>
@@ -114,8 +104,6 @@ onExpand?: NativeEventHandler<EmptyEventPayload>;
 
 A callback that gets invoked when the Split was expanded to multiple
 columns.
-
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
 <ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"src/components/split/SplitHost.types.ts#L403"}>
 #### onInspectorHide {#host-oninspectorhide}
@@ -131,8 +119,6 @@ presentation).
 
 The purpose of this callback depends on whether the Split is collapsed or
 expanded.
-
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/split/SplitHost.types.ts#L420"}>
 #### orientation {#host-orientation}
@@ -153,8 +139,6 @@ Procedure for determining supported orientations:
    - if `orientation` is set to `inherit`, the parent component
      is queried.
 
-**Type:** [`SplitOrientation`](#splitorientation)
-
 **Default:** `'inherit'`
 
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/split/SplitHost.types.ts#L448"}>
@@ -172,8 +156,6 @@ Preferred means that we may only suggest the OS which layout we're
 expecting, but the final decision is dependent on the device's type and
 size class.
 
-**Type:** [`SplitDisplayMode`](#splitdisplaymode)
-
 **Default:** `'automatic'`
 
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/split/SplitHost.types.ts#L461"}>
@@ -190,8 +172,6 @@ requirements are met.
 Preferred means that we may only suggest the OS which layout we're
 expecting, but the final decision is dependent on the device's type and
 size class.
-
-**Type:** [`SplitBehavior`](#splitbehavior)
 
 **Default:** `'automatic'`
 
@@ -221,8 +201,6 @@ According to Apple's documentation, `'sidebar'` is meant for iPad apps
 running on macOS (Mac Catalyst) and has no effect on iOS. At runtime, it
 does have an effect since iOS 26.
 
-**Type:** [`SplitPrimaryBackgroundStyle`](#splitprimarybackgroundstyle)
-
 **Default:** `'default'`
 
 **See:** [UISplitViewController.primaryBackgroundStyle](https://developer.apple.com/documentation/uikit/uisplitviewcontroller/primarybackgroundstyle)
@@ -238,8 +216,6 @@ primaryEdge?: SplitPrimaryEdge;
 Indicates on which side primary sidebar is placed, affecting the split
 view layout.
 
-**Type:** [`SplitPrimaryEdge`](#splitprimaryedge)
-
 **Default:** `'leading'`
 
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/split/SplitHost.types.ts#L336"}>
@@ -251,8 +227,6 @@ ref?: Ref<SplitHostCommands>;
 ```
 
 Ref to the [commands](#host-commands) of the Split.
-
-**Type:** `Ref`\<[`SplitHostCommands`](#host-commands)\>
 
 <ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"src/components/split/SplitHost.types.ts#L495"}>
 #### showInspector {#host-showinspector}
@@ -298,8 +272,6 @@ single column.
 When the split view transitions from an expanded to a collapsed layout
 (e.g. rotating an iPad to portrait), this prop determines which column
 becomes the top (visible) column.
-
-**Type:** [`SplitNavigableColumn`](#splitnavigablecolumn)
 
 **Default:** The system default behavior is used.
 
