@@ -15,8 +15,6 @@ Material the system renders behind the sheet's content.
 The material is drawn behind the native container, so an opaque
 `nativeContainerStyle.backgroundColor` covers it.
 
-**Type:** [`FormSheetBackgroundEffect`](#formsheetbackgroundeffect)
-
 **Default:** `'automatic'`
 
 **See:** [UIPresentationController.backgroundEffect](https://developer.apple.com/documentation/uikit/uipresentationcontroller/backgroundeffect)
@@ -45,8 +43,6 @@ An empty array also gives the sheet a single large detent. On Android, at
 most three detents are supported. `'fitToContents'` is supported on
 iOS 16+.
 
-**Type:** [`FormSheetDetents`](#formsheetdetents)
-
 :::note
 
 This is an implementation detail and may change. On iOS 15,
@@ -70,8 +66,6 @@ initialDetentIndex?: FormSheetInitialDetentIndex;
 The index of the detent the sheet should snap to when first opened.
 
 This prop only applies when the sheet transitions from closed to open.
-
-**Type:** [`FormSheetInitialDetentIndex`](#formsheetinitialdetentindex)
 
 **Default:** `0`
 
@@ -99,8 +93,6 @@ largestUndimmedDetentIndex?: FormSheetLargestUndimmedDetentIndex;
 
 The largest sheet detent for which a view underneath won't be dimmed.
 
-**Type:** [`FormSheetLargestUndimmedDetentIndex`](#formsheetlargestundimmeddetentindex)
-
 **Default:** `'none'`
 
 <ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"},{"platform":"tvos","from":"26"}]} source={"src/components/modals/form-sheet/FormSheet.types.ts#L192"}>
@@ -112,8 +104,6 @@ nativeContainerStyle?: StyleProp<FormSheetNativeContainerStyleProps>;
 ```
 
 Style applied to the native container hosting the sheet content.
-
-**Type:** `StyleProp`\<[`FormSheetNativeContainerStyleProps`](#formsheetnativecontainerstyleprops)\>
 
 <ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"src/components/modals/form-sheet/FormSheet.types.ts#L281"}>
 #### onDetentChanged {#form-sheet-ondetentchanged}
@@ -127,8 +117,6 @@ Called when the sheet settles at a new detent.
 
 Provides the `index` of the newly selected detent from the `detents`
 array.
-
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`FormSheetDetentChangedEvent`](#formsheetdetentchangedevent)\>
 
 :::note
 
@@ -150,8 +138,6 @@ onDidAppear?: NativeEventHandler<EmptyEventPayload>;
 A callback that gets invoked when the sheet did appear. This is called
 as soon as the transition ends.
 
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
-
 <ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"},{"platform":"tvos","from":"26"}]} source={"src/components/modals/form-sheet/FormSheet.types.ts#L241"}>
 #### onDidDisappear {#form-sheet-ondiddisappear}
 </ReferenceHeading>
@@ -162,8 +148,6 @@ onDidDisappear?: NativeEventHandler<EmptyEventPayload>;
 
 A callback that gets invoked when the sheet did disappear. This is
 called as soon as the transition ends.
-
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
 <ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"},{"platform":"tvos","from":"26"}]} source={"src/components/modals/form-sheet/FormSheet.types.ts#L252"}>
 #### onDismiss {#form-sheet-ondismiss}
@@ -178,8 +162,6 @@ Called when the sheet is dismissed programmatically.
 This event is fired when the sheet was dismissed via the `isOpen` prop
 changing to `false`.
 
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
-
 <ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"},{"platform":"tvos","from":"26"}]} source={"src/components/modals/form-sheet/FormSheet.types.ts#L264"}>
 #### onNativeDismiss {#form-sheet-onnativedismiss}
 </ReferenceHeading>
@@ -193,8 +175,6 @@ Called when the sheet is dismissed natively.
 It is highly recommended to use this callback to synchronize your local
 React state to prevent UI mismatches, e.g. by setting `isOpen` back to
 `false`.
-
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
 <ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"}]} source={"src/components/modals/form-sheet/FormSheet.types.ts#L294"}>
 #### onNativeDismissPrevented {#form-sheet-onnativedismissprevented}
@@ -211,8 +191,6 @@ This event is only fired if `preventNativeDismiss` is set to `true`. It is
 useful for triggering custom feedback, such as an alert to inform the user
 why the sheet cannot be closed.
 
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
-
 <ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"},{"platform":"tvos","from":"26"}]} source={"src/components/modals/form-sheet/FormSheet.types.ts#L217"}>
 #### onWillAppear {#form-sheet-onwillappear}
 </ReferenceHeading>
@@ -224,8 +202,6 @@ onWillAppear?: NativeEventHandler<EmptyEventPayload>;
 A callback that gets invoked when the FormSheet will appear. This is
 called as soon as the transition begins.
 
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
-
 <ReferenceHeading platforms={[{"platform":"android"},{"platform":"ios"},{"platform":"tvos","from":"26"}]} source={"src/components/modals/form-sheet/FormSheet.types.ts#L233"}>
 #### onWillDisappear {#form-sheet-onwilldisappear}
 </ReferenceHeading>
@@ -236,8 +212,6 @@ onWillDisappear?: NativeEventHandler<EmptyEventPayload>;
 
 A callback that gets invoked when the sheet will disappear. This is
 called as soon as the transition begins.
-
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`EmptyEventPayload`](../../../../common-types/index.mdx#emptyeventpayload)\>
 
 <ReferenceHeading platforms={[{"platform":"android","from":"33"},{"platform":"ios"}]} source={"src/components/modals/form-sheet/FormSheet.types.ts#L135"}>
 #### preferredCornerRadius {#form-sheet-preferredcornerradius}
@@ -251,8 +225,6 @@ The corner radius that the sheet will attempt to present with.
 
 If set to `'systemDefault'` or a negative number, the system's default
 corner radius is used.
-
-**Type:** [`FormSheetPreferredCornerRadius`](#formsheetpreferredcornerradius)
 
 **Default:** `'systemDefault'`
 
@@ -318,3 +290,4 @@ the sheet via `isOpen={false}` will still work.
 [type:FormSheetNativeContainerStyleProps]: #formsheetnativecontainerstyleprops
 [type:FormSheetPreferredCornerRadius]: #formsheetpreferredcornerradius
 [type:NativeEventHandler]: ../../../../common-types/index.mdx#nativeeventhandler
+[type:StyleProp]: https://reactnative.dev/docs/style

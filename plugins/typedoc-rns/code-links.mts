@@ -3,8 +3,11 @@
 // A ```ts block cannot hold Markdown links, so the types it names are written after the part's
 // content as reference definitions, `[type:ColorScheme]: ../../common-types/index.mdx#colorscheme`.
 // They render nothing; Docusaurus resolves them like any link, to the page of the version being
-// built, and fails the build on a broken one. plugins/remark-type-links.js hands each block the
-// ones it names, and src/theme/CodeBlock/Line/Token renders those names as links.
+// built, and fails the build on a broken one. A react-native type the reference does not
+// document links to React Native's docs instead (react-native-types.mts); external, so the build
+// does not check it.
+// plugins/remark-type-links.js hands each block the ones it names, and
+// src/theme/CodeBlock/Line/Token renders those names as links.
 
 import {
   makeRecursiveVisitor,
@@ -14,6 +17,7 @@ import {
   type SomeType,
 } from 'typedoc';
 
+import { reactNativeType } from './react-native-types.mts';
 import type { InlineContext } from './types.mts';
 
 /** The label prefix of the definitions; plugins/remark-type-links.js reads the same. */
@@ -30,7 +34,7 @@ const TYPE_ENTRY =
 export interface CodeLinks {
   /** The reflection the part documents: its own name in its declaration is not a link. */
   entry: Reflection;
-  /** Type name → its URL relative to the part (`urlTo`). */
+  /** Type name → its URL: relative to the part (`urlTo`), or a page of React Native's docs. */
   links: Map<string, string>;
   /** The names linked to two different URLs in the part; a definition holds one. */
   conflicts: Set<string>;
@@ -42,7 +46,7 @@ export type CodeLinkContext = InlineContext & {
   rnsCodeLinks: CodeLinks | undefined;
 };
 
-/** Renders a ```ts block; the documented types it names are recorded for the part. */
+/** Renders a ```ts block; the types it links are recorded for the part. */
 export function inCode<T>(ctx: CodeLinkContext, render: () => T): T {
   ctx.rnsCodeDepth++;
   try {
@@ -53,31 +57,38 @@ export function inCode<T>(ctx: CodeLinkContext, render: () => T): T {
 }
 
 /**
- * Records a type a ```ts block names when it has an entry: not a type parameter, not one
- * without a page (a react-native type), and not the entry the part documents. A type rendered
- * into a line of text (`inlineType`) is a Markdown link already.
+ * Records a type a ```ts block names when it has an entry, or is a react-native type with a page
+ * of React Native's docs (react-native-types.mts): not a type parameter, not another type
+ * without a page, and not the entry the part documents. A type rendered into a line of text
+ * (`inlineType`) is a Markdown link already.
  */
 export function recordReference(
   ctx: CodeLinkContext,
   type: ReferenceType,
 ): void {
   const part = ctx.rnsCodeLinks;
+  if (!part || ctx.rnsCodeDepth === 0 || ctx.rnsInlineDepth > 0) return;
   const target = type.reflection;
-  if (
-    !part ||
-    ctx.rnsCodeDepth === 0 ||
-    ctx.rnsInlineDepth > 0 ||
-    !target ||
-    !target.kindOf(TYPE_ENTRY) ||
-    !ctx.router.hasUrl(target) ||
-    target === part.entry
-  ) {
-    return;
+  let name: string;
+  let url: string;
+  if (target) {
+    if (
+      !target.kindOf(TYPE_ENTRY) ||
+      !ctx.router.hasUrl(target) ||
+      target === part.entry
+    ) {
+      return;
+    }
+    name = target.name;
+    url = ctx.urlTo(target);
+  } else {
+    const page = reactNativeType(type);
+    if (!page) return;
+    ({ name, url } = page);
   }
-  const url = ctx.urlTo(target);
-  const known = part.links.get(target.name);
-  if (known !== undefined && known !== url) part.conflicts.add(target.name);
-  part.links.set(target.name, url);
+  const known = part.links.get(name);
+  if (known !== undefined && known !== url) part.conflicts.add(name);
+  part.links.set(name, url);
 }
 
 /** Records the references in a type a ```ts block writes with `toString()`, unlinked. */

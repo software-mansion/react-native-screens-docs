@@ -18,8 +18,6 @@ returns the component that will be rendered in the bottom accessory.
 
 If this prop is `undefined`, the bottom accessory will not be rendered.
 
-**Type:** [`TabsBottomAccessoryComponentFactory`](#tabsbottomaccessorycomponentfactory)
-
 :::warning
 
 In order to allow accessory rendering based on environment, the component
@@ -59,8 +57,6 @@ item. It does NOT fire when a tab is selected from within the More list —
 that triggers the normal
 [onTabSelected](#host-ontabselected) event instead.
 
-**Type:** [`NativeEventHandler`](../../../../common-types/index.mdx#nativeeventhandler)\<[`MoreTabSelectedEvent`](#moretabselectedevent)\>
-
 **See:** [MoreTabSelectedEvent](#moretabselectedevent)
 
 <ReferenceHeading platforms={[{"platform":"ios","from":"27"}]} source={"src/components/tabs/host/TabsHost.ios.types.ts#L219"}>
@@ -96,8 +92,6 @@ tabBarControllerMode?: TabBarControllerMode;
 
 Specifies the display mode for the tab bar.
 
-**Type:** [`TabBarControllerMode`](#tabbarcontrollermode)
-
 **Default:** `'automatic'`
 
 <ReferenceHeading platforms={[{"platform":"ios","from":"18"}]} source={"src/components/tabs/host/TabsHost.ios.types.ts#L119"}>
@@ -129,8 +123,6 @@ tabBarMinimizeBehavior?: TabBarMinimizeBehavior;
 ```
 
 Specifies the minimize behavior for the tab bar.
-
-**Type:** [`TabBarMinimizeBehavior`](#tabbarminimizebehavior)
 
 **Default:** `'automatic'`
 
@@ -164,8 +156,6 @@ Plus and Air) in landscape orientation. On other iPhones (e.g. iPhone 18
 Pro), and on all iPhones in portrait orientation, the tab bar is always
 displayed.
 
-**Type:** [`TabBarSidebarPreferredPlacement`](#tabbarsidebarpreferredplacement)
-
 **Default:** `'automatic'`
 
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/tabs/host/TabsHost.ios.types.ts#L130"}>
@@ -182,6 +172,7 @@ Specifies the color used for selected tab's text and icon color.
 and [tabBarItemIconColor](#tabsscreenitemstateappearanceios-tabbaritemiconcolor)
 defined on [Tabs.Screen](#screen) component override this color.
 
+[type:ColorValue]: https://reactnative.dev/docs/colors
 [type:MoreTabSelectedEvent]: #moretabselectedevent
 [type:NativeEventHandler]: ../../../../common-types/index.mdx#nativeeventhandler
 [type:TabBarControllerMode]: #tabbarcontrollermode
