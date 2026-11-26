@@ -8,15 +8,15 @@
 
 ## Target version
 
-- [ ] `next` (`docs/`) — current development version
-- [ ] Stable maintenance (`versioned_docs/<version>/`) — backport
+- [ ] `next` (`main`) — the unreleased version
+- [ ] A released version (its branch, e.g. `5.x`) — see CONTRIBUTING.md → Versions
 
-<!-- Most PRs target `next`. Backports go into the matching versioned_docs folder. -->
+<!-- Most PRs target `next`. A change to a released version is a PR to its branch. -->
 
 ## Test plan
 
-- [ ] `yarn build` passes locally
-- [ ] Visual check at `http://localhost:3000/react-native-screens/`
+- [ ] `yarn build` passes locally (for a released version: in a checkout of `main`, after `yarn docs:assemble --dir <version>=<this checkout>`)
+- [ ] Visual check at `http://localhost:3000/react-native-screens-docs/`
 
 ## Screenshots / recordings
 
