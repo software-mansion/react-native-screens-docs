@@ -11,7 +11,7 @@
 // `type X = { … }` literal — while an interface member's type comes from the checker's
 // `ts.Type`, so there the reference is recorded as `____ColorValue_Internal`. The names are
 // rewritten once the converter has resolved the project, so every rendered form of a type —
-// the declaration, a `Type:` line, a parameter, an `extends` clause — reads the same public
+// the declaration, an `Extends` line, a parameter, an `extends` clause — reads the same public
 // name. Only `ReferenceType.name` changes; `qualifiedName` keeps the internal spelling, so an
 // `externalSymbolLinkMappings` entry for `react-native` would have to use that.
 

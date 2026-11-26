@@ -12,8 +12,6 @@ backButtonIcon?: StackPlatformIconAndroid;
 
 Custom icon for the back button.
 
-**Type:** [`StackPlatformIconAndroid`](#stackplatformiconandroid)
-
 **Default:** The native back arrow (`homeAsUpIndicator`) is used.
 
 <ReferenceHeading platforms={[{"platform":"android"}]} source={"src/components/stack/header/StackHeaderConfig.android.types.ts#L706"}>
@@ -93,8 +91,6 @@ backgroundSubview?: StackHeaderBackgroundSubviewAndroid;
 
 Custom view rendered behind the header content.
 
-**Type:** [`StackHeaderBackgroundSubviewAndroid`](#stackheaderbackgroundsubviewandroid)
-
 <ReferenceHeading platforms={[{"platform":"android"}]} source={"src/components/stack/header/StackHeaderConfig.android.types.ts#L666"}>
 #### android.centerSubview {#header-config-android-centersubview}
 </ReferenceHeading>
@@ -104,8 +100,6 @@ centerSubview?: StackHeaderToolbarSubviewAndroid;
 ```
 
 Custom view placed in the center slot of the toolbar.
-
-**Type:** [`StackHeaderToolbarSubviewAndroid`](#stackheadertoolbarsubviewandroid)
 
 <ReferenceHeading platforms={[{"platform":"android"}]} source={"src/components/stack/header/StackHeaderConfig.android.types.ts#L1385"}>
 #### android.collapsedSubtitleColor {#header-config-android-collapsedsubtitlecolor}
@@ -262,8 +256,6 @@ collapsed state; it is only visually meaningful when
 [collapsedTitleHorizontalGravity](#header-config-android-collapsedtitlehorizontalgravity)
 is `'center'`.
 
-**Type:** [`StackHeaderCollapsedTitleGravityModeAndroid`](#stackheadercollapsedtitlegravitymodeandroid)
-
 :::info
 
 If the header is laid out during a screen transition, due to a native bug,
@@ -297,8 +289,6 @@ subtitle always follows the title's alignment. `'center'` is further
 affected by
 [collapsedTitleGravityMode](#header-config-android-collapsedtitlegravitymode).
 
-**Type:** [`StackHeaderTitleHorizontalGravityAndroid`](#stackheadertitlehorizontalgravityandroid)
-
 **Default:** `'start'`
 
 <ReferenceHeading platforms={[{"platform":"android"}]} source={"src/components/stack/header/StackHeaderConfig.android.types.ts#L1040"}>
@@ -312,8 +302,6 @@ collapsedTitleVerticalGravity?: StackHeaderTitleVerticalGravityAndroid;
 Vertical alignment of the title (and subtitle) in the collapsed state.
 
 Applies to `'medium'` / `'large'` headers only; ignored for `'small'`.
-
-**Type:** [`StackHeaderTitleVerticalGravityAndroid`](#stackheadertitleverticalgravityandroid)
 
 **Default:** `'center'`
 
@@ -519,8 +507,6 @@ Applies to `'medium'` / `'large'` headers only; ignored for `'small'` (use
 [titleCentered](#header-config-android-titlecentered)
 instead). The subtitle always follows the title's alignment.
 
-**Type:** [`StackHeaderTitleHorizontalGravityAndroid`](#stackheadertitlehorizontalgravityandroid)
-
 **Default:** `'start'`
 
 <ReferenceHeading platforms={[{"platform":"android"}]} source={"src/components/stack/header/StackHeaderConfig.android.types.ts#L1013"}>
@@ -535,8 +521,6 @@ Vertical alignment of the title (and subtitle) in the expanded state.
 
 Applies to `'medium'` / `'large'` headers only; ignored for `'small'`.
 
-**Type:** [`StackHeaderTitleVerticalGravityAndroid`](#stackheadertitleverticalgravityandroid)
-
 **Default:** `'bottom'`
 
 <ReferenceHeading platforms={[{"platform":"android"}]} source={"src/components/stack/header/StackHeaderConfig.android.types.ts#L660"}>
@@ -548,8 +532,6 @@ leadingSubview?: StackHeaderToolbarSubviewAndroid;
 ```
 
 Custom view placed in the leading (start) slot of the toolbar.
-
-**Type:** [`StackHeaderToolbarSubviewAndroid`](#stackheadertoolbarsubviewandroid)
 
 <ReferenceHeading platforms={[{"platform":"android"}]} source={"src/components/stack/header/StackHeaderConfig.android.types.ts#L863"}>
 #### android.liftOnScroll {#header-config-android-liftonscroll}
@@ -623,8 +605,6 @@ overflowIcon?: StackPlatformIconAndroid;
 
 Custom icon for the overflow menu button (the three-dots button that opens
 the toolbar menu's overflow popup).
-
-**Type:** [`StackPlatformIconAndroid`](#stackplatformiconandroid)
 
 **Default:** The Material 3 Expressive default overflow icon is used.
 
@@ -1040,8 +1020,6 @@ An invalid menu is rejected — for example duplicate item or group ids, a
 declared at the same menu level, or more than one `initialToggleState` in a
 single-selection group. A rejected menu throws an error during render.
 
-**Type:** [`StackHeaderToolbarMenuBaseAndroid`](#stackheadertoolbarmenubaseandroid)
-
 <ReferenceHeading platforms={[{"platform":"android","from":"28"}]} source={"src/components/stack/header/StackHeaderConfig.android.types.ts#L961"}>
 #### android.toolbarMenuGroupDividerEnabled {#header-config-android-toolbarmenugroupdividerenabled}
 </ReferenceHeading>
@@ -1064,8 +1042,6 @@ trailingSubview?: StackHeaderToolbarSubviewAndroid;
 
 Custom view placed in the trailing (end) slot of the toolbar.
 
-**Type:** [`StackHeaderToolbarSubviewAndroid`](#stackheadertoolbarsubviewandroid)
-
 <ReferenceHeading platforms={[{"platform":"android"}]} source={"src/components/stack/header/StackHeaderConfig.android.types.ts#L648"}>
 #### android.type {#header-config-android-type}
 </ReferenceHeading>
@@ -1079,8 +1055,6 @@ Specifies the type of the Material 3 app bar.
 M3 Expressive headers aren't currently supported (there is no stable
 `MDC-Android` version yet).
 
-**Type:** [`StackHeaderTypeAndroid`](#stackheadertypeandroid)
-
 :::note
 
 This is an implementation detail and may change. Changing this prop at
@@ -1093,6 +1067,7 @@ runtime rebuilds the header. Toolbar menu state survives the rebuild — see
 
 **See:** [Material Design 3: App bars](https://m3.material.io/components/app-bars/overview)
 
+[type:ColorValue]: https://reactnative.dev/docs/colors
 [type:StackHeaderBackgroundSubviewAndroid]: #stackheaderbackgroundsubviewandroid
 [type:StackHeaderCollapsedTitleGravityModeAndroid]: #stackheadercollapsedtitlegravitymodeandroid
 [type:StackHeaderTitleHorizontalGravityAndroid]: #stackheadertitlehorizontalgravityandroid
@@ -1101,3 +1076,4 @@ runtime rebuilds the header. Toolbar menu state survives the rebuild — see
 [type:StackHeaderToolbarSubviewAndroid]: #stackheadertoolbarsubviewandroid
 [type:StackHeaderTypeAndroid]: #stackheadertypeandroid
 [type:StackPlatformIconAndroid]: #stackplatformiconandroid
+[type:TextStyle]: https://reactnative.dev/docs/text-style-props

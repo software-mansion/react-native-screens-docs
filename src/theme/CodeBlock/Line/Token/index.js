@@ -33,7 +33,9 @@ function isKeyOrParameter(lineText, start, end) {
 
 /**
  * A token of a code block. In a block with type links (src/theme/CodeBlock), the names of the
- * documented types it shows link to their entries, keeping the token's colour.
+ * documented types it shows link to their entries, and those of the react-native types
+ * plugins/typedoc-rns/react-native-types.mts lists to React Native's docs, keeping the token's
+ * colour.
  */
 export default function CodeBlockLineToken({ line, token, ...props }) {
   const links = useContext(TypeLinksContext);

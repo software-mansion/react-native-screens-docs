@@ -12,8 +12,6 @@ backButtonDisplayMode?: StackHeaderBackButtonDisplayModeIOS;
 
 Controls how the back button title is displayed.
 
-**Type:** [`StackHeaderBackButtonDisplayModeIOS`](#stackheaderbackbuttondisplaymodeios)
-
 **Default:** `'default'`
 
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L740"}>
@@ -77,8 +75,6 @@ Custom item to display as a subtitle for large header.
 Takes precedence over
 [largeSubtitle](#header-config-ios-largesubtitle) text.
 
-**Type:** [`StackHeaderTitleCustomItemIOS`](#stackheadertitlecustomitemios)
-
 <ReferenceHeading platforms={[{"platform":"ios","from":"26"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L809"}>
 #### ios.largeTitle {#header-config-ios-largetitle}
 </ReferenceHeading>
@@ -122,8 +118,6 @@ enough space to fit all leading items at once, they are all moved to the
 overflow menu. This differs from trailing items, which are moved one by
 one.
 
-**Type:** [`StackHeaderItemIOS[]`](#stackheaderitemios)
-
 :::note
 
 Custom items are not put into the overflow menu, but are removed entirely.
@@ -142,8 +136,6 @@ Controls when the navigation bar minimizes in response to scrolling.
 
 When the navigation bar minimizes, an integrated top tab bar minimizes as
 well.
-
-**Type:** [`StackHeaderMinimizationBehaviorIOS`](#stackheaderminimizationbehaviorios)
 
 **Default:** `'automatic'`
 
@@ -174,8 +166,6 @@ Currently honored only together with
 `minimizationBehavior: 'onScrollDown'`. With other minimization behaviors,
 the system falls back to `'automatic'`.
 
-**Type:** [`StackHeaderRestorationBehaviorIOS`](#stackheaderrestorationbehaviorios)
-
 **Default:** `'automatic'`
 
 <ReferenceHeading platforms={[{"platform":"ios","from":"27"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L879"}>
@@ -188,8 +178,6 @@ safeAreaAdjustment?: StackHeaderSafeAreaAdjustmentIOS;
 
 Controls whether the safe area adjusts while the navigation bar
 minimizes.
-
-**Type:** [`StackHeaderSafeAreaAdjustmentIOS`](#stackheadersafeareaadjustmentios)
 
 **Default:** `'automatic'`
 
@@ -206,8 +194,6 @@ is aligned with the edge of the header.
 
 When set, it becomes a standalone definition. Whether set or derived, it
 keeps transparent background by default (`iOS < 18`).
-
-**Type:** [`StackHeaderAppearanceIOS`](#stackheaderappearanceios)
 
 :::info
 
@@ -231,8 +217,6 @@ standardAppearance?: StackHeaderAppearanceIOS;
 Appearance of the header when the edge of scrollable content
 is not aligned with the edge of the header.
 
-**Type:** [`StackHeaderAppearanceIOS`](#stackheaderappearanceios)
-
 :::info
 
 Native platform limitation: on iOS 26, header items resolve the `button` /
@@ -254,8 +238,6 @@ Custom item to display as a subtitle.
 
 Takes precedence over subtitle text.
 
-**Type:** [`StackHeaderTitleCustomItemIOS`](#stackheadertitlecustomitemios)
-
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L773"}>
 #### ios.titleItem {#header-config-ios-titleitem}
 </ReferenceHeading>
@@ -267,8 +249,6 @@ titleItem?: StackHeaderTitleCustomItemIOS;
 Custom item to display as a title.
 
 Takes precedence over title text.
-
-**Type:** [`StackHeaderTitleCustomItemIOS`](#stackheadertitlecustomitemios)
 
 <ReferenceHeading platforms={[{"platform":"ios","from":"16"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L785"}>
 #### ios.titleMenu {#header-config-ios-titlemenu}
@@ -285,8 +265,6 @@ Works independently of
 [titleItem](#header-config-ios-titleitem); the menu appears
 for both plain text and custom view title.
 
-**Type:** [`StackHeaderMenuIOS`](#stackheadermenuios)
-
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L798"}>
 #### ios.trailingItems {#header-config-ios-trailingitems}
 </ReferenceHeading>
@@ -299,8 +277,6 @@ A list of items placed starting from the trailing edge.
 
 If there is not enough space to fit some items, they are moved to the
 overflow menu, one by one.
-
-**Type:** [`StackHeaderItemIOS[]`](#stackheaderitemios)
 
 :::note
 

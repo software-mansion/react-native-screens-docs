@@ -32,8 +32,6 @@ interface StackHeaderInlineItemIOS
 
 Native header item with a title or an icon.
 
-**Extends:** [`StackHeaderItemBaseIOS`](#stackheaderitembaseios), [`StackHeaderSupportsMenuIOS`](#stackheadersupportsmenuios), [`StackHeaderSupportsIdentifierIOS`](#stackheadersupportsidentifierios), [`StackHeaderSupportsSharedBackgroundIOS`](#stackheadersupportssharedbackgroundios), [`StackHeaderSupportsVisibilityPriorityIOS`](#stackheadersupportsvisibilitypriorityios)
-
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L257"}>
 ##### disabled {#stackheaderinlineitemios-disabled}
 </ReferenceHeading>
@@ -63,8 +61,6 @@ Callback invoked when the header item is pressed.
 Fires when the user taps the header item. When combined with
 [menu](#stackheadersupportsmenuios-menu), tapping fires `onPress` and
 long-pressing shows the menu.
-
-**Type:** [`StackHeaderPressHandler`](#stackheaderpresshandler)
 
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/stack/header/StackHeaderConfig.ios.types.ts#L245"}>
 ##### tintColor {#stackheaderinlineitemios-tintcolor}
@@ -101,10 +97,9 @@ variant?: StackHeaderItemVariantIOS;
 
 Visual variant (style) of the item.
 
-**Type:** [`StackHeaderItemVariantIOS`](#stackheaderitemvariantios)
-
 **Default:** `'plain'`
 
+[type:ColorValue]: https://reactnative.dev/docs/colors
 [type:StackHeaderItemBaseIOS]: #stackheaderitembaseios
 [type:StackHeaderItemVariantIOS]: #stackheaderitemvariantios
 [type:StackHeaderPressHandler]: #stackheaderpresshandler

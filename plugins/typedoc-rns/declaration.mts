@@ -1,7 +1,6 @@
 import {
   ReferenceType,
   ReflectionKind,
-  ReflectionType,
   type DeclarationReflection,
   type Reflection,
   type SomeType,
@@ -14,6 +13,11 @@ import {
   type CommentContext,
   withCommentChanges,
 } from './comment.mts';
+import {
+  ACCEPTS_REACT_NATIVE,
+  reactNativeType,
+  type ReactNativeDocsPage,
+} from './react-native-types.mts';
 import type { RnsRouter } from './router.mts';
 import { indent } from './signature.mts';
 import { type InlineContext, inlineType } from './types.mts';
@@ -27,27 +31,6 @@ function urlOf(ctx: MarkdownThemeContext, reflection: Reflection | undefined) {
   return reflection && ctx.router.hasUrl(reflection)
     ? ctx.router.getFullUrl(reflection)
     : undefined;
-}
-
-/**
- * `**Type:**` with the type of a prop, a field or a type alias, and its links. Omitted when the
- * line would have no link, and for object and function literals, whose keys or parameters
- * follow.
- */
-function typeLine(
-  ctx: InlineContext,
-  model: DeclarationReflection,
-): string | undefined {
-  if (
-    !model.kindOf(ReflectionKind.Property | ReflectionKind.TypeAlias) ||
-    !model.type ||
-    model.type instanceof ReflectionType ||
-    model.signatures
-  ) {
-    return undefined;
-  }
-  const md = inlineType(ctx, model.type);
-  return md.includes('](') ? `**Type:** ${md}` : undefined;
 }
 
 /**
@@ -69,15 +52,37 @@ function documentedBases(
   });
 }
 
-/** `**Extends:**` with the bases the entry names (`documentedBases`), as links. */
-function extendsLine(
+/**
+ * Lines for the bases (`documentedBases`) of an entry with no declaration block: a component's
+ * props type, or an interface with call or index signatures. A component's react-native bases
+ * that react-native-types.mts lists become one sentence that links to React Native's docs; any
+ * other base goes in an `**Extends:**` line.
+ */
+function basesLines(
   ctx: InlineContext,
   model: DeclarationReflection,
+  isComponent: boolean,
 ): string | undefined {
-  const bases = documentedBases(ctx, model);
-  return bases.length
-    ? `**Extends:** ${bases.map(type => inlineType(ctx, type)).join(', ')}`
-    : undefined;
+  const accepted: ReactNativeDocsPage[] = [];
+  const others: SomeType[] = [];
+  for (const type of documentedBases(ctx, model)) {
+    const page = isComponent ? reactNativeType(type) : undefined;
+    if (page) accepted.push(page);
+    else others.push(type);
+  }
+  const lines: string[] = [];
+  if (accepted.length) {
+    const links = accepted.map(({ label, url }) => `[${label}](${url})`);
+    lines.push(
+      `${ACCEPTS_REACT_NATIVE} ${new Intl.ListFormat('en').format(links)}.`,
+    );
+  }
+  if (others.length) {
+    lines.push(
+      `**Extends:** ${others.map(type => inlineType(ctx, type)).join(', ')}`,
+    );
+  }
+  return lines.length ? lines.join('\n\n') : undefined;
 }
 
 /** The code inside a ```ts block that typedoc-plugin-markdown's `codeBlock` wrote. */
@@ -149,8 +154,8 @@ function memberDeclaration(
 
 /**
  * An interface's declaration, the way a type alias opens with its own, collapsed to its name
- * and bases (`collapsible`). It shows what the entry documents: the bases the `Extends` line
- * names and the members listed below (`documentedBases`, `isInheritedMember`), in the order the
+ * and bases (`collapsible`). It shows what the entry documents: the bases it names and the
+ * members listed below (`documentedBases`, `isInheritedMember`), in the order the
  * source declares them; the members of a base with no entry of its own are listed as the
  * interface's. `extends` always starts a line of its own, with one base per line, so a single
  * base reads the same on every entry. An interface with call or index signatures gets no
@@ -200,17 +205,18 @@ function collapseAliasDeclaration(
 }
 
 /**
- * Partials for an entry's own lines. `Type` and `Extends` open the comment's More information,
- * or follow the declaration when there is no comment. "Defined in", "Inherited from",
- * "Overrides" and the `Extends` / `Extended by` lists are not rendered, and the `optional`
- * keyword is left out: the `?` on the name says it.
+ * Partials for an entry's own lines. An entry's declaration shows its type and its bases, with
+ * links (code-links.mts). An entry without a declaration names its bases in lines instead
+ * (`basesLines`), which open the comment's More information, or the entry when there is no
+ * comment. "Defined in", "Inherited from", "Overrides" and the `Extends` /
+ * `Extended by` lists are not rendered, and the `optional` keyword is left out: the `?` on the
+ * name says it.
  */
 export function declarationPartials(
   ctx: Context,
   base: Partials,
 ): Pick<
   Partials,
-  | 'declaration'
   | 'declarationTitle'
   | 'memberWithGroups'
   | 'members'
@@ -226,23 +232,16 @@ export function declarationPartials(
       ctx.router.isComponentModel(model)
         ? ''
         : base.declarationTitle(model).replace(/ +\n/g, '\n'),
-    declaration: (model, options) => {
-      const line = typeLine(ctx, model);
-      if (!line) return base.declaration(model, options);
-      if (model.comment) {
-        return withCommentChanges(ctx, model.comment, { lead: line }, () =>
-          base.declaration(model, options),
-        );
-      }
-      const title = ctx.partials.declarationTitle(model);
-      const md = base.declaration(model, options);
-      return md.startsWith(title)
-        ? `${title}\n\n${line}${md.slice(title.length)}`
-        : md;
-    },
     memberWithGroups: (model, options) => {
-      const line = extendsLine(ctx, model);
       const isComponent = ctx.router.isComponentModel(model);
+      // The stock partial opens only a type alias with its declaration.
+      const declaration =
+        !isComponent && model.kindOf(ReflectionKind.Interface)
+          ? interfaceDeclaration(ctx, model)
+          : undefined;
+      const line = declaration
+        ? undefined
+        : basesLines(ctx, model, isComponent);
       const change: CommentChanges = {};
       // A component is described on the component and on its family's Overview; its props
       // type says only whose props it holds, which the section's heading already does.
@@ -257,10 +256,6 @@ export function declarationPartials(
       if (model.kindOf(ReflectionKind.TypeAlias)) {
         return collapseAliasDeclaration(ctx, model, body);
       }
-      // The stock partial opens only a type alias with its declaration.
-      const declaration = model.kindOf(ReflectionKind.Interface)
-        ? interfaceDeclaration(ctx, model)
-        : undefined;
       return declaration ? `${declaration}\n\n${body}` : body;
     },
     members: (model, options) =>

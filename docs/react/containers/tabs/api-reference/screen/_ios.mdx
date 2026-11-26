@@ -44,8 +44,6 @@ This API is experimental. It may change in a breaking way — or be removed enti
 
 Allows to override system appearance for the tab bar.
 
-**Type:** [`TabsUserInterfaceStyle`](#tabsuserinterfacestyle)
-
 :::info
 
 Does not support dynamic changes to the prop value for the currently
@@ -79,8 +77,6 @@ catalog is used.
 
 If no [selectedIcon](#screen-ios-selectedicon) is provided,
 this icon will also be used as the selected state icon.
-
-**Type:** [`TabsScreenIconIOS`](#tabsscreeniconios)
 
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/tabs/screen/TabsScreen.ios.types.ts#L451"}>
 #### ios.overrideScrollViewContentInsetAdjustmentBehavior {#screen-ios-overridescrollviewcontentinsetadjustmentbehavior}
@@ -124,8 +120,6 @@ tab instead through
 [ios.prominentScreenKey](#host-ios-prominentscreenkey) on
 [Tabs.Host](#host).
 
-**Type:** [`TabsScreenRole`](#tabsscreenrole)
-
 :::tip
 
 This prop does not affect the tab bar item's icon or title - combine it
@@ -159,8 +153,6 @@ If this property is `undefined`, UIKit uses
 [standardAppearance](#screen-ios-standardappearance),
 modified to have a transparent background.
 
-**Type:** [`TabsScreenAppearanceIOS`](#tabsscreenappearanceios)
-
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/tabs/screen/TabsScreen.ios.types.ts#L366"}>
 #### ios.selectedIcon {#screen-ios-selectedicon}
 </ReferenceHeading>
@@ -173,8 +165,6 @@ Specifies the icon for tab bar item when it is selected.
 
 Supports the same values as [icon](#screen-ios-icon)
 property.
-
-**Type:** [`TabsScreenIconIOS`](#tabsscreeniconios)
 
 :::info
 
@@ -216,8 +206,6 @@ standardAppearance?: TabsScreenAppearanceIOS;
 
 Specifies the standard tab bar appearance.
 
-**Type:** [`TabsScreenAppearanceIOS`](#tabsscreenappearanceios)
-
 <ReferenceHeading platforms={[{"platform":"ios"}]} source={"src/components/tabs/screen/TabsScreen.ios.types.ts#L387"}>
 #### ios.systemItem {#screen-ios-systemitem}
 </ReferenceHeading>
@@ -234,8 +222,6 @@ with standard iOS styling and localized titles. Custom
 [selectedIcon](#screen-ios-selectedicon) properties will
 override the system icon, and the system-defined title can be overridden
 by providing a custom [title](#screen-title).
-
-**Type:** [`TabsScreenSystemItem`](#tabsscreensystemitem)
 
 :::info
 
