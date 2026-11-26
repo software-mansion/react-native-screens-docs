@@ -2,20 +2,20 @@
 
 ## Documentation
 
-- [Architecture](https://docs.swmansion.com/react-native-screens-docs/docs/meta/architecture/): Overview
-- [Common Types](https://docs.swmansion.com/react-native-screens-docs/docs/react/common-types/)
-- [ContainedModal](https://docs.swmansion.com/react-native-screens-docs/docs/react/components/contained-modal/): Overview
-- [Contributing](https://docs.swmansion.com/react-native-screens-docs/docs/meta/contributing/): Documentation guidelines
-- [FormSheet](https://docs.swmansion.com/react-native-screens-docs/docs/react/components/form-sheet/): Overview
-- [How to build a navigator?](https://docs.swmansion.com/react-native-screens-docs/docs/guides/how-to-build-a-navigator)
-- [Introduction](https://docs.swmansion.com/react-native-screens-docs/docs/)
-- [PageSheet](https://docs.swmansion.com/react-native-screens-docs/docs/react/components/page-sheet/): Overview
-- [SafeAreaView](https://docs.swmansion.com/react-native-screens-docs/docs/react/components/safe-area-view/): Overview
-- [ScrollToTopGuard](https://docs.swmansion.com/react-native-screens-docs/docs/react/components/scroll-to-top-guard/): Overview
-- [ScrollViewMarker](https://docs.swmansion.com/react-native-screens-docs/docs/react/components/scroll-view-marker/): Overview
-- [Split](https://docs.swmansion.com/react-native-screens-docs/docs/react/containers/split/): Overview
-- [Stack](https://docs.swmansion.com/react-native-screens-docs/docs/react/containers/stack/): Overview
-- [Tabs](https://docs.swmansion.com/react-native-screens-docs/docs/react/containers/tabs/): Overview
+- [Architecture](https://docs.swmansion.com/react-native-screens-docs/docs/5.x/meta/architecture/): Overview
+- [Common Types](https://docs.swmansion.com/react-native-screens-docs/docs/5.x/react/common-types/)
+- [ContainedModal](https://docs.swmansion.com/react-native-screens-docs/docs/5.x/react/components/contained-modal/): Overview
+- [Contributing](https://docs.swmansion.com/react-native-screens-docs/docs/5.x/meta/contributing/): Documentation guidelines
+- [FormSheet](https://docs.swmansion.com/react-native-screens-docs/docs/5.x/react/components/form-sheet/): Overview
+- [How to build a navigator?](https://docs.swmansion.com/react-native-screens-docs/docs/5.x/guides/how-to-build-a-navigator)
+- [Introduction](https://docs.swmansion.com/react-native-screens-docs/docs/5.x/)
+- [PageSheet](https://docs.swmansion.com/react-native-screens-docs/docs/5.x/react/components/page-sheet/): Overview
+- [SafeAreaView](https://docs.swmansion.com/react-native-screens-docs/docs/5.x/react/components/safe-area-view/): Overview
+- [ScrollToTopGuard](https://docs.swmansion.com/react-native-screens-docs/docs/5.x/react/components/scroll-to-top-guard/): Overview
+- [ScrollViewMarker](https://docs.swmansion.com/react-native-screens-docs/docs/5.x/react/components/scroll-view-marker/): Overview
+- [Split](https://docs.swmansion.com/react-native-screens-docs/docs/5.x/react/containers/split/): Overview
+- [Stack](https://docs.swmansion.com/react-native-screens-docs/docs/5.x/react/containers/stack/): Overview
+- [Tabs](https://docs.swmansion.com/react-native-screens-docs/docs/5.x/react/containers/tabs/): Overview
 
 ## Pages
 
